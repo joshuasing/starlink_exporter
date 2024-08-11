@@ -1,0 +1,42 @@
+## Project
+/bin/
+/dist/
+
+## Common editors
+# Vim
+[._]*.s[a-v][a-z]
+!*.svg
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+Session.vim
+Sessionx.vim
+.netrwhist
+tags
+[._]*.un~
+
+# Emacs
+# -*- mode: gitignore; -*-
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+.org-id-locations
+*_archive
+
+# JetBrains
+.idea/
+*.iml
+
+# Visual Studio Code
+.vscode/
+.history/
+
+## Other files
+# macOS
+.DS_Store

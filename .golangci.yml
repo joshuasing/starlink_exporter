@@ -1,0 +1,35 @@
+run:
+  tests: false
+  timeout: 5m
+
+linters:
+  enable:
+    - bodyclose
+    - exportloopref
+    - gofumpt
+    - goheader
+    - goimports
+    - govet
+    - gosec
+    - nilerr
+    - predeclared
+    - revive
+    - tparallel
+    - unconvert
+    - unparam
+    - whitespace
+
+severity:
+  default-severity: error
+
+issues:
+  exclude-dirs:
+    - internal/spacex
+
+linters-settings:
+  goheader:
+    values:
+      const:
+        PROJECT: "github.com/joshuasing/starlink_exporter"
+        AUTHOR: "Joshua Sing <joshua@joshuasing.dev>"
+    template-path: license-header.txt
