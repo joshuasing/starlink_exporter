@@ -1,0 +1,223 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+# vim: set ts=2 sw=2 tw=0 fo=cnqoj
+version: 2
+
+project_name: "starlink_exporter"
+report_sizes: true
+
+env:
+  - AUTHOR=Joshua Sing <joshua@joshuasing.dev>
+  - GITHUB_USER=joshuasing
+  - DOCKER_HUB_USER=joshuasing
+  - DESCRIPTION=A simple Starlink exporter for Prometheus
+  - LICENSE=MIT
+
+before:
+  hooks:
+    - "go mod tidy"
+    - "go mod download"
+    - "go mod verify"
+
+builds:
+  - binary: "{{ .ProjectName }}"
+    main: "./cmd/{{ .ProjectName }}/"
+    env: [ "CGO_ENABLED=0", "GOGC=off" ]
+    ldflags: [ "-s -w" ]
+    flags: [ "-trimpath" ]
+    goos:
+      - "linux"
+      - "windows"
+      - "darwin"
+    goarch:
+      - "amd64"
+      - "arm"
+      - "arm64"
+    goarm: [ "7" ]
+    ignore:
+      - goos: "windows"
+        goarch: "arm"
+
+archives:
+  - format: "tar.gz"
+    wrap_in_directory: true
+    name_template: >-
+      {{ .ProjectName }}_v{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}
+    format_overrides:
+      - goos: "windows"
+        format: "zip"
+    files:
+      - "README*"
+      - "LICENSE*"
+
+# Create sources archive.
+source:
+  enabled: true
+  name_template: "{{ .ProjectName }}_v{{ .Version }}_sources"
+  format: "tar.gz"
+
+# Create checksums file.
+checksum:
+  name_template: "{{ .ProjectName }}_v{{ .Version }}_checksums.txt"
+  algorithm: "sha256"
+
+# Create SBOMs for all archives and the source archive.
+sboms:
+  - id: "archive"
+    artifacts: "archive"
+  - id: "source"
+    artifacts: "source"
+
+# Sign the checksum file, which includes the checksums for all files (including SBOMs).
+signs:
+  - cmd: "cosign"
+    certificate: "${artifact}.pem"
+    args:
+      - "sign-blob"
+      - "--output-certificate=${certificate}"
+      - "--output-signature=${signature}"
+      - "${artifact}"
+      - "--yes"
+    artifacts: "checksum"
+    output: true
+
+# Create Docker images.
+dockers:
+  # linux/amd64
+  - id: "{{ .ProjectName }}-amd64"
+    goos: "linux"
+    goarch: "amd64"
+    dockerfile: ".goreleaser.Dockerfile"
+    use: buildx
+    image_templates:
+      - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-amd64"
+      - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-amd64"
+    build_flag_templates:
+      - "--platform=linux/amd64"
+      - "--build-arg=VERSION={{ .Version }}"
+      - "--build-arg=VCS_REF={{ .FullCommit }}"
+      - "--build-arg=BUILD_DATE={{ .Date }}"
+
+  # linux/arm64/v8
+  - id: "{{ .ProjectName }}-arm64"
+    goos: "linux"
+    goarch: "arm64"
+    dockerfile: ".goreleaser.Dockerfile"
+    use: buildx
+    image_templates:
+      - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-arm64"
+      - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-arm64"
+    build_flag_templates:
+      - "--platform=linux/arm64/v8"
+      - "--build-arg=VERSION={{ .Version }}"
+      - "--build-arg=VCS_REF={{ .FullCommit }}"
+      - "--build-arg=BUILD_DATE={{ .Date }}"
+
+  # linux/arm/v7
+  - id: "{{ .ProjectName }}-armv7"
+    goos: "linux"
+    goarch: "arm"
+    goarm: "7"
+    dockerfile: ".goreleaser.Dockerfile"
+    use: buildx
+    image_templates:
+      - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-armv7"
+      - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-armv7"
+    build_flag_templates:
+      - "--platform=linux/arm/v7"
+      - "--build-arg=VERSION={{ .Version }}"
+      - "--build-arg=VCS_REF={{ .FullCommit }}"
+      - "--build-arg=BUILD_DATE={{ .Date }}"
+
+# Create Docker manifests for each image, containing the images for each
+# supported system architecture.
+docker_manifests:
+  # Docker Hub
+  - name_template: "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:latest"
+    image_templates:
+      - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-amd64"
+      - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-arm64"
+      - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-armv7"
+  - name_template: "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}"
+    image_templates:
+      - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-amd64"
+      - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-arm64"
+      - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-armv7"
+  - name_template: "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}"
+    image_templates:
+      - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-amd64"
+      - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-arm64"
+      - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-armv7"
+
+  # GitHub Container Registry
+  - name_template: "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:latest"
+    image_templates:
+      - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-amd64"
+      - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-arm64"
+      - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-armv7"
+  - name_template: "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}"
+    image_templates:
+      - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-amd64"
+      - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-arm64"
+      - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-armv7"
+  - name_template: "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}"
+    image_templates:
+      - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-amd64"
+      - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-arm64"
+      - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-armv7"
+
+# Sign Docker images and manifests.
+docker_signs:
+  - cmd: "cosign"
+    args:
+      - "sign"
+      - "${artifact}"
+      - "--yes"
+
+# Snapshot version settings.
+snapshot:
+  name_template: "{{ incpatch .Version }}-dev.{{ .ShortCommit }}"
+
+# Generate changelog for releases.
+changelog:
+  sort: asc
+  use: github
+  filters:
+    exclude:
+      - "merge conflict"
+      - "^Merge pull request"
+      - "^Merge remote-tracking branch"
+      - "^Merge branch"
+  groups:
+    - title: "Dependency updates"
+      regexp: "^.*(chore|fix)\\(deps\\)*:+.*$"
+      order: 300
+    - title: "Additions"
+      regexp: "^.*feat[(\\w)]*:+.*$"
+      order: 100
+    - title: "Fixes"
+      regexp: "^.*fix[(\\w)]*:+.*$"
+      order: 200
+    - title: 'Documentation'
+      regexp: "^.*docs[(\\w)]*:+.*$"
+      order: 400
+    - title: "Other"
+      order: 1000
+
+# Create GitHub release.
+release:
+  name_template: "starlink_exporter v{{ .Version }}"
+  github:
+    owner: "joshuasing"
+    name: "starlink_exporter"
+  prerelease: auto
+  mode: "append"
+  footer: |
+    **Full Changelog**: https://github.com/joshuasing/starlink_exporter/compare/{{ .PreviousTag }}...{{ .Tag }}
+
+# Close milestones for the released tag.
+milestones:
+  - repo:
+      owner: "joshuasing"
+      name: "starlink_exporter"
+    close: true
+    name_template: "{{ .Tag }}"

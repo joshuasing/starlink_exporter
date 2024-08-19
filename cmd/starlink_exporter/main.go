@@ -39,7 +39,7 @@ import (
 )
 
 const (
-	defaultListenAddress = "localhost:9451"
+	defaultListenAddress = ":9451"
 	defaultDishAddress   = "192.168.100.1:9200"
 )
 
