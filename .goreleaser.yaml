@@ -175,7 +175,7 @@ docker_signs:
 
 # Snapshot version settings.
 snapshot:
-  name_template: "{{ incpatch .Version }}-dev.{{ .ShortCommit }}"
+  version_template: "{{ incpatch .Version }}-dev-{{ .ShortCommit }}"
 
 # Generate changelog for releases.
 changelog:
