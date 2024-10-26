@@ -38,14 +38,11 @@ import (
 	"github.com/joshuasing/starlink_exporter/internal/exporter"
 )
 
-const (
-	defaultListenAddress = ":9451"
-	defaultDishAddress   = "192.168.100.1:9200"
-)
+const defaultListenAddress = ":9451"
 
 var (
 	listenAddress = flag.String("listen", defaultListenAddress, "Listen address")
-	dishAddress   = flag.String("dish", defaultDishAddress, "Dish address")
+	dishAddress   = flag.String("dish", exporter.DefaultDishAddress, "Dish address")
 )
 
 func main() {

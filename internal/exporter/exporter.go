@@ -39,6 +39,8 @@ const (
 	exporterSubsystem = "exporter"
 )
 
+const DefaultDishAddress = "192.168.100.1:9200"
+
 var (
 	// Informational
 	dishInfo = prometheus.NewDesc(
