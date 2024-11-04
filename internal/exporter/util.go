@@ -34,3 +34,17 @@ func btof(b bool) float64 {
 	}
 	return 0
 }
+
+// parseRingBuffer parses the ringbuffer of history data
+func parseRingBuffer(data []float32, current uint64) []float32 {
+	bufferSize := uint64(len(data))
+	if current <= bufferSize {
+		return data[:current]
+	}
+
+	start := current % bufferSize
+	result := make([]float32, bufferSize)
+	copy(result, data[start:])
+	copy(result[bufferSize-start:], data[:start])
+	return result
+}
