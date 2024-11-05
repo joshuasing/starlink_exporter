@@ -5,7 +5,7 @@ run:
 linters:
   enable:
     - bodyclose
-    - exportloopref
+    - copyloopvar
     - gofumpt
     - goheader
     - goimports
