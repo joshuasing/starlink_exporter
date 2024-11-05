@@ -87,6 +87,16 @@ var (
 		"Starlink dish downlink throughput in bit/sec",
 		nil, nil,
 	)
+	dishDownlinkThroughputHistogram = prometheus.NewDesc(
+		prometheus.BuildFQName(namespace, dishSubsystem, "downlink_throughput_histogram"),
+		"Histogram of Starlink dish downlink throughput over last 15 minutes",
+		nil, nil,
+	)
+	dishUplinkThroughputHistogram = prometheus.NewDesc(
+		prometheus.BuildFQName(namespace, dishSubsystem, "uplink_throughput_histogram"),
+		"Histogram of Starlink dish uplink throughput over last 15 minutes",
+		nil, nil,
+	)
 
 	// PoP ping
 	dishPopPingDropRatio = prometheus.NewDesc(
@@ -97,6 +107,23 @@ var (
 	dishPopPingLatencySeconds = prometheus.NewDesc(
 		prometheus.BuildFQName(namespace, dishSubsystem, "pop_ping_latency_seconds"),
 		"Starlink PoP ping latency in seconds",
+		nil, nil,
+	)
+	dishPopPingLatencyHistogram = prometheus.NewDesc(
+		prometheus.BuildFQName(namespace, dishSubsystem, "pop_ping_latency_histogram"),
+		"Histogram of Starlink dish pop ping latency over last 15 minutes",
+		nil, nil,
+	)
+
+	// Power In
+	dishPowerInputHistogram = prometheus.NewDesc(
+		prometheus.BuildFQName(namespace, dishSubsystem, "power_input_histogram"),
+		"Histogram of Starlink dish power input over last 15 minutes",
+		nil, nil,
+	)
+	dishPowerInput = prometheus.NewDesc(
+		prometheus.BuildFQName(namespace, dishSubsystem, "power_input"),
+		"Current power input for the Starlink dish",
 		nil, nil,
 	)
 
@@ -211,8 +238,11 @@ func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
 	ch <- dishSnrPersistentlyLow
 	ch <- dishUplinkThroughputBps
 	ch <- dishDownlinkThroughputBps
+	ch <- dishDownlinkThroughputHistogram
+	ch <- dishUplinkThroughputHistogram
 	ch <- dishPopPingDropRatio
 	ch <- dishPopPingLatencySeconds
+	ch <- dishPopPingLatencyHistogram
 	ch <- dishSoftwareUpdateRebootReady
 	ch <- dishBoresightAzimuthDeg
 	ch <- dishBoresightElevationDeg
@@ -220,6 +250,8 @@ func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
 	ch <- dishFractionObstructionRatio
 	ch <- dishLast24HoursObstructedSeconds
 	ch <- dishProlongedObstructionDurationSeconds
+	ch <- dishPowerInputHistogram
+	ch <- dishPowerInput
 }
 
 func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
