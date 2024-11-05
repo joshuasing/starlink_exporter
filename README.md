@@ -13,6 +13,11 @@ A simple Starlink exporter for Prometheus. *Not affiliated with Starlink or Spac
 
 Pre-built binaries are available from [GitHub Releases](https://github.com/joshuasing/starlink_exporter/releases).
 
+You can also use `go install` to build and install a binary from source:
+```shell
+go install github.com/joshuasing/starlink_exporter@latest
+````
+
 **Flags**
 
 ```shell
