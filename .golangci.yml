@@ -1,35 +1,66 @@
 run:
   tests: false
-  timeout: 5m
+
+issues:
+  # Exclude sources following the Go generated file convention.
+  exclude-generated: "strict"
 
 linters:
   enable:
-    - bodyclose
-    - copyloopvar
-    - gofumpt
-    - goheader
-    - goimports
-    - govet
-    - gosec
-    - nilerr
-    - predeclared
-    - revive
-    - tparallel
-    - unconvert
-    - unparam
-    - whitespace
-
-severity:
-  default-severity: error
-
-issues:
-  exclude-dirs:
-    - internal/spacex
+    - "bodyclose"
+    - "copyloopvar"
+    - "errcheck"
+    - "gci"
+    - "gofumpt"
+    - "goheader"
+    - "gosec"
+    - "gosimple"
+    - "govet"
+    - "ineffassign"
+    - "nilerr"
+    - "predeclared"
+    - "revive"
+    - "staticcheck"
+    - "tparallel"
+    - "unconvert"
+    - "unused"
+    - "unparam"
+    - "whitespace"
 
 linters-settings:
+  # Enforces import order in Go source files
+  gci:
+    sections:
+      - "standard"
+      - "default"
+      - "blank"
+      - "dot"
+      - "localmodule"
+    custom-order: true
+
+  # Enforces copyright header
   goheader:
     values:
       const:
         PROJECT: "github.com/joshuasing/starlink_exporter"
         AUTHOR: "Joshua Sing <joshua@joshuasing.dev>"
-    template-path: license-header.txt
+    template: |-
+      Copyright (c) {{ YEAR }} {{ AUTHOR }}
+
+      Permission is hereby granted, free of charge, to any person obtaining a copy
+      of this software and associated documentation files (the "Software"), to deal
+      in the Software without restriction, including without limitation the rights
+      to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+      copies of the Software, and to permit persons to whom the Software is
+      furnished to do so, subject to the following conditions:
+
+      The above copyright notice and this permission notice shall be included in all
+      copies or substantial portions of the Software.
+
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+      SOFTWARE.
