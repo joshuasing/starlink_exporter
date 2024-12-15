@@ -31,6 +31,32 @@ import (
 	"github.com/joshuasing/starlink_exporter/internal/spacex/api/device"
 )
 
+var (
+	dishPopPingLatencyHistOpts = prometheus.HistogramOpts{
+		Name:    prometheus.BuildFQName(namespace, dishSubsystem, "pop_ping_latency_seconds_histogram"),
+		Help:    "Histogram of Starlink dish PoP ping latency in seconds over last 15 minutes",
+		Buckets: []float64{0.01, 0.02, 0.021, 0.022, 0.023, 0.024, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2.5, 5, 10},
+	}
+
+	dishDownlinkThroughputHistOpts = prometheus.HistogramOpts{
+		Name:    prometheus.BuildFQName(namespace, dishSubsystem, "downlink_throughput_bps_histogram"),
+		Help:    "Histogram of Starlink dish downlink throughput over last 15 minutes",
+		Buckets: []float64{1e6, 5e6, 10e6, 25e6, 50e6, 100e6, 250e6, 500e6},
+	}
+
+	dishUplinkThroughputHistOpts = prometheus.HistogramOpts{
+		Name:    prometheus.BuildFQName(namespace, dishSubsystem, "uplink_throughput_bps_histogram"),
+		Help:    "Histogram of Starlink dish uplink throughput in bits/sec over last 15 minutes",
+		Buckets: []float64{1e6, 5e6, 10e6, 25e6, 50e6, 100e6, 250e6, 500e6},
+	}
+
+	dishPowerInputHistOpts = prometheus.HistogramOpts{
+		Name:    prometheus.BuildFQName(namespace, dishSubsystem, "power_input_watts_histogram"),
+		Help:    "Histogram of Starlink dish power input in watts over last 15 minutes",
+		Buckets: []float64{20, 25, 30, 40, 50, 75, 100, 150, 200},
+	}
+)
+
 // scrape scrapes metrics from the Starlink Dishy.
 func (e *Exporter) scrape(ch chan<- prometheus.Metric) bool {
 	e.totalScrapes.Inc()
@@ -39,7 +65,7 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) bool {
 		e.scrapeDurationSeconds.Set(time.Since(start).Seconds())
 	}()
 
-	return runScrapers(ch, e.scrapeDishStatus)
+	return runScrapers(ch, e.scrapeDishStatus, e.scrapeDishHistory)
 }
 
 type scraper func(ctx context.Context, ch chan<- prometheus.Metric) bool
@@ -80,15 +106,7 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 		Request: new(device.Request_GetStatus),
 	})
 	if err != nil {
-		slog.Error("Failed to scrape dish context", slog.Any("err", err))
-		return false
-	}
-
-	hist, err := e.client.Handle(ctx, &device.Request{
-		Request: new(device.Request_GetHistory),
-	})
-	if err != nil {
-		slog.Error("Failed to scrape dish history context", slog.Any("err", err))
+		slog.Error("Failed to scrape dish status", slog.Any("err", err))
 		return false
 	}
 
@@ -96,7 +114,6 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 	deviceInfo := dishStatus.GetDeviceInfo()
 	deviceState := dishStatus.GetDeviceState()
 	obstructionStats := dishStatus.GetObstructionStats()
-	dishHistory := hist.GetDishGetHistory()
 
 	// starlink_dish_info
 	ch <- prometheus.MustNewConstMetric(
@@ -111,78 +128,6 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 		itos(deviceInfo.GetUtcOffsetS()),
 		itos(deviceInfo.GetBootcount()),
 	)
-
-	// starlink_dish_pop_ping_latency_histogram
-	latencyBuckets := []float64{0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5.0}
-	latencyData := parseRingBuffer(dishHistory.GetPopPingLatencyMs(), dishHistory.GetCurrent())
-	latencyHist := prometheus.NewHistogram(prometheus.HistogramOpts{
-		Namespace: namespace,
-		Subsystem: dishSubsystem,
-		Name:      "pop_ping_latency_histogram",
-		Help:      "Histogram of Starlink dish pop ping latency over last 15 minutes",
-		Buckets:   latencyBuckets,
-	})
-
-	for _, latency := range latencyData {
-		latencyHist.Observe(float64(latency) / 1000) // Convert ms to seconds
-	}
-	ch <- latencyHist
-
-	// starlink_dish_pop_ping_latency_seconds
-	ch <- prometheus.MustNewConstMetric(
-		dishPopPingLatencySeconds, prometheus.GaugeValue,
-		float64(latencyData[len(latencyData)-1]/1000),
-	)
-
-	// starlink_dish_downlink_throughput_histogram
-	throughputBuckets := []float64{1e6, 5e6, 10e6, 25e6, 50e6, 100e6, 250e6, 500e6}
-	downlinkData := parseRingBuffer(dishHistory.GetDownlinkThroughputBps(), dishHistory.GetCurrent())
-
-	downlinkHist := prometheus.NewHistogram(prometheus.HistogramOpts{
-		Namespace: namespace,
-		Subsystem: dishSubsystem,
-		Name:      "downlink_throughput_histogram",
-		Help:      "Histogram of Starlink dish downlink throughput over last 15 minutes",
-		Buckets:   throughputBuckets,
-	})
-
-	for _, throughput := range downlinkData {
-		downlinkHist.Observe(float64(throughput))
-	}
-	ch <- downlinkHist
-
-	// starlink_dish_uplink_throughput_histogram
-	uplinkData := parseRingBuffer(dishHistory.GetUplinkThroughputBps(), dishHistory.GetCurrent())
-
-	uplinkHist := prometheus.NewHistogram(prometheus.HistogramOpts{
-		Namespace: namespace,
-		Subsystem: dishSubsystem,
-		Name:      "uplink_throughput_histogram",
-		Help:      "Histogram of Starlink dish uplink throughput over last 15 minutes",
-		Buckets:   throughputBuckets,
-	})
-
-	for _, throughput := range uplinkData {
-		uplinkHist.Observe(float64(throughput))
-	}
-	ch <- uplinkHist
-
-	// starlink_dish_power_input_histogram
-	powerBuckets := []float64{20, 50, 75, 100, 150, 200}
-	powerData := parseRingBuffer(dishHistory.GetPowerIn(), dishHistory.GetCurrent())
-
-	powerHist := prometheus.NewHistogram(prometheus.HistogramOpts{
-		Namespace: namespace,
-		Subsystem: dishSubsystem,
-		Name:      "power_input_histogram",
-		Help:      "Histogram of Starlink dish power input over last 15 minutes",
-		Buckets:   powerBuckets,
-	})
-
-	for _, power := range powerData {
-		powerHist.Observe(float64(power))
-	}
-	ch <- powerHist
 
 	// starlink_dish_uptime_seconds
 	ch <- prometheus.MustNewConstMetric(
@@ -201,30 +146,6 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 		dishSnrPersistentlyLow, prometheus.GaugeValue,
 		btof(dishStatus.GetIsSnrPersistentlyLow()),
 	)
-
-	// starlink_dish_uplink_throughput_bps
-	if len(uplinkData) > 0 {
-		ch <- prometheus.MustNewConstMetric(
-			dishUplinkThroughputBps, prometheus.GaugeValue,
-			float64(uplinkData[len(uplinkData)-1]),
-		)
-	}
-
-	// starlink_dish_downlink_throughput_bps
-	if len(downlinkData) > 0 {
-		ch <- prometheus.MustNewConstMetric(
-			dishDownlinkThroughputBps, prometheus.GaugeValue,
-			float64(downlinkData[len(downlinkData)-1]),
-		)
-	}
-
-	// starlink_dish_power_input
-	if len(powerData) > 0 {
-		ch <- prometheus.MustNewConstMetric(
-			dishPowerInput, prometheus.GaugeValue,
-			float64(powerData[len(powerData)-1]),
-		)
-	}
 
 	// starlink_dish_pop_ping_drop_ratio
 	ch <- prometheus.MustNewConstMetric(
@@ -279,6 +200,82 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 		dishProlongedObstructionDurationSeconds, prometheus.GaugeValue,
 		float64(obstructionStats.GetAvgProlongedObstructionDurationS()),
 	)
+
+	return true
+}
+
+func (e *Exporter) scrapeDishHistory(ctx context.Context, ch chan<- prometheus.Metric) bool {
+	res, err := e.client.Handle(ctx, &device.Request{
+		Request: new(device.Request_GetHistory),
+	})
+	if err != nil {
+		slog.Error("Failed to scrape dish history", slog.Any("err", err))
+		return false
+	}
+
+	dishHistory := res.GetDishGetHistory()
+
+	// starlink_dish_pop_ping_latency_histogram
+	latencyData := parseRingBuffer(dishHistory.GetPopPingLatencyMs(), dishHistory.GetCurrent())
+	latencyHist := prometheus.NewHistogram(dishPopPingLatencyHistOpts)
+	for _, latency := range latencyData {
+		latencyHist.Observe(float64(latency) / 1000) // Convert ms to seconds
+	}
+	ch <- latencyHist
+
+	// starlink_dish_pop_ping_latency_seconds
+	ch <- prometheus.MustNewConstMetric(
+		dishPopPingLatencySeconds, prometheus.GaugeValue,
+		float64(latencyData[len(latencyData)-1]/1000),
+	)
+
+	// starlink_dish_downlink_throughput_histogram
+	downlinkData := parseRingBuffer(dishHistory.GetDownlinkThroughputBps(), dishHistory.GetCurrent())
+	downlinkHist := prometheus.NewHistogram(dishDownlinkThroughputHistOpts)
+	for _, throughput := range downlinkData {
+		downlinkHist.Observe(float64(throughput))
+	}
+	ch <- downlinkHist
+
+	// starlink_dish_downlink_throughput_bps
+	if len(downlinkData) > 0 {
+		ch <- prometheus.MustNewConstMetric(
+			dishDownlinkThroughputBps, prometheus.GaugeValue,
+			float64(downlinkData[len(downlinkData)-1]),
+		)
+	}
+
+	// starlink_dish_uplink_throughput_bps_histogram
+	uplinkData := parseRingBuffer(dishHistory.GetUplinkThroughputBps(), dishHistory.GetCurrent())
+	uplinkHist := prometheus.NewHistogram(dishUplinkThroughputHistOpts)
+	for _, throughput := range uplinkData {
+		uplinkHist.Observe(float64(throughput))
+	}
+	ch <- uplinkHist
+
+	// starlink_dish_uplink_throughput_bps
+	if len(uplinkData) > 0 {
+		ch <- prometheus.MustNewConstMetric(
+			dishUplinkThroughputBps, prometheus.GaugeValue,
+			float64(uplinkData[len(uplinkData)-1]),
+		)
+	}
+
+	// starlink_dish_power_input_watts_histogram
+	powerData := parseRingBuffer(dishHistory.GetPowerIn(), dishHistory.GetCurrent())
+	powerHist := prometheus.NewHistogram(dishPowerInputHistOpts)
+	for _, power := range powerData {
+		powerHist.Observe(float64(power))
+	}
+	ch <- powerHist
+
+	// starlink_dish_power_input_watts
+	if len(powerData) > 0 {
+		ch <- prometheus.MustNewConstMetric(
+			dishPowerInput, prometheus.GaugeValue,
+			float64(powerData[len(powerData)-1]),
+		)
+	}
 
 	return true
 }
