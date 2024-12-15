@@ -88,13 +88,11 @@ var (
 		nil, nil,
 	)
 	dishDownlinkThroughputHistogram = prometheus.NewDesc(
-		prometheus.BuildFQName(namespace, dishSubsystem, "downlink_throughput_histogram"),
-		"Histogram of Starlink dish downlink throughput over last 15 minutes",
+		dishDownlinkThroughputHistOpts.Name, dishDownlinkThroughputHistOpts.Help,
 		nil, nil,
 	)
 	dishUplinkThroughputHistogram = prometheus.NewDesc(
-		prometheus.BuildFQName(namespace, dishSubsystem, "uplink_throughput_histogram"),
-		"Histogram of Starlink dish uplink throughput over last 15 minutes",
+		dishUplinkThroughputHistOpts.Name, dishUplinkThroughputHistOpts.Help,
 		nil, nil,
 	)
 
@@ -110,19 +108,17 @@ var (
 		nil, nil,
 	)
 	dishPopPingLatencyHistogram = prometheus.NewDesc(
-		prometheus.BuildFQName(namespace, dishSubsystem, "pop_ping_latency_histogram"),
-		"Histogram of Starlink dish pop ping latency over last 15 minutes",
+		dishPopPingLatencyHistOpts.Name, dishPopPingLatencyHistOpts.Help,
 		nil, nil,
 	)
 
 	// Power In
 	dishPowerInputHistogram = prometheus.NewDesc(
-		prometheus.BuildFQName(namespace, dishSubsystem, "power_input_histogram"),
-		"Histogram of Starlink dish power input over last 15 minutes",
+		dishPowerInputHistOpts.Name, dishPowerInputHistOpts.Help,
 		nil, nil,
 	)
 	dishPowerInput = prometheus.NewDesc(
-		prometheus.BuildFQName(namespace, dishSubsystem, "power_input"),
+		prometheus.BuildFQName(namespace, dishSubsystem, "power_input_watts"),
 		"Current power input for the Starlink dish",
 		nil, nil,
 	)
@@ -208,7 +204,7 @@ func NewExporter(address string) (*Exporter, error) {
 		}),
 		totalScrapes: prometheus.NewCounter(prometheus.CounterOpts{
 			Namespace: namespace,
-			Subsystem: "exporter",
+			Subsystem: exporterSubsystem,
 			Name:      "scrapes_total",
 			Help:      "Total number of Starlink dish scrapes",
 		}),
