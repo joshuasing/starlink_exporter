@@ -128,6 +128,12 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 	}
 	ch <- latencyHist
 
+	// starlink_dish_pop_ping_latency_seconds
+	ch <- prometheus.MustNewConstMetric(
+		dishPopPingLatencySeconds, prometheus.GaugeValue,
+		float64(latencyData[len(latencyData)-1]/1000),
+	)
+
 	// starlink_dish_downlink_throughput_histogram
 	throughputBuckets := []float64{1e6, 5e6, 10e6, 25e6, 50e6, 100e6, 250e6, 500e6}
 	downlinkData := parseRingBuffer(dishHistory.GetDownlinkThroughputBps(), dishHistory.GetCurrent())
@@ -224,12 +230,6 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 	ch <- prometheus.MustNewConstMetric(
 		dishPopPingDropRatio, prometheus.GaugeValue,
 		float64(dishStatus.GetPopPingDropRate()),
-	)
-
-	// starlink_dish_pop_ping_latency_seconds
-	ch <- prometheus.MustNewConstMetric(
-		dishPopPingLatencySeconds, prometheus.GaugeValue,
-		float64(dishStatus.GetPopPingLatencyMs()/1000),
 	)
 
 	// starlink_dish_software_update_state
