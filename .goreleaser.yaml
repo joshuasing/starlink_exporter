@@ -179,29 +179,7 @@ snapshot:
 
 # Generate changelog for releases.
 changelog:
-  sort: asc
-  use: github
-  filters:
-    exclude:
-      - "merge conflict"
-      - "^Merge pull request"
-      - "^Merge remote-tracking branch"
-      - "^Merge branch"
-  groups:
-    - title: "Dependency updates"
-      regexp: "^.*(chore|fix)\\(deps\\)*:+.*$"
-      order: 300
-    - title: "Additions"
-      regexp: "^.*feat[(\\w)]*:+.*$"
-      order: 100
-    - title: "Fixes"
-      regexp: "^.*fix[(\\w)]*:+.*$"
-      order: 200
-    - title: 'Documentation'
-      regexp: "^.*docs[(\\w)]*:+.*$"
-      order: 400
-    - title: "Other"
-      order: 1000
+  use: "github-native"
 
 # Create GitHub release.
 release:
