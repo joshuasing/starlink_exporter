@@ -7,6 +7,36 @@
 
 A simple Starlink exporter for Prometheus. *Not affiliated with Starlink or SpaceX.*
 
+## Metrics
+
+The following metrics are exposed by this exporter:
+
+| Metric name                                            | Description                                                                   |
+|--------------------------------------------------------|-------------------------------------------------------------------------------|
+| `starlink_up`                                          | Whether scraping metrics from the Starlink dish was successful                |
+| `starlink_exporter_scrapes_total`                      | Total number of Starlink dish scrapes                                         |
+| `starlink_exporter_scrape_duration_seconds`            | Time taken to scrape metrics from the Starlink dish                           |
+| `starlink_dish_info`                                   | Starlink dish software information                                            |
+| `starlink_dish_uptime_seconds`                         | Starlink dish uptime in seconds                                               |
+| `starlink_dish_snr_above_noise_floor`                  | Whether Starlink dish signal-to-noise ratio is above noise floor              |
+| `starlink_dish_snr_persistently_low`                   | Whether Starlink dish signal-to-noise ratio is persistently low               |
+| `starlink_dish_uplink_throughput_bps`                  | Starlink dish uplink throughput in bits/sec                                   |
+| `starlink_dish_downlink_throughput_bps`                | Starlink dish downlink throughput in bit/sec                                  |
+| `starlink_dish_downlink_throughput_bps_histogram`      | Histogram of Starlink dish downlink throughput over last 15 minutes           |
+| `starlink_dish_uplink_throughput_bps_histogram`        | Histogram of Starlink dish uplink throughput in bits/sec over last 15 minutes |
+| `starlink_dish_pop_ping_drop_ratio`                    | Starlink PoP ping drop ratio                                                  |
+| `starlink_dish_pop_ping_latency_seconds`               | Starlink PoP ping latency in seconds                                          |
+| `starlink_dish_pop_ping_latency_seconds_histogram`     | Histogram of Starlink dish PoP ping latency in seconds over last 15 minutes   |
+| `starlink_dish_software_update_reboot_ready`           | Whether the Starlink dish is ready to reboot to apply a software update       |
+| `starlink_dish_boresight_azimuth_deg`                  | Starlink dish boresight azimuth in degrees                                    |
+| `starlink_dish_boresight_elevation_deg`                | Starlink dish boresight elevation in degrees                                  |
+| `starlink_dish_currently_obstructed`                   | Whether the Starlink dish is currently obstructed                             |
+| `starlink_dish_fraction_obstruction_ratio`             | Fraction of Starlink dish that is obstructed                                  |
+| `starlink_dish_last_24h_obstructed_seconds`            | Number of seconds the Starlink dish was obstructed in the past 24 hours       |
+| `starlink_dish_prolonged_obstruction_duration_seconds` | Average prolonged obstruction duration in seconds                             |
+| `starlink_dish_power_input_watts_histogram`            | Histogram of Starlink dish power input in watts over last 15 minutes          |
+| `starlink_dish_power_input_watts`                      | Current power input for the Starlink dish                                     |
+
 ## Installation
 
 ### Binaries
