@@ -13,9 +13,9 @@ The following metrics are exposed by this exporter:
 
 | Metric name                                            | Description                                                                   |
 |--------------------------------------------------------|-------------------------------------------------------------------------------|
-| `starlink_up`                                          | Whether scraping metrics from the Starlink dish was successful                |
 | `starlink_exporter_scrapes_total`                      | Total number of Starlink dish scrapes                                         |
 | `starlink_exporter_scrape_duration_seconds`            | Time taken to scrape metrics from the Starlink dish                           |
+| `starlink_dish_up`                                     | Whether scraping metrics from the Starlink dish was successful                |
 | `starlink_dish_info`                                   | Starlink dish software information                                            |
 | `starlink_dish_uptime_seconds`                         | Starlink dish uptime in seconds                                               |
 | `starlink_dish_snr_above_noise_floor`                  | Whether Starlink dish signal-to-noise ratio is above noise floor              |
