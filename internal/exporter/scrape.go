@@ -192,12 +192,6 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 		float64(obstructionStats.GetTimeObstructed()),
 	)
 
-	// starlink_dish_prolonged_obstruction_duration_seconds
-	ch <- prometheus.MustNewConstMetric(
-		dishProlongedObstructionDurationSeconds.Desc(), prometheus.GaugeValue,
-		float64(obstructionStats.GetAvgProlongedObstructionDurationS()),
-	)
-
 	return true
 }
 
