@@ -105,7 +105,7 @@ Steps to build starlink_exporter.
 
 **Prerequisites**
 
-- Go v1.22 or newer (https://go.dev/dl/)
+- Go v1.23 or newer (https://go.dev/dl/)
 
 **Build**
 
