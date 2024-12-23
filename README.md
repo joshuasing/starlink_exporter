@@ -33,7 +33,6 @@ The following metrics are exposed by this exporter:
 | `starlink_dish_currently_obstructed`                   | Whether the Starlink dish is currently obstructed                             |
 | `starlink_dish_fraction_obstruction_ratio`             | Fraction of Starlink dish that is obstructed                                  |
 | `starlink_dish_last_24h_obstructed_seconds`            | Number of seconds the Starlink dish was obstructed in the past 24 hours       |
-| `starlink_dish_prolonged_obstruction_duration_seconds` | Average prolonged obstruction duration in seconds                             |
 | `starlink_dish_power_input_watts_histogram`            | Histogram of Starlink dish power input in watts over last 15 minutes          |
 | `starlink_dish_power_input_watts`                      | Current power input for the Starlink dish                                     |
 

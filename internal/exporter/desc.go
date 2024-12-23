@@ -195,12 +195,6 @@ var (
 		Name:      "last_24h_obstructed_seconds",
 		Help:      "Number of seconds the Starlink dish was obstructed in the past 24 hours",
 	}
-	dishProlongedObstructionDurationSeconds = Desc{
-		Namespace: namespace,
-		Subsystem: dishSubsystem,
-		Name:      "prolonged_obstruction_duration_seconds",
-		Help:      "Average prolonged obstruction duration in seconds",
-	}
 )
 
 var Descs = []Desc{
@@ -224,7 +218,6 @@ var Descs = []Desc{
 	dishCurrentlyObstructed,
 	dishFractionObstructionRatio,
 	dishLast24HoursObstructedSeconds,
-	dishProlongedObstructionDurationSeconds,
 	dishPowerInputHistogram,
 	dishPowerInput,
 }
