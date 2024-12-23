@@ -167,7 +167,8 @@ docker_manifests:
 
 # Sign Docker images and manifests.
 docker_signs:
-  - cmd: "cosign"
+  - artifacts: "all"
+    cmd: "cosign"
     args:
       - "sign"
       - "${artifact}"
