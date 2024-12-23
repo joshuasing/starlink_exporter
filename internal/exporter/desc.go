@@ -167,13 +167,25 @@ var (
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "boresight_azimuth_deg",
-		Help:      "Starlink dish boresight azimuth in degrees",
+		Help:      "Starlink dish boresight azimuth degrees",
 	}
 	dishBoresightElevationDeg = Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "boresight_elevation_deg",
-		Help:      "Starlink dish boresight elevation in degrees",
+		Help:      "Starlink dish boresight elevation degrees",
+	}
+	dishDesiredBoresightAzimuthDeg = Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "desired_boresight_azimuth_deg",
+		Help:      "Starlink dish desired boresight azimuth degrees",
+	}
+	dishDesiredBoresightElevationDeg = Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "desired_boresight_elevation_deg",
+		Help:      "Starlink dish desired boresight elevation degrees",
 	}
 
 	// Obstruction
@@ -215,6 +227,8 @@ var Descs = []Desc{
 	dishSoftwareUpdateRebootReady,
 	dishBoresightAzimuthDeg,
 	dishBoresightElevationDeg,
+	dishDesiredBoresightAzimuthDeg,
+	dishDesiredBoresightElevationDeg,
 	dishCurrentlyObstructed,
 	dishFractionObstructionRatio,
 	dishLast24HoursObstructedSeconds,

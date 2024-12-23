@@ -62,7 +62,11 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) bool {
 		e.scrapeDurationSeconds.Set(time.Since(start).Seconds())
 	}()
 
-	return runScrapers(ch, e.scrapeDishStatus, e.scrapeDishHistory)
+	return runScrapers(ch,
+		e.scrapeDishStatus,
+		e.scrapeDishHistory,
+		e.scrapeDishDiagnostics,
+	)
 }
 
 type scraper func(ctx context.Context, ch chan<- prometheus.Metric) bool
@@ -267,6 +271,32 @@ func (e *Exporter) scrapeDishHistory(ctx context.Context, ch chan<- prometheus.M
 			float64(powerData[len(powerData)-1]),
 		)
 	}
+
+	return true
+}
+
+func (e *Exporter) scrapeDishDiagnostics(ctx context.Context, ch chan<- prometheus.Metric) bool {
+	res, err := e.client.Handle(ctx, &device.Request{
+		Request: new(device.Request_GetDiagnostics),
+	})
+	if err != nil {
+		slog.Error("Failed to scrape dish diagnostics", slog.Any("err", err))
+		return false
+	}
+
+	diag := res.GetDishGetDiagnostics()
+
+	// starlink_dish_desired_boresight_azimuth_deg
+	ch <- prometheus.MustNewConstMetric(
+		dishDesiredBoresightAzimuthDeg.Desc(), prometheus.GaugeValue,
+		float64(diag.GetAlignmentStats().GetDesiredBoresightAzimuthDeg()),
+	)
+
+	// starlink_dish_desired_boresight_elevation_deg
+	ch <- prometheus.MustNewConstMetric(
+		dishDesiredBoresightElevationDeg.Desc(), prometheus.GaugeValue,
+		float64(diag.GetAlignmentStats().GetDesiredBoresightElevationDeg()),
+	)
 
 	return true
 }
