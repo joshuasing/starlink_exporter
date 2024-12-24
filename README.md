@@ -28,6 +28,9 @@ The following metrics are exposed by this exporter:
 | `starlink_dish_pop_ping_latency_seconds`           | Starlink PoP ping latency in seconds                                          |
 | `starlink_dish_pop_ping_latency_seconds_histogram` | Histogram of Starlink dish PoP ping latency in seconds over last 15 minutes   |
 | `starlink_dish_software_update_reboot_ready`       | Whether the Starlink dish is ready to reboot to apply a software update       |
+| `starlink_dish_gps_valid`                          | Whether the Starlink dish GPS is valid                                        |
+| `starlink_dish_gps_satellites`                     | Number of GPS satellites visible to the Starlink dish                         |
+| `starlink_dish_tilt_angle_deg`                     | Starlink dish tilt angle degrees                                              |
 | `starlink_dish_boresight_azimuth_deg`              | Starlink dish boresight azimuth degrees                                       |
 | `starlink_dish_boresight_elevation_deg`            | Starlink dish boresight elevation degrees                                     |
 | `starlink_dish_desired_boresight_azimuth_deg`      | Starlink dish desired boresight azimuth degrees                               |
