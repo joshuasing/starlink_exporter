@@ -20,7 +20,9 @@
 
 package exporter
 
-import "github.com/prometheus/client_golang/prometheus"
+import (
+	"github.com/prometheus/client_golang/prometheus"
+)
 
 const (
 	namespace         = "starlink"
@@ -268,11 +270,16 @@ type Desc struct {
 	Help        string
 	Labels      []string
 	ConstLabels prometheus.Labels
-	desc        *prometheus.Desc
+
+	fqName string
+	desc   *prometheus.Desc
 }
 
 func (d Desc) FQName() string {
-	return prometheus.BuildFQName(d.Namespace, d.Subsystem, d.Name)
+	if d.fqName == "" {
+		d.fqName = prometheus.BuildFQName(d.Namespace, d.Subsystem, d.Name)
+	}
+	return d.fqName
 }
 
 func (d Desc) Desc() *prometheus.Desc {
