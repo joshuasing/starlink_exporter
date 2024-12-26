@@ -48,5 +48,4 @@ gen:
 
 .PHONY: gen-deps
 gen-deps:
-	# Use @master because latest does not contain proto-out-dir yet
-	go install github.com/fullstorydev/grpcurl/cmd/grpcurl@master
+	go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest

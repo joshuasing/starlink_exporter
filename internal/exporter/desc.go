@@ -20,7 +20,9 @@
 
 package exporter
 
-import "github.com/prometheus/client_golang/prometheus"
+import (
+	"github.com/prometheus/client_golang/prometheus"
+)
 
 const (
 	namespace         = "starlink"
@@ -162,6 +164,28 @@ var (
 		Help:      "Whether the Starlink dish is ready to reboot to apply a software update",
 	}
 
+	// GPS
+	dishGPSValid = Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "gps_valid",
+		Help:      "Whether the Starlink dish GPS is valid",
+	}
+	dishGPSSatellites = Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "gps_satellites",
+		Help:      "Number of GPS satellites visible to the Starlink dish",
+	}
+
+	// Tilt Angle
+	dishTiltAngleDeg = Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "tilt_angle_deg",
+		Help:      "Starlink dish tilt angle degrees",
+	}
+
 	// Boresight
 	dishBoresightAzimuthDeg = Desc{
 		Namespace: namespace,
@@ -225,6 +249,9 @@ var Descs = []Desc{
 	dishPopPingLatencySeconds,
 	dishPopPingLatencyHistogram,
 	dishSoftwareUpdateRebootReady,
+	dishGPSValid,
+	dishGPSSatellites,
+	dishTiltAngleDeg,
 	dishBoresightAzimuthDeg,
 	dishBoresightElevationDeg,
 	dishDesiredBoresightAzimuthDeg,
@@ -243,11 +270,16 @@ type Desc struct {
 	Help        string
 	Labels      []string
 	ConstLabels prometheus.Labels
-	desc        *prometheus.Desc
+
+	fqName string
+	desc   *prometheus.Desc
 }
 
 func (d Desc) FQName() string {
-	return prometheus.BuildFQName(d.Namespace, d.Subsystem, d.Name)
+	if d.fqName == "" {
+		d.fqName = prometheus.BuildFQName(d.Namespace, d.Subsystem, d.Name)
+	}
+	return d.fqName
 }
 
 func (d Desc) Desc() *prometheus.Desc {
