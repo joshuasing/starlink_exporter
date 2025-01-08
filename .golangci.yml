@@ -45,7 +45,7 @@ linters-settings:
         PROJECT: "github.com/joshuasing/starlink_exporter"
         AUTHOR: "Joshua Sing <joshua@joshuasing.dev>"
     template: |-
-      Copyright (c) {{ YEAR }} {{ AUTHOR }}
+      Copyright (c) {{ MOD-YEAR-RANGE }} {{ AUTHOR }}
 
       Permission is hereby granted, free of charge, to any person obtaining a copy
       of this software and associated documentation files (the "Software"), to deal
