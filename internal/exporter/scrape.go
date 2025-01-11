@@ -333,17 +333,17 @@ func (e *Exporter) scrapeLocation(ctx context.Context, ch chan<- prometheus.Metr
 		ftos(lla.GetAlt()),
 	)
 
-	// starlink_dish_location_latitude
+	// starlink_dish_location_latitude_deg
 	ch <- prometheus.MustNewConstMetric(
 		dishLocationLatitude.Desc(), prometheus.GaugeValue, lla.GetLat(),
 	)
 
-	// starlink_dish_location_longitude
+	// starlink_dish_location_longitude_deg
 	ch <- prometheus.MustNewConstMetric(
 		dishLocationLongitude.Desc(), prometheus.GaugeValue, lla.GetLon(),
 	)
 
-	// starlink_dish_location_altitude
+	// starlink_dish_location_altitude_meters
 	ch <- prometheus.MustNewConstMetric(
 		dishLocationAltitude.Desc(), prometheus.GaugeValue, lla.GetAlt(),
 	)

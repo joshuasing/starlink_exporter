@@ -243,20 +243,20 @@ var (
 	dishLocationLatitude = Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
-		Name:      "location_latitude",
+		Name:      "location_latitude_deg",
 		Help:      "Location latitude in degrees",
 	}
 	dishLocationLongitude = Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
-		Name:      "location_longitude",
+		Name:      "location_longitude_deg",
 		Help:      "Location longitude in degrees",
 	}
 	dishLocationAltitude = Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
-		Name:      "location_altitude",
-		Help:      "Location altitude in degrees",
+		Name:      "location_altitude_meters",
+		Help:      "Location altitude in meters above sea level",
 	}
 )
 
