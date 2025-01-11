@@ -314,14 +314,24 @@ func (e *Exporter) scrapeLocation(ctx context.Context, ch chan<- prometheus.Metr
 	if err != nil {
 		if s, ok := status.FromError(err); ok {
 			if s.Code() == codes.PermissionDenied {
-				// GetLocations may be disabled, ignore.
+				// Location service may be disabled, ignore.
 				return true
 			}
 		}
 		slog.Error("Failed to scrape location", slog.Any("err", err))
 		return false
 	}
-	lla := res.GetGetLocation().GetLla()
+	loc := res.GetGetLocation()
+	lla := loc.GetLla()
+
+	// starlink_dish_location_info
+	ch <- prometheus.MustNewConstMetric(
+		dishLocationInfo.Desc(), prometheus.GaugeValue, 1,
+		loc.GetSource().String(),
+		ftos(lla.GetLat()),
+		ftos(lla.GetLon()),
+		ftos(lla.GetAlt()),
+	)
 
 	// starlink_dish_location_latitude
 	ch <- prometheus.MustNewConstMetric(

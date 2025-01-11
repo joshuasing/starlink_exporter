@@ -233,6 +233,13 @@ var (
 	}
 
 	// Location
+	dishLocationInfo = Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "location_info",
+		Help:      "Dish location information",
+		Labels:    []string{"location_source", "lat", "lon", "alt"},
+	}
 	dishLocationLatitude = Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
@@ -281,6 +288,7 @@ var Descs = []Desc{
 	dishLast24HoursObstructedSeconds,
 	dishPowerInputHistogram,
 	dishPowerInput,
+	dishLocationInfo,
 	dishLocationLatitude,
 	dishLocationLongitude,
 	dishLocationAltitude,
