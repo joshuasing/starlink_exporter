@@ -10,8 +10,8 @@ receive security patches.**
 
 | Version   | Supported |
 |-----------|-----------|
-| `0.2.x`   | ✅         |
-| < `0.2.x` | ❌         |
+| `0.4.x`   | ✅         |
+| < `0.4.x` | ❌         |
 
 ## Reporting a Vulnerability
 
