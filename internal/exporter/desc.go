@@ -67,6 +67,7 @@ var (
 			"country_code",
 			"utc_offset",
 			"boot_count",
+			"mobility_class",
 		},
 	}
 	dishUptimeSeconds = Desc{
@@ -74,6 +75,12 @@ var (
 		Subsystem: dishSubsystem,
 		Name:      "uptime_seconds",
 		Help:      "Starlink dish uptime in seconds",
+	}
+	dishMobilityClass = Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "mobility_class",
+		Help:      "Starlink dish mobility class",
 	}
 
 	// Signal-to-noise ratio
