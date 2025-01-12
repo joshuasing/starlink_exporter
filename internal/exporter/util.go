@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Joshua Sing <joshua@joshuasing.dev>
+// Copyright (c) 2024-2025 Joshua Sing <joshua@joshuasing.dev>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,11 +20,18 @@
 
 package exporter
 
-import "strconv"
+import (
+	"strconv"
+)
 
 // itos converts an int to a string.
 func itos[T int | int8 | int16 | int32 | int64](f T) string {
 	return strconv.FormatInt(int64(f), 10)
+}
+
+// ftos converts a float to a string.
+func ftos(f float64) string {
+	return strconv.FormatFloat(f, 'f', -1, 64)
 }
 
 // btof converts the bool to a float64 value of 1/0 (true/false).

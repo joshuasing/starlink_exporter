@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Joshua Sing <joshua@joshuasing.dev>
+// Copyright (c) 2024-2025 Joshua Sing <joshua@joshuasing.dev>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -231,6 +231,33 @@ var (
 		Name:      "last_24h_obstructed_seconds",
 		Help:      "Number of seconds the Starlink dish was obstructed in the past 24 hours",
 	}
+
+	// Location
+	dishLocationInfo = Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "location_info",
+		Help:      "Dish location information",
+		Labels:    []string{"location_source", "lat", "lon", "alt"},
+	}
+	dishLocationLatitude = Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "location_latitude_deg",
+		Help:      "Location latitude in degrees",
+	}
+	dishLocationLongitude = Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "location_longitude_deg",
+		Help:      "Location longitude in degrees",
+	}
+	dishLocationAltitude = Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "location_altitude_meters",
+		Help:      "Location altitude in meters above sea level",
+	}
 )
 
 var Descs = []Desc{
@@ -261,6 +288,10 @@ var Descs = []Desc{
 	dishLast24HoursObstructedSeconds,
 	dishPowerInputHistogram,
 	dishPowerInput,
+	dishLocationInfo,
+	dishLocationLatitude,
+	dishLocationLongitude,
+	dishLocationAltitude,
 }
 
 type Desc struct {

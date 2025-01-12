@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Joshua Sing <joshua@joshuasing.dev>
+// Copyright (c) 2024-2025 Joshua Sing <joshua@joshuasing.dev>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,8 @@ import (
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	"github.com/joshuasing/starlink_exporter/internal/spacex/api/device"
 )
@@ -65,6 +67,7 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) bool {
 	return runScrapers(ch,
 		e.scrapeDishStatus,
 		e.scrapeDishHistory,
+		e.scrapeLocation,
 	)
 }
 
@@ -300,6 +303,50 @@ func (e *Exporter) scrapeDishHistory(ctx context.Context, ch chan<- prometheus.M
 			float64(powerData[len(powerData)-1]),
 		)
 	}
+
+	return true
+}
+
+func (e *Exporter) scrapeLocation(ctx context.Context, ch chan<- prometheus.Metric) bool {
+	res, err := e.client.Handle(ctx, &device.Request{
+		Request: new(device.Request_GetLocation),
+	})
+	if err != nil {
+		if s, ok := status.FromError(err); ok {
+			if s.Code() == codes.PermissionDenied {
+				// Location service may be disabled, ignore.
+				return true
+			}
+		}
+		slog.Error("Failed to scrape location", slog.Any("err", err))
+		return false
+	}
+	loc := res.GetGetLocation()
+	lla := loc.GetLla()
+
+	// starlink_dish_location_info
+	ch <- prometheus.MustNewConstMetric(
+		dishLocationInfo.Desc(), prometheus.GaugeValue, 1,
+		loc.GetSource().String(),
+		ftos(lla.GetLat()),
+		ftos(lla.GetLon()),
+		ftos(lla.GetAlt()),
+	)
+
+	// starlink_dish_location_latitude_deg
+	ch <- prometheus.MustNewConstMetric(
+		dishLocationLatitude.Desc(), prometheus.GaugeValue, lla.GetLat(),
+	)
+
+	// starlink_dish_location_longitude_deg
+	ch <- prometheus.MustNewConstMetric(
+		dishLocationLongitude.Desc(), prometheus.GaugeValue, lla.GetLon(),
+	)
+
+	// starlink_dish_location_altitude_meters
+	ch <- prometheus.MustNewConstMetric(
+		dishLocationAltitude.Desc(), prometheus.GaugeValue, lla.GetAlt(),
+	)
 
 	return true
 }
