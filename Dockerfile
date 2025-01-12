@@ -68,4 +68,5 @@ COPY --from=build /etc/starlink_exporter /etc/starlink_exporter
 COPY --from=build /build/starlink_exporter/dist/starlink_exporter /usr/local/bin/starlink_exporter
 
 USER starlink_exporter:starlink_exporter
+EXPOSE 9451/tcp
 ENTRYPOINT ["/usr/local/bin/starlink_exporter"]
