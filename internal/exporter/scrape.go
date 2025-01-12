@@ -130,12 +130,19 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 		deviceInfo.GetCountryCode(),
 		itos(deviceInfo.GetUtcOffsetS()),
 		itos(deviceInfo.GetBootcount()),
+		dishStatus.GetMobilityClass().String(),
 	)
 
 	// starlink_dish_uptime_seconds
 	ch <- prometheus.MustNewConstMetric(
 		dishUptimeSeconds.Desc(), prometheus.GaugeValue,
 		float64(deviceState.GetUptimeS()),
+	)
+
+	// starlink_dish_mobility_class
+	ch <- prometheus.MustNewConstMetric(
+		dishMobilityClass.Desc(), prometheus.GaugeValue,
+		float64(dishStatus.GetMobilityClass()),
 	)
 
 	// starlink_dish_pop_ping_latency_seconds
