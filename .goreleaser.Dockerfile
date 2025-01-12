@@ -58,4 +58,5 @@ COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
 COPY starlink_exporter /usr/local/bin/starlink_exporter
 
 USER starlink_exporter:starlink_exporter
+EXPOSE 9451/tcp
 ENTRYPOINT ["/usr/local/bin/starlink_exporter"]
