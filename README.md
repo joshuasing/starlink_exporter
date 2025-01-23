@@ -3,7 +3,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/joshuasing/starlink_exporter.svg)](https://pkg.go.dev/github.com/joshuasing/starlink_exporter)
 [![Go Report Card](https://goreportcard.com/badge/github.com/joshuasing/starlink_exporter)](https://goreportcard.com/report/github.com/joshuasing/starlink_exporter)
 [![Go Build Status](https://github.com/joshuasing/starlink_exporter/actions/workflows/go.yml/badge.svg)](https://github.com/joshuasing/starlink_exporter/actions/workflows/go.yml)
-[![Starlink Dishy Software Version](https://img.shields.io/badge/Starlink_Dishy_Version-2024.12.28.cr47554.3-blue)](internal/spacex/README.md)
+[![Starlink Dishy Software Version](https://img.shields.io/badge/Starlink_Dishy_Version-2025.01.14.mr48087.1-blue)](internal/spacex/README.md)
 [![MIT License](https://img.shields.io/badge/license-MIT-2155cc)](LICENSE)
 
 A simple Starlink exporter for Prometheus. *Not affiliated with Starlink or SpaceX.*
@@ -30,6 +30,7 @@ The following metrics are exposed by this exporter:
 | `starlink_dish_location_info`                      | Dish location information (requires location to be enabled in Starlink settings)                   |
 | `starlink_dish_location_location_latitude_deg`     | Location latitude in degrees (requires location to be enabled in Starlink settings)                |
 | `starlink_dish_location_longitude_deg`             | Location longitude in degrees (requires location to be enabled in Starlink settings)               |
+| `starlink_dish_mobility_class`                     | Starlink dish mobility class                                                                       |
 | `starlink_dish_pop_ping_drop_ratio`                | Starlink PoP ping drop ratio                                                                       |
 | `starlink_dish_pop_ping_latency_seconds_histogram` | Histogram of Starlink dish PoP ping latency in seconds over last 15 minutes                        |
 | `starlink_dish_pop_ping_latency_seconds`           | Starlink PoP ping latency in seconds                                                               |
