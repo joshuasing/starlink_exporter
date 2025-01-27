@@ -14,6 +14,11 @@ The following metrics are exposed by this exporter:
 
 | Metric name                                        | Description                                                                                        |
 |----------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| `starlink_dish_alert_unexpected_location`          | Whether the Starlink dish is in an unexpected location                                             |
+| `starlink_dish_alert_install_pending`              | Whether a Starlink Dish software update is pending installation                                    |
+| `starlink_dish_alert_alert_is_heating`             | Whether the Starlink dish is heating (snow melting)                                                |
+| `starlink_dish_alert_is_power_save_idle`           | Whether the Starlink dish is currently in power saving mode                                        |
+| `starlink_dish_alert_signal_lower_than_predicted`  | Whether the Starlink dish signal is lower than predicted                                           |
 | `starlink_dish_boresight_azimuth_deg`              | Starlink dish boresight azimuth degrees                                                            |
 | `starlink_dish_boresight_elevation_deg`            | Starlink dish boresight elevation degrees                                                          |
 | `starlink_dish_currently_obstructed`               | Whether the Starlink dish is currently obstructed                                                  |

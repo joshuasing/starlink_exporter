@@ -32,13 +32,13 @@ const (
 
 var (
 	// Exporter
-	exporterScrapesTotal = Desc{
+	exporterScrapesTotal = &Desc{
 		Namespace: namespace,
 		Subsystem: exporterSubsystem,
 		Name:      "scrapes_total",
 		Help:      "Total number of Starlink dish scrapes",
 	}
-	exporterScrapeDurationSeconds = Desc{
+	exporterScrapeDurationSeconds = &Desc{
 		Namespace: namespace,
 		Subsystem: exporterSubsystem,
 		Name:      "scrape_duration_seconds",
@@ -46,13 +46,13 @@ var (
 	}
 
 	// Informational
-	dishUp = Desc{
+	dishUp = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "up",
 		Help:      "Whether scraping metrics from the Starlink dish was successful",
 	}
-	dishInfo = Desc{
+	dishInfo = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "info",
@@ -70,13 +70,13 @@ var (
 			"mobility_class",
 		},
 	}
-	dishUptimeSeconds = Desc{
+	dishUptimeSeconds = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "uptime_seconds",
 		Help:      "Starlink dish uptime in seconds",
 	}
-	dishMobilityClass = Desc{
+	dishMobilityClass = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "mobility_class",
@@ -84,13 +84,13 @@ var (
 	}
 
 	// Signal-to-noise ratio
-	dishSnrAboveNoiseFloor = Desc{
+	dishSnrAboveNoiseFloor = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "snr_above_noise_floor",
 		Help:      "Whether Starlink dish signal-to-noise ratio is above noise floor",
 	}
-	dishSnrPersistentlyLow = Desc{
+	dishSnrPersistentlyLow = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "snr_persistently_low",
@@ -98,25 +98,25 @@ var (
 	}
 
 	// Throughput
-	dishUplinkThroughputBps = Desc{
+	dishUplinkThroughputBps = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "uplink_throughput_bps",
 		Help:      "Starlink dish uplink throughput in bits/sec",
 	}
-	dishDownlinkThroughputBps = Desc{
+	dishDownlinkThroughputBps = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "downlink_throughput_bps",
 		Help:      "Starlink dish downlink throughput in bit/sec",
 	}
-	dishDownlinkThroughputHistogram = Desc{
+	dishDownlinkThroughputHistogram = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "downlink_throughput_bps_histogram",
 		Help:      "Histogram of Starlink dish downlink throughput over last 15 minutes",
 	}
-	dishUplinkThroughputHistogram = Desc{
+	dishUplinkThroughputHistogram = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "uplink_throughput_bps_histogram",
@@ -124,19 +124,19 @@ var (
 	}
 
 	// PoP ping
-	dishPopPingDropRatio = Desc{
+	dishPopPingDropRatio = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "pop_ping_drop_ratio",
 		Help:      "Starlink PoP ping drop ratio",
 	}
-	dishPopPingLatencySeconds = Desc{
+	dishPopPingLatencySeconds = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "pop_ping_latency_seconds",
 		Help:      "Starlink PoP ping latency in seconds",
 	}
-	dishPopPingLatencyHistogram = Desc{
+	dishPopPingLatencyHistogram = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "pop_ping_latency_seconds_histogram",
@@ -144,13 +144,13 @@ var (
 	}
 
 	// Power In
-	dishPowerInputHistogram = Desc{
+	dishPowerInputHistogram = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "power_input_watts_histogram",
 		Help:      "Histogram of Starlink dish power input in watts over last 15 minutes",
 	}
-	dishPowerInput = Desc{
+	dishPowerInput = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "power_input_watts",
@@ -158,13 +158,13 @@ var (
 	}
 
 	// Software update
-	dishSoftwareUpdateState = Desc{
+	dishSoftwareUpdateState = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "software_update_state",
 		Help:      "Starlink dish update state",
 	}
-	dishSoftwareUpdateRebootReady = Desc{
+	dishSoftwareUpdateRebootReady = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "software_update_reboot_ready",
@@ -172,13 +172,13 @@ var (
 	}
 
 	// GPS
-	dishGPSValid = Desc{
+	dishGPSValid = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "gps_valid",
 		Help:      "Whether the Starlink dish GPS is valid",
 	}
-	dishGPSSatellites = Desc{
+	dishGPSSatellites = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "gps_satellites",
@@ -186,7 +186,7 @@ var (
 	}
 
 	// Tilt Angle
-	dishTiltAngleDeg = Desc{
+	dishTiltAngleDeg = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "tilt_angle_deg",
@@ -194,25 +194,25 @@ var (
 	}
 
 	// Boresight
-	dishBoresightAzimuthDeg = Desc{
+	dishBoresightAzimuthDeg = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "boresight_azimuth_deg",
 		Help:      "Starlink dish boresight azimuth degrees",
 	}
-	dishBoresightElevationDeg = Desc{
+	dishBoresightElevationDeg = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "boresight_elevation_deg",
 		Help:      "Starlink dish boresight elevation degrees",
 	}
-	dishDesiredBoresightAzimuthDeg = Desc{
+	dishDesiredBoresightAzimuthDeg = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "desired_boresight_azimuth_deg",
 		Help:      "Starlink dish desired boresight azimuth degrees",
 	}
-	dishDesiredBoresightElevationDeg = Desc{
+	dishDesiredBoresightElevationDeg = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "desired_boresight_elevation_deg",
@@ -220,19 +220,19 @@ var (
 	}
 
 	// Obstruction
-	dishCurrentlyObstructed = Desc{
+	dishCurrentlyObstructed = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "currently_obstructed",
 		Help:      "Whether the Starlink dish is currently obstructed",
 	}
-	dishFractionObstructionRatio = Desc{
+	dishFractionObstructionRatio = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "fraction_obstruction_ratio",
 		Help:      "Fraction of Starlink dish that is obstructed",
 	}
-	dishLast24HoursObstructedSeconds = Desc{
+	dishLast24HoursObstructedSeconds = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "last_24h_obstructed_seconds",
@@ -240,34 +240,66 @@ var (
 	}
 
 	// Location
-	dishLocationInfo = Desc{
+	dishLocationInfo = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "location_info",
 		Help:      "Dish location information",
 		Labels:    []string{"location_source", "lat", "lon", "alt"},
 	}
-	dishLocationLatitude = Desc{
+	dishLocationLatitude = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "location_latitude_deg",
 		Help:      "Location latitude in degrees",
 	}
-	dishLocationLongitude = Desc{
+	dishLocationLongitude = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "location_longitude_deg",
 		Help:      "Location longitude in degrees",
 	}
-	dishLocationAltitude = Desc{
+	dishLocationAltitude = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "location_altitude_meters",
 		Help:      "Location altitude in meters above sea level",
 	}
+
+	// Alerts
+	dishAlertUnexpectedLocation = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_unexpected_location",
+		Help:      "Whether the Starlink dish is in an unexpected location",
+	}
+	dishAlertInstallPending = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_install_pending",
+		Help:      "Whether a Starlink Dish software update is pending installation",
+	}
+	dishAlertIsHeating = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_is_heating",
+		Help:      "Whether the Starlink dish is heating (snow melting)",
+	}
+	dishAlertIsPowerSaveIdle = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_is_power_save_idle",
+		Help:      "Whether the Starlink dish is currently in power saving mode",
+	}
+	dishAlertSignalLowerThanPredicted = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_signal_lower_than_predicted",
+		Help:      "Whether the Starlink dish signal is lower than predicted",
+	}
 )
 
-var Descs = []Desc{
+var Descs = []*Desc{
 	exporterScrapesTotal,
 	exporterScrapeDurationSeconds,
 	dishUp,
@@ -299,6 +331,11 @@ var Descs = []Desc{
 	dishLocationLatitude,
 	dishLocationLongitude,
 	dishLocationAltitude,
+	dishAlertUnexpectedLocation,
+	dishAlertInstallPending,
+	dishAlertIsHeating,
+	dishAlertIsPowerSaveIdle,
+	dishAlertSignalLowerThanPredicted,
 }
 
 type Desc struct {

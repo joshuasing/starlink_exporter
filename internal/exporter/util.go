@@ -22,7 +22,19 @@ package exporter
 
 import (
 	"strconv"
+
+	"github.com/prometheus/client_golang/prometheus"
 )
+
+type numeric interface {
+	~int | ~int8 | ~int16 | ~int32 | ~int64 |
+		~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64 |
+		~float32 | ~float64
+}
+
+func metric[n numeric](desc *Desc, vt prometheus.ValueType, val n, labels ...string) prometheus.Metric {
+	return prometheus.MustNewConstMetric(desc.Desc(), vt, float64(val), labels...)
+}
 
 // itos converts an int to a string.
 func itos[T int | int8 | int16 | int32 | int64](f T) string {
