@@ -283,7 +283,7 @@ var (
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
 		Name:      "alert_is_heating",
-		Help:      "Whether the Starlink dish is heating",
+		Help:      "Whether the Starlink dish is heating (snow melting)",
 	}
 	dishAlertSignalLowerThanPredicted = &Desc{
 		Namespace: namespace,
