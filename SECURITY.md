@@ -8,10 +8,7 @@ Security patches will be provided **only** for the latest release of `starlink_e
 security updates are concentrated on the most up-to-date and stable version of the project. **Older versions will not
 receive security patches.**
 
-| Version   | Supported |
-|-----------|-----------|
-| `0.4.x`   | ✅         |
-| < `0.4.x` | ❌         |
+You can find the latest release of `starlink_exporter` at https://github.com/joshuasing/starlink_exporter/releases
 
 ## Reporting a Vulnerability
 

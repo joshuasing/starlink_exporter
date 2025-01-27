@@ -117,10 +117,10 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 	deviceInfo := dishStatus.GetDeviceInfo()
 	deviceState := dishStatus.GetDeviceState()
 	obstructionStats := dishStatus.GetObstructionStats()
+	alerts := dishStatus.GetAlerts()
 
 	// starlink_dish_info
-	ch <- prometheus.MustNewConstMetric(
-		dishInfo.Desc(), prometheus.GaugeValue, 1,
+	ch <- metric(dishInfo, prometheus.GaugeValue, 1,
 		deviceInfo.GetId(),
 		deviceInfo.GetHardwareVersion(),
 		itos(deviceInfo.GetBoardRev()),
@@ -134,112 +134,92 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 	)
 
 	// starlink_dish_uptime_seconds
-	ch <- prometheus.MustNewConstMetric(
-		dishUptimeSeconds.Desc(), prometheus.GaugeValue,
-		float64(deviceState.GetUptimeS()),
-	)
+	ch <- metric(dishUptimeSeconds, prometheus.GaugeValue,
+		deviceState.GetUptimeS())
 
 	// starlink_dish_mobility_class
-	ch <- prometheus.MustNewConstMetric(
-		dishMobilityClass.Desc(), prometheus.GaugeValue,
-		float64(dishStatus.GetMobilityClass()),
-	)
+	ch <- metric(dishMobilityClass, prometheus.GaugeValue,
+		dishStatus.GetMobilityClass())
 
 	// starlink_dish_pop_ping_latency_seconds
-	ch <- prometheus.MustNewConstMetric(
-		dishPopPingLatencySeconds.Desc(), prometheus.GaugeValue,
-		float64(dishStatus.GetPopPingLatencyMs()/1000),
-	)
+	ch <- metric(dishPopPingLatencySeconds, prometheus.GaugeValue,
+		dishStatus.GetPopPingLatencyMs()/1000)
 
 	// starlink_dish_gps_valid
-	ch <- prometheus.MustNewConstMetric(
-		dishGPSValid.Desc(), prometheus.GaugeValue,
-		btof(dishStatus.GetGpsStats().GetGpsValid()),
-	)
+	ch <- metric(dishGPSValid, prometheus.GaugeValue,
+		btof(dishStatus.GetGpsStats().GetGpsValid()))
 
 	// starlink_dish_gps_satellites
-	ch <- prometheus.MustNewConstMetric(
-		dishGPSSatellites.Desc(), prometheus.GaugeValue,
-		float64(dishStatus.GetGpsStats().GetGpsSats()),
-	)
+	ch <- metric(dishGPSSatellites, prometheus.GaugeValue,
+		dishStatus.GetGpsStats().GetGpsSats())
 
 	// starlink_dish_snr_above_noise_floor
-	ch <- prometheus.MustNewConstMetric(
-		dishSnrAboveNoiseFloor.Desc(), prometheus.GaugeValue,
-		btof(dishStatus.GetIsSnrAboveNoiseFloor()),
-	)
+	ch <- metric(dishSnrAboveNoiseFloor, prometheus.GaugeValue,
+		btof(dishStatus.GetIsSnrAboveNoiseFloor()))
 
 	// starlink_dish_snr_persistently_low
-	ch <- prometheus.MustNewConstMetric(
-		dishSnrPersistentlyLow.Desc(), prometheus.GaugeValue,
-		btof(dishStatus.GetIsSnrPersistentlyLow()),
-	)
+	ch <- metric(dishSnrPersistentlyLow, prometheus.GaugeValue,
+		btof(dishStatus.GetIsSnrPersistentlyLow()))
 
 	// starlink_dish_pop_ping_drop_ratio
-	ch <- prometheus.MustNewConstMetric(
-		dishPopPingDropRatio.Desc(), prometheus.GaugeValue,
-		float64(dishStatus.GetPopPingDropRate()),
-	)
+	ch <- metric(dishPopPingDropRatio, prometheus.GaugeValue,
+		dishStatus.GetPopPingDropRate())
 
 	// starlink_dish_software_update_state
-	ch <- prometheus.MustNewConstMetric(
-		dishSoftwareUpdateState.Desc(), prometheus.GaugeValue,
-		float64(dishStatus.GetSoftwareUpdateState()),
-	)
+	ch <- metric(dishSoftwareUpdateState, prometheus.GaugeValue,
+		dishStatus.GetSoftwareUpdateState())
 
 	// starlink_dish_software_update_reboot_ready
-	ch <- prometheus.MustNewConstMetric(
-		dishSoftwareUpdateRebootReady.Desc(), prometheus.GaugeValue,
-		btof(dishStatus.GetSwupdateRebootReady()),
-	)
+	ch <- metric(dishSoftwareUpdateRebootReady, prometheus.GaugeValue,
+		btof(dishStatus.GetSwupdateRebootReady()))
 
 	// starlink_dish_tilt_angle_deg
-	ch <- prometheus.MustNewConstMetric(
-		dishTiltAngleDeg.Desc(), prometheus.GaugeValue,
-		float64(dishStatus.GetAlignmentStats().GetTiltAngleDeg()),
-	)
+	ch <- metric(dishTiltAngleDeg, prometheus.GaugeValue,
+		dishStatus.GetAlignmentStats().GetTiltAngleDeg())
 
 	// starlink_dish_boresight_azimuth_deg
-	ch <- prometheus.MustNewConstMetric(
-		dishBoresightAzimuthDeg.Desc(), prometheus.GaugeValue,
-		float64(dishStatus.GetAlignmentStats().GetBoresightAzimuthDeg()),
-	)
+	ch <- metric(dishBoresightAzimuthDeg, prometheus.GaugeValue,
+		dishStatus.GetAlignmentStats().GetBoresightAzimuthDeg())
 
 	// starlink_dish_boresight_elevation_deg
-	ch <- prometheus.MustNewConstMetric(
-		dishBoresightElevationDeg.Desc(), prometheus.GaugeValue,
-		float64(dishStatus.GetAlignmentStats().GetBoresightElevationDeg()),
-	)
+	ch <- metric(dishBoresightElevationDeg, prometheus.GaugeValue,
+		dishStatus.GetAlignmentStats().GetBoresightElevationDeg())
 
 	// starlink_dish_desired_boresight_azimuth_deg
-	ch <- prometheus.MustNewConstMetric(
-		dishDesiredBoresightAzimuthDeg.Desc(), prometheus.GaugeValue,
-		float64(dishStatus.GetAlignmentStats().GetDesiredBoresightAzimuthDeg()),
-	)
+	ch <- metric(dishDesiredBoresightAzimuthDeg, prometheus.GaugeValue,
+		dishStatus.GetAlignmentStats().GetDesiredBoresightAzimuthDeg())
 
 	// starlink_dish_desired_boresight_elevation_deg
-	ch <- prometheus.MustNewConstMetric(
-		dishDesiredBoresightElevationDeg.Desc(), prometheus.GaugeValue,
-		float64(dishStatus.GetAlignmentStats().GetDesiredBoresightElevationDeg()),
-	)
+	ch <- metric(dishDesiredBoresightElevationDeg, prometheus.GaugeValue,
+		dishStatus.GetAlignmentStats().GetDesiredBoresightElevationDeg())
 
 	// starlink_dish_currently_obstructed
-	ch <- prometheus.MustNewConstMetric(
-		dishCurrentlyObstructed.Desc(), prometheus.GaugeValue,
-		btof(obstructionStats.GetCurrentlyObstructed()),
-	)
+	ch <- metric(dishCurrentlyObstructed, prometheus.GaugeValue,
+		btof(obstructionStats.GetCurrentlyObstructed()))
 
 	// starlink_dish_fraction_obstruction_ratio
-	ch <- prometheus.MustNewConstMetric(
-		dishFractionObstructionRatio.Desc(), prometheus.GaugeValue,
-		float64(obstructionStats.GetFractionObstructed()),
-	)
+	ch <- metric(dishFractionObstructionRatio, prometheus.GaugeValue,
+		obstructionStats.GetFractionObstructed())
 
 	// starlink_dish_last_24h_obstructed_seconds
-	ch <- prometheus.MustNewConstMetric(
-		dishLast24HoursObstructedSeconds.Desc(), prometheus.GaugeValue,
-		float64(obstructionStats.GetTimeObstructed()),
-	)
+	ch <- metric(dishLast24HoursObstructedSeconds, prometheus.GaugeValue,
+		obstructionStats.GetTimeObstructed())
+
+	// starlink_dish_alert_unexpected_location
+	ch <- metric(dishAlertUnexpectedLocation, prometheus.GaugeValue,
+		btof(alerts.GetUnexpectedLocation()))
+
+	// starlink_dish_alert_install_pending
+	ch <- metric(dishAlertInstallPending, prometheus.GaugeValue,
+		btof(alerts.GetInstallPending()))
+
+	// starlink_dish_alert_is_heating
+	ch <- metric(dishAlertIsHeating, prometheus.GaugeValue,
+		btof(alerts.GetIsHeating()))
+
+	// starlink_dish_alert_lower_than_predicted
+	ch <- metric(dishAlertSignalLowerThanPredicted, prometheus.GaugeValue,
+		btof(alerts.GetLowerSignalThanPredicted()))
 
 	return true
 }
@@ -273,10 +253,8 @@ func (e *Exporter) scrapeDishHistory(ctx context.Context, ch chan<- prometheus.M
 
 	// starlink_dish_downlink_throughput_bps
 	if len(downlinkData) > 0 {
-		ch <- prometheus.MustNewConstMetric(
-			dishDownlinkThroughputBps.Desc(), prometheus.GaugeValue,
-			float64(downlinkData[len(downlinkData)-1]),
-		)
+		ch <- metric(dishDownlinkThroughputBps, prometheus.GaugeValue,
+			downlinkData[len(downlinkData)-1])
 	}
 
 	// starlink_dish_uplink_throughput_bps_histogram
@@ -289,10 +267,8 @@ func (e *Exporter) scrapeDishHistory(ctx context.Context, ch chan<- prometheus.M
 
 	// starlink_dish_uplink_throughput_bps
 	if len(uplinkData) > 0 {
-		ch <- prometheus.MustNewConstMetric(
-			dishUplinkThroughputBps.Desc(), prometheus.GaugeValue,
-			float64(uplinkData[len(uplinkData)-1]),
-		)
+		ch <- metric(dishUplinkThroughputBps, prometheus.GaugeValue,
+			uplinkData[len(uplinkData)-1])
 	}
 
 	// starlink_dish_power_input_watts_histogram
@@ -305,10 +281,8 @@ func (e *Exporter) scrapeDishHistory(ctx context.Context, ch chan<- prometheus.M
 
 	// starlink_dish_power_input_watts
 	if len(powerData) > 0 {
-		ch <- prometheus.MustNewConstMetric(
-			dishPowerInput.Desc(), prometheus.GaugeValue,
-			float64(powerData[len(powerData)-1]),
-		)
+		ch <- metric(dishPowerInput, prometheus.GaugeValue,
+			powerData[len(powerData)-1])
 	}
 
 	return true
@@ -332,8 +306,7 @@ func (e *Exporter) scrapeLocation(ctx context.Context, ch chan<- prometheus.Metr
 	lla := loc.GetLla()
 
 	// starlink_dish_location_info
-	ch <- prometheus.MustNewConstMetric(
-		dishLocationInfo.Desc(), prometheus.GaugeValue, 1,
+	ch <- metric(dishLocationInfo, prometheus.GaugeValue, 1,
 		loc.GetSource().String(),
 		ftos(lla.GetLat()),
 		ftos(lla.GetLon()),
@@ -341,19 +314,13 @@ func (e *Exporter) scrapeLocation(ctx context.Context, ch chan<- prometheus.Metr
 	)
 
 	// starlink_dish_location_latitude_deg
-	ch <- prometheus.MustNewConstMetric(
-		dishLocationLatitude.Desc(), prometheus.GaugeValue, lla.GetLat(),
-	)
+	ch <- metric(dishLocationLatitude, prometheus.GaugeValue, lla.GetLat())
 
 	// starlink_dish_location_longitude_deg
-	ch <- prometheus.MustNewConstMetric(
-		dishLocationLongitude.Desc(), prometheus.GaugeValue, lla.GetLon(),
-	)
+	ch <- metric(dishLocationLongitude, prometheus.GaugeValue, lla.GetLon())
 
 	// starlink_dish_location_altitude_meters
-	ch <- prometheus.MustNewConstMetric(
-		dishLocationAltitude.Desc(), prometheus.GaugeValue, lla.GetAlt(),
-	)
+	ch <- metric(dishLocationAltitude, prometheus.GaugeValue, lla.GetAlt())
 
 	return true
 }
