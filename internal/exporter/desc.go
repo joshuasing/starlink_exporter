@@ -285,6 +285,12 @@ var (
 		Name:      "alert_is_heating",
 		Help:      "Whether the Starlink dish is heating (snow melting)",
 	}
+	dishAlertIsPowerSaveIdle = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_is_power_save_idle",
+		Help:      "Whether the Starlink dish is currently in power saving mode",
+	}
 	dishAlertSignalLowerThanPredicted = &Desc{
 		Namespace: namespace,
 		Subsystem: dishSubsystem,
@@ -328,6 +334,7 @@ var Descs = []*Desc{
 	dishAlertUnexpectedLocation,
 	dishAlertInstallPending,
 	dishAlertIsHeating,
+	dishAlertIsPowerSaveIdle,
 	dishAlertSignalLowerThanPredicted,
 }
 

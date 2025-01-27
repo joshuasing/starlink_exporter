@@ -217,6 +217,10 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 	ch <- metric(dishAlertIsHeating, prometheus.GaugeValue,
 		btof(alerts.GetIsHeating()))
 
+	// starlink_dish_alert_is_power_save_idle
+	ch <- metric(dishAlertIsPowerSaveIdle, prometheus.GaugeValue,
+		btof(alerts.GetIsPowerSaveIdle()))
+
 	// starlink_dish_alert_lower_than_predicted
 	ch <- metric(dishAlertSignalLowerThanPredicted, prometheus.GaugeValue,
 		btof(alerts.GetLowerSignalThanPredicted()))
