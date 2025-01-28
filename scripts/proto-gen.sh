@@ -113,6 +113,12 @@ gen_docs() {
 	cat > "$PACKAGE_DIR/spacex/LICENSE" <<-EOF
 		The files in this directory are generated and may not be licensable under the MIT License.
 	EOF
+
+	SOFTWARE_VERSION=$(echo "$VERSION" | grep -oP "(?<=Software version ).*")
+	API_VERSION=$(echo "$VERSION" | grep -oP "(?<=API version ).*")
+
+	BADGE_VALUE="${SOFTWARE_VERSION}_(API_v${API_VERSION})"
+	sed -i -E "s|(https://img.shields.io/badge/Starlink_Dishy_Version-)[^/]+(-blue)|\1${BADGE_VALUE}\2|" "$MODULE_DIR/README.md"
 }
 
 gen() {
