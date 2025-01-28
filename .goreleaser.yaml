@@ -190,8 +190,6 @@ release:
     name: "starlink_exporter"
   prerelease: auto
   mode: "append"
-  footer: |
-    **Full Changelog**: https://github.com/joshuasing/starlink_exporter/compare/{{ .PreviousTag }}...{{ .Tag }}
 
 # Close milestones for the released tag.
 milestones:
