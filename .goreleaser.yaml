@@ -38,13 +38,13 @@ builds:
         goarch: "arm"
 
 archives:
-  - format: "tar.gz"
+  - formats: "tar.gz"
     wrap_in_directory: true
     name_template: >-
       {{ .ProjectName }}_v{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}
     format_overrides:
       - goos: "windows"
-        format: "zip"
+        formats: "zip"
     files:
       - "README*"
       - "LICENSE*"
