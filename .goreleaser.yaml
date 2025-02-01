@@ -22,7 +22,12 @@ builds:
   - binary: "{{ .ProjectName }}"
     main: "./cmd/{{ .ProjectName }}/"
     env: [ "CGO_ENABLED=0", "GOGC=off" ]
-    ldflags: [ "-s -w" ]
+    ldflags: >-
+      -s -w
+      -X github.com/prometheus/common/version.Version={{ .Version }}
+      -X github.com/prometheus/common/version.Revision={{ .FullCommit }}
+      -X github.com/prometheus/common/version.Branch={{ .Branch }}
+      -X github.com/prometheus/common/version.BuildDate={{ .Now.Format "20060102-15:04:05" }}
     flags: [ "-trimpath" ]
     goos:
       - "linux"

@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Joshua Sing <joshua@joshuasing.dev>
+// Copyright (c) 2024-2025 Joshua Sing <joshua@joshuasing.dev>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,13 +26,18 @@ import (
 	"flag"
 	"log/slog"
 	"net/http"
+	"net/http/pprof"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
+	versionCollector "github.com/prometheus/client_golang/prometheus/collectors/version"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/prometheus/common/version"
+	"github.com/prometheus/exporter-toolkit/web"
 	"google.golang.org/grpc/connectivity"
 
 	"github.com/joshuasing/starlink_exporter/internal/exporter"
@@ -51,7 +56,8 @@ func main() {
 }
 
 func run() int {
-	slog.Info("Starting Starlink exporter")
+	slog.Info("Starting Starlink exporter", slog.String("version", version.Info()))
+	slog.Info("Build context", slog.String("build_context", version.BuildContext()))
 
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancel()
@@ -66,10 +72,12 @@ func run() int {
 	// Prometheus registry
 	r := prometheus.NewRegistry()
 	r.MustRegister(ex)
+	r.MustRegister(versionCollector.NewCollector("starlink_exporter"))
 
-	// Health check handler
+	// Health check handler.
 	http.HandleFunc("/health", func(w http.ResponseWriter, _ *http.Request) {
-		switch ex.ConnState() {
+		connState := ex.ConnState()
+		switch connState {
 		case connectivity.Ready, connectivity.Idle:
 			w.WriteHeader(http.StatusOK)
 		case connectivity.Connecting, connectivity.TransientFailure:
@@ -77,10 +85,35 @@ func run() int {
 		case connectivity.Shutdown:
 			w.WriteHeader(http.StatusInternalServerError)
 		}
+		_, _ = w.Write([]byte(strings.ToLower(connState.String())))
 	})
 
-	// Metrics handler
+	// Metrics handler.
 	http.Handle("/metrics", promhttp.HandlerFor(r, promhttp.HandlerOpts{}))
+
+	// Landing page.
+	landingPage, err := web.NewLandingPage(web.LandingConfig{
+		Name:        "Starlink Exporter",
+		Description: "A simple Prometheus exporter for Starlink",
+		Version:     version.Info(),
+		Links: []web.LandingLinks{
+			{Address: "/metrics", Text: "Metrics"},
+			{Address: "/health", Text: "Health"},
+			{Address: "https://github.com/joshuasing/starlink_exporter", Text: "GitHub"},
+		},
+	})
+	if err != nil {
+		slog.Error("Failed to create landing page", slog.String("err", err.Error()))
+		return 1
+	}
+	http.Handle("/", landingPage)
+
+	// pprof
+	http.HandleFunc("GET /debug/pprof/", pprof.Index)
+	http.HandleFunc("GET /debug/pprof/cmdline", pprof.Cmdline)
+	http.HandleFunc("GET /debug/pprof/profile", pprof.Profile)
+	http.HandleFunc("GET /debug/pprof/symbol", pprof.Symbol)
+	http.HandleFunc("GET /debug/pprof/trace", pprof.Trace)
 
 	// Run HTTP server in a goroutine
 	httpErr := make(chan error)
