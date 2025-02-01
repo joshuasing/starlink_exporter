@@ -33,8 +33,6 @@ linters-settings:
     sections:
       - "standard"
       - "default"
-      - "blank"
-      - "dot"
       - "localmodule"
     custom-order: true
 
