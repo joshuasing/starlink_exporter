@@ -5,6 +5,12 @@ issues:
   # Exclude sources following the Go generated file convention.
   exclude-generated: "strict"
 
+  exclude-rules:
+    - path: 'cmd/starlink_exporter/main.go'
+      text: "G108:"
+      linters:
+        - gosec
+
 linters:
   enable:
     - "bodyclose"

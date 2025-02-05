@@ -26,7 +26,7 @@ import (
 	"flag"
 	"log/slog"
 	"net/http"
-	"net/http/pprof"
+	_ "net/http/pprof"
 	"os"
 	"os/signal"
 	"strings"
@@ -107,13 +107,6 @@ func run() int {
 		return 1
 	}
 	http.Handle("/", landingPage)
-
-	// pprof
-	http.HandleFunc("GET /debug/pprof/", pprof.Index)
-	http.HandleFunc("GET /debug/pprof/cmdline", pprof.Cmdline)
-	http.HandleFunc("GET /debug/pprof/profile", pprof.Profile)
-	http.HandleFunc("GET /debug/pprof/symbol", pprof.Symbol)
-	http.HandleFunc("GET /debug/pprof/trace", pprof.Trace)
 
 	// Run HTTP server in a goroutine
 	httpErr := make(chan error)
