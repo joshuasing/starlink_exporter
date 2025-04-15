@@ -33,6 +33,7 @@ import (
 	"github.com/joshuasing/starlink_exporter/internal/spacex/api/device"
 )
 
+// DefaultDishAddress is the default address of the Starlink Dishy's gRPC server.
 const DefaultDishAddress = "192.168.100.1:9200"
 
 // Exporter is a Starlink Dishy metrics exporter.
@@ -81,12 +82,14 @@ func (e *Exporter) ConnState() connectivity.State {
 	return e.conn.GetState()
 }
 
+// Describe provides all descriptors for metrics provided by the exporter.
 func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
 	for _, d := range Descs {
 		ch <- d.Desc()
 	}
 }
 
+// Collect collects metrics from the Starlink Dishy.
 func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 	e.mx.Lock()
 	defer e.mx.Unlock()

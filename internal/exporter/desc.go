@@ -18,6 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+// Package exporter exports Prometheus metrics from a Starlink dishy.
 package exporter
 
 import (
@@ -299,6 +300,7 @@ var (
 	}
 )
 
+// Descs contains all Prometheus metrics descriptors for the exporter.
 var Descs = []*Desc{
 	exporterScrapesTotal,
 	exporterScrapeDurationSeconds,
@@ -338,6 +340,7 @@ var Descs = []*Desc{
 	dishAlertSignalLowerThanPredicted,
 }
 
+// Desc is a utility wrapper for prometheus.Desc.
 type Desc struct {
 	Namespace   string
 	Subsystem   string
@@ -350,6 +353,7 @@ type Desc struct {
 	desc   *prometheus.Desc
 }
 
+// FQName builds the fully-qualified metric name from the name parts.
 func (d Desc) FQName() string {
 	if d.fqName == "" {
 		d.fqName = prometheus.BuildFQName(d.Namespace, d.Subsystem, d.Name)
@@ -357,6 +361,7 @@ func (d Desc) FQName() string {
 	return d.fqName
 }
 
+// Desc builds and returns a *prometheus.Desc.
 func (d Desc) Desc() *prometheus.Desc {
 	if d.desc == nil {
 		d.desc = prometheus.NewDesc(d.FQName(), d.Help, d.Labels, d.ConstLabels)
