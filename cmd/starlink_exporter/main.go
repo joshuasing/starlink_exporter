@@ -18,6 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+// Package main is a Prometheus Exporter for Starlink Dishy metrics.
 package main
 
 import (
@@ -26,7 +27,7 @@ import (
 	"flag"
 	"log/slog"
 	"net/http"
-	_ "net/http/pprof"
+	_ "net/http/pprof" //nolint: gosec // pprof is exposed intentionally.
 	"os"
 	"os/signal"
 	"strings"

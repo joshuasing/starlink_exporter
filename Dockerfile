@@ -1,4 +1,4 @@
-# Copyright (c) 2024 Joshua Sing <joshua@joshuasing.dev>
+# Copyright (c) 2024-2025 Joshua Sing <joshua@joshuasing.dev>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 # Build stage
-FROM golang:1.23.5-alpine3.21@sha256:47d337594bd9e667d35514b241569f95fb6d95727c24b19468813d596d5ae596 AS build
+FROM golang:1.24.2-alpine3.21@sha256:7772cb5322baa875edd74705556d08f0eeca7b9c4b5367754ce3f2f00041ccee AS builder
 
 # Add ca-certificates, timezone data
 RUN apk --no-cache add --update ca-certificates tzdata
@@ -60,12 +60,12 @@ LABEL org.opencontainers.image.created=$BUILD_DATE \
       org.opencontainers.image.description="A simple Starlink exporter for Prometheus"
 
 # Copy files
-COPY --from=build /etc/group /etc/group
-COPY --from=build /etc/passwd /etc/passwd
-COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
-COPY --from=build /usr/share/zoneinfo /usr/share/zoneinfo
-COPY --from=build /etc/starlink_exporter /etc/starlink_exporter
-COPY --from=build /build/starlink_exporter/dist/starlink_exporter /usr/local/bin/starlink_exporter
+COPY --from=builder /etc/group /etc/group
+COPY --from=builder /etc/passwd /etc/passwd
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
+COPY --from=builder /etc/starlink_exporter /etc/starlink_exporter
+COPY --from=builder /build/starlink_exporter/dist/starlink_exporter /usr/local/bin/starlink_exporter
 
 USER starlink_exporter:starlink_exporter
 EXPOSE 9451/tcp
