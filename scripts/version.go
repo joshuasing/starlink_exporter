@@ -35,7 +35,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 
 	"github.com/joshuasing/starlink_exporter/internal/exporter"
-	"github.com/joshuasing/starlink_exporter/internal/spacex/api/device"
+	"github.com/joshuasing/starlink_exporter/internal/spacex_api/device"
 )
 
 var dishAddress = flag.String("dish", exporter.DefaultDishAddress, "Dish address")

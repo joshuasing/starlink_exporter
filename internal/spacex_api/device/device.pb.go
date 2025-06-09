@@ -8,7 +8,7 @@ package device
 
 import (
 	status "github.com/joshuasing/starlink_exporter/internal/spacex/api/common/status"
-	unlock "github.com/joshuasing/starlink_exporter/internal/spacex/api/device/services/unlock"
+	unlock "github.com/joshuasing/starlink_exporter/internal/spacex_api/device/services/unlock"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"

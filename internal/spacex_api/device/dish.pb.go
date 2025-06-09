@@ -8,7 +8,7 @@ package device
 
 import (
 	network "github.com/joshuasing/starlink_exporter/internal/spacex/api/satellites/network"
-	integrations "github.com/joshuasing/starlink_exporter/internal/spacex/api/telemetron/public/integrations"
+	integrations "github.com/joshuasing/starlink_exporter/internal/spacex_api/telemetron/public/integrations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
