@@ -30,7 +30,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/joshuasing/starlink_exporter/internal/spacex/api/device"
+	"github.com/joshuasing/starlink_exporter/internal/spacex_api/device"
 )
 
 var (

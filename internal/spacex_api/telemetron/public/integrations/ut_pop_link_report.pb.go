@@ -7,7 +7,7 @@
 package utpoplink
 
 import (
-	common "github.com/joshuasing/starlink_exporter/internal/spacex/api/telemetron/public/common"
+	common "github.com/joshuasing/starlink_exporter/internal/spacex_api/telemetron/public/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

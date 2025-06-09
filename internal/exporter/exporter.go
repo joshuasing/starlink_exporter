@@ -30,7 +30,7 @@ import (
 	"google.golang.org/grpc/connectivity"
 	"google.golang.org/grpc/credentials/insecure"
 
-	"github.com/joshuasing/starlink_exporter/internal/spacex/api/device"
+	"github.com/joshuasing/starlink_exporter/internal/spacex_api/device"
 )
 
 // DefaultDishAddress is the default address of the Starlink Dishy's gRPC server.
