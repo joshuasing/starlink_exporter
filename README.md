@@ -55,7 +55,8 @@ The following metrics are exposed by this exporter:
 
 ### Binaries
 
-Pre-built binaries are available from [GitHub Releases](https://github.com/joshuasing/starlink_exporter/releases).
+Pre-built binaries for Linux, macOS, Windows and OpenBSD are available
+from [GitHub Releases](https://github.com/joshuasing/starlink_exporter/releases).
 
 You can also use `go install` to build and install a binary from source:
 ```shell
