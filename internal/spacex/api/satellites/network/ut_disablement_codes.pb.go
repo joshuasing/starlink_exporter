@@ -38,6 +38,7 @@ const (
 	UtDisablementCode_UNSUPPORTED_VERSION           UtDisablementCode = 13
 	UtDisablementCode_MOVING_TOO_FAST_FOR_POLICY    UtDisablementCode = 14
 	UtDisablementCode_UNDER_AVIATION_FLYOVER_LIMITS UtDisablementCode = 15
+	UtDisablementCode_BLOCKED_AREA                  UtDisablementCode = 16
 )
 
 // Enum value maps for UtDisablementCode.
@@ -57,6 +58,7 @@ var (
 		13: "UNSUPPORTED_VERSION",
 		14: "MOVING_TOO_FAST_FOR_POLICY",
 		15: "UNDER_AVIATION_FLYOVER_LIMITS",
+		16: "BLOCKED_AREA",
 	}
 	UtDisablementCode_value = map[string]int32{
 		"UNKNOWN_STATE":                 0,
@@ -73,6 +75,7 @@ var (
 		"UNSUPPORTED_VERSION":           13,
 		"MOVING_TOO_FAST_FOR_POLICY":    14,
 		"UNDER_AVIATION_FLYOVER_LIMITS": 15,
+		"BLOCKED_AREA":                  16,
 	}
 )
 
@@ -153,7 +156,7 @@ var File_spacex_api_satellites_network_ut_disablement_codes_proto protoreflect.F
 
 const file_spacex_api_satellites_network_ut_disablement_codes_proto_rawDesc = "" +
 	"\n" +
-	"8spacex/api/satellites/network/ut_disablement_codes.proto\x12\x1dSpaceX.API.Satellites.Network*\x91\x03\n" +
+	"8spacex/api/satellites/network/ut_disablement_codes.proto\x12\x1dSpaceX.API.Satellites.Network*\xa3\x03\n" +
 	"\x11UtDisablementCode\x12\x11\n" +
 	"\rUNKNOWN_STATE\x10\x00\x12\b\n" +
 	"\x04OKAY\x10\x01\x12\x15\n" +
@@ -169,7 +172,8 @@ const file_spacex_api_satellites_network_ut_disablement_codes_proto_rawDesc = ""
 	"\x10ACCOUNT_DISABLED\x10\f\x12\x17\n" +
 	"\x13UNSUPPORTED_VERSION\x10\r\x12\x1e\n" +
 	"\x1aMOVING_TOO_FAST_FOR_POLICY\x10\x0e\x12!\n" +
-	"\x1dUNDER_AVIATION_FLYOVER_LIMITS\x10\x0f\"\x04\b\x05\x10\x05\"\x04\b\t\x10\t*\x0fINVALID_COUNTRY*\x12UNLICENSED_COUNTRY*O\n" +
+	"\x1dUNDER_AVIATION_FLYOVER_LIMITS\x10\x0f\x12\x10\n" +
+	"\fBLOCKED_AREA\x10\x10\"\x04\b\x05\x10\x05\"\x04\b\t\x10\t*\x0fINVALID_COUNTRY*\x12UNLICENSED_COUNTRY*O\n" +
 	"\x18AccountDisablementReason\x12\x12\n" +
 	"\x0eNO_RESTRICTION\x10\x00\x12\x1f\n" +
 	"\x1bKNOW_YOUR_CUSTOMER_REQUIRED\x10\x01b\x06proto3"

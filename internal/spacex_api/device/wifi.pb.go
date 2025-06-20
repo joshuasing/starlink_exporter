@@ -839,12 +839,13 @@ func (x *WifiSiteSurveyResult) GetEstRxRate() float32 {
 }
 
 type WifiGlobalMeshStatus struct {
-	state           protoimpl.MessageState     `protogen:"open.v1"`
-	HardwareVersion string                     `protobuf:"bytes,1,opt,name=hardware_version,json=hardwareVersion,proto3" json:"hardware_version,omitempty"`
-	SoftwareVersion string                     `protobuf:"bytes,2,opt,name=software_version,json=softwareVersion,proto3" json:"software_version,omitempty"`
-	BssList         []*InflatedBasicServiceSet `protobuf:"bytes,3,rep,name=bss_list,json=bssList,proto3" json:"bss_list,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state              protoimpl.MessageState     `protogen:"open.v1"`
+	HardwareVersion    string                     `protobuf:"bytes,1,opt,name=hardware_version,json=hardwareVersion,proto3" json:"hardware_version,omitempty"`
+	SoftwareVersion    string                     `protobuf:"bytes,2,opt,name=software_version,json=softwareVersion,proto3" json:"software_version,omitempty"`
+	BssList            []*InflatedBasicServiceSet `protobuf:"bytes,3,rep,name=bss_list,json=bssList,proto3" json:"bss_list,omitempty"`
+	HopsFromController uint32                     `protobuf:"varint,4,opt,name=hops_from_controller,json=hopsFromController,proto3" json:"hops_from_controller,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 func (x *WifiGlobalMeshStatus) Reset() {
@@ -896,6 +897,13 @@ func (x *WifiGlobalMeshStatus) GetBssList() []*InflatedBasicServiceSet {
 		return x.BssList
 	}
 	return nil
+}
+
+func (x *WifiGlobalMeshStatus) GetHopsFromController() uint32 {
+	if x != nil {
+		return x.HopsFromController
+	}
+	return 0
 }
 
 type BackhaulRequest struct {
@@ -2711,7 +2719,6 @@ type WifiAlerts struct {
 	SandboxDisabled           bool                   `protobuf:"varint,22,opt,name=sandbox_disabled,json=sandboxDisabled,proto3" json:"sandbox_disabled,omitempty"`
 	OnlyOverflightBlocked     bool                   `protobuf:"varint,23,opt,name=only_overflight_blocked,json=onlyOverflightBlocked,proto3" json:"only_overflight_blocked,omitempty"`
 	OfflineNetworksDisabled   bool                   `protobuf:"varint,24,opt,name=offline_networks_disabled,json=offlineNetworksDisabled,proto3" json:"offline_networks_disabled,omitempty"`
-	WiredMeshNotUsingWanIface bool                   `protobuf:"varint,25,opt,name=wired_mesh_not_using_wan_iface,json=wiredMeshNotUsingWanIface,proto3" json:"wired_mesh_not_using_wan_iface,omitempty"`
 	unknownFields             protoimpl.UnknownFields
 	sizeCache                 protoimpl.SizeCache
 }
@@ -2886,13 +2893,6 @@ func (x *WifiAlerts) GetOfflineNetworksDisabled() bool {
 	return false
 }
 
-func (x *WifiAlerts) GetWiredMeshNotUsingWanIface() bool {
-	if x != nil {
-		return x.WiredMeshNotUsingWanIface
-	}
-	return false
-}
-
 type WifiGetStatusResponse struct {
 	state       protoimpl.MessageState `protogen:"open.v1"`
 	DeviceInfo  *DeviceInfo            `protobuf:"bytes,3,opt,name=device_info,json=deviceInfo,proto3" json:"device_info,omitempty"`
@@ -2901,6 +2901,7 @@ type WifiGetStatusResponse struct {
 	CaptivePortalEnabled   bool     `protobuf:"varint,1,opt,name=captive_portal_enabled,json=captivePortalEnabled,proto3" json:"captive_portal_enabled,omitempty"`
 	Ipv4WanAddress         string   `protobuf:"bytes,1003,opt,name=ipv4_wan_address,json=ipv4WanAddress,proto3" json:"ipv4_wan_address,omitempty"`
 	Ipv6WanAddresses       []string `protobuf:"bytes,1017,rep,name=ipv6_wan_addresses,json=ipv6WanAddresses,proto3" json:"ipv6_wan_addresses,omitempty"`
+	HopsFromController     uint32   `protobuf:"varint,1034,opt,name=hops_from_controller,json=hopsFromController,proto3" json:"hops_from_controller,omitempty"`
 	PingDropRate           float32  `protobuf:"fixed32,1004,opt,name=ping_drop_rate,json=pingDropRate,proto3" json:"ping_drop_rate,omitempty"`
 	PingDropRate_5M        float32  `protobuf:"fixed32,1021,opt,name=ping_drop_rate_5m,json=pingDropRate5m,proto3" json:"ping_drop_rate_5m,omitempty"`
 	PingLatencyMs          float32  `protobuf:"fixed32,1005,opt,name=ping_latency_ms,json=pingLatencyMs,proto3" json:"ping_latency_ms,omitempty"`
@@ -3001,6 +3002,13 @@ func (x *WifiGetStatusResponse) GetIpv6WanAddresses() []string {
 		return x.Ipv6WanAddresses
 	}
 	return nil
+}
+
+func (x *WifiGetStatusResponse) GetHopsFromController() uint32 {
+	if x != nil {
+		return x.HopsFromController
+	}
+	return 0
 }
 
 func (x *WifiGetStatusResponse) GetPingDropRate() float32 {
@@ -10348,11 +10356,12 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\x05iface\x18\x06 \x01(\x0e2\x1c.SpaceX.API.Device.IfaceTypeR\x05iface\x12\x1f\n" +
 	"\vmac_address\x18\a \x01(\tR\n" +
 	"macAddress\x12\x1e\n" +
-	"\vest_rx_rate\x18\b \x01(\x02R\testRxRate\"\xb3\x01\n" +
+	"\vest_rx_rate\x18\b \x01(\x02R\testRxRate\"\xe5\x01\n" +
 	"\x14WifiGlobalMeshStatus\x12)\n" +
 	"\x10hardware_version\x18\x01 \x01(\tR\x0fhardwareVersion\x12)\n" +
 	"\x10software_version\x18\x02 \x01(\tR\x0fsoftwareVersion\x12E\n" +
-	"\bbss_list\x18\x03 \x03(\v2*.SpaceX.API.Device.InflatedBasicServiceSetR\abssList\"v\n" +
+	"\bbss_list\x18\x03 \x03(\v2*.SpaceX.API.Device.InflatedBasicServiceSetR\abssList\x120\n" +
+	"\x14hops_from_controller\x18\x04 \x01(\rR\x12hopsFromController\"v\n" +
 	"\x0fBackhaulRequest\x12%\n" +
 	"\x0eretry_backhaul\x18\x01 \x01(\bR\rretryBackhaul\x12<\n" +
 	"\n" +
@@ -10592,7 +10601,7 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\x14tx_air_time_fraction\x18\x02 \x01(\x02R\x11txAirTimeFraction\x12/\n" +
 	"\x14rx_air_time_fraction\x18\x03 \x01(\x02R\x11rxAirTimeFraction\x123\n" +
 	"\x16obss_air_time_fraction\x18\x04 \x01(\x02R\x13obssAirTimeFraction\x125\n" +
-	"\x17edcca_air_time_fraction\x18\x05 \x01(\x02R\x14edccaAirTimeFraction\"\xfd\t\n" +
+	"\x17edcca_air_time_fraction\x18\x05 \x01(\x02R\x14edccaAirTimeFraction\"\xe0\t\n" +
 	"\n" +
 	"WifiAlerts\x12)\n" +
 	"\x10thermal_throttle\x18\x01 \x01(\bR\x0fthermalThrottle\x12'\n" +
@@ -10615,16 +10624,16 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\x14poe_vin_undervoltage\x18\x14 \x01(\bR\x12poeVinUndervoltage\x12)\n" +
 	"\x10sandbox_disabled\x18\x16 \x01(\bR\x0fsandboxDisabled\x126\n" +
 	"\x17only_overflight_blocked\x18\x17 \x01(\bR\x15onlyOverflightBlocked\x12:\n" +
-	"\x19offline_networks_disabled\x18\x18 \x01(\bR\x17offlineNetworksDisabled\x12A\n" +
-	"\x1ewired_mesh_not_using_wan_iface\x18\x19 \x01(\bR\x19wiredMeshNotUsingWanIfaceJ\x04\b\x06\x10\aJ\x04\b\a\x10\bJ\x04\b\b\x10\tJ\x04\b\t\x10\n" +
-	"R+inconsistent_2ghz_antennae_performance_15dbR+inconsistent_5ghz_antennae_performance_15dbR#poor_2ghz_antennae_performance_80dbR#poor_5ghz_antennae_performance_80db\"\x84\x10\n" +
+	"\x19offline_networks_disabled\x18\x18 \x01(\bR\x17offlineNetworksDisabledJ\x04\b\x06\x10\aJ\x04\b\a\x10\bJ\x04\b\b\x10\tJ\x04\b\t\x10\n" +
+	"J\x04\b\x19\x10\x1aR+inconsistent_2ghz_antennae_performance_15dbR+inconsistent_5ghz_antennae_performance_15dbR#poor_2ghz_antennae_performance_80dbR#poor_5ghz_antennae_performance_80dbR\x1ewired_mesh_not_using_wan_iface\"\xb7\x10\n" +
 	"\x15WifiGetStatusResponse\x12>\n" +
 	"\vdevice_info\x18\x03 \x01(\v2\x1d.SpaceX.API.Device.DeviceInfoR\n" +
 	"deviceInfo\x12A\n" +
 	"\fdevice_state\x18\x04 \x01(\v2\x1e.SpaceX.API.Device.DeviceStateR\vdeviceState\x128\n" +
 	"\x16captive_portal_enabled\x18\x01 \x01(\bB\x02\x18\x01R\x14captivePortalEnabled\x12)\n" +
 	"\x10ipv4_wan_address\x18\xeb\a \x01(\tR\x0eipv4WanAddress\x12-\n" +
-	"\x12ipv6_wan_addresses\x18\xf9\a \x03(\tR\x10ipv6WanAddresses\x12%\n" +
+	"\x12ipv6_wan_addresses\x18\xf9\a \x03(\tR\x10ipv6WanAddresses\x121\n" +
+	"\x14hops_from_controller\x18\x8a\b \x01(\rR\x12hopsFromController\x12%\n" +
 	"\x0eping_drop_rate\x18\xec\a \x01(\x02R\fpingDropRate\x12*\n" +
 	"\x11ping_drop_rate_5m\x18\xfd\a \x01(\x02R\x0epingDropRate5m\x12'\n" +
 	"\x0fping_latency_ms\x18\xed\a \x01(\x02R\rpingLatencyMs\x12.\n" +

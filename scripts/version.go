@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// Package main provides a CLI for retriving version information from a
+// Package main provides a CLI for retrieving version information from a
 // Starlink Dishy.
 package main
 
