@@ -7,7 +7,7 @@
 package device
 
 import (
-	status "github.com/joshuasing/starlink_exporter/internal/spacex/api/common/status"
+	status "github.com/joshuasing/starlink_exporter/internal/spacex_api/common/status"
 	unlock "github.com/joshuasing/starlink_exporter/internal/spacex_api/device/services/unlock"
 	integrations "github.com/joshuasing/starlink_exporter/internal/spacex_api/telemetron/public/integrations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -472,6 +472,7 @@ const (
 	DishGetDiagnosticsResponse_UNSUPPORTED_VERSION           DishGetDiagnosticsResponse_DisablementCode = 13
 	DishGetDiagnosticsResponse_MOVING_TOO_FAST_FOR_POLICY    DishGetDiagnosticsResponse_DisablementCode = 14
 	DishGetDiagnosticsResponse_UNDER_AVIATION_FLYOVER_LIMITS DishGetDiagnosticsResponse_DisablementCode = 15
+	DishGetDiagnosticsResponse_BLOCKED_AREA                  DishGetDiagnosticsResponse_DisablementCode = 16
 )
 
 // Enum value maps for DishGetDiagnosticsResponse_DisablementCode.
@@ -491,6 +492,7 @@ var (
 		13: "UNSUPPORTED_VERSION",
 		14: "MOVING_TOO_FAST_FOR_POLICY",
 		15: "UNDER_AVIATION_FLYOVER_LIMITS",
+		16: "BLOCKED_AREA",
 	}
 	DishGetDiagnosticsResponse_DisablementCode_value = map[string]int32{
 		"UNKNOWN":                       0,
@@ -507,6 +509,7 @@ var (
 		"UNSUPPORTED_VERSION":           13,
 		"MOVING_TOO_FAST_FOR_POLICY":    14,
 		"UNDER_AVIATION_FLYOVER_LIMITS": 15,
+		"BLOCKED_AREA":                  16,
 	}
 )
 
@@ -8167,7 +8170,6 @@ type DishGetDiagnosticsResponse_Alerts struct {
 	MastNotNearVertical        bool                   `protobuf:"varint,6,opt,name=mast_not_near_vertical,json=mastNotNearVertical,proto3" json:"mast_not_near_vertical,omitempty"`
 	SlowEthernetSpeeds         bool                   `protobuf:"varint,7,opt,name=slow_ethernet_speeds,json=slowEthernetSpeeds,proto3" json:"slow_ethernet_speeds,omitempty"`
 	SoftwareInstallPending     bool                   `protobuf:"varint,8,opt,name=software_install_pending,json=softwareInstallPending,proto3" json:"software_install_pending,omitempty"`
-	MovingTooFastForPolicy     bool                   `protobuf:"varint,9,opt,name=moving_too_fast_for_policy,json=movingTooFastForPolicy,proto3" json:"moving_too_fast_for_policy,omitempty"`
 	Obstructed                 bool                   `protobuf:"varint,10,opt,name=obstructed,proto3" json:"obstructed,omitempty"`
 	unknownFields              protoimpl.UnknownFields
 	sizeCache                  protoimpl.SizeCache
@@ -8255,13 +8257,6 @@ func (x *DishGetDiagnosticsResponse_Alerts) GetSlowEthernetSpeeds() bool {
 func (x *DishGetDiagnosticsResponse_Alerts) GetSoftwareInstallPending() bool {
 	if x != nil {
 		return x.SoftwareInstallPending
-	}
-	return false
-}
-
-func (x *DishGetDiagnosticsResponse_Alerts) GetMovingTooFastForPolicy() bool {
-	if x != nil {
-		return x.MovingTooFastForPolicy
 	}
 	return false
 }
@@ -8437,7 +8432,7 @@ var File_spacex_api_device_device_proto protoreflect.FileDescriptor
 
 const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\n" +
-	"\x1espacex_api/device/device.proto\x12\x11SpaceX.API.Device\x1a%spacex/api/common/status/status.proto\x1a\x1fspacex_api/device/command.proto\x1a\x1espacex_api/device/common.proto\x1a\x1cspacex_api/device/dish.proto\x1a#spacex_api/device/transceiver.proto\x1a\x1cspacex_api/device/wifi.proto\x1a/spacex_api/device/services/unlock/service.proto\x1aBspacex_api/telemetron/public/integrations/ut_pop_link_report.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x92\x01\n" +
+	"\x1espacex_api/device/device.proto\x12\x11SpaceX.API.Device\x1a%spacex_api/common/status/status.proto\x1a\x1fspacex_api/device/command.proto\x1a\x1espacex_api/device/common.proto\x1a\x1cspacex_api/device/dish.proto\x1a#spacex_api/device/transceiver.proto\x1a\x1cspacex_api/device/wifi.proto\x1a/spacex_api/device/services/unlock/service.proto\x1aBspacex_api/telemetron/public/integrations/ut_pop_link_report.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x92\x01\n" +
 	"\bToDevice\x126\n" +
 	"\arequest\x18\x01 \x01(\v2\x1a.SpaceX.API.Device.RequestH\x00R\arequest\x12C\n" +
 	"\fhealth_check\x18\x02 \x01(\v2\x1e.SpaceX.API.Device.HealthCheckH\x00R\vhealthCheckB\t\n" +
@@ -8947,7 +8942,7 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\x10clients_ethernet\x18\n" +
 	" \x01(\rR\x0fclientsEthernet\x12!\n" +
 	"\fclients_2ghz\x18\v \x01(\rR\vclients2ghz\x12!\n" +
-	"\fclients_5ghz\x18\f \x01(\rR\vclients5ghz\"\xa9\x16\n" +
+	"\fclients_5ghz\x18\f \x01(\rR\vclients5ghz\"\xa1\x16\n" +
 	"\x1aDishGetDiagnosticsResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12)\n" +
 	"\x10hardware_version\x18\x02 \x01(\tR\x0fhardwareVersion\x12)\n" +
@@ -8963,7 +8958,7 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\x06stowed\x18\n" +
 	" \x01(\bR\x06stowed\x12\x7f\n" +
 	"\x1edl_bandwidth_restricted_reason\x18\f \x01(\x0e2:.SpaceX.API.Telemetron.Public.Integrations.RateLimitReasonR\x1bdlBandwidthRestrictedReason\x12\x7f\n" +
-	"\x1eul_bandwidth_restricted_reason\x18\r \x01(\x0e2:.SpaceX.API.Telemetron.Public.Integrations.RateLimitReasonR\x1bulBandwidthRestrictedReason\x1a\xfb\x03\n" +
+	"\x1eul_bandwidth_restricted_reason\x18\r \x01(\x0e2:.SpaceX.API.Telemetron.Public.Integrations.RateLimitReasonR\x1bulBandwidthRestrictedReason\x1a\xe1\x03\n" +
 	"\x06Alerts\x12&\n" +
 	"\x0fdish_is_heating\x18\x01 \x01(\bR\rdishIsHeating\x122\n" +
 	"\x15dish_thermal_throttle\x18\x02 \x01(\bR\x13dishThermalThrottle\x122\n" +
@@ -8972,12 +8967,12 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\fmotors_stuck\x18\x05 \x01(\bR\vmotorsStuck\x123\n" +
 	"\x16mast_not_near_vertical\x18\x06 \x01(\bR\x13mastNotNearVertical\x120\n" +
 	"\x14slow_ethernet_speeds\x18\a \x01(\bR\x12slowEthernetSpeeds\x128\n" +
-	"\x18software_install_pending\x18\b \x01(\bR\x16softwareInstallPending\x12:\n" +
-	"\x1amoving_too_fast_for_policy\x18\t \x01(\bR\x16movingTooFastForPolicy\x12\x1e\n" +
+	"\x18software_install_pending\x18\b \x01(\bR\x16softwareInstallPending\x12\x1e\n" +
 	"\n" +
 	"obstructed\x18\n" +
 	" \x01(\bR\n" +
-	"obstructed\x1a\x8e\x02\n" +
+	"obstructedJ\x04\b\t\x10\n" +
+	"R\x1amoving_too_fast_for_policy\x1a\x8e\x02\n" +
 	"\bLocation\x12\x18\n" +
 	"\aenabled\x18\x01 \x01(\bR\aenabled\x12\x1a\n" +
 	"\blatitude\x18\x02 \x01(\x01R\blatitude\x12\x1c\n" +
@@ -9022,7 +9017,7 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\tSCP_ERROR\x10\x11\x12\x0f\n" +
 	"\vTEMPERATURE\x10\x12\x12\n" +
 	"\n" +
-	"\x06VTSENS\x10\x13\"\x89\x03\n" +
+	"\x06VTSENS\x10\x13\"\x9b\x03\n" +
 	"\x0fDisablementCode\x12\v\n" +
 	"\aUNKNOWN\x10\x00\x12\b\n" +
 	"\x04OKAY\x10\x01\x12\x15\n" +
@@ -9038,7 +9033,8 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\x10ACCOUNT_DISABLED\x10\f\x12\x17\n" +
 	"\x13UNSUPPORTED_VERSION\x10\r\x12\x1e\n" +
 	"\x1aMOVING_TOO_FAST_FOR_POLICY\x10\x0e\x12!\n" +
-	"\x1dUNDER_AVIATION_FLYOVER_LIMITS\x10\x0f\"\x04\b\x05\x10\x05\"\x04\b\t\x10\t*\x0fINVALID_COUNTRY*\x12UNLICENSED_COUNTRY\"H\n" +
+	"\x1dUNDER_AVIATION_FLYOVER_LIMITS\x10\x0f\x12\x10\n" +
+	"\fBLOCKED_AREA\x10\x10\"\x04\b\x05\x10\x05\"\x04\b\t\x10\t*\x0fINVALID_COUNTRY*\x12UNLICENSED_COUNTRY\"H\n" +
 	"\x1aTcpConnectivityTestRequest\x12\x16\n" +
 	"\x06target\x18\x01 \x01(\tR\x06target\x12\x12\n" +
 	"\x04port\x18\x02 \x01(\rR\x04port\"\xb3\x04\n" +

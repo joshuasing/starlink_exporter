@@ -664,19 +664,18 @@ func (DishAviationTestRequest_EthSpeed) EnumDescriptor() ([]byte, []int) {
 type DishOutage_Cause int32
 
 const (
-	DishOutage_UNKNOWN                  DishOutage_Cause = 0
-	DishOutage_BOOTING                  DishOutage_Cause = 1
-	DishOutage_STOWED                   DishOutage_Cause = 2
-	DishOutage_THERMAL_SHUTDOWN         DishOutage_Cause = 3
-	DishOutage_NO_SCHEDULE              DishOutage_Cause = 4
-	DishOutage_NO_SATS                  DishOutage_Cause = 5
-	DishOutage_OBSTRUCTED               DishOutage_Cause = 6
-	DishOutage_NO_DOWNLINK              DishOutage_Cause = 7
-	DishOutage_NO_PINGS                 DishOutage_Cause = 8
-	DishOutage_ACTUATOR_ACTIVITY        DishOutage_Cause = 9
-	DishOutage_CABLE_TEST               DishOutage_Cause = 10
-	DishOutage_SLEEPING                 DishOutage_Cause = 11
-	DishOutage_MOVING_WHILE_NOT_ALLOWED DishOutage_Cause = 12
+	DishOutage_UNKNOWN           DishOutage_Cause = 0
+	DishOutage_BOOTING           DishOutage_Cause = 1
+	DishOutage_STOWED            DishOutage_Cause = 2
+	DishOutage_THERMAL_SHUTDOWN  DishOutage_Cause = 3
+	DishOutage_NO_SCHEDULE       DishOutage_Cause = 4
+	DishOutage_NO_SATS           DishOutage_Cause = 5
+	DishOutage_OBSTRUCTED        DishOutage_Cause = 6
+	DishOutage_NO_DOWNLINK       DishOutage_Cause = 7
+	DishOutage_NO_PINGS          DishOutage_Cause = 8
+	DishOutage_ACTUATOR_ACTIVITY DishOutage_Cause = 9
+	DishOutage_CABLE_TEST        DishOutage_Cause = 10
+	DishOutage_SLEEPING          DishOutage_Cause = 11
 )
 
 // Enum value maps for DishOutage_Cause.
@@ -694,22 +693,20 @@ var (
 		9:  "ACTUATOR_ACTIVITY",
 		10: "CABLE_TEST",
 		11: "SLEEPING",
-		12: "MOVING_WHILE_NOT_ALLOWED",
 	}
 	DishOutage_Cause_value = map[string]int32{
-		"UNKNOWN":                  0,
-		"BOOTING":                  1,
-		"STOWED":                   2,
-		"THERMAL_SHUTDOWN":         3,
-		"NO_SCHEDULE":              4,
-		"NO_SATS":                  5,
-		"OBSTRUCTED":               6,
-		"NO_DOWNLINK":              7,
-		"NO_PINGS":                 8,
-		"ACTUATOR_ACTIVITY":        9,
-		"CABLE_TEST":               10,
-		"SLEEPING":                 11,
-		"MOVING_WHILE_NOT_ALLOWED": 12,
+		"UNKNOWN":           0,
+		"BOOTING":           1,
+		"STOWED":            2,
+		"THERMAL_SHUTDOWN":  3,
+		"NO_SCHEDULE":       4,
+		"NO_SATS":           5,
+		"OBSTRUCTED":        6,
+		"NO_DOWNLINK":       7,
+		"NO_PINGS":          8,
+		"ACTUATOR_ACTIVITY": 9,
+		"CABLE_TEST":        10,
+		"SLEEPING":          11,
 	}
 )
 
@@ -1442,6 +1439,7 @@ type DishGetHistoryResponse struct {
 	UplinkThroughputBps   []float32              `protobuf:"fixed32,1004,rep,packed,name=uplink_throughput_bps,json=uplinkThroughputBps,proto3" json:"uplink_throughput_bps,omitempty"`
 	Outages               []*DishOutage          `protobuf:"bytes,1009,rep,name=outages,proto3" json:"outages,omitempty"`
 	PowerIn               []float32              `protobuf:"fixed32,1010,rep,packed,name=power_in,json=powerIn,proto3" json:"power_in,omitempty"`
+	EventLog              *EventLog              `protobuf:"bytes,1011,opt,name=event_log,json=eventLog,proto3" json:"event_log,omitempty"`
 	unknownFields         protoimpl.UnknownFields
 	sizeCache             protoimpl.SizeCache
 }
@@ -1521,6 +1519,13 @@ func (x *DishGetHistoryResponse) GetOutages() []*DishOutage {
 func (x *DishGetHistoryResponse) GetPowerIn() []float32 {
 	if x != nil {
 		return x.PowerIn
+	}
+	return nil
+}
+
+func (x *DishGetHistoryResponse) GetEventLog() *EventLog {
+	if x != nil {
+		return x.EventLog
 	}
 	return nil
 }
@@ -2085,14 +2090,13 @@ type DishAlerts struct {
 	IsHeating                  bool                   `protobuf:"varint,9,opt,name=is_heating,json=isHeating,proto3" json:"is_heating,omitempty"`
 	PowerSupplyThermalThrottle bool                   `protobuf:"varint,10,opt,name=power_supply_thermal_throttle,json=powerSupplyThermalThrottle,proto3" json:"power_supply_thermal_throttle,omitempty"`
 	IsPowerSaveIdle            bool                   `protobuf:"varint,11,opt,name=is_power_save_idle,json=isPowerSaveIdle,proto3" json:"is_power_save_idle,omitempty"`
-	MovingWhileNotMobile       bool                   `protobuf:"varint,12,opt,name=moving_while_not_mobile,json=movingWhileNotMobile,proto3" json:"moving_while_not_mobile,omitempty"`
-	MovingTooFastForPolicy     bool                   `protobuf:"varint,15,opt,name=moving_too_fast_for_policy,json=movingTooFastForPolicy,proto3" json:"moving_too_fast_for_policy,omitempty"`
 	DbfTelemStale              bool                   `protobuf:"varint,14,opt,name=dbf_telem_stale,json=dbfTelemStale,proto3" json:"dbf_telem_stale,omitempty"`
 	LowMotorCurrent            bool                   `protobuf:"varint,16,opt,name=low_motor_current,json=lowMotorCurrent,proto3" json:"low_motor_current,omitempty"`
 	LowerSignalThanPredicted   bool                   `protobuf:"varint,17,opt,name=lower_signal_than_predicted,json=lowerSignalThanPredicted,proto3" json:"lower_signal_than_predicted,omitempty"`
 	ObstructionMapReset        bool                   `protobuf:"varint,19,opt,name=obstruction_map_reset,json=obstructionMapReset,proto3" json:"obstruction_map_reset,omitempty"`
 	DishWaterDetected          bool                   `protobuf:"varint,20,opt,name=dish_water_detected,json=dishWaterDetected,proto3" json:"dish_water_detected,omitempty"`
 	RouterWaterDetected        bool                   `protobuf:"varint,21,opt,name=router_water_detected,json=routerWaterDetected,proto3" json:"router_water_detected,omitempty"`
+	UpsuRouterPortSlow         bool                   `protobuf:"varint,22,opt,name=upsu_router_port_slow,json=upsuRouterPortSlow,proto3" json:"upsu_router_port_slow,omitempty"`
 	unknownFields              protoimpl.UnknownFields
 	sizeCache                  protoimpl.SizeCache
 }
@@ -2211,20 +2215,6 @@ func (x *DishAlerts) GetIsPowerSaveIdle() bool {
 	return false
 }
 
-func (x *DishAlerts) GetMovingWhileNotMobile() bool {
-	if x != nil {
-		return x.MovingWhileNotMobile
-	}
-	return false
-}
-
-func (x *DishAlerts) GetMovingTooFastForPolicy() bool {
-	if x != nil {
-		return x.MovingTooFastForPolicy
-	}
-	return false
-}
-
 func (x *DishAlerts) GetDbfTelemStale() bool {
 	if x != nil {
 		return x.DbfTelemStale
@@ -2263,6 +2253,13 @@ func (x *DishAlerts) GetDishWaterDetected() bool {
 func (x *DishAlerts) GetRouterWaterDetected() bool {
 	if x != nil {
 		return x.RouterWaterDetected
+	}
+	return false
+}
+
+func (x *DishAlerts) GetUpsuRouterPortSlow() bool {
+	if x != nil {
+		return x.UpsuRouterPortSlow
 	}
 	return false
 }
@@ -4243,7 +4240,7 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\x13outage_2s_within_1h\x18\x18 \x01(\bR\x10outage2sWithin1h\x12-\n" +
 	"\x13outage_5s_within_1h\x18\x19 \x01(\bR\x10outage5sWithin1h\x12[\n" +
 	"\x10disablement_code\x18\x15 \x01(\x0e20.SpaceX.API.Satellites.Network.UtDisablementCodeR\x0fdisablementCode\x12-\n" +
-	"\x13ku_mac_active_ratio\x18\x16 \x01(\x02R\x10kuMacActiveRatio\"\x9b\x03\n" +
+	"\x13ku_mac_active_ratio\x18\x16 \x01(\x02R\x10kuMacActiveRatio\"\x9d\x03\n" +
 	"\n" +
 	"DishOutage\x129\n" +
 	"\x05cause\x18\x01 \x01(\x0e2#.SpaceX.API.Device.DishOutage.CauseR\x05cause\x12,\n" +
@@ -4251,7 +4248,7 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\vduration_ns\x18\x03 \x01(\x04R\n" +
 	"durationNs\x12\x1d\n" +
 	"\n" +
-	"did_switch\x18\x04 \x01(\bR\tdidSwitch\"\xe3\x01\n" +
+	"did_switch\x18\x04 \x01(\bR\tdidSwitch\"\xe5\x01\n" +
 	"\x05Cause\x12\v\n" +
 	"\aUNKNOWN\x10\x00\x12\v\n" +
 	"\aBOOTING\x10\x01\x12\n" +
@@ -4268,8 +4265,7 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\n" +
 	"CABLE_TEST\x10\n" +
 	"\x12\f\n" +
-	"\bSLEEPING\x10\v\x12\x1c\n" +
-	"\x18MOVING_WHILE_NOT_ALLOWED\x10\f\"\xf4\x02\n" +
+	"\bSLEEPING\x10\v\"\x04\b\f\x10\f*\x18MOVING_WHILE_NOT_ALLOWED\"\xaf\x03\n" +
 	"\x16DishGetHistoryResponse\x12\x18\n" +
 	"\acurrent\x18\x01 \x01(\x04R\acurrent\x12,\n" +
 	"\x12pop_ping_drop_rate\x18\xe9\a \x03(\x02R\x0fpopPingDropRate\x12.\n" +
@@ -4277,7 +4273,8 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\x17downlink_throughput_bps\x18\xeb\a \x03(\x02R\x15downlinkThroughputBps\x123\n" +
 	"\x15uplink_throughput_bps\x18\xec\a \x03(\x02R\x13uplinkThroughputBps\x128\n" +
 	"\aoutages\x18\xf1\a \x03(\v2\x1d.SpaceX.API.Device.DishOutageR\aoutages\x12\x1a\n" +
-	"\bpower_in\x18\xf2\a \x03(\x02R\apowerInJ\x06\b\xed\a\x10\xee\aJ\x06\b\xee\a\x10\xef\aJ\x06\b\xef\a\x10\xf0\aJ\x06\b\xf0\a\x10\xf1\a\"\\\n" +
+	"\bpower_in\x18\xf2\a \x03(\x02R\apowerIn\x129\n" +
+	"\tevent_log\x18\xf3\a \x01(\v2\x1b.SpaceX.API.Device.EventLogR\beventLogJ\x06\b\xed\a\x10\xee\aJ\x06\b\xee\a\x10\xef\aJ\x06\b\xef\a\x10\xf0\aJ\x06\b\xf0\a\x10\xf1\a\"\\\n" +
 	"\n" +
 	"RouterInfo\x121\n" +
 	"\x04role\x18\x01 \x01(\x0e2\x1d.SpaceX.API.Device.RouterRoleR\x04role\x12\x1b\n" +
@@ -4337,7 +4334,7 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\x03snr\x18\x03 \x03(\x02R\x03snr\x12.\n" +
 	"\x11min_elevation_deg\x18\x04 \x01(\x02B\x02\x18\x01R\x0fminElevationDeg\x12\"\n" +
 	"\rmax_theta_deg\x18\x05 \x01(\x02R\vmaxThetaDeg\x12_\n" +
-	"\x13map_reference_frame\x18\x06 \x01(\x0e2/.SpaceX.API.Device.ObstructionMapReferenceFrameR\x11mapReferenceFrame\"\xec\a\n" +
+	"\x13map_reference_frame\x18\x06 \x01(\x0e2/.SpaceX.API.Device.ObstructionMapReferenceFrameR\x11mapReferenceFrame\"\xed\a\n" +
 	"\n" +
 	"DishAlerts\x12!\n" +
 	"\fmotors_stuck\x18\x01 \x01(\bR\vmotorsStuck\x12)\n" +
@@ -4353,15 +4350,14 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"is_heating\x18\t \x01(\bR\tisHeating\x12A\n" +
 	"\x1dpower_supply_thermal_throttle\x18\n" +
 	" \x01(\bR\x1apowerSupplyThermalThrottle\x12+\n" +
-	"\x12is_power_save_idle\x18\v \x01(\bR\x0fisPowerSaveIdle\x125\n" +
-	"\x17moving_while_not_mobile\x18\f \x01(\bR\x14movingWhileNotMobile\x12:\n" +
-	"\x1amoving_too_fast_for_policy\x18\x0f \x01(\bR\x16movingTooFastForPolicy\x12&\n" +
+	"\x12is_power_save_idle\x18\v \x01(\bR\x0fisPowerSaveIdle\x12&\n" +
 	"\x0fdbf_telem_stale\x18\x0e \x01(\bR\rdbfTelemStale\x12*\n" +
 	"\x11low_motor_current\x18\x10 \x01(\bR\x0flowMotorCurrent\x12=\n" +
 	"\x1blower_signal_than_predicted\x18\x11 \x01(\bR\x18lowerSignalThanPredicted\x122\n" +
 	"\x15obstruction_map_reset\x18\x13 \x01(\bR\x13obstructionMapReset\x12.\n" +
 	"\x13dish_water_detected\x18\x14 \x01(\bR\x11dishWaterDetected\x122\n" +
-	"\x15router_water_detected\x18\x15 \x01(\bR\x13routerWaterDetectedJ\x04\b\r\x10\x0eR\x1emoving_fast_while_not_aviation\"\x81\x01\n" +
+	"\x15router_water_detected\x18\x15 \x01(\bR\x13routerWaterDetected\x121\n" +
+	"\x15upsu_router_port_slow\x18\x16 \x01(\bR\x12upsuRouterPortSlowJ\x04\b\f\x10\rJ\x04\b\r\x10\x0eJ\x04\b\x0f\x10\x10R\x1emoving_fast_while_not_aviationR\x17moving_while_not_mobileR\x1amoving_too_fast_for_policy\"\x81\x01\n" +
 	"\x0fDishReadyStates\x12\x12\n" +
 	"\x04cady\x18\x01 \x01(\bR\x04cady\x12\x10\n" +
 	"\x03scp\x18\x02 \x01(\bR\x03scp\x12\x12\n" +
@@ -4686,12 +4682,13 @@ var file_spacex_api_device_dish_proto_goTypes = []any{
 	(*DeviceInfo)(nil),                      // 61: SpaceX.API.Device.DeviceInfo
 	(*DeviceState)(nil),                     // 62: SpaceX.API.Device.DeviceState
 	(network.UtDisablementCode)(0),          // 63: SpaceX.API.Satellites.Network.UtDisablementCode
-	(integrations.RateLimitReason)(0),       // 64: SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
-	(*DishConfig)(nil),                      // 65: SpaceX.API.Device.DishConfig
-	(*Quaternion)(nil),                      // 66: SpaceX.API.Device.Quaternion
-	(*ChallengeResponse)(nil),               // 67: SpaceX.API.Device.ChallengeResponse
-	(*DishActivateRssiScan)(nil),            // 68: SpaceX.API.Device.DishActivateRssiScan
-	(*DishGetRssiScanResult)(nil),           // 69: SpaceX.API.Device.DishGetRssiScanResult
+	(*EventLog)(nil),                        // 64: SpaceX.API.Device.EventLog
+	(integrations.RateLimitReason)(0),       // 65: SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
+	(*DishConfig)(nil),                      // 66: SpaceX.API.Device.DishConfig
+	(*Quaternion)(nil),                      // 67: SpaceX.API.Device.Quaternion
+	(*ChallengeResponse)(nil),               // 68: SpaceX.API.Device.ChallengeResponse
+	(*DishActivateRssiScan)(nil),            // 69: SpaceX.API.Device.DishActivateRssiScan
+	(*DishGetRssiScanResult)(nil),           // 70: SpaceX.API.Device.DishGetRssiScanResult
 }
 var file_spacex_api_device_dish_proto_depIdxs = []int32{
 	10, // 0: SpaceX.API.Device.DishAviationTestRequest.eth_speed:type_name -> SpaceX.API.Device.DishAviationTestRequest.EthSpeed
@@ -4700,54 +4697,55 @@ var file_spacex_api_device_dish_proto_depIdxs = []int32{
 	63, // 3: SpaceX.API.Device.DishGetContextResponse.disablement_code:type_name -> SpaceX.API.Satellites.Network.UtDisablementCode
 	11, // 4: SpaceX.API.Device.DishOutage.cause:type_name -> SpaceX.API.Device.DishOutage.Cause
 	21, // 5: SpaceX.API.Device.DishGetHistoryResponse.outages:type_name -> SpaceX.API.Device.DishOutage
-	8,  // 6: SpaceX.API.Device.RouterInfo.role:type_name -> SpaceX.API.Device.RouterRole
-	61, // 7: SpaceX.API.Device.DishGetStatusResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
-	62, // 8: SpaceX.API.Device.DishGetStatusResponse.device_state:type_name -> SpaceX.API.Device.DeviceState
-	27, // 9: SpaceX.API.Device.DishGetStatusResponse.alerts:type_name -> SpaceX.API.Device.DishAlerts
-	21, // 10: SpaceX.API.Device.DishGetStatusResponse.outage:type_name -> SpaceX.API.Device.DishOutage
-	29, // 11: SpaceX.API.Device.DishGetStatusResponse.gps_stats:type_name -> SpaceX.API.Device.DishGpsStats
-	32, // 12: SpaceX.API.Device.DishGetStatusResponse.obstruction_stats:type_name -> SpaceX.API.Device.DishObstructionStats
-	0,  // 13: SpaceX.API.Device.DishGetStatusResponse.mobility_class:type_name -> SpaceX.API.Device.UserMobilityClass
-	28, // 14: SpaceX.API.Device.DishGetStatusResponse.ready_states:type_name -> SpaceX.API.Device.DishReadyStates
-	3,  // 15: SpaceX.API.Device.DishGetStatusResponse.class_of_service:type_name -> SpaceX.API.Device.UserClassOfService
-	2,  // 16: SpaceX.API.Device.DishGetStatusResponse.software_update_state:type_name -> SpaceX.API.Device.SoftwareUpdateState
-	7,  // 17: SpaceX.API.Device.DishGetStatusResponse.reboot_reason:type_name -> SpaceX.API.Device.RebootReason
-	30, // 18: SpaceX.API.Device.DishGetStatusResponse.software_update_stats:type_name -> SpaceX.API.Device.SoftwareUpdateStats
-	31, // 19: SpaceX.API.Device.DishGetStatusResponse.alignment_stats:type_name -> SpaceX.API.Device.AlignmentStats
-	4,  // 20: SpaceX.API.Device.DishGetStatusResponse.has_actuators:type_name -> SpaceX.API.Device.HasActuators
-	63, // 21: SpaceX.API.Device.DishGetStatusResponse.disablement_code:type_name -> SpaceX.API.Satellites.Network.UtDisablementCode
-	64, // 22: SpaceX.API.Device.DishGetStatusResponse.dl_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
-	64, // 23: SpaceX.API.Device.DishGetStatusResponse.ul_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
-	65, // 24: SpaceX.API.Device.DishGetStatusResponse.config:type_name -> SpaceX.API.Device.DishConfig
-	35, // 25: SpaceX.API.Device.DishGetStatusResponse.initialization_duration_seconds:type_name -> SpaceX.API.Device.InitializationDurationSeconds
-	58, // 26: SpaceX.API.Device.DishGetStatusResponse.plc_stats:type_name -> SpaceX.API.Device.PLCStats
-	33, // 27: SpaceX.API.Device.DishGetStatusResponse.upsu_stats:type_name -> SpaceX.API.Device.DishUpsuStats
-	34, // 28: SpaceX.API.Device.DishGetStatusResponse.aps_stats:type_name -> SpaceX.API.Device.DishApsStats
-	66, // 29: SpaceX.API.Device.DishGetStatusResponse.ned2dish_quaternion:type_name -> SpaceX.API.Device.Quaternion
-	60, // 30: SpaceX.API.Device.DishGetStatusResponse.downstream_routers:type_name -> SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntry
-	1,  // 31: SpaceX.API.Device.DishGetObstructionMapResponse.map_reference_frame:type_name -> SpaceX.API.Device.ObstructionMapReferenceFrame
-	2,  // 32: SpaceX.API.Device.SoftwareUpdateStats.software_update_state:type_name -> SpaceX.API.Device.SoftwareUpdateState
-	4,  // 33: SpaceX.API.Device.AlignmentStats.has_actuators:type_name -> SpaceX.API.Device.HasActuators
-	5,  // 34: SpaceX.API.Device.AlignmentStats.actuator_state:type_name -> SpaceX.API.Device.ActuatorState
-	6,  // 35: SpaceX.API.Device.AlignmentStats.attitude_estimation_state:type_name -> SpaceX.API.Device.AttitudeEstimationState
-	67, // 36: SpaceX.API.Device.DishAuthenticateResponse.dish:type_name -> SpaceX.API.Device.ChallengeResponse
-	12, // 37: SpaceX.API.Device.SetTestModeRequest.rf_mode:type_name -> SpaceX.API.Device.SetTestModeRequest.RfMode
-	65, // 38: SpaceX.API.Device.DishSetConfigRequest.dish_config:type_name -> SpaceX.API.Device.DishConfig
-	65, // 39: SpaceX.API.Device.DishSetConfigResponse.updated_dish_config:type_name -> SpaceX.API.Device.DishConfig
-	65, // 40: SpaceX.API.Device.DishGetConfigResponse.dish_config:type_name -> SpaceX.API.Device.DishConfig
-	68, // 41: SpaceX.API.Device.DishActivateRssiScanRequest.scan_query:type_name -> SpaceX.API.Device.DishActivateRssiScan
-	69, // 42: SpaceX.API.Device.DishGetRssiScanResultResponse.result:type_name -> SpaceX.API.Device.DishGetRssiScanResult
-	59, // 43: SpaceX.API.Device.PLCStats.port_1_stats:type_name -> SpaceX.API.Device.PLCPortStats
-	59, // 44: SpaceX.API.Device.PLCStats.port_2_stats:type_name -> SpaceX.API.Device.PLCPortStats
-	59, // 45: SpaceX.API.Device.PLCStats.port_3_stats:type_name -> SpaceX.API.Device.PLCPortStats
-	13, // 46: SpaceX.API.Device.PLCStats.plc_revision:type_name -> SpaceX.API.Device.PLCStats.ProtocolRevision
-	14, // 47: SpaceX.API.Device.PLCPortStats.status:type_name -> SpaceX.API.Device.PLCPortStats.PortStatus
-	23, // 48: SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntry.value:type_name -> SpaceX.API.Device.RouterInfo
-	49, // [49:49] is the sub-list for method output_type
-	49, // [49:49] is the sub-list for method input_type
-	49, // [49:49] is the sub-list for extension type_name
-	49, // [49:49] is the sub-list for extension extendee
-	0,  // [0:49] is the sub-list for field type_name
+	64, // 6: SpaceX.API.Device.DishGetHistoryResponse.event_log:type_name -> SpaceX.API.Device.EventLog
+	8,  // 7: SpaceX.API.Device.RouterInfo.role:type_name -> SpaceX.API.Device.RouterRole
+	61, // 8: SpaceX.API.Device.DishGetStatusResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
+	62, // 9: SpaceX.API.Device.DishGetStatusResponse.device_state:type_name -> SpaceX.API.Device.DeviceState
+	27, // 10: SpaceX.API.Device.DishGetStatusResponse.alerts:type_name -> SpaceX.API.Device.DishAlerts
+	21, // 11: SpaceX.API.Device.DishGetStatusResponse.outage:type_name -> SpaceX.API.Device.DishOutage
+	29, // 12: SpaceX.API.Device.DishGetStatusResponse.gps_stats:type_name -> SpaceX.API.Device.DishGpsStats
+	32, // 13: SpaceX.API.Device.DishGetStatusResponse.obstruction_stats:type_name -> SpaceX.API.Device.DishObstructionStats
+	0,  // 14: SpaceX.API.Device.DishGetStatusResponse.mobility_class:type_name -> SpaceX.API.Device.UserMobilityClass
+	28, // 15: SpaceX.API.Device.DishGetStatusResponse.ready_states:type_name -> SpaceX.API.Device.DishReadyStates
+	3,  // 16: SpaceX.API.Device.DishGetStatusResponse.class_of_service:type_name -> SpaceX.API.Device.UserClassOfService
+	2,  // 17: SpaceX.API.Device.DishGetStatusResponse.software_update_state:type_name -> SpaceX.API.Device.SoftwareUpdateState
+	7,  // 18: SpaceX.API.Device.DishGetStatusResponse.reboot_reason:type_name -> SpaceX.API.Device.RebootReason
+	30, // 19: SpaceX.API.Device.DishGetStatusResponse.software_update_stats:type_name -> SpaceX.API.Device.SoftwareUpdateStats
+	31, // 20: SpaceX.API.Device.DishGetStatusResponse.alignment_stats:type_name -> SpaceX.API.Device.AlignmentStats
+	4,  // 21: SpaceX.API.Device.DishGetStatusResponse.has_actuators:type_name -> SpaceX.API.Device.HasActuators
+	63, // 22: SpaceX.API.Device.DishGetStatusResponse.disablement_code:type_name -> SpaceX.API.Satellites.Network.UtDisablementCode
+	65, // 23: SpaceX.API.Device.DishGetStatusResponse.dl_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
+	65, // 24: SpaceX.API.Device.DishGetStatusResponse.ul_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
+	66, // 25: SpaceX.API.Device.DishGetStatusResponse.config:type_name -> SpaceX.API.Device.DishConfig
+	35, // 26: SpaceX.API.Device.DishGetStatusResponse.initialization_duration_seconds:type_name -> SpaceX.API.Device.InitializationDurationSeconds
+	58, // 27: SpaceX.API.Device.DishGetStatusResponse.plc_stats:type_name -> SpaceX.API.Device.PLCStats
+	33, // 28: SpaceX.API.Device.DishGetStatusResponse.upsu_stats:type_name -> SpaceX.API.Device.DishUpsuStats
+	34, // 29: SpaceX.API.Device.DishGetStatusResponse.aps_stats:type_name -> SpaceX.API.Device.DishApsStats
+	67, // 30: SpaceX.API.Device.DishGetStatusResponse.ned2dish_quaternion:type_name -> SpaceX.API.Device.Quaternion
+	60, // 31: SpaceX.API.Device.DishGetStatusResponse.downstream_routers:type_name -> SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntry
+	1,  // 32: SpaceX.API.Device.DishGetObstructionMapResponse.map_reference_frame:type_name -> SpaceX.API.Device.ObstructionMapReferenceFrame
+	2,  // 33: SpaceX.API.Device.SoftwareUpdateStats.software_update_state:type_name -> SpaceX.API.Device.SoftwareUpdateState
+	4,  // 34: SpaceX.API.Device.AlignmentStats.has_actuators:type_name -> SpaceX.API.Device.HasActuators
+	5,  // 35: SpaceX.API.Device.AlignmentStats.actuator_state:type_name -> SpaceX.API.Device.ActuatorState
+	6,  // 36: SpaceX.API.Device.AlignmentStats.attitude_estimation_state:type_name -> SpaceX.API.Device.AttitudeEstimationState
+	68, // 37: SpaceX.API.Device.DishAuthenticateResponse.dish:type_name -> SpaceX.API.Device.ChallengeResponse
+	12, // 38: SpaceX.API.Device.SetTestModeRequest.rf_mode:type_name -> SpaceX.API.Device.SetTestModeRequest.RfMode
+	66, // 39: SpaceX.API.Device.DishSetConfigRequest.dish_config:type_name -> SpaceX.API.Device.DishConfig
+	66, // 40: SpaceX.API.Device.DishSetConfigResponse.updated_dish_config:type_name -> SpaceX.API.Device.DishConfig
+	66, // 41: SpaceX.API.Device.DishGetConfigResponse.dish_config:type_name -> SpaceX.API.Device.DishConfig
+	69, // 42: SpaceX.API.Device.DishActivateRssiScanRequest.scan_query:type_name -> SpaceX.API.Device.DishActivateRssiScan
+	70, // 43: SpaceX.API.Device.DishGetRssiScanResultResponse.result:type_name -> SpaceX.API.Device.DishGetRssiScanResult
+	59, // 44: SpaceX.API.Device.PLCStats.port_1_stats:type_name -> SpaceX.API.Device.PLCPortStats
+	59, // 45: SpaceX.API.Device.PLCStats.port_2_stats:type_name -> SpaceX.API.Device.PLCPortStats
+	59, // 46: SpaceX.API.Device.PLCStats.port_3_stats:type_name -> SpaceX.API.Device.PLCPortStats
+	13, // 47: SpaceX.API.Device.PLCStats.plc_revision:type_name -> SpaceX.API.Device.PLCStats.ProtocolRevision
+	14, // 48: SpaceX.API.Device.PLCPortStats.status:type_name -> SpaceX.API.Device.PLCPortStats.PortStatus
+	23, // 49: SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntry.value:type_name -> SpaceX.API.Device.RouterInfo
+	50, // [50:50] is the sub-list for method output_type
+	50, // [50:50] is the sub-list for method input_type
+	50, // [50:50] is the sub-list for extension type_name
+	50, // [50:50] is the sub-list for extension extendee
+	0,  // [0:50] is the sub-list for field type_name
 }
 
 func init() { file_spacex_api_device_dish_proto_init() }
