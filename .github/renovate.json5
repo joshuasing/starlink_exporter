@@ -1,0 +1,30 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:best-practices',
+    ':configMigration',
+    ':enableVulnerabilityAlerts',
+    'schedule:weekly',
+    'docker:pinDigests',
+    'docker:enableMajor',
+    'preview:dockerCompose',
+    'preview:dockerVersions',
+    'customManagers:dockerfileVersions',
+    'customManagers:githubActionsVersions',
+    'helpers:pinGitHubActionDigests',
+  ],
+  commitMessagePrefix: 'all:',
+  commitMessageAction: 'update',
+  commitMessageTopic: '{{depName}}',
+  labels: [
+    'type: dependencies',
+  ],
+  packageRules: [
+    {
+      matchDatasources: [
+        'docker',
+      ],
+      commitMessageTopic: 'image {{depName}}',
+    },
+  ],
+}
