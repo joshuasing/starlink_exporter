@@ -7,7 +7,7 @@
 package device
 
 import (
-	network "github.com/joshuasing/starlink_exporter/internal/spacex/api/satellites/network"
+	network "github.com/joshuasing/starlink_exporter/internal/spacex_api/satellites/network"
 	common "github.com/joshuasing/starlink_exporter/internal/spacex_api/telemetron/public/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -2719,6 +2719,7 @@ type WifiAlerts struct {
 	SandboxDisabled           bool                   `protobuf:"varint,22,opt,name=sandbox_disabled,json=sandboxDisabled,proto3" json:"sandbox_disabled,omitempty"`
 	OnlyOverflightBlocked     bool                   `protobuf:"varint,23,opt,name=only_overflight_blocked,json=onlyOverflightBlocked,proto3" json:"only_overflight_blocked,omitempty"`
 	OfflineNetworksDisabled   bool                   `protobuf:"varint,24,opt,name=offline_networks_disabled,json=offlineNetworksDisabled,proto3" json:"offline_networks_disabled,omitempty"`
+	WiredMeshNotUsingWanIface bool                   `protobuf:"varint,25,opt,name=wired_mesh_not_using_wan_iface,json=wiredMeshNotUsingWanIface,proto3" json:"wired_mesh_not_using_wan_iface,omitempty"`
 	unknownFields             protoimpl.UnknownFields
 	sizeCache                 protoimpl.SizeCache
 }
@@ -2889,6 +2890,13 @@ func (x *WifiAlerts) GetOnlyOverflightBlocked() bool {
 func (x *WifiAlerts) GetOfflineNetworksDisabled() bool {
 	if x != nil {
 		return x.OfflineNetworksDisabled
+	}
+	return false
+}
+
+func (x *WifiAlerts) GetWiredMeshNotUsingWanIface() bool {
+	if x != nil {
+		return x.WiredMeshNotUsingWanIface
 	}
 	return false
 }
@@ -10313,7 +10321,7 @@ var File_spacex_api_device_wifi_proto protoreflect.FileDescriptor
 
 const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\n" +
-	"\x1cspacex_api/device/wifi.proto\x12\x11SpaceX.API.Device\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1espacex_api/device/common.proto\x1a#spacex_api/device/wifi_config.proto\x1a!spacex_api/device/wifi_util.proto\x1a.spacex_api/telemetron/public/common/time.proto\x1a8spacex/api/satellites/network/ut_disablement_codes.proto\"F\n" +
+	"\x1cspacex_api/device/wifi.proto\x12\x11SpaceX.API.Device\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1espacex_api/device/common.proto\x1a#spacex_api/device/wifi_config.proto\x1a!spacex_api/device/wifi_util.proto\x1a.spacex_api/telemetron/public/common/time.proto\x1a8spacex_api/satellites/network/ut_disablement_codes.proto\"F\n" +
 	"\vWifiClients\x127\n" +
 	"\aclients\x18\x01 \x03(\v2\x1d.SpaceX.API.Device.WifiClientR\aclients\"\xa9\x03\n" +
 	"\fToController\x12\x1f\n" +
@@ -10601,7 +10609,7 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\x14tx_air_time_fraction\x18\x02 \x01(\x02R\x11txAirTimeFraction\x12/\n" +
 	"\x14rx_air_time_fraction\x18\x03 \x01(\x02R\x11rxAirTimeFraction\x123\n" +
 	"\x16obss_air_time_fraction\x18\x04 \x01(\x02R\x13obssAirTimeFraction\x125\n" +
-	"\x17edcca_air_time_fraction\x18\x05 \x01(\x02R\x14edccaAirTimeFraction\"\xe0\t\n" +
+	"\x17edcca_air_time_fraction\x18\x05 \x01(\x02R\x14edccaAirTimeFraction\"\xfd\t\n" +
 	"\n" +
 	"WifiAlerts\x12)\n" +
 	"\x10thermal_throttle\x18\x01 \x01(\bR\x0fthermalThrottle\x12'\n" +
@@ -10624,8 +10632,9 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\x14poe_vin_undervoltage\x18\x14 \x01(\bR\x12poeVinUndervoltage\x12)\n" +
 	"\x10sandbox_disabled\x18\x16 \x01(\bR\x0fsandboxDisabled\x126\n" +
 	"\x17only_overflight_blocked\x18\x17 \x01(\bR\x15onlyOverflightBlocked\x12:\n" +
-	"\x19offline_networks_disabled\x18\x18 \x01(\bR\x17offlineNetworksDisabledJ\x04\b\x06\x10\aJ\x04\b\a\x10\bJ\x04\b\b\x10\tJ\x04\b\t\x10\n" +
-	"J\x04\b\x19\x10\x1aR+inconsistent_2ghz_antennae_performance_15dbR+inconsistent_5ghz_antennae_performance_15dbR#poor_2ghz_antennae_performance_80dbR#poor_5ghz_antennae_performance_80dbR\x1ewired_mesh_not_using_wan_iface\"\xb7\x10\n" +
+	"\x19offline_networks_disabled\x18\x18 \x01(\bR\x17offlineNetworksDisabled\x12A\n" +
+	"\x1ewired_mesh_not_using_wan_iface\x18\x19 \x01(\bR\x19wiredMeshNotUsingWanIfaceJ\x04\b\x06\x10\aJ\x04\b\a\x10\bJ\x04\b\b\x10\tJ\x04\b\t\x10\n" +
+	"R+inconsistent_2ghz_antennae_performance_15dbR+inconsistent_5ghz_antennae_performance_15dbR#poor_2ghz_antennae_performance_80dbR#poor_5ghz_antennae_performance_80db\"\xb7\x10\n" +
 	"\x15WifiGetStatusResponse\x12>\n" +
 	"\vdevice_info\x18\x03 \x01(\v2\x1d.SpaceX.API.Device.DeviceInfoR\n" +
 	"deviceInfo\x12A\n" +

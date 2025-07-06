@@ -7,7 +7,7 @@
 package device
 
 import (
-	network "github.com/joshuasing/starlink_exporter/internal/spacex/api/satellites/network"
+	network "github.com/joshuasing/starlink_exporter/internal/spacex_api/satellites/network"
 	integrations "github.com/joshuasing/starlink_exporter/internal/spacex_api/telemetron/public/integrations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -4196,7 +4196,7 @@ var File_spacex_api_device_dish_proto protoreflect.FileDescriptor
 
 const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\n" +
-	"\x1cspacex_api/device/dish.proto\x12\x11SpaceX.API.Device\x1a\x1espacex_api/device/common.proto\x1a#spacex_api/device/dish_config.proto\x1a!spacex_api/device/rssi_scan.proto\x1a8spacex/api/satellites/network/ut_disablement_codes.proto\x1aBspacex_api/telemetron/public/integrations/ut_pop_link_report.proto\")\n" +
+	"\x1cspacex_api/device/dish.proto\x12\x11SpaceX.API.Device\x1a\x1espacex_api/device/common.proto\x1a#spacex_api/device/dish_config.proto\x1a!spacex_api/device/rssi_scan.proto\x1a8spacex_api/satellites/network/ut_disablement_codes.proto\x1aBspacex_api/telemetron/public/integrations/ut_pop_link_report.proto\")\n" +
 	"\x0fDishStowRequest\x12\x16\n" +
 	"\x06unstow\x18\x01 \x01(\bR\x06unstow\"\x12\n" +
 	"\x10DishStowResponse\"\xc6\x03\n" +
