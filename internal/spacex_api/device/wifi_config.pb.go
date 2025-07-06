@@ -872,6 +872,8 @@ type WifiConfig struct {
 	OnlyOverflightCountriesUsingDefault bool                           `protobuf:"varint,1114,opt,name=only_overflight_countries_using_default,json=onlyOverflightCountriesUsingDefault,proto3" json:"only_overflight_countries_using_default,omitempty"`
 	UnbridgedEthPorts                   []*WifiConfig_UnbridgedEthPort `protobuf:"bytes,1112,rep,name=unbridged_eth_ports,json=unbridgedEthPorts,proto3" json:"unbridged_eth_ports,omitempty"`
 	ApplyUnbridgedEthPorts              bool                           `protobuf:"varint,1113,opt,name=apply_unbridged_eth_ports,json=applyUnbridgedEthPorts,proto3" json:"apply_unbridged_eth_ports,omitempty"`
+	DisableSandboxFailOpen              bool                           `protobuf:"varint,1115,opt,name=disable_sandbox_fail_open,json=disableSandboxFailOpen,proto3" json:"disable_sandbox_fail_open,omitempty"`
+	ApplyDisableSandboxFailOpen         bool                           `protobuf:"varint,1116,opt,name=apply_disable_sandbox_fail_open,json=applyDisableSandboxFailOpen,proto3" json:"apply_disable_sandbox_fail_open,omitempty"`
 	Tag                                 uint32                         `protobuf:"varint,78,opt,name=tag,proto3" json:"tag,omitempty"`
 	unknownFields                       protoimpl.UnknownFields
 	sizeCache                           protoimpl.SizeCache
@@ -1762,6 +1764,20 @@ func (x *WifiConfig) GetUnbridgedEthPorts() []*WifiConfig_UnbridgedEthPort {
 func (x *WifiConfig) GetApplyUnbridgedEthPorts() bool {
 	if x != nil {
 		return x.ApplyUnbridgedEthPorts
+	}
+	return false
+}
+
+func (x *WifiConfig) GetDisableSandboxFailOpen() bool {
+	if x != nil {
+		return x.DisableSandboxFailOpen
+	}
+	return false
+}
+
+func (x *WifiConfig) GetApplyDisableSandboxFailOpen() bool {
+	if x != nil {
+		return x.ApplyDisableSandboxFailOpen
 	}
 	return false
 }
@@ -3347,7 +3363,7 @@ const file_spacex_api_device_wifi_config_proto_rawDesc = "" +
 	"\x1caccess_control_allow_origins\x18\x05 \x03(\tR\x19accessControlAllowOriginsJ\x04\be\x10fR\x10pages_bundle_url\"^\n" +
 	"\rCaptivePortal\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\x12;\n" +
-	"\x1adisplay_in_captive_browser\x18\x02 \x01(\bR\x17displayInCaptiveBrowser\"\xe6U\n" +
+	"\x1adisplay_in_captive_browser\x18\x02 \x01(\bR\x17displayInCaptiveBrowser\"\xe9V\n" +
 	"\n" +
 	"WifiConfig\x12!\n" +
 	"\fcountry_code\x18\x03 \x01(\tR\vcountryCode\x12-\n" +
@@ -3479,7 +3495,9 @@ const file_spacex_api_device_wifi_config_proto_rawDesc = "" +
 	"\x1fapply_only_overflight_countries\x18\xd7\b \x01(\bR\x1capplyOnlyOverflightCountries\x12U\n" +
 	"'only_overflight_countries_using_default\x18\xda\b \x01(\bR#onlyOverflightCountriesUsingDefault\x12_\n" +
 	"\x13unbridged_eth_ports\x18\xd8\b \x03(\v2..SpaceX.API.Device.WifiConfig.UnbridgedEthPortR\x11unbridgedEthPorts\x12:\n" +
-	"\x19apply_unbridged_eth_ports\x18\xd9\b \x01(\bR\x16applyUnbridgedEthPorts\x12\x10\n" +
+	"\x19apply_unbridged_eth_ports\x18\xd9\b \x01(\bR\x16applyUnbridgedEthPorts\x12:\n" +
+	"\x19disable_sandbox_fail_open\x18\xdb\b \x01(\bR\x16disableSandboxFailOpen\x12E\n" +
+	"\x1fapply_disable_sandbox_fail_open\x18\xdc\b \x01(\bR\x1bapplyDisableSandboxFailOpen\x12\x10\n" +
 	"\x03tag\x18N \x01(\rR\x03tag\x1a]\n" +
 	"\x10MeshConfigsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x123\n" +

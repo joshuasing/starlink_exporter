@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v6.31.1
-// source: spacex/api/satellites/network/ut_disablement_codes.proto
+// source: spacex_api/satellites/network/ut_disablement_codes.proto
 
 package network
 
@@ -156,7 +156,7 @@ var File_spacex_api_satellites_network_ut_disablement_codes_proto protoreflect.F
 
 const file_spacex_api_satellites_network_ut_disablement_codes_proto_rawDesc = "" +
 	"\n" +
-	"8spacex/api/satellites/network/ut_disablement_codes.proto\x12\x1dSpaceX.API.Satellites.Network*\xa3\x03\n" +
+	"8spacex_api/satellites/network/ut_disablement_codes.proto\x12\x1dSpaceX.API.Satellites.Network*\xa3\x03\n" +
 	"\x11UtDisablementCode\x12\x11\n" +
 	"\rUNKNOWN_STATE\x10\x00\x12\b\n" +
 	"\x04OKAY\x10\x01\x12\x15\n" +

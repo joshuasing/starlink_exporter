@@ -6033,12 +6033,14 @@ func (x *GetLocationRequest) GetSource() PositionSource {
 }
 
 type GetLocationResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Lla           *LLAPosition           `protobuf:"bytes,1,opt,name=lla,proto3" json:"lla,omitempty"`
-	SigmaM        float64                `protobuf:"fixed64,4,opt,name=sigma_m,json=sigmaM,proto3" json:"sigma_m,omitempty"`
-	Source        PositionSource         `protobuf:"varint,3,opt,name=source,proto3,enum=SpaceX.API.Device.PositionSource" json:"source,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	Lla                *LLAPosition           `protobuf:"bytes,1,opt,name=lla,proto3" json:"lla,omitempty"`
+	SigmaM             float64                `protobuf:"fixed64,4,opt,name=sigma_m,json=sigmaM,proto3" json:"sigma_m,omitempty"`
+	Source             PositionSource         `protobuf:"varint,3,opt,name=source,proto3,enum=SpaceX.API.Device.PositionSource" json:"source,omitempty"`
+	HorizontalSpeedMps float64                `protobuf:"fixed64,5,opt,name=horizontal_speed_mps,json=horizontalSpeedMps,proto3" json:"horizontal_speed_mps,omitempty"`
+	VerticalSpeedMps   float64                `protobuf:"fixed64,6,opt,name=vertical_speed_mps,json=verticalSpeedMps,proto3" json:"vertical_speed_mps,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 func (x *GetLocationResponse) Reset() {
@@ -6090,6 +6092,20 @@ func (x *GetLocationResponse) GetSource() PositionSource {
 		return x.Source
 	}
 	return PositionSource_AUTO
+}
+
+func (x *GetLocationResponse) GetHorizontalSpeedMps() float64 {
+	if x != nil {
+		return x.HorizontalSpeedMps
+	}
+	return 0
+}
+
+func (x *GetLocationResponse) GetVerticalSpeedMps() float64 {
+	if x != nil {
+		return x.VerticalSpeedMps
+	}
+	return 0
 }
 
 type DishSetEmcRequest struct {
@@ -8799,11 +8815,13 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\x13GetHeapDumpResponse\x12\x1b\n" +
 	"\theap_dump\x18\x01 \x01(\tR\bheapDump\"O\n" +
 	"\x12GetLocationRequest\x129\n" +
-	"\x06source\x18\x01 \x01(\x0e2!.SpaceX.API.Device.PositionSourceR\x06source\"\xa7\x01\n" +
+	"\x06source\x18\x01 \x01(\x0e2!.SpaceX.API.Device.PositionSourceR\x06source\"\x87\x02\n" +
 	"\x13GetLocationResponse\x120\n" +
 	"\x03lla\x18\x01 \x01(\v2\x1e.SpaceX.API.Device.LLAPositionR\x03lla\x12\x17\n" +
 	"\asigma_m\x18\x04 \x01(\x01R\x06sigmaM\x129\n" +
-	"\x06source\x18\x03 \x01(\x0e2!.SpaceX.API.Device.PositionSourceR\x06sourceJ\x04\b\x02\x10\x03R\x04ecef\"\x8b\b\n" +
+	"\x06source\x18\x03 \x01(\x0e2!.SpaceX.API.Device.PositionSourceR\x06source\x120\n" +
+	"\x14horizontal_speed_mps\x18\x05 \x01(\x01R\x12horizontalSpeedMps\x12,\n" +
+	"\x12vertical_speed_mps\x18\x06 \x01(\x01R\x10verticalSpeedMpsJ\x04\b\x02\x10\x03R\x04ecef\"\x8b\b\n" +
 	"\x11DishSetEmcRequest\x12\x14\n" +
 	"\x05theta\x18\x01 \x01(\x01R\x05theta\x12\x10\n" +
 	"\x03phi\x18\x02 \x01(\x01R\x03phi\x12\x17\n" +
