@@ -81,9 +81,11 @@ type UtPoPLinkReport struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SlotTimestamp *common.TimestampInfo  `protobuf:"bytes,1,opt,name=slot_timestamp,json=slotTimestamp,proto3" json:"slot_timestamp,omitempty"`
 	PopId         uint32                 `protobuf:"varint,2,opt,name=pop_id,json=popId,proto3" json:"pop_id,omitempty"`
-	PopRackId     uint32                 `protobuf:"varint,3,opt,name=pop_rack_id,json=popRackId,proto3" json:"pop_rack_id,omitempty"`
-	Stats         []*UtPoPLinkStats      `protobuf:"bytes,4,rep,name=stats,proto3" json:"stats,omitempty"`
-	PopVersion    string                 `protobuf:"bytes,5,opt,name=pop_version,json=popVersion,proto3" json:"pop_version,omitempty"`
+	// Deprecated: Marked as deprecated in spacex_api/telemetron/public/integrations/ut_pop_link_report.proto.
+	PopRackId     uint32            `protobuf:"varint,3,opt,name=pop_rack_id,json=popRackId,proto3" json:"pop_rack_id,omitempty"`
+	Stats         []*UtPoPLinkStats `protobuf:"bytes,4,rep,name=stats,proto3" json:"stats,omitempty"`
+	PopVersion    string            `protobuf:"bytes,5,opt,name=pop_version,json=popVersion,proto3" json:"pop_version,omitempty"`
+	InstanceIndex uint32            `protobuf:"varint,6,opt,name=instance_index,json=instanceIndex,proto3" json:"instance_index,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -132,6 +134,7 @@ func (x *UtPoPLinkReport) GetPopId() uint32 {
 	return 0
 }
 
+// Deprecated: Marked as deprecated in spacex_api/telemetron/public/integrations/ut_pop_link_report.proto.
 func (x *UtPoPLinkReport) GetPopRackId() uint32 {
 	if x != nil {
 		return x.PopRackId
@@ -151,6 +154,13 @@ func (x *UtPoPLinkReport) GetPopVersion() string {
 		return x.PopVersion
 	}
 	return ""
+}
+
+func (x *UtPoPLinkReport) GetInstanceIndex() uint32 {
+	if x != nil {
+		return x.InstanceIndex
+	}
+	return 0
 }
 
 type UtPoPLinkStats struct {
@@ -249,14 +259,15 @@ var File_spacex_api_telemetron_public_integrations_ut_pop_link_report_proto prot
 
 const file_spacex_api_telemetron_public_integrations_ut_pop_link_report_proto_rawDesc = "" +
 	"\n" +
-	"Bspacex_api/telemetron/public/integrations/ut_pop_link_report.proto\x12)SpaceX.API.Telemetron.Public.Integrations\x1a.spacex_api/telemetron/public/common/time.proto\"\x95\x02\n" +
+	"Bspacex_api/telemetron/public/integrations/ut_pop_link_report.proto\x12)SpaceX.API.Telemetron.Public.Integrations\x1a.spacex_api/telemetron/public/common/time.proto\"\xc0\x02\n" +
 	"\x0fUtPoPLinkReport\x12Y\n" +
 	"\x0eslot_timestamp\x18\x01 \x01(\v22.SpaceX.API.Telemetron.Public.Common.TimestampInfoR\rslotTimestamp\x12\x15\n" +
-	"\x06pop_id\x18\x02 \x01(\rR\x05popId\x12\x1e\n" +
-	"\vpop_rack_id\x18\x03 \x01(\rR\tpopRackId\x12O\n" +
+	"\x06pop_id\x18\x02 \x01(\rR\x05popId\x12\"\n" +
+	"\vpop_rack_id\x18\x03 \x01(\rB\x02\x18\x01R\tpopRackId\x12O\n" +
 	"\x05stats\x18\x04 \x03(\v29.SpaceX.API.Telemetron.Public.Integrations.UtPoPLinkStatsR\x05stats\x12\x1f\n" +
 	"\vpop_version\x18\x05 \x01(\tR\n" +
-	"popVersion\"\x9b\x03\n" +
+	"popVersion\x12%\n" +
+	"\x0einstance_index\x18\x06 \x01(\rR\rinstanceIndex\"\x9b\x03\n" +
 	"\x0eUtPoPLinkStats\x12g\n" +
 	"\x15measurement_timestamp\x18\x01 \x01(\v22.SpaceX.API.Telemetron.Public.Common.TimestampInfoR\x14measurementTimestamp\x12\x13\n" +
 	"\x05ut_id\x18\x02 \x01(\tR\x04utId\x12#\n" +

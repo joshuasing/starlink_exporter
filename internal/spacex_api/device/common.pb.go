@@ -176,6 +176,13 @@ const (
 	EventReason_EVENT_REASON_OUTAGE_NO_PINGS                 EventReason = 9
 	EventReason_EVENT_REASON_OUTAGE_SLEEPING                 EventReason = 10
 	EventReason_EVENT_REASON_OUTAGE_MOVING_WHILE_NOT_ALLOWED EventReason = 11
+	EventReason_EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS       EventReason = 12
+	EventReason_EVENT_REASON_ROUTER_FACTORY_RESET            EventReason = 13
+	EventReason_EVENT_REASON_ROUTER_REBOOT                   EventReason = 14
+	EventReason_EVENT_REASON_ROUTER_POWER_CYCLE              EventReason = 15
+	EventReason_EVENT_REASON_ROUTER_CONFIG_UPDATE            EventReason = 16
+	EventReason_EVENT_REASON_ROUTER_SOFTWARE_UPDATE          EventReason = 17
+	EventReason_EVENT_REASON_UNAUTHORIZED_USER               EventReason = 18
 )
 
 // Enum value maps for EventReason.
@@ -193,6 +200,13 @@ var (
 		9:  "EVENT_REASON_OUTAGE_NO_PINGS",
 		10: "EVENT_REASON_OUTAGE_SLEEPING",
 		11: "EVENT_REASON_OUTAGE_MOVING_WHILE_NOT_ALLOWED",
+		12: "EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS",
+		13: "EVENT_REASON_ROUTER_FACTORY_RESET",
+		14: "EVENT_REASON_ROUTER_REBOOT",
+		15: "EVENT_REASON_ROUTER_POWER_CYCLE",
+		16: "EVENT_REASON_ROUTER_CONFIG_UPDATE",
+		17: "EVENT_REASON_ROUTER_SOFTWARE_UPDATE",
+		18: "EVENT_REASON_UNAUTHORIZED_USER",
 	}
 	EventReason_value = map[string]int32{
 		"EVENT_REASON_UNKNOWN":                         0,
@@ -207,6 +221,13 @@ var (
 		"EVENT_REASON_OUTAGE_NO_PINGS":                 9,
 		"EVENT_REASON_OUTAGE_SLEEPING":                 10,
 		"EVENT_REASON_OUTAGE_MOVING_WHILE_NOT_ALLOWED": 11,
+		"EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS":       12,
+		"EVENT_REASON_ROUTER_FACTORY_RESET":            13,
+		"EVENT_REASON_ROUTER_REBOOT":                   14,
+		"EVENT_REASON_ROUTER_POWER_CYCLE":              15,
+		"EVENT_REASON_ROUTER_CONFIG_UPDATE":            16,
+		"EVENT_REASON_ROUTER_SOFTWARE_UPDATE":          17,
+		"EVENT_REASON_UNAUTHORIZED_USER":               18,
 	}
 )
 
@@ -1765,11 +1786,12 @@ func (*SoftwareUpdateResponse) Descriptor() ([]byte, []int) {
 }
 
 type EventLog struct {
-	state            protoimpl.MessageState `protogen:"open.v1"`
-	Events           []*UXEvent             `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
-	StartTimestampNs int64                  `protobuf:"varint,2,opt,name=start_timestamp_ns,json=startTimestampNs,proto3" json:"start_timestamp_ns,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	Events             []*UXEvent             `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
+	StartTimestampNs   int64                  `protobuf:"varint,2,opt,name=start_timestamp_ns,json=startTimestampNs,proto3" json:"start_timestamp_ns,omitempty"`
+	CurrentTimestampNs int64                  `protobuf:"varint,3,opt,name=current_timestamp_ns,json=currentTimestampNs,proto3" json:"current_timestamp_ns,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 func (x *EventLog) Reset() {
@@ -1812,6 +1834,13 @@ func (x *EventLog) GetEvents() []*UXEvent {
 func (x *EventLog) GetStartTimestampNs() int64 {
 	if x != nil {
 		return x.StartTimestampNs
+	}
+	return 0
+}
+
+func (x *EventLog) GetCurrentTimestampNs() int64 {
+	if x != nil {
+		return x.CurrentTimestampNs
 	}
 	return 0
 }
@@ -2218,10 +2247,11 @@ const file_spacex_api_device_common_proto_rawDesc = "" +
 	"\x04data\x18\x02 \x01(\fR\x04data\x12\x12\n" +
 	"\x04open\x18\x03 \x01(\bR\x04open\x12\x14\n" +
 	"\x05close\x18\x04 \x01(\bR\x05close\"\x18\n" +
-	"\x16SoftwareUpdateResponse\"l\n" +
+	"\x16SoftwareUpdateResponse\"\x9e\x01\n" +
 	"\bEventLog\x122\n" +
 	"\x06events\x18\x01 \x03(\v2\x1a.SpaceX.API.Device.UXEventR\x06events\x12,\n" +
-	"\x12start_timestamp_ns\x18\x02 \x01(\x03R\x10startTimestampNs\"\xce\x01\n" +
+	"\x12start_timestamp_ns\x18\x02 \x01(\x03R\x10startTimestampNs\x120\n" +
+	"\x14current_timestamp_ns\x18\x03 \x01(\x03R\x12currentTimestampNs\"\xce\x01\n" +
 	"\aUXEvent\x12<\n" +
 	"\bseverity\x18\x01 \x01(\x0e2 .SpaceX.API.Device.EventSeverityR\bseverity\x126\n" +
 	"\x06reason\x18\x02 \x01(\x0e2\x1e.SpaceX.API.Device.EventReasonR\x06reason\x12,\n" +
@@ -2252,7 +2282,7 @@ const file_spacex_api_device_common_proto_rawDesc = "" +
 	"\x16EVENT_SEVERITY_UNKNOWN\x10\x00\x12\x1a\n" +
 	"\x16EVENT_SEVERITY_WARNING\x10\x01\x12\x1a\n" +
 	"\x16EVENT_SEVERITY_CAUTION\x10\x02\x12\x1b\n" +
-	"\x17EVENT_SEVERITY_ADVISORY\x10\x03*\xb8\x03\n" +
+	"\x17EVENT_SEVERITY_ADVISORY\x10\x03*\xc4\x05\n" +
 	"\vEventReason\x12\x18\n" +
 	"\x14EVENT_REASON_UNKNOWN\x10\x00\x12\x1f\n" +
 	"\x1bEVENT_REASON_OUTAGE_UNKNOWN\x10\x01\x12\x1f\n" +
@@ -2266,7 +2296,14 @@ const file_spacex_api_device_common_proto_rawDesc = "" +
 	"\x1cEVENT_REASON_OUTAGE_NO_PINGS\x10\t\x12 \n" +
 	"\x1cEVENT_REASON_OUTAGE_SLEEPING\x10\n" +
 	"\x120\n" +
-	",EVENT_REASON_OUTAGE_MOVING_WHILE_NOT_ALLOWED\x10\vB\x17Z\x15spacex.com/api/deviceb\x06proto3"
+	",EVENT_REASON_OUTAGE_MOVING_WHILE_NOT_ALLOWED\x10\v\x12*\n" +
+	"&EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS\x10\f\x12%\n" +
+	"!EVENT_REASON_ROUTER_FACTORY_RESET\x10\r\x12\x1e\n" +
+	"\x1aEVENT_REASON_ROUTER_REBOOT\x10\x0e\x12#\n" +
+	"\x1fEVENT_REASON_ROUTER_POWER_CYCLE\x10\x0f\x12%\n" +
+	"!EVENT_REASON_ROUTER_CONFIG_UPDATE\x10\x10\x12'\n" +
+	"#EVENT_REASON_ROUTER_SOFTWARE_UPDATE\x10\x11\x12\"\n" +
+	"\x1eEVENT_REASON_UNAUTHORIZED_USER\x10\x12B\x17Z\x15spacex.com/api/deviceb\x06proto3"
 
 var (
 	file_spacex_api_device_common_proto_rawDescOnce sync.Once
