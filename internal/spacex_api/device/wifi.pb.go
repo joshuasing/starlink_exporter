@@ -1934,6 +1934,7 @@ type WifiGetHistoryResponse struct {
 	CloudflareIpv4PingDropRateLast_15S []float32                                             `protobuf:"fixed32,1007,rep,packed,name=cloudflare_ipv4_ping_drop_rate_last_15s,json=cloudflareIpv4PingDropRateLast15s,proto3" json:"cloudflare_ipv4_ping_drop_rate_last_15s,omitempty"`
 	CloudflareIpv6PingDropRateLast_15S []float32                                             `protobuf:"fixed32,1008,rep,packed,name=cloudflare_ipv6_ping_drop_rate_last_15s,json=cloudflareIpv6PingDropRateLast15s,proto3" json:"cloudflare_ipv6_ping_drop_rate_last_15s,omitempty"`
 	DnsResolverDropRate                map[string]*WifiGetHistoryResponse_DnsResolverHistory `protobuf:"bytes,1009,rep,name=dns_resolver_drop_rate,json=dnsResolverDropRate,proto3" json:"dns_resolver_drop_rate,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	EventLog                           *EventLog                                             `protobuf:"bytes,1010,opt,name=event_log,json=eventLog,proto3" json:"event_log,omitempty"`
 	unknownFields                      protoimpl.UnknownFields
 	sizeCache                          protoimpl.SizeCache
 }
@@ -2045,6 +2046,13 @@ func (x *WifiGetHistoryResponse) GetDnsResolverDropRate() map[string]*WifiGetHis
 	return nil
 }
 
+func (x *WifiGetHistoryResponse) GetEventLog() *EventLog {
+	if x != nil {
+		return x.EventLog
+	}
+	return nil
+}
+
 type WifiNewClientConnectedEvent struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Client        *WifiClient            `protobuf:"bytes,1,opt,name=client,proto3" json:"client,omitempty"`
@@ -2140,6 +2148,8 @@ type WifiClient struct {
 	CaptiveClientId              string                  `protobuf:"bytes,53,opt,name=captive_client_id,json=captiveClientId,proto3" json:"captive_client_id,omitempty"`
 	FqcodelInfo                  *WifiClient_FqcodelInfo `protobuf:"bytes,44,opt,name=fqcodel_info,json=fqcodelInfo,proto3" json:"fqcodel_info,omitempty"`
 	Alerts                       *WifiClient_Alerts      `protobuf:"bytes,52,opt,name=alerts,proto3" json:"alerts,omitempty"`
+	UploadMb                     uint32                  `protobuf:"varint,54,opt,name=upload_mb,json=uploadMb,proto3" json:"upload_mb,omitempty"`
+	DownloadMb                   uint32                  `protobuf:"varint,55,opt,name=download_mb,json=downloadMb,proto3" json:"download_mb,omitempty"`
 	unknownFields                protoimpl.UnknownFields
 	sizeCache                    protoimpl.SizeCache
 }
@@ -2515,6 +2525,20 @@ func (x *WifiClient) GetAlerts() *WifiClient_Alerts {
 		return x.Alerts
 	}
 	return nil
+}
+
+func (x *WifiClient) GetUploadMb() uint32 {
+	if x != nil {
+		return x.UploadMb
+	}
+	return 0
+}
+
+func (x *WifiClient) GetDownloadMb() uint32 {
+	if x != nil {
+		return x.DownloadMb
+	}
+	return 0
 }
 
 type WifiSetupRequest struct {
@@ -4201,6 +4225,20 @@ type StarlinkRoutersHourlyMetricsV2 struct {
 	ConfigNetworksHidden                    *wrapperspb.UInt32Value `protobuf:"bytes,1025,opt,name=config_networks_hidden,json=configNetworksHidden,proto3" json:"config_networks_hidden,omitempty"`
 	ConfigNetworksClientIsolation           *wrapperspb.UInt32Value `protobuf:"bytes,1026,opt,name=config_networks_client_isolation,json=configNetworksClientIsolation,proto3" json:"config_networks_client_isolation,omitempty"`
 	ConfigNetworksBandsSplit                *wrapperspb.UInt32Value `protobuf:"bytes,1027,opt,name=config_networks_bands_split,json=configNetworksBandsSplit,proto3" json:"config_networks_bands_split,omitempty"`
+	WifiReloadCount                         *wrapperspb.UInt32Value `protobuf:"bytes,1040,opt,name=wifi_reload_count,json=wifiReloadCount,proto3" json:"wifi_reload_count,omitempty"`
+	RadiusReloadCount                       *wrapperspb.UInt32Value `protobuf:"bytes,1041,opt,name=radius_reload_count,json=radiusReloadCount,proto3" json:"radius_reload_count,omitempty"`
+	OpensshReloadCount                      *wrapperspb.UInt32Value `protobuf:"bytes,1042,opt,name=openssh_reload_count,json=opensshReloadCount,proto3" json:"openssh_reload_count,omitempty"`
+	IptablesReloadCount                     *wrapperspb.UInt32Value `protobuf:"bytes,1043,opt,name=iptables_reload_count,json=iptablesReloadCount,proto3" json:"iptables_reload_count,omitempty"`
+	EbtablesReloadCount                     *wrapperspb.UInt32Value `protobuf:"bytes,1044,opt,name=ebtables_reload_count,json=ebtablesReloadCount,proto3" json:"ebtables_reload_count,omitempty"`
+	TrafficControlReloadCount               *wrapperspb.UInt32Value `protobuf:"bytes,1045,opt,name=traffic_control_reload_count,json=trafficControlReloadCount,proto3" json:"traffic_control_reload_count,omitempty"`
+	DhcpReloadCount                         *wrapperspb.UInt32Value `protobuf:"bytes,1046,opt,name=dhcp_reload_count,json=dhcpReloadCount,proto3" json:"dhcp_reload_count,omitempty"`
+	Dhcpv6ReloadCount                       *wrapperspb.UInt32Value `protobuf:"bytes,1047,opt,name=dhcpv6_reload_count,json=dhcpv6ReloadCount,proto3" json:"dhcpv6_reload_count,omitempty"`
+	SystemReloadCount                       *wrapperspb.UInt32Value `protobuf:"bytes,1048,opt,name=system_reload_count,json=systemReloadCount,proto3" json:"system_reload_count,omitempty"`
+	DnsReloadCount                          *wrapperspb.UInt32Value `protobuf:"bytes,1049,opt,name=dns_reload_count,json=dnsReloadCount,proto3" json:"dns_reload_count,omitempty"`
+	HttpsReloadCount                        *wrapperspb.UInt32Value `protobuf:"bytes,1050,opt,name=https_reload_count,json=httpsReloadCount,proto3" json:"https_reload_count,omitempty"`
+	BandSteeringReloadCount                 *wrapperspb.UInt32Value `protobuf:"bytes,1051,opt,name=band_steering_reload_count,json=bandSteeringReloadCount,proto3" json:"band_steering_reload_count,omitempty"`
+	CommitCount                             *wrapperspb.UInt32Value `protobuf:"bytes,1052,opt,name=commit_count,json=commitCount,proto3" json:"commit_count,omitempty"`
+	NetworkReloadCount                      *wrapperspb.UInt32Value `protobuf:"bytes,1053,opt,name=network_reload_count,json=networkReloadCount,proto3" json:"network_reload_count,omitempty"`
 	WanTrafficControlCakeBytes              *wrapperspb.Int64Value  `protobuf:"bytes,1101,opt,name=wan_traffic_control_cake_bytes,json=wanTrafficControlCakeBytes,proto3" json:"wan_traffic_control_cake_bytes,omitempty"`
 	WanTrafficControlCakePackets            *wrapperspb.Int64Value  `protobuf:"bytes,1102,opt,name=wan_traffic_control_cake_packets,json=wanTrafficControlCakePackets,proto3" json:"wan_traffic_control_cake_packets,omitempty"`
 	WanTrafficControlCakeDrops              *wrapperspb.Int64Value  `protobuf:"bytes,1103,opt,name=wan_traffic_control_cake_drops,json=wanTrafficControlCakeDrops,proto3" json:"wan_traffic_control_cake_drops,omitempty"`
@@ -5886,6 +5924,104 @@ func (x *StarlinkRoutersHourlyMetricsV2) GetConfigNetworksClientIsolation() *wra
 func (x *StarlinkRoutersHourlyMetricsV2) GetConfigNetworksBandsSplit() *wrapperspb.UInt32Value {
 	if x != nil {
 		return x.ConfigNetworksBandsSplit
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetWifiReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.WifiReloadCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetRadiusReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.RadiusReloadCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetOpensshReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.OpensshReloadCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetIptablesReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.IptablesReloadCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetEbtablesReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.EbtablesReloadCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetTrafficControlReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.TrafficControlReloadCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetDhcpReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.DhcpReloadCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetDhcpv6ReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.Dhcpv6ReloadCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetSystemReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.SystemReloadCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetDnsReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.DnsReloadCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetHttpsReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.HttpsReloadCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetBandSteeringReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.BandSteeringReloadCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetCommitCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.CommitCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetNetworkReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.NetworkReloadCount
 	}
 	return nil
 }
@@ -10451,7 +10587,7 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"LIMIT_NONE\x10\x01\x12\x16\n" +
 	"\x12LIMIT_UNCLASSIFIED\x10\x02\x12\x19\n" +
 	"\x15LIMIT_DROPPED_PACKETS\x10\x03\"!\n" +
-	"\x1fWifiSetAviationConformedRequest\"\xc4\a\n" +
+	"\x1fWifiSetAviationConformedRequest\"\xff\a\n" +
 	"\x16WifiGetHistoryResponse\x12\x18\n" +
 	"\acurrent\x18\x01 \x01(\x04R\acurrent\x12%\n" +
 	"\x0eping_drop_rate\x18\xe9\a \x03(\x02R\fpingDropRate\x12'\n" +
@@ -10463,14 +10599,15 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"#google_ipv6_ping_drop_rate_last_15s\x18\xee\a \x03(\x02R\x1dgoogleIpv6PingDropRateLast15s\x12S\n" +
 	"'cloudflare_ipv4_ping_drop_rate_last_15s\x18\xef\a \x03(\x02R!cloudflareIpv4PingDropRateLast15s\x12S\n" +
 	"'cloudflare_ipv6_ping_drop_rate_last_15s\x18\xf0\a \x03(\x02R!cloudflareIpv6PingDropRateLast15s\x12x\n" +
-	"\x16dns_resolver_drop_rate\x18\xf1\a \x03(\v2B.SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverDropRateEntryR\x13dnsResolverDropRate\x1a\x84\x01\n" +
+	"\x16dns_resolver_drop_rate\x18\xf1\a \x03(\v2B.SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverDropRateEntryR\x13dnsResolverDropRate\x129\n" +
+	"\tevent_log\x18\xf2\a \x01(\v2\x1b.SpaceX.API.Device.EventLogR\beventLog\x1a\x84\x01\n" +
 	"\x18DnsResolverDropRateEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12R\n" +
 	"\x05value\x18\x02 \x01(\v2<.SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverHistoryR\x05value:\x028\x01\x1aA\n" +
 	"\x12DnsResolverHistory\x12+\n" +
 	"\x12drop_rate_last_15s\x18\x02 \x03(\x02R\x0fdropRateLast15s\"T\n" +
 	"\x1bWifiNewClientConnectedEvent\x125\n" +
-	"\x06client\x18\x01 \x01(\v2\x1d.SpaceX.API.Device.WifiClientR\x06client\"\xb6\x1f\n" +
+	"\x06client\x18\x01 \x01(\v2\x1d.SpaceX.API.Device.WifiClientR\x06client\"\xf4\x1f\n" +
 	"\n" +
 	"WifiClient\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1d\n" +
@@ -10529,7 +10666,10 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\tclient_id\x18+ \x01(\rR\bclientId\x12*\n" +
 	"\x11captive_client_id\x185 \x01(\tR\x0fcaptiveClientId\x12L\n" +
 	"\ffqcodel_info\x18, \x01(\v2).SpaceX.API.Device.WifiClient.FqcodelInfoR\vfqcodelInfo\x12<\n" +
-	"\x06alerts\x184 \x01(\v2$.SpaceX.API.Device.WifiClient.AlertsR\x06alerts\x1a\xf9\x04\n" +
+	"\x06alerts\x184 \x01(\v2$.SpaceX.API.Device.WifiClient.AlertsR\x06alerts\x12\x1b\n" +
+	"\tupload_mb\x186 \x01(\rR\buploadMb\x12\x1f\n" +
+	"\vdownload_mb\x187 \x01(\rR\n" +
+	"downloadMb\x1a\xf9\x04\n" +
 	"\aRxStats\x12\x14\n" +
 	"\x05bytes\x18\x01 \x01(\x04R\x05bytes\x12!\n" +
 	"\fcount_errors\x18\x02 \x01(\x04R\vcountErrors\x12\x19\n" +
@@ -10751,7 +10891,7 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\x05rssi1\x18\x01 \x01(\x02R\x05rssi1\x12\x14\n" +
 	"\x05rssi2\x18\x02 \x01(\x02R\x05rssi2\x12\x14\n" +
 	"\x05rssi3\x18\x03 \x01(\x02R\x05rssi3\x12\x14\n" +
-	"\x05rssi4\x18\x04 \x01(\x02R\x05rssi4\"\xf1\xaf\x01\n" +
+	"\x05rssi4\x18\x04 \x01(\x02R\x05rssi4\"и\x01\n" +
 	"\"starlink_routers_hourly_metrics_v2\x12,\n" +
 	"\x02id\x18\x01 \x01(\v2\x1c.google.protobuf.StringValueR\x02id\x12C\n" +
 	"\x0etimestamp_date\x18\x02 \x01(\v2\x1c.google.protobuf.StringValueR\rtimestampDate\x12C\n" +
@@ -10993,7 +11133,21 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\x15config_networks_guest\x18\x80\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x13configNetworksGuest\x12S\n" +
 	"\x16config_networks_hidden\x18\x81\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x14configNetworksHidden\x12f\n" +
 	" config_networks_client_isolation\x18\x82\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x1dconfigNetworksClientIsolation\x12\\\n" +
-	"\x1bconfig_networks_bands_split\x18\x83\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x18configNetworksBandsSplit\x12`\n" +
+	"\x1bconfig_networks_bands_split\x18\x83\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x18configNetworksBandsSplit\x12I\n" +
+	"\x11wifi_reload_count\x18\x90\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x0fwifiReloadCount\x12M\n" +
+	"\x13radius_reload_count\x18\x91\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x11radiusReloadCount\x12O\n" +
+	"\x14openssh_reload_count\x18\x92\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x12opensshReloadCount\x12Q\n" +
+	"\x15iptables_reload_count\x18\x93\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x13iptablesReloadCount\x12Q\n" +
+	"\x15ebtables_reload_count\x18\x94\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x13ebtablesReloadCount\x12^\n" +
+	"\x1ctraffic_control_reload_count\x18\x95\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x19trafficControlReloadCount\x12I\n" +
+	"\x11dhcp_reload_count\x18\x96\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x0fdhcpReloadCount\x12M\n" +
+	"\x13dhcpv6_reload_count\x18\x97\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x11dhcpv6ReloadCount\x12M\n" +
+	"\x13system_reload_count\x18\x98\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x11systemReloadCount\x12G\n" +
+	"\x10dns_reload_count\x18\x99\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x0ednsReloadCount\x12K\n" +
+	"\x12https_reload_count\x18\x9a\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x10httpsReloadCount\x12Z\n" +
+	"\x1aband_steering_reload_count\x18\x9b\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x17bandSteeringReloadCount\x12@\n" +
+	"\fcommit_count\x18\x9c\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\vcommitCount\x12O\n" +
+	"\x14network_reload_count\x18\x9d\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x12networkReloadCount\x12`\n" +
 	"\x1ewan_traffic_control_cake_bytes\x18\xcd\b \x01(\v2\x1b.google.protobuf.Int64ValueR\x1awanTrafficControlCakeBytes\x12d\n" +
 	" wan_traffic_control_cake_packets\x18\xce\b \x01(\v2\x1b.google.protobuf.Int64ValueR\x1cwanTrafficControlCakePackets\x12`\n" +
 	"\x1ewan_traffic_control_cake_drops\x18\xcf\b \x01(\v2\x1b.google.protobuf.Int64ValueR\x1awanTrafficControlCakeDrops\x12g\n" +
@@ -11481,28 +11635,29 @@ var file_spacex_api_device_wifi_proto_goTypes = []any{
 	(*WifiConfig)(nil),                                  // 95: SpaceX.API.Device.WifiConfig
 	(MeshAuth)(0),                                       // 96: SpaceX.API.Device.MeshAuth
 	(*MeshConfig)(nil),                                  // 97: SpaceX.API.Device.MeshConfig
-	(*DeviceInfo)(nil),                                  // 98: SpaceX.API.Device.DeviceInfo
-	(*DeviceState)(nil),                                 // 99: SpaceX.API.Device.DeviceState
-	(*RadiusStatsMap)(nil),                              // 100: SpaceX.API.Device.RadiusStatsMap
-	(*DhcpServer)(nil),                                  // 101: SpaceX.API.Device.DhcpServer
-	(*PoeStats)(nil),                                    // 102: SpaceX.API.Device.PoeStats
-	(network.UtDisablementCode)(0),                      // 103: SpaceX.API.Satellites.Network.UtDisablementCode
-	(*WifiSoftwareUpdateStats)(nil),                     // 104: SpaceX.API.Device.WifiSoftwareUpdateStats
-	(*WifiSetupRequirement)(nil),                        // 105: SpaceX.API.Device.WifiSetupRequirement
-	(*SignedData)(nil),                                  // 106: SpaceX.API.Device.SignedData
-	(*ChallengeResponse)(nil),                           // 107: SpaceX.API.Device.ChallengeResponse
-	(WifiConfig_Band)(0),                                // 108: SpaceX.API.Device.WifiConfig.Band
-	(*NetworkInterface_RxStats)(nil),                    // 109: SpaceX.API.Device.NetworkInterface.RxStats
-	(*NetworkInterface_TxStats)(nil),                    // 110: SpaceX.API.Device.NetworkInterface.TxStats
-	(*wrapperspb.StringValue)(nil),                      // 111: google.protobuf.StringValue
-	(*wrapperspb.UInt32Value)(nil),                      // 112: google.protobuf.UInt32Value
-	(*common.TimestampInfo)(nil),                        // 113: SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	(*wrapperspb.BoolValue)(nil),                        // 114: google.protobuf.BoolValue
-	(*wrapperspb.FloatValue)(nil),                       // 115: google.protobuf.FloatValue
-	(*wrapperspb.Int32Value)(nil),                       // 116: google.protobuf.Int32Value
-	(*wrapperspb.Int64Value)(nil),                       // 117: google.protobuf.Int64Value
-	(*ClientName)(nil),                                  // 118: SpaceX.API.Device.ClientName
-	(*ClientConfig)(nil),                                // 119: SpaceX.API.Device.ClientConfig
+	(*EventLog)(nil),                                    // 98: SpaceX.API.Device.EventLog
+	(*DeviceInfo)(nil),                                  // 99: SpaceX.API.Device.DeviceInfo
+	(*DeviceState)(nil),                                 // 100: SpaceX.API.Device.DeviceState
+	(*RadiusStatsMap)(nil),                              // 101: SpaceX.API.Device.RadiusStatsMap
+	(*DhcpServer)(nil),                                  // 102: SpaceX.API.Device.DhcpServer
+	(*PoeStats)(nil),                                    // 103: SpaceX.API.Device.PoeStats
+	(network.UtDisablementCode)(0),                      // 104: SpaceX.API.Satellites.Network.UtDisablementCode
+	(*WifiSoftwareUpdateStats)(nil),                     // 105: SpaceX.API.Device.WifiSoftwareUpdateStats
+	(*WifiSetupRequirement)(nil),                        // 106: SpaceX.API.Device.WifiSetupRequirement
+	(*SignedData)(nil),                                  // 107: SpaceX.API.Device.SignedData
+	(*ChallengeResponse)(nil),                           // 108: SpaceX.API.Device.ChallengeResponse
+	(WifiConfig_Band)(0),                                // 109: SpaceX.API.Device.WifiConfig.Band
+	(*NetworkInterface_RxStats)(nil),                    // 110: SpaceX.API.Device.NetworkInterface.RxStats
+	(*NetworkInterface_TxStats)(nil),                    // 111: SpaceX.API.Device.NetworkInterface.TxStats
+	(*wrapperspb.StringValue)(nil),                      // 112: google.protobuf.StringValue
+	(*wrapperspb.UInt32Value)(nil),                      // 113: google.protobuf.UInt32Value
+	(*common.TimestampInfo)(nil),                        // 114: SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	(*wrapperspb.BoolValue)(nil),                        // 115: google.protobuf.BoolValue
+	(*wrapperspb.FloatValue)(nil),                       // 116: google.protobuf.FloatValue
+	(*wrapperspb.Int32Value)(nil),                       // 117: google.protobuf.Int32Value
+	(*wrapperspb.Int64Value)(nil),                       // 118: google.protobuf.Int64Value
+	(*ClientName)(nil),                                  // 119: SpaceX.API.Device.ClientName
+	(*ClientConfig)(nil),                                // 120: SpaceX.API.Device.ClientConfig
 }
 var file_spacex_api_device_wifi_proto_depIdxs = []int32{
 	33,  // 0: SpaceX.API.Device.WifiClients.clients:type_name -> SpaceX.API.Device.WifiClient
@@ -11538,552 +11693,567 @@ var file_spacex_api_device_wifi_proto_depIdxs = []int32{
 	33,  // 30: SpaceX.API.Device.WifiGetClientsResponse.clients:type_name -> SpaceX.API.Device.WifiClient
 	0,   // 31: SpaceX.API.Device.WifiGetClientHistoryResponse.throughput_limited:type_name -> SpaceX.API.Device.WifiGetClientHistoryResponse.WifiLimitedReason
 	81,  // 32: SpaceX.API.Device.WifiGetHistoryResponse.dns_resolver_drop_rate:type_name -> SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverDropRateEntry
-	33,  // 33: SpaceX.API.Device.WifiNewClientConnectedEvent.client:type_name -> SpaceX.API.Device.WifiClient
-	83,  // 34: SpaceX.API.Device.WifiClient.rx_stats:type_name -> SpaceX.API.Device.WifiClient.RxStats
-	84,  // 35: SpaceX.API.Device.WifiClient.tx_stats:type_name -> SpaceX.API.Device.WifiClient.TxStats
-	1,   // 36: SpaceX.API.Device.WifiClient.iface:type_name -> SpaceX.API.Device.WifiClient.Interface
-	2,   // 37: SpaceX.API.Device.WifiClient.role:type_name -> SpaceX.API.Device.WifiClient.Role
-	85,  // 38: SpaceX.API.Device.WifiClient.ping_metrics:type_name -> SpaceX.API.Device.WifiClient.PingMetrics
-	86,  // 39: SpaceX.API.Device.WifiClient.fqcodel_info:type_name -> SpaceX.API.Device.WifiClient.FqcodelInfo
-	87,  // 40: SpaceX.API.Device.WifiClient.alerts:type_name -> SpaceX.API.Device.WifiClient.Alerts
-	98,  // 41: SpaceX.API.Device.WifiGetStatusResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
-	99,  // 42: SpaceX.API.Device.WifiGetStatusResponse.device_state:type_name -> SpaceX.API.Device.DeviceState
-	36,  // 43: SpaceX.API.Device.WifiGetStatusResponse.rf_2ghz_status:type_name -> SpaceX.API.Device.WifiBandStatus
-	36,  // 44: SpaceX.API.Device.WifiGetStatusResponse.rf_5ghz_status:type_name -> SpaceX.API.Device.WifiBandStatus
-	37,  // 45: SpaceX.API.Device.WifiGetStatusResponse.alerts:type_name -> SpaceX.API.Device.WifiAlerts
-	95,  // 46: SpaceX.API.Device.WifiGetStatusResponse.config:type_name -> SpaceX.API.Device.WifiConfig
-	33,  // 47: SpaceX.API.Device.WifiGetStatusResponse.clients:type_name -> SpaceX.API.Device.WifiClient
-	100, // 48: SpaceX.API.Device.WifiGetStatusResponse.radius_stats:type_name -> SpaceX.API.Device.RadiusStatsMap
-	101, // 49: SpaceX.API.Device.WifiGetStatusResponse.dhcp_servers:type_name -> SpaceX.API.Device.DhcpServer
-	102, // 50: SpaceX.API.Device.WifiGetStatusResponse.poe_stats:type_name -> SpaceX.API.Device.PoeStats
-	103, // 51: SpaceX.API.Device.WifiGetStatusResponse.dish_disablement_code:type_name -> SpaceX.API.Satellites.Network.UtDisablementCode
-	104, // 52: SpaceX.API.Device.WifiGetStatusResponse.software_update_stats:type_name -> SpaceX.API.Device.WifiSoftwareUpdateStats
-	105, // 53: SpaceX.API.Device.WifiGetStatusResponse.setup_requirement:type_name -> SpaceX.API.Device.WifiSetupRequirement
-	106, // 54: SpaceX.API.Device.WifiAuthenticateRequest.challenge:type_name -> SpaceX.API.Device.SignedData
-	107, // 55: SpaceX.API.Device.WifiAuthenticateResponse.wifi:type_name -> SpaceX.API.Device.ChallengeResponse
-	107, // 56: SpaceX.API.Device.WifiAuthenticateResponse.dish:type_name -> SpaceX.API.Device.ChallengeResponse
-	43,  // 57: SpaceX.API.Device.WifiGetPingMetricsResponse.internet:type_name -> SpaceX.API.Device.PingMetrics
-	3,   // 58: SpaceX.API.Device.WifiNetwork.band:type_name -> SpaceX.API.Device.WifiNetwork.Band
-	88,  // 59: SpaceX.API.Device.WifiPersistentStats.factory_reset_button:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
-	88,  // 60: SpaceX.API.Device.WifiPersistentStats.factory_reset_plug_unplug:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
-	88,  // 61: SpaceX.API.Device.WifiPersistentStats.factory_reset_command:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
-	88,  // 62: SpaceX.API.Device.WifiPersistentStats.factory_reset_failed_load_wifi_config:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
-	88,  // 63: SpaceX.API.Device.WifiPersistentStats.reboot_from_software_update:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
-	47,  // 64: SpaceX.API.Device.WifiGetPersistentStatsResponse.stats:type_name -> SpaceX.API.Device.WifiPersistentStats
-	108, // 65: SpaceX.API.Device.RadioStats.band:type_name -> SpaceX.API.Device.WifiConfig.Band
-	109, // 66: SpaceX.API.Device.RadioStats.rx_stats:type_name -> SpaceX.API.Device.NetworkInterface.RxStats
-	110, // 67: SpaceX.API.Device.RadioStats.tx_stats:type_name -> SpaceX.API.Device.NetworkInterface.TxStats
-	89,  // 68: SpaceX.API.Device.RadioStats.thermal_status:type_name -> SpaceX.API.Device.RadioStats.ThermalStatus
-	90,  // 69: SpaceX.API.Device.RadioStats.antenna_status:type_name -> SpaceX.API.Device.RadioStats.AntennaStatus
-	111, // 70: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.id:type_name -> google.protobuf.StringValue
-	111, // 71: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.timestamp_date:type_name -> google.protobuf.StringValue
-	112, // 72: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.timestamp_hour:type_name -> google.protobuf.UInt32Value
-	113, // 73: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.timestamp:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	112, // 74: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_hw_gen:type_name -> google.protobuf.UInt32Value
-	111, // 75: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_sw:type_name -> google.protobuf.StringValue
-	111, // 76: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_country:type_name -> google.protobuf.StringValue
-	114, // 77: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_is_dev:type_name -> google.protobuf.BoolValue
-	112, // 78: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_alloc_fds:type_name -> google.protobuf.UInt32Value
-	115, // 79: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_cpu_usage:type_name -> google.protobuf.FloatValue
-	115, // 80: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_mem_free_kb:type_name -> google.protobuf.FloatValue
-	116, // 81: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_bootcount:type_name -> google.protobuf.Int32Value
-	114, // 82: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_partitions_equal:type_name -> google.protobuf.BoolValue
-	112, // 83: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_uptime_seconds:type_name -> google.protobuf.UInt32Value
-	116, // 84: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_anti_rollback_version:type_name -> google.protobuf.Int32Value
-	114, // 85: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_is_witl:type_name -> google.protobuf.BoolValue
-	114, // 86: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_is_aviation_conformed:type_name -> google.protobuf.BoolValue
-	112, // 87: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_ubi_max_ec:type_name -> google.protobuf.UInt32Value
-	112, // 88: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_ubi_bad_peb:type_name -> google.protobuf.UInt32Value
-	112, // 89: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_board_rev:type_name -> google.protobuf.UInt32Value
-	112, // 90: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_channel:type_name -> google.protobuf.UInt32Value
-	115, // 91: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
-	115, // 92: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
-	115, // 93: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
-	115, // 94: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna4_rssi:type_name -> google.protobuf.FloatValue
-	115, // 95: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna1_tssi:type_name -> google.protobuf.FloatValue
-	115, // 96: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna2_tssi:type_name -> google.protobuf.FloatValue
-	115, // 97: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna3_tssi:type_name -> google.protobuf.FloatValue
-	115, // 98: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna4_tssi:type_name -> google.protobuf.FloatValue
-	112, // 99: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_iface_count:type_name -> google.protobuf.UInt32Value
-	115, // 100: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
-	115, // 101: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
-	115, // 102: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
-	117, // 103: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_bytes:type_name -> google.protobuf.Int64Value
-	117, // 104: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_packets:type_name -> google.protobuf.Int64Value
-	117, // 105: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_errors:type_name -> google.protobuf.Int64Value
-	117, // 106: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_frame_errors:type_name -> google.protobuf.Int64Value
-	115, // 107: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	115, // 108: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	117, // 109: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_bytes:type_name -> google.protobuf.Int64Value
-	117, // 110: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_packets:type_name -> google.protobuf.Int64Value
-	117, // 111: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_errors:type_name -> google.protobuf.Int64Value
-	115, // 112: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	115, // 113: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	112, // 114: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_channel:type_name -> google.protobuf.UInt32Value
-	115, // 115: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
-	115, // 116: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
-	115, // 117: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
-	115, // 118: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna4_rssi:type_name -> google.protobuf.FloatValue
-	115, // 119: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna1_tssi:type_name -> google.protobuf.FloatValue
-	115, // 120: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna2_tssi:type_name -> google.protobuf.FloatValue
-	115, // 121: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna3_tssi:type_name -> google.protobuf.FloatValue
-	115, // 122: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna4_tssi:type_name -> google.protobuf.FloatValue
-	112, // 123: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_iface_count:type_name -> google.protobuf.UInt32Value
-	115, // 124: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
-	115, // 125: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
-	115, // 126: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
-	117, // 127: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_bytes:type_name -> google.protobuf.Int64Value
-	117, // 128: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_packets:type_name -> google.protobuf.Int64Value
-	117, // 129: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_errors:type_name -> google.protobuf.Int64Value
-	117, // 130: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_frame_errors:type_name -> google.protobuf.Int64Value
-	115, // 131: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	115, // 132: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	117, // 133: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_bytes:type_name -> google.protobuf.Int64Value
-	117, // 134: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_packets:type_name -> google.protobuf.Int64Value
-	117, // 135: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_errors:type_name -> google.protobuf.Int64Value
-	115, // 136: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	115, // 137: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	112, // 138: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_channel:type_name -> google.protobuf.UInt32Value
-	115, // 139: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna1_rssi:type_name -> google.protobuf.FloatValue
-	115, // 140: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna2_rssi:type_name -> google.protobuf.FloatValue
-	115, // 141: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna3_rssi:type_name -> google.protobuf.FloatValue
-	115, // 142: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna4_rssi:type_name -> google.protobuf.FloatValue
-	115, // 143: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna1_tssi:type_name -> google.protobuf.FloatValue
-	115, // 144: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna2_tssi:type_name -> google.protobuf.FloatValue
-	115, // 145: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna3_tssi:type_name -> google.protobuf.FloatValue
-	115, // 146: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna4_tssi:type_name -> google.protobuf.FloatValue
-	112, // 147: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_iface_count:type_name -> google.protobuf.UInt32Value
-	115, // 148: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_chan_busy_fraction:type_name -> google.protobuf.FloatValue
-	115, // 149: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_edcca_fraction:type_name -> google.protobuf.FloatValue
-	115, // 150: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
-	117, // 151: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_bytes:type_name -> google.protobuf.Int64Value
-	117, // 152: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_packets:type_name -> google.protobuf.Int64Value
-	117, // 153: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_errors:type_name -> google.protobuf.Int64Value
-	117, // 154: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_frame_errors:type_name -> google.protobuf.Int64Value
-	115, // 155: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	115, // 156: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	117, // 157: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_bytes:type_name -> google.protobuf.Int64Value
-	117, // 158: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_packets:type_name -> google.protobuf.Int64Value
-	117, // 159: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_errors:type_name -> google.protobuf.Int64Value
-	115, // 160: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	115, // 161: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	115, // 162: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_thermal_temp:type_name -> google.protobuf.FloatValue
-	115, // 163: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_thermal_temp:type_name -> google.protobuf.FloatValue
-	115, // 164: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_thermal_temp:type_name -> google.protobuf.FloatValue
-	115, // 165: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
-	115, // 166: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
-	115, // 167: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
-	112, // 168: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
-	112, // 169: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
-	112, // 170: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
-	115, // 171: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.board_temp:type_name -> google.protobuf.FloatValue
-	115, // 172: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.poe_mcu_die_temp:type_name -> google.protobuf.FloatValue
-	115, // 173: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.poe_percent_water_detect_avg:type_name -> google.protobuf.FloatValue
-	117, // 174: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_bytes:type_name -> google.protobuf.Int64Value
-	117, // 175: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_packets:type_name -> google.protobuf.Int64Value
-	117, // 176: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_errors:type_name -> google.protobuf.Int64Value
-	117, // 177: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_frame_errors:type_name -> google.protobuf.Int64Value
-	117, // 178: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_tx_bytes:type_name -> google.protobuf.Int64Value
-	117, // 179: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_tx_packets:type_name -> google.protobuf.Int64Value
-	117, // 180: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_tx_errors:type_name -> google.protobuf.Int64Value
-	117, // 181: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_bytes:type_name -> google.protobuf.Int64Value
-	117, // 182: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_packets:type_name -> google.protobuf.Int64Value
-	117, // 183: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_errors:type_name -> google.protobuf.Int64Value
-	117, // 184: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_frame_errors:type_name -> google.protobuf.Int64Value
-	117, // 185: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_tx_bytes:type_name -> google.protobuf.Int64Value
-	117, // 186: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_tx_packets:type_name -> google.protobuf.Int64Value
-	117, // 187: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_tx_errors:type_name -> google.protobuf.Int64Value
-	117, // 188: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_bytes:type_name -> google.protobuf.Int64Value
-	117, // 189: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_packets:type_name -> google.protobuf.Int64Value
-	117, // 190: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_errors:type_name -> google.protobuf.Int64Value
-	117, // 191: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_frame_errors:type_name -> google.protobuf.Int64Value
-	117, // 192: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_tx_bytes:type_name -> google.protobuf.Int64Value
-	117, // 193: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_tx_packets:type_name -> google.protobuf.Int64Value
-	117, // 194: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_tx_errors:type_name -> google.protobuf.Int64Value
-	112, // 195: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients:type_name -> google.protobuf.UInt32Value
-	112, // 196: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_2ghz:type_name -> google.protobuf.UInt32Value
-	112, // 197: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz:type_name -> google.protobuf.UInt32Value
-	112, // 198: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_high:type_name -> google.protobuf.UInt32Value
-	112, // 199: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_eth:type_name -> google.protobuf.UInt32Value
-	112, // 200: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_rx_bandwidth_20mhz:type_name -> google.protobuf.UInt32Value
-	112, // 201: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_rx_bandwidth_40mhz:type_name -> google.protobuf.UInt32Value
-	112, // 202: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_rx_bandwidth_80mhz:type_name -> google.protobuf.UInt32Value
-	112, // 203: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater:type_name -> google.protobuf.UInt32Value
-	112, // 204: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_2ghz:type_name -> google.protobuf.UInt32Value
-	112, // 205: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_5ghz:type_name -> google.protobuf.UInt32Value
-	112, // 206: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_5ghz_high:type_name -> google.protobuf.UInt32Value
-	112, // 207: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_eth:type_name -> google.protobuf.UInt32Value
-	112, // 208: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_hops:type_name -> google.protobuf.UInt32Value
-	115, // 209: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_one_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
-	115, // 210: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_one_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
-	115, // 211: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_one_hop_rssi_avg_5ghz_high:type_name -> google.protobuf.FloatValue
-	115, // 212: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_two_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
-	115, // 213: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_two_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
-	115, // 214: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_two_hop_rssi_avg_5ghz_high:type_name -> google.protobuf.FloatValue
-	115, // 215: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_tx_rate_mbps_min:type_name -> google.protobuf.FloatValue
-	115, // 216: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_rx_rate_mbps_min:type_name -> google.protobuf.FloatValue
-	115, // 217: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_tx_rate_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 218: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_rx_rate_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 219: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_2s_outage_min:type_name -> google.protobuf.FloatValue
-	115, // 220: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_5s_outage_min:type_name -> google.protobuf.FloatValue
-	115, // 221: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_2s_outage_avg:type_name -> google.protobuf.FloatValue
-	115, // 222: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_5s_outage_avg:type_name -> google.protobuf.FloatValue
-	115, // 223: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_latency_ms_1h_max:type_name -> google.protobuf.FloatValue
-	115, // 224: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_latency_ms_1h_avg:type_name -> google.protobuf.FloatValue
-	112, // 225: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_topology_change_count_1d:type_name -> google.protobuf.UInt32Value
-	115, // 226: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
-	115, // 227: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
-	115, // 228: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
-	115, // 229: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
-	115, // 230: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
-	115, // 231: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_drop_rate:type_name -> google.protobuf.FloatValue
-	115, // 232: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
-	115, // 233: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_latency:type_name -> google.protobuf.FloatValue
-	115, // 234: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_latency_last_1h:type_name -> google.protobuf.FloatValue
-	115, // 235: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
-	115, // 236: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
-	115, // 237: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
-	115, // 238: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
-	115, // 239: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
-	115, // 240: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_drop_rate:type_name -> google.protobuf.FloatValue
-	115, // 241: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
-	115, // 242: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_latency:type_name -> google.protobuf.FloatValue
-	115, // 243: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_latency_last_1h:type_name -> google.protobuf.FloatValue
-	115, // 244: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_pop_ipv6_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
-	115, // 245: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_pop_ipv6_latency_last_1h:type_name -> google.protobuf.FloatValue
-	115, // 246: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_router_download_mbps:type_name -> google.protobuf.FloatValue
-	115, // 247: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_router_upload_mbps:type_name -> google.protobuf.FloatValue
-	115, // 248: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_router_rssi:type_name -> google.protobuf.FloatValue
-	115, // 249: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_wifi_download_mbps:type_name -> google.protobuf.FloatValue
-	115, // 250: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_wifi_upload_mbps:type_name -> google.protobuf.FloatValue
-	115, // 251: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_download_mbps:type_name -> google.protobuf.FloatValue
-	115, // 252: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_upload_mbps:type_name -> google.protobuf.FloatValue
-	115, // 253: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_rssi:type_name -> google.protobuf.FloatValue
-	112, // 254: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_iface:type_name -> google.protobuf.UInt32Value
-	111, // 255: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_oui:type_name -> google.protobuf.StringValue
-	112, // 256: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_tx_rate:type_name -> google.protobuf.UInt32Value
-	112, // 257: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_rx_rate:type_name -> google.protobuf.UInt32Value
-	112, // 258: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_platform_type:type_name -> google.protobuf.UInt32Value
-	115, // 259: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 260: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_download_mbps_max:type_name -> google.protobuf.FloatValue
-	115, // 261: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 262: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_max:type_name -> google.protobuf.FloatValue
-	115, // 263: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 264: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_download_mbps_max:type_name -> google.protobuf.FloatValue
-	115, // 265: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 266: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_max:type_name -> google.protobuf.FloatValue
-	115, // 267: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 268: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_download_mbps_max:type_name -> google.protobuf.FloatValue
-	115, // 269: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 270: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_upload_mbps_max:type_name -> google.protobuf.FloatValue
-	112, // 271: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dish_cell_id:type_name -> google.protobuf.UInt32Value
-	114, // 272: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_setup_complete:type_name -> google.protobuf.BoolValue
-	114, // 273: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_bands_split:type_name -> google.protobuf.BoolValue
-	114, // 274: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_repeater:type_name -> google.protobuf.BoolValue
-	114, // 275: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_open_network:type_name -> google.protobuf.BoolValue
-	114, // 276: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_aviation:type_name -> google.protobuf.BoolValue
-	114, // 277: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_secure_dns:type_name -> google.protobuf.BoolValue
-	114, // 278: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_legacy:type_name -> google.protobuf.BoolValue
-	114, // 279: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_ap_mode:type_name -> google.protobuf.BoolValue
-	114, // 280: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_dfs_enabled:type_name -> google.protobuf.BoolValue
-	114, // 281: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_network_name_is_default:type_name -> google.protobuf.BoolValue
-	114, // 282: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_remote_ssh_enabled:type_name -> google.protobuf.BoolValue
-	114, // 283: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_repeater_wired:type_name -> google.protobuf.BoolValue
-	114, // 284: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_repeater_wireless:type_name -> google.protobuf.BoolValue
-	112, // 285: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_block_schedules_set:type_name -> google.protobuf.UInt32Value
-	114, // 286: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_custom_nameservers:type_name -> google.protobuf.BoolValue
-	114, // 287: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_mesh_onboarding:type_name -> google.protobuf.BoolValue
-	114, // 288: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_pin_country_code:type_name -> google.protobuf.BoolValue
-	114, // 289: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_update_reboot:type_name -> google.protobuf.BoolValue
-	114, // 290: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_https_content_hosting_enabled:type_name -> google.protobuf.BoolValue
-	114, // 291: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_only_overflight_blocking_enabled:type_name -> google.protobuf.BoolValue
-	114, // 292: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_offline_networks_disablement_enabled:type_name -> google.protobuf.BoolValue
-	114, // 293: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_2ghz:type_name -> google.protobuf.BoolValue
-	114, // 294: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_5ghz:type_name -> google.protobuf.BoolValue
-	114, // 295: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_5ghz_high:type_name -> google.protobuf.BoolValue
-	112, // 296: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_channel_2ghz:type_name -> google.protobuf.UInt32Value
-	112, // 297: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_channel_5ghz:type_name -> google.protobuf.UInt32Value
-	112, // 298: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_channel_5ghz_high:type_name -> google.protobuf.UInt32Value
-	112, // 299: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks:type_name -> google.protobuf.UInt32Value
-	112, // 300: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_guest:type_name -> google.protobuf.UInt32Value
-	112, // 301: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_hidden:type_name -> google.protobuf.UInt32Value
-	112, // 302: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_client_isolation:type_name -> google.protobuf.UInt32Value
-	112, // 303: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_bands_split:type_name -> google.protobuf.UInt32Value
-	117, // 304: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_bytes:type_name -> google.protobuf.Int64Value
-	117, // 305: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_packets:type_name -> google.protobuf.Int64Value
-	117, // 306: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_drops:type_name -> google.protobuf.Int64Value
-	117, // 307: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_ack_drops:type_name -> google.protobuf.Int64Value
-	112, // 308: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.conntrack_entries:type_name -> google.protobuf.UInt32Value
-	112, // 309: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_eq_0:type_name -> google.protobuf.UInt32Value
-	112, // 310: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_0:type_name -> google.protobuf.UInt32Value
-	112, // 311: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_10:type_name -> google.protobuf.UInt32Value
-	112, // 312: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_30:type_name -> google.protobuf.UInt32Value
-	112, // 313: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_60:type_name -> google.protobuf.UInt32Value
-	112, // 314: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards:type_name -> google.protobuf.UInt32Value
-	112, // 315: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_success:type_name -> google.protobuf.UInt32Value
-	112, // 316: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_server_failure:type_name -> google.protobuf.UInt32Value
-	112, // 317: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_no_server_response:type_name -> google.protobuf.UInt32Value
-	112, // 318: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_success_on_default_backup:type_name -> google.protobuf.UInt32Value
-	112, // 319: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_dropped:type_name -> google.protobuf.UInt32Value
-	112, // 320: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_with_backup:type_name -> google.protobuf.UInt32Value
-	113, // 321: SpaceX.API.Device.starlink_router_alerts.start:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	113, // 322: SpaceX.API.Device.starlink_router_alerts.end:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	113, // 323: SpaceX.API.Device.starlink_router_client_speedtests.data_record:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	111, // 324: SpaceX.API.Device.starlink_router_client_speedtests.speedtest_id:type_name -> google.protobuf.StringValue
-	115, // 325: SpaceX.API.Device.starlink_router_client_speedtests.client_rssi:type_name -> google.protobuf.FloatValue
-	115, // 326: SpaceX.API.Device.starlink_router_client_speedtests.router_rssi:type_name -> google.protobuf.FloatValue
-	112, // 327: SpaceX.API.Device.starlink_router_client_speedtests.client_iface:type_name -> google.protobuf.UInt32Value
-	111, // 328: SpaceX.API.Device.starlink_router_client_speedtests.client_oui:type_name -> google.protobuf.StringValue
-	112, // 329: SpaceX.API.Device.starlink_router_client_speedtests.client_tx_rate:type_name -> google.protobuf.UInt32Value
-	112, // 330: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_rate:type_name -> google.protobuf.UInt32Value
-	111, // 331: SpaceX.API.Device.starlink_router_client_speedtests.client_platform_type:type_name -> google.protobuf.StringValue
-	111, // 332: SpaceX.API.Device.starlink_router_client_speedtests.client_app_version:type_name -> google.protobuf.StringValue
-	112, // 333: SpaceX.API.Device.starlink_router_client_speedtests.client_app_build:type_name -> google.protobuf.UInt32Value
-	112, // 334: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_phy_mode:type_name -> google.protobuf.UInt32Value
-	112, // 335: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_spatial_streams:type_name -> google.protobuf.UInt32Value
-	112, // 336: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_mcs:type_name -> google.protobuf.UInt32Value
-	113, // 337: SpaceX.API.Device.starlink_router_client_speedtests.client_download_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	113, // 338: SpaceX.API.Device.starlink_router_client_speedtests.client_upload_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	115, // 339: SpaceX.API.Device.starlink_router_client_speedtests.client_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 340: SpaceX.API.Device.starlink_router_client_speedtests.client_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	111, // 341: SpaceX.API.Device.starlink_router_client_speedtests.client_target:type_name -> google.protobuf.StringValue
-	112, // 342: SpaceX.API.Device.starlink_router_client_speedtests.client_tcp_streams:type_name -> google.protobuf.UInt32Value
-	113, // 343: SpaceX.API.Device.starlink_router_client_speedtests.router_download_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	113, // 344: SpaceX.API.Device.starlink_router_client_speedtests.router_upload_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	115, // 345: SpaceX.API.Device.starlink_router_client_speedtests.router_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 346: SpaceX.API.Device.starlink_router_client_speedtests.router_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	111, // 347: SpaceX.API.Device.starlink_router_client_speedtests.router_target:type_name -> google.protobuf.StringValue
-	112, // 348: SpaceX.API.Device.starlink_router_client_speedtests.router_tcp_streams:type_name -> google.protobuf.UInt32Value
-	113, // 349: SpaceX.API.Device.starlink_router_client_speedtests.wifi_download_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	113, // 350: SpaceX.API.Device.starlink_router_client_speedtests.wifi_upload_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	115, // 351: SpaceX.API.Device.starlink_router_client_speedtests.wifi_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 352: SpaceX.API.Device.starlink_router_client_speedtests.wifi_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	113, // 353: SpaceX.API.Device.StarlinkRouterClients.timestamp:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	111, // 354: SpaceX.API.Device.StarlinkRouterClients.router_hw:type_name -> google.protobuf.StringValue
-	111, // 355: SpaceX.API.Device.StarlinkRouterClients.router_sw:type_name -> google.protobuf.StringValue
-	112, // 356: SpaceX.API.Device.StarlinkRouterClients.router_uptime_s:type_name -> google.protobuf.UInt32Value
-	111, // 357: SpaceX.API.Device.StarlinkRouterClients.client_router_id:type_name -> google.protobuf.StringValue
-	111, // 358: SpaceX.API.Device.StarlinkRouterClients.client_hw:type_name -> google.protobuf.StringValue
-	111, // 359: SpaceX.API.Device.StarlinkRouterClients.client_sw:type_name -> google.protobuf.StringValue
-	111, // 360: SpaceX.API.Device.StarlinkRouterClients.oui:type_name -> google.protobuf.StringValue
-	111, // 361: SpaceX.API.Device.StarlinkRouterClients.upstream_id:type_name -> google.protobuf.StringValue
-	114, // 362: SpaceX.API.Device.StarlinkRouterClients.is_repeater:type_name -> google.protobuf.BoolValue
-	112, // 363: SpaceX.API.Device.StarlinkRouterClients.connected_s:type_name -> google.protobuf.UInt32Value
-	111, // 364: SpaceX.API.Device.StarlinkRouterClients.interface:type_name -> google.protobuf.StringValue
-	112, // 365: SpaceX.API.Device.StarlinkRouterClients.radio_channel:type_name -> google.protobuf.UInt32Value
-	115, // 366: SpaceX.API.Device.StarlinkRouterClients.rssi:type_name -> google.protobuf.FloatValue
-	112, // 367: SpaceX.API.Device.StarlinkRouterClients.rx_mcs:type_name -> google.protobuf.UInt32Value
-	112, // 368: SpaceX.API.Device.StarlinkRouterClients.tx_mcs:type_name -> google.protobuf.UInt32Value
-	112, // 369: SpaceX.API.Device.StarlinkRouterClients.rx_rate:type_name -> google.protobuf.UInt32Value
-	112, // 370: SpaceX.API.Device.StarlinkRouterClients.tx_rate:type_name -> google.protobuf.UInt32Value
-	112, // 371: SpaceX.API.Device.StarlinkRouterClients.rx_bandwidth:type_name -> google.protobuf.UInt32Value
-	112, // 372: SpaceX.API.Device.StarlinkRouterClients.rx_spatial_streams:type_name -> google.protobuf.UInt32Value
-	112, // 373: SpaceX.API.Device.StarlinkRouterClients.rx_phy_mode:type_name -> google.protobuf.UInt32Value
-	112, // 374: SpaceX.API.Device.StarlinkRouterClients.mesh_hops:type_name -> google.protobuf.UInt32Value
-	115, // 375: SpaceX.API.Device.StarlinkRouterClients.speedtest_upload_mbps:type_name -> google.protobuf.FloatValue
-	115, // 376: SpaceX.API.Device.StarlinkRouterClients.speedtest_download_mbps:type_name -> google.protobuf.FloatValue
-	115, // 377: SpaceX.API.Device.StarlinkRouterClients.site_survey_rssi:type_name -> google.protobuf.FloatValue
-	115, // 378: SpaceX.API.Device.StarlinkRouterClients.site_survey_est_rx_rate:type_name -> google.protobuf.FloatValue
-	112, // 379: SpaceX.API.Device.StarlinkRouterClients.est_controller_throughput_mbps:type_name -> google.protobuf.UInt32Value
-	115, // 380: SpaceX.API.Device.StarlinkRouterClients.ping_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
-	115, // 381: SpaceX.API.Device.StarlinkRouterClients.ping_latency_last_1h:type_name -> google.protobuf.FloatValue
-	111, // 382: SpaceX.API.Device.StarlinkRouterClients.steer_state:type_name -> google.protobuf.StringValue
-	114, // 383: SpaceX.API.Device.StarlinkRouterClients.blocked:type_name -> google.protobuf.BoolValue
-	113, // 384: SpaceX.API.Device.StarlinkRouterClients.throughput_limited_last_fired:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	114, // 385: SpaceX.API.Device.StarlinkRouterClients.has_dhcp_v4_lease:type_name -> google.protobuf.BoolValue
-	111, // 386: SpaceX.API.Device.StarlinkRouterClients.ipv4_address:type_name -> google.protobuf.StringValue
-	114, // 387: SpaceX.API.Device.StarlinkRouterClients.has_hostname:type_name -> google.protobuf.BoolValue
-	114, // 388: SpaceX.API.Device.StarlinkRouterClients.dhcp_v4_lease_is_active:type_name -> google.protobuf.BoolValue
-	114, // 389: SpaceX.API.Device.StarlinkRouterClients.dhcp_v4_lease_was_renewed:type_name -> google.protobuf.BoolValue
-	115, // 390: SpaceX.API.Device.StarlinkRouterClients.seconds_until_dhcp_v4_lease_expires:type_name -> google.protobuf.FloatValue
-	112, // 391: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_10s:type_name -> google.protobuf.UInt32Value
-	112, // 392: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_30s:type_name -> google.protobuf.UInt32Value
-	112, // 393: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_60s:type_name -> google.protobuf.UInt32Value
-	112, // 394: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_120s:type_name -> google.protobuf.UInt32Value
-	115, // 395: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_tcp_ipv4:type_name -> google.protobuf.FloatValue
-	115, // 396: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_tcp_ipv6:type_name -> google.protobuf.FloatValue
-	115, // 397: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_udp_ipv4:type_name -> google.protobuf.FloatValue
-	115, // 398: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_udp_ipv6:type_name -> google.protobuf.FloatValue
-	112, // 399: SpaceX.API.Device.StarlinkRouterClients.flows_tcp_ipv4:type_name -> google.protobuf.UInt32Value
-	112, // 400: SpaceX.API.Device.StarlinkRouterClients.flows_tcp_ipv6:type_name -> google.protobuf.UInt32Value
-	112, // 401: SpaceX.API.Device.StarlinkRouterClients.flows_udp_ipv4:type_name -> google.protobuf.UInt32Value
-	112, // 402: SpaceX.API.Device.StarlinkRouterClients.flows_udp_ipv6:type_name -> google.protobuf.UInt32Value
-	113, // 403: SpaceX.API.Device.StarlinkRouterClientTesterRun.timestamp:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	111, // 404: SpaceX.API.Device.StarlinkRouterClientTesterRun.client_iface_name:type_name -> google.protobuf.StringValue
-	111, // 405: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_ssid:type_name -> google.protobuf.StringValue
-	114, // 406: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_has_password:type_name -> google.protobuf.BoolValue
-	111, // 407: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_auth:type_name -> google.protobuf.StringValue
-	111, // 408: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_encryption:type_name -> google.protobuf.StringValue
-	111, // 409: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_bssid:type_name -> google.protobuf.StringValue
-	111, // 410: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_irtt_server:type_name -> google.protobuf.StringValue
-	112, // 411: SpaceX.API.Device.StarlinkRouterClientTesterRun.iteration:type_name -> google.protobuf.UInt32Value
-	111, // 412: SpaceX.API.Device.StarlinkRouterClientTesterRun.error_code:type_name -> google.protobuf.StringValue
-	115, // 413: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_associate:type_name -> google.protobuf.FloatValue
-	115, // 414: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_lease:type_name -> google.protobuf.FloatValue
-	115, // 415: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_resolve_router:type_name -> google.protobuf.FloatValue
-	115, // 416: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_resolve_internet:type_name -> google.protobuf.FloatValue
-	115, // 417: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_ping_dish:type_name -> google.protobuf.FloatValue
-	115, // 418: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_test_duration_s:type_name -> google.protobuf.FloatValue
-	115, // 419: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_min_ms:type_name -> google.protobuf.FloatValue
-	115, // 420: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_mean_ms:type_name -> google.protobuf.FloatValue
-	115, // 421: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_median_ms:type_name -> google.protobuf.FloatValue
-	115, // 422: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_max_ms:type_name -> google.protobuf.FloatValue
-	115, // 423: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_std_dev_ms:type_name -> google.protobuf.FloatValue
-	112, // 424: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_pkts_sent:type_name -> google.protobuf.UInt32Value
-	112, // 425: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_pkts_recv:type_name -> google.protobuf.UInt32Value
-	115, // 426: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_loss_percent:type_name -> google.protobuf.FloatValue
-	118, // 427: SpaceX.API.Device.WifiSetClientGivenNameRequest.client_name:type_name -> SpaceX.API.Device.ClientName
-	119, // 428: SpaceX.API.Device.WifiSetClientGivenNameRequest.client_config:type_name -> SpaceX.API.Device.ClientConfig
-	17,  // 429: SpaceX.API.Device.WifiSelfTestResponse.self_test:type_name -> SpaceX.API.Device.WifiSelfTest
-	111, // 430: SpaceX.API.Device.starlink_router_hourly_metrics_v2.id:type_name -> google.protobuf.StringValue
-	111, // 431: SpaceX.API.Device.starlink_router_hourly_metrics_v2.timestamp_date:type_name -> google.protobuf.StringValue
-	112, // 432: SpaceX.API.Device.starlink_router_hourly_metrics_v2.timestamp_hour:type_name -> google.protobuf.UInt32Value
-	112, // 433: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_hw_gen:type_name -> google.protobuf.UInt32Value
-	111, // 434: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_sw:type_name -> google.protobuf.StringValue
-	111, // 435: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_country:type_name -> google.protobuf.StringValue
-	114, // 436: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_is_dev:type_name -> google.protobuf.BoolValue
-	112, // 437: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_alloc_fds:type_name -> google.protobuf.UInt32Value
-	115, // 438: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_cpu_usage:type_name -> google.protobuf.FloatValue
-	115, // 439: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_mem_free_kb:type_name -> google.protobuf.FloatValue
-	116, // 440: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_bootcount:type_name -> google.protobuf.Int32Value
-	114, // 441: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_partitions_equal:type_name -> google.protobuf.BoolValue
-	112, // 442: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_uptime_seconds:type_name -> google.protobuf.UInt32Value
-	116, // 443: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_anti_rollback_version:type_name -> google.protobuf.Int32Value
-	112, // 444: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_channel:type_name -> google.protobuf.UInt32Value
-	115, // 445: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
-	115, // 446: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
-	115, // 447: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
-	112, // 448: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_iface_count:type_name -> google.protobuf.UInt32Value
-	115, // 449: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
-	115, // 450: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
-	115, // 451: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
-	112, // 452: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_bytes:type_name -> google.protobuf.UInt32Value
-	112, // 453: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_packets:type_name -> google.protobuf.UInt32Value
-	112, // 454: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_errors:type_name -> google.protobuf.UInt32Value
-	112, // 455: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_frame_errors:type_name -> google.protobuf.UInt32Value
-	115, // 456: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	115, // 457: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	112, // 458: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_bytes:type_name -> google.protobuf.UInt32Value
-	112, // 459: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_packets:type_name -> google.protobuf.UInt32Value
-	112, // 460: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_errors:type_name -> google.protobuf.UInt32Value
-	115, // 461: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	115, // 462: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	112, // 463: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_channel:type_name -> google.protobuf.UInt32Value
-	115, // 464: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
-	115, // 465: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
-	115, // 466: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
-	112, // 467: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_iface_count:type_name -> google.protobuf.UInt32Value
-	115, // 468: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
-	115, // 469: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
-	115, // 470: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
-	112, // 471: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_bytes:type_name -> google.protobuf.UInt32Value
-	112, // 472: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_packets:type_name -> google.protobuf.UInt32Value
-	112, // 473: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_errors:type_name -> google.protobuf.UInt32Value
-	112, // 474: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_frame_errors:type_name -> google.protobuf.UInt32Value
-	115, // 475: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	115, // 476: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	112, // 477: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_bytes:type_name -> google.protobuf.UInt32Value
-	112, // 478: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_packets:type_name -> google.protobuf.UInt32Value
-	112, // 479: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_errors:type_name -> google.protobuf.UInt32Value
-	115, // 480: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	115, // 481: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	115, // 482: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_thermal_temp:type_name -> google.protobuf.FloatValue
-	115, // 483: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_thermal_temp:type_name -> google.protobuf.FloatValue
-	115, // 484: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
-	115, // 485: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
-	112, // 486: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
-	112, // 487: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
-	112, // 488: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_bytes:type_name -> google.protobuf.UInt32Value
-	112, // 489: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_packets:type_name -> google.protobuf.UInt32Value
-	112, // 490: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_errors:type_name -> google.protobuf.UInt32Value
-	112, // 491: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_frame_errors:type_name -> google.protobuf.UInt32Value
-	112, // 492: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_tx_bytes:type_name -> google.protobuf.UInt32Value
-	112, // 493: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_tx_packets:type_name -> google.protobuf.UInt32Value
-	112, // 494: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_tx_errors:type_name -> google.protobuf.UInt32Value
-	112, // 495: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_bytes:type_name -> google.protobuf.UInt32Value
-	112, // 496: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_packets:type_name -> google.protobuf.UInt32Value
-	112, // 497: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_errors:type_name -> google.protobuf.UInt32Value
-	112, // 498: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_frame_errors:type_name -> google.protobuf.UInt32Value
-	112, // 499: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_tx_bytes:type_name -> google.protobuf.UInt32Value
-	112, // 500: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_tx_packets:type_name -> google.protobuf.UInt32Value
-	112, // 501: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_tx_errors:type_name -> google.protobuf.UInt32Value
-	112, // 502: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients:type_name -> google.protobuf.UInt32Value
-	112, // 503: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_2ghz:type_name -> google.protobuf.UInt32Value
-	112, // 504: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_5ghz:type_name -> google.protobuf.UInt32Value
-	112, // 505: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_eth:type_name -> google.protobuf.UInt32Value
-	112, // 506: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater:type_name -> google.protobuf.UInt32Value
-	112, // 507: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater_2ghz:type_name -> google.protobuf.UInt32Value
-	112, // 508: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater_5ghz:type_name -> google.protobuf.UInt32Value
-	112, // 509: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater_eth:type_name -> google.protobuf.UInt32Value
-	112, // 510: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_hops:type_name -> google.protobuf.UInt32Value
-	115, // 511: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_one_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
-	115, // 512: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_one_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
-	115, // 513: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_two_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
-	115, // 514: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_two_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
-	115, // 515: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
-	115, // 516: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
-	115, // 517: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
-	115, // 518: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
-	115, // 519: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
-	115, // 520: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_drop_rate:type_name -> google.protobuf.FloatValue
-	115, // 521: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
-	115, // 522: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_latency:type_name -> google.protobuf.FloatValue
-	115, // 523: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
-	115, // 524: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
-	115, // 525: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
-	115, // 526: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
-	115, // 527: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
-	115, // 528: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_drop_rate:type_name -> google.protobuf.FloatValue
-	115, // 529: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
-	115, // 530: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_latency:type_name -> google.protobuf.FloatValue
-	115, // 531: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_router_download_mbps:type_name -> google.protobuf.FloatValue
-	115, // 532: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_router_upload_mbps:type_name -> google.protobuf.FloatValue
-	115, // 533: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_router_rssi:type_name -> google.protobuf.FloatValue
-	115, // 534: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_wifi_download_mbps:type_name -> google.protobuf.FloatValue
-	115, // 535: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_wifi_upload_mbps:type_name -> google.protobuf.FloatValue
-	115, // 536: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_download_mbps:type_name -> google.protobuf.FloatValue
-	115, // 537: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_upload_mbps:type_name -> google.protobuf.FloatValue
-	115, // 538: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_rssi:type_name -> google.protobuf.FloatValue
-	112, // 539: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_iface:type_name -> google.protobuf.UInt32Value
-	111, // 540: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_oui:type_name -> google.protobuf.StringValue
-	112, // 541: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_tx_rate:type_name -> google.protobuf.UInt32Value
-	112, // 542: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_rx_rate:type_name -> google.protobuf.UInt32Value
-	112, // 543: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_platform_type:type_name -> google.protobuf.UInt32Value
-	115, // 544: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 545: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_download_mbps_max:type_name -> google.protobuf.FloatValue
-	115, // 546: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 547: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_max:type_name -> google.protobuf.FloatValue
-	115, // 548: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 549: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_download_mbps_max:type_name -> google.protobuf.FloatValue
-	115, // 550: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	115, // 551: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_max:type_name -> google.protobuf.FloatValue
-	112, // 552: SpaceX.API.Device.starlink_router_hourly_metrics_v2.dish_cell_id:type_name -> google.protobuf.UInt32Value
-	114, // 553: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_setup_complete:type_name -> google.protobuf.BoolValue
-	114, // 554: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_bands_split:type_name -> google.protobuf.BoolValue
-	114, // 555: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_is_repeater:type_name -> google.protobuf.BoolValue
-	114, // 556: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_open_network:type_name -> google.protobuf.BoolValue
-	114, // 557: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_is_aviation:type_name -> google.protobuf.BoolValue
-	114, // 558: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_secure_dns:type_name -> google.protobuf.BoolValue
-	114, // 559: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_legacy:type_name -> google.protobuf.BoolValue
-	114, // 560: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_ap_mode:type_name -> google.protobuf.BoolValue
-	114, // 561: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_dfs_enabled:type_name -> google.protobuf.BoolValue
-	114, // 562: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_network_name_is_default:type_name -> google.protobuf.BoolValue
-	114, // 563: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_remote_ssh_enabled:type_name -> google.protobuf.BoolValue
-	70,  // 564: SpaceX.API.Device.WifiFactoryTestCommandRequest.iwpriv_command:type_name -> SpaceX.API.Device.IwprivCommand
-	71,  // 565: SpaceX.API.Device.WifiFactoryTestCommandRequest.ip_link_set_command:type_name -> SpaceX.API.Device.IpLinkSetCommand
-	72,  // 566: SpaceX.API.Device.WifiFactoryTestCommandRequest.ip_addr_set_command:type_name -> SpaceX.API.Device.IpAddrSetCommand
-	4,   // 567: SpaceX.API.Device.IwprivCommand.ioctl:type_name -> SpaceX.API.Device.IwprivCommand.Ioctl
-	94,  // 568: SpaceX.API.Device.WifiBackhaulStatsResponse.iface:type_name -> SpaceX.API.Device.IfaceType
-	11,  // 569: SpaceX.API.Device.WifiBackhaulStatsResponse.siteSurveyScan:type_name -> SpaceX.API.Device.WifiSiteSurveyResult
-	104, // 570: SpaceX.API.Device.WifiUpdateResponse.stats:type_name -> SpaceX.API.Device.WifiSoftwareUpdateStats
-	82,  // 571: SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverDropRateEntry.value:type_name -> SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverHistory
-	6,   // 572: SpaceX.API.Device.Mesh.MeshStream:input_type -> SpaceX.API.Device.ToController
-	14,  // 573: SpaceX.API.Device.Mesh.MeshStream:output_type -> SpaceX.API.Device.FromController
-	573, // [573:574] is the sub-list for method output_type
-	572, // [572:573] is the sub-list for method input_type
-	572, // [572:572] is the sub-list for extension type_name
-	572, // [572:572] is the sub-list for extension extendee
-	0,   // [0:572] is the sub-list for field type_name
+	98,  // 33: SpaceX.API.Device.WifiGetHistoryResponse.event_log:type_name -> SpaceX.API.Device.EventLog
+	33,  // 34: SpaceX.API.Device.WifiNewClientConnectedEvent.client:type_name -> SpaceX.API.Device.WifiClient
+	83,  // 35: SpaceX.API.Device.WifiClient.rx_stats:type_name -> SpaceX.API.Device.WifiClient.RxStats
+	84,  // 36: SpaceX.API.Device.WifiClient.tx_stats:type_name -> SpaceX.API.Device.WifiClient.TxStats
+	1,   // 37: SpaceX.API.Device.WifiClient.iface:type_name -> SpaceX.API.Device.WifiClient.Interface
+	2,   // 38: SpaceX.API.Device.WifiClient.role:type_name -> SpaceX.API.Device.WifiClient.Role
+	85,  // 39: SpaceX.API.Device.WifiClient.ping_metrics:type_name -> SpaceX.API.Device.WifiClient.PingMetrics
+	86,  // 40: SpaceX.API.Device.WifiClient.fqcodel_info:type_name -> SpaceX.API.Device.WifiClient.FqcodelInfo
+	87,  // 41: SpaceX.API.Device.WifiClient.alerts:type_name -> SpaceX.API.Device.WifiClient.Alerts
+	99,  // 42: SpaceX.API.Device.WifiGetStatusResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
+	100, // 43: SpaceX.API.Device.WifiGetStatusResponse.device_state:type_name -> SpaceX.API.Device.DeviceState
+	36,  // 44: SpaceX.API.Device.WifiGetStatusResponse.rf_2ghz_status:type_name -> SpaceX.API.Device.WifiBandStatus
+	36,  // 45: SpaceX.API.Device.WifiGetStatusResponse.rf_5ghz_status:type_name -> SpaceX.API.Device.WifiBandStatus
+	37,  // 46: SpaceX.API.Device.WifiGetStatusResponse.alerts:type_name -> SpaceX.API.Device.WifiAlerts
+	95,  // 47: SpaceX.API.Device.WifiGetStatusResponse.config:type_name -> SpaceX.API.Device.WifiConfig
+	33,  // 48: SpaceX.API.Device.WifiGetStatusResponse.clients:type_name -> SpaceX.API.Device.WifiClient
+	101, // 49: SpaceX.API.Device.WifiGetStatusResponse.radius_stats:type_name -> SpaceX.API.Device.RadiusStatsMap
+	102, // 50: SpaceX.API.Device.WifiGetStatusResponse.dhcp_servers:type_name -> SpaceX.API.Device.DhcpServer
+	103, // 51: SpaceX.API.Device.WifiGetStatusResponse.poe_stats:type_name -> SpaceX.API.Device.PoeStats
+	104, // 52: SpaceX.API.Device.WifiGetStatusResponse.dish_disablement_code:type_name -> SpaceX.API.Satellites.Network.UtDisablementCode
+	105, // 53: SpaceX.API.Device.WifiGetStatusResponse.software_update_stats:type_name -> SpaceX.API.Device.WifiSoftwareUpdateStats
+	106, // 54: SpaceX.API.Device.WifiGetStatusResponse.setup_requirement:type_name -> SpaceX.API.Device.WifiSetupRequirement
+	107, // 55: SpaceX.API.Device.WifiAuthenticateRequest.challenge:type_name -> SpaceX.API.Device.SignedData
+	108, // 56: SpaceX.API.Device.WifiAuthenticateResponse.wifi:type_name -> SpaceX.API.Device.ChallengeResponse
+	108, // 57: SpaceX.API.Device.WifiAuthenticateResponse.dish:type_name -> SpaceX.API.Device.ChallengeResponse
+	43,  // 58: SpaceX.API.Device.WifiGetPingMetricsResponse.internet:type_name -> SpaceX.API.Device.PingMetrics
+	3,   // 59: SpaceX.API.Device.WifiNetwork.band:type_name -> SpaceX.API.Device.WifiNetwork.Band
+	88,  // 60: SpaceX.API.Device.WifiPersistentStats.factory_reset_button:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
+	88,  // 61: SpaceX.API.Device.WifiPersistentStats.factory_reset_plug_unplug:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
+	88,  // 62: SpaceX.API.Device.WifiPersistentStats.factory_reset_command:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
+	88,  // 63: SpaceX.API.Device.WifiPersistentStats.factory_reset_failed_load_wifi_config:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
+	88,  // 64: SpaceX.API.Device.WifiPersistentStats.reboot_from_software_update:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
+	47,  // 65: SpaceX.API.Device.WifiGetPersistentStatsResponse.stats:type_name -> SpaceX.API.Device.WifiPersistentStats
+	109, // 66: SpaceX.API.Device.RadioStats.band:type_name -> SpaceX.API.Device.WifiConfig.Band
+	110, // 67: SpaceX.API.Device.RadioStats.rx_stats:type_name -> SpaceX.API.Device.NetworkInterface.RxStats
+	111, // 68: SpaceX.API.Device.RadioStats.tx_stats:type_name -> SpaceX.API.Device.NetworkInterface.TxStats
+	89,  // 69: SpaceX.API.Device.RadioStats.thermal_status:type_name -> SpaceX.API.Device.RadioStats.ThermalStatus
+	90,  // 70: SpaceX.API.Device.RadioStats.antenna_status:type_name -> SpaceX.API.Device.RadioStats.AntennaStatus
+	112, // 71: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.id:type_name -> google.protobuf.StringValue
+	112, // 72: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.timestamp_date:type_name -> google.protobuf.StringValue
+	113, // 73: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.timestamp_hour:type_name -> google.protobuf.UInt32Value
+	114, // 74: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.timestamp:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	113, // 75: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_hw_gen:type_name -> google.protobuf.UInt32Value
+	112, // 76: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_sw:type_name -> google.protobuf.StringValue
+	112, // 77: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_country:type_name -> google.protobuf.StringValue
+	115, // 78: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_is_dev:type_name -> google.protobuf.BoolValue
+	113, // 79: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_alloc_fds:type_name -> google.protobuf.UInt32Value
+	116, // 80: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_cpu_usage:type_name -> google.protobuf.FloatValue
+	116, // 81: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_mem_free_kb:type_name -> google.protobuf.FloatValue
+	117, // 82: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_bootcount:type_name -> google.protobuf.Int32Value
+	115, // 83: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_partitions_equal:type_name -> google.protobuf.BoolValue
+	113, // 84: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_uptime_seconds:type_name -> google.protobuf.UInt32Value
+	117, // 85: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_anti_rollback_version:type_name -> google.protobuf.Int32Value
+	115, // 86: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_is_witl:type_name -> google.protobuf.BoolValue
+	115, // 87: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_is_aviation_conformed:type_name -> google.protobuf.BoolValue
+	113, // 88: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_ubi_max_ec:type_name -> google.protobuf.UInt32Value
+	113, // 89: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_ubi_bad_peb:type_name -> google.protobuf.UInt32Value
+	113, // 90: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_board_rev:type_name -> google.protobuf.UInt32Value
+	113, // 91: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_channel:type_name -> google.protobuf.UInt32Value
+	116, // 92: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
+	116, // 93: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
+	116, // 94: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
+	116, // 95: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna4_rssi:type_name -> google.protobuf.FloatValue
+	116, // 96: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna1_tssi:type_name -> google.protobuf.FloatValue
+	116, // 97: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna2_tssi:type_name -> google.protobuf.FloatValue
+	116, // 98: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna3_tssi:type_name -> google.protobuf.FloatValue
+	116, // 99: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna4_tssi:type_name -> google.protobuf.FloatValue
+	113, // 100: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_iface_count:type_name -> google.protobuf.UInt32Value
+	116, // 101: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
+	116, // 102: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
+	116, // 103: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
+	118, // 104: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_bytes:type_name -> google.protobuf.Int64Value
+	118, // 105: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_packets:type_name -> google.protobuf.Int64Value
+	118, // 106: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_errors:type_name -> google.protobuf.Int64Value
+	118, // 107: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_frame_errors:type_name -> google.protobuf.Int64Value
+	116, // 108: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	116, // 109: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	118, // 110: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_bytes:type_name -> google.protobuf.Int64Value
+	118, // 111: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_packets:type_name -> google.protobuf.Int64Value
+	118, // 112: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_errors:type_name -> google.protobuf.Int64Value
+	116, // 113: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	116, // 114: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	113, // 115: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_channel:type_name -> google.protobuf.UInt32Value
+	116, // 116: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
+	116, // 117: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
+	116, // 118: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
+	116, // 119: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna4_rssi:type_name -> google.protobuf.FloatValue
+	116, // 120: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna1_tssi:type_name -> google.protobuf.FloatValue
+	116, // 121: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna2_tssi:type_name -> google.protobuf.FloatValue
+	116, // 122: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna3_tssi:type_name -> google.protobuf.FloatValue
+	116, // 123: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna4_tssi:type_name -> google.protobuf.FloatValue
+	113, // 124: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_iface_count:type_name -> google.protobuf.UInt32Value
+	116, // 125: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
+	116, // 126: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
+	116, // 127: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
+	118, // 128: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_bytes:type_name -> google.protobuf.Int64Value
+	118, // 129: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_packets:type_name -> google.protobuf.Int64Value
+	118, // 130: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_errors:type_name -> google.protobuf.Int64Value
+	118, // 131: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_frame_errors:type_name -> google.protobuf.Int64Value
+	116, // 132: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	116, // 133: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	118, // 134: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_bytes:type_name -> google.protobuf.Int64Value
+	118, // 135: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_packets:type_name -> google.protobuf.Int64Value
+	118, // 136: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_errors:type_name -> google.protobuf.Int64Value
+	116, // 137: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	116, // 138: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	113, // 139: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_channel:type_name -> google.protobuf.UInt32Value
+	116, // 140: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna1_rssi:type_name -> google.protobuf.FloatValue
+	116, // 141: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna2_rssi:type_name -> google.protobuf.FloatValue
+	116, // 142: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna3_rssi:type_name -> google.protobuf.FloatValue
+	116, // 143: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna4_rssi:type_name -> google.protobuf.FloatValue
+	116, // 144: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna1_tssi:type_name -> google.protobuf.FloatValue
+	116, // 145: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna2_tssi:type_name -> google.protobuf.FloatValue
+	116, // 146: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna3_tssi:type_name -> google.protobuf.FloatValue
+	116, // 147: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna4_tssi:type_name -> google.protobuf.FloatValue
+	113, // 148: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_iface_count:type_name -> google.protobuf.UInt32Value
+	116, // 149: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_chan_busy_fraction:type_name -> google.protobuf.FloatValue
+	116, // 150: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_edcca_fraction:type_name -> google.protobuf.FloatValue
+	116, // 151: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
+	118, // 152: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_bytes:type_name -> google.protobuf.Int64Value
+	118, // 153: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_packets:type_name -> google.protobuf.Int64Value
+	118, // 154: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_errors:type_name -> google.protobuf.Int64Value
+	118, // 155: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_frame_errors:type_name -> google.protobuf.Int64Value
+	116, // 156: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	116, // 157: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	118, // 158: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_bytes:type_name -> google.protobuf.Int64Value
+	118, // 159: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_packets:type_name -> google.protobuf.Int64Value
+	118, // 160: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_errors:type_name -> google.protobuf.Int64Value
+	116, // 161: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	116, // 162: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	116, // 163: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_thermal_temp:type_name -> google.protobuf.FloatValue
+	116, // 164: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_thermal_temp:type_name -> google.protobuf.FloatValue
+	116, // 165: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_thermal_temp:type_name -> google.protobuf.FloatValue
+	116, // 166: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
+	116, // 167: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
+	116, // 168: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
+	113, // 169: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
+	113, // 170: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
+	113, // 171: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
+	116, // 172: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.board_temp:type_name -> google.protobuf.FloatValue
+	116, // 173: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.poe_mcu_die_temp:type_name -> google.protobuf.FloatValue
+	116, // 174: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.poe_percent_water_detect_avg:type_name -> google.protobuf.FloatValue
+	118, // 175: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_bytes:type_name -> google.protobuf.Int64Value
+	118, // 176: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_packets:type_name -> google.protobuf.Int64Value
+	118, // 177: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_errors:type_name -> google.protobuf.Int64Value
+	118, // 178: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_frame_errors:type_name -> google.protobuf.Int64Value
+	118, // 179: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_tx_bytes:type_name -> google.protobuf.Int64Value
+	118, // 180: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_tx_packets:type_name -> google.protobuf.Int64Value
+	118, // 181: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_tx_errors:type_name -> google.protobuf.Int64Value
+	118, // 182: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_bytes:type_name -> google.protobuf.Int64Value
+	118, // 183: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_packets:type_name -> google.protobuf.Int64Value
+	118, // 184: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_errors:type_name -> google.protobuf.Int64Value
+	118, // 185: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_frame_errors:type_name -> google.protobuf.Int64Value
+	118, // 186: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_tx_bytes:type_name -> google.protobuf.Int64Value
+	118, // 187: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_tx_packets:type_name -> google.protobuf.Int64Value
+	118, // 188: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_tx_errors:type_name -> google.protobuf.Int64Value
+	118, // 189: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_bytes:type_name -> google.protobuf.Int64Value
+	118, // 190: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_packets:type_name -> google.protobuf.Int64Value
+	118, // 191: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_errors:type_name -> google.protobuf.Int64Value
+	118, // 192: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_frame_errors:type_name -> google.protobuf.Int64Value
+	118, // 193: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_tx_bytes:type_name -> google.protobuf.Int64Value
+	118, // 194: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_tx_packets:type_name -> google.protobuf.Int64Value
+	118, // 195: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_tx_errors:type_name -> google.protobuf.Int64Value
+	113, // 196: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients:type_name -> google.protobuf.UInt32Value
+	113, // 197: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_2ghz:type_name -> google.protobuf.UInt32Value
+	113, // 198: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz:type_name -> google.protobuf.UInt32Value
+	113, // 199: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_high:type_name -> google.protobuf.UInt32Value
+	113, // 200: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_eth:type_name -> google.protobuf.UInt32Value
+	113, // 201: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_rx_bandwidth_20mhz:type_name -> google.protobuf.UInt32Value
+	113, // 202: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_rx_bandwidth_40mhz:type_name -> google.protobuf.UInt32Value
+	113, // 203: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_rx_bandwidth_80mhz:type_name -> google.protobuf.UInt32Value
+	113, // 204: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater:type_name -> google.protobuf.UInt32Value
+	113, // 205: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_2ghz:type_name -> google.protobuf.UInt32Value
+	113, // 206: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_5ghz:type_name -> google.protobuf.UInt32Value
+	113, // 207: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_5ghz_high:type_name -> google.protobuf.UInt32Value
+	113, // 208: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_eth:type_name -> google.protobuf.UInt32Value
+	113, // 209: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_hops:type_name -> google.protobuf.UInt32Value
+	116, // 210: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_one_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
+	116, // 211: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_one_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
+	116, // 212: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_one_hop_rssi_avg_5ghz_high:type_name -> google.protobuf.FloatValue
+	116, // 213: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_two_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
+	116, // 214: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_two_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
+	116, // 215: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_two_hop_rssi_avg_5ghz_high:type_name -> google.protobuf.FloatValue
+	116, // 216: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_tx_rate_mbps_min:type_name -> google.protobuf.FloatValue
+	116, // 217: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_rx_rate_mbps_min:type_name -> google.protobuf.FloatValue
+	116, // 218: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_tx_rate_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 219: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_rx_rate_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 220: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_2s_outage_min:type_name -> google.protobuf.FloatValue
+	116, // 221: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_5s_outage_min:type_name -> google.protobuf.FloatValue
+	116, // 222: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_2s_outage_avg:type_name -> google.protobuf.FloatValue
+	116, // 223: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_5s_outage_avg:type_name -> google.protobuf.FloatValue
+	116, // 224: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_latency_ms_1h_max:type_name -> google.protobuf.FloatValue
+	116, // 225: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_latency_ms_1h_avg:type_name -> google.protobuf.FloatValue
+	113, // 226: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_topology_change_count_1d:type_name -> google.protobuf.UInt32Value
+	116, // 227: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
+	116, // 228: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
+	116, // 229: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
+	116, // 230: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
+	116, // 231: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
+	116, // 232: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_drop_rate:type_name -> google.protobuf.FloatValue
+	116, // 233: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
+	116, // 234: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_latency:type_name -> google.protobuf.FloatValue
+	116, // 235: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_latency_last_1h:type_name -> google.protobuf.FloatValue
+	116, // 236: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
+	116, // 237: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
+	116, // 238: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
+	116, // 239: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
+	116, // 240: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
+	116, // 241: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_drop_rate:type_name -> google.protobuf.FloatValue
+	116, // 242: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
+	116, // 243: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_latency:type_name -> google.protobuf.FloatValue
+	116, // 244: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_latency_last_1h:type_name -> google.protobuf.FloatValue
+	116, // 245: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_pop_ipv6_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
+	116, // 246: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_pop_ipv6_latency_last_1h:type_name -> google.protobuf.FloatValue
+	116, // 247: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_router_download_mbps:type_name -> google.protobuf.FloatValue
+	116, // 248: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_router_upload_mbps:type_name -> google.protobuf.FloatValue
+	116, // 249: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_router_rssi:type_name -> google.protobuf.FloatValue
+	116, // 250: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_wifi_download_mbps:type_name -> google.protobuf.FloatValue
+	116, // 251: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_wifi_upload_mbps:type_name -> google.protobuf.FloatValue
+	116, // 252: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_download_mbps:type_name -> google.protobuf.FloatValue
+	116, // 253: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_upload_mbps:type_name -> google.protobuf.FloatValue
+	116, // 254: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_rssi:type_name -> google.protobuf.FloatValue
+	113, // 255: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_iface:type_name -> google.protobuf.UInt32Value
+	112, // 256: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_oui:type_name -> google.protobuf.StringValue
+	113, // 257: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_tx_rate:type_name -> google.protobuf.UInt32Value
+	113, // 258: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_rx_rate:type_name -> google.protobuf.UInt32Value
+	113, // 259: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_platform_type:type_name -> google.protobuf.UInt32Value
+	116, // 260: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 261: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_download_mbps_max:type_name -> google.protobuf.FloatValue
+	116, // 262: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 263: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_max:type_name -> google.protobuf.FloatValue
+	116, // 264: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 265: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_download_mbps_max:type_name -> google.protobuf.FloatValue
+	116, // 266: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 267: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_max:type_name -> google.protobuf.FloatValue
+	116, // 268: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 269: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_download_mbps_max:type_name -> google.protobuf.FloatValue
+	116, // 270: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 271: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_upload_mbps_max:type_name -> google.protobuf.FloatValue
+	113, // 272: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dish_cell_id:type_name -> google.protobuf.UInt32Value
+	115, // 273: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_setup_complete:type_name -> google.protobuf.BoolValue
+	115, // 274: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_bands_split:type_name -> google.protobuf.BoolValue
+	115, // 275: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_repeater:type_name -> google.protobuf.BoolValue
+	115, // 276: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_open_network:type_name -> google.protobuf.BoolValue
+	115, // 277: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_aviation:type_name -> google.protobuf.BoolValue
+	115, // 278: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_secure_dns:type_name -> google.protobuf.BoolValue
+	115, // 279: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_legacy:type_name -> google.protobuf.BoolValue
+	115, // 280: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_ap_mode:type_name -> google.protobuf.BoolValue
+	115, // 281: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_dfs_enabled:type_name -> google.protobuf.BoolValue
+	115, // 282: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_network_name_is_default:type_name -> google.protobuf.BoolValue
+	115, // 283: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_remote_ssh_enabled:type_name -> google.protobuf.BoolValue
+	115, // 284: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_repeater_wired:type_name -> google.protobuf.BoolValue
+	115, // 285: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_repeater_wireless:type_name -> google.protobuf.BoolValue
+	113, // 286: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_block_schedules_set:type_name -> google.protobuf.UInt32Value
+	115, // 287: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_custom_nameservers:type_name -> google.protobuf.BoolValue
+	115, // 288: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_mesh_onboarding:type_name -> google.protobuf.BoolValue
+	115, // 289: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_pin_country_code:type_name -> google.protobuf.BoolValue
+	115, // 290: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_update_reboot:type_name -> google.protobuf.BoolValue
+	115, // 291: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_https_content_hosting_enabled:type_name -> google.protobuf.BoolValue
+	115, // 292: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_only_overflight_blocking_enabled:type_name -> google.protobuf.BoolValue
+	115, // 293: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_offline_networks_disablement_enabled:type_name -> google.protobuf.BoolValue
+	115, // 294: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_2ghz:type_name -> google.protobuf.BoolValue
+	115, // 295: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_5ghz:type_name -> google.protobuf.BoolValue
+	115, // 296: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_5ghz_high:type_name -> google.protobuf.BoolValue
+	113, // 297: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_channel_2ghz:type_name -> google.protobuf.UInt32Value
+	113, // 298: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_channel_5ghz:type_name -> google.protobuf.UInt32Value
+	113, // 299: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_channel_5ghz_high:type_name -> google.protobuf.UInt32Value
+	113, // 300: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks:type_name -> google.protobuf.UInt32Value
+	113, // 301: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_guest:type_name -> google.protobuf.UInt32Value
+	113, // 302: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_hidden:type_name -> google.protobuf.UInt32Value
+	113, // 303: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_client_isolation:type_name -> google.protobuf.UInt32Value
+	113, // 304: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_bands_split:type_name -> google.protobuf.UInt32Value
+	113, // 305: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wifi_reload_count:type_name -> google.protobuf.UInt32Value
+	113, // 306: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radius_reload_count:type_name -> google.protobuf.UInt32Value
+	113, // 307: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.openssh_reload_count:type_name -> google.protobuf.UInt32Value
+	113, // 308: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.iptables_reload_count:type_name -> google.protobuf.UInt32Value
+	113, // 309: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ebtables_reload_count:type_name -> google.protobuf.UInt32Value
+	113, // 310: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.traffic_control_reload_count:type_name -> google.protobuf.UInt32Value
+	113, // 311: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_reload_count:type_name -> google.protobuf.UInt32Value
+	113, // 312: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcpv6_reload_count:type_name -> google.protobuf.UInt32Value
+	113, // 313: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.system_reload_count:type_name -> google.protobuf.UInt32Value
+	113, // 314: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_reload_count:type_name -> google.protobuf.UInt32Value
+	113, // 315: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.https_reload_count:type_name -> google.protobuf.UInt32Value
+	113, // 316: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.band_steering_reload_count:type_name -> google.protobuf.UInt32Value
+	113, // 317: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.commit_count:type_name -> google.protobuf.UInt32Value
+	113, // 318: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.network_reload_count:type_name -> google.protobuf.UInt32Value
+	118, // 319: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_bytes:type_name -> google.protobuf.Int64Value
+	118, // 320: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_packets:type_name -> google.protobuf.Int64Value
+	118, // 321: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_drops:type_name -> google.protobuf.Int64Value
+	118, // 322: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_ack_drops:type_name -> google.protobuf.Int64Value
+	113, // 323: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.conntrack_entries:type_name -> google.protobuf.UInt32Value
+	113, // 324: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_eq_0:type_name -> google.protobuf.UInt32Value
+	113, // 325: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_0:type_name -> google.protobuf.UInt32Value
+	113, // 326: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_10:type_name -> google.protobuf.UInt32Value
+	113, // 327: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_30:type_name -> google.protobuf.UInt32Value
+	113, // 328: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_60:type_name -> google.protobuf.UInt32Value
+	113, // 329: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards:type_name -> google.protobuf.UInt32Value
+	113, // 330: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_success:type_name -> google.protobuf.UInt32Value
+	113, // 331: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_server_failure:type_name -> google.protobuf.UInt32Value
+	113, // 332: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_no_server_response:type_name -> google.protobuf.UInt32Value
+	113, // 333: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_success_on_default_backup:type_name -> google.protobuf.UInt32Value
+	113, // 334: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_dropped:type_name -> google.protobuf.UInt32Value
+	113, // 335: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_with_backup:type_name -> google.protobuf.UInt32Value
+	114, // 336: SpaceX.API.Device.starlink_router_alerts.start:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	114, // 337: SpaceX.API.Device.starlink_router_alerts.end:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	114, // 338: SpaceX.API.Device.starlink_router_client_speedtests.data_record:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	112, // 339: SpaceX.API.Device.starlink_router_client_speedtests.speedtest_id:type_name -> google.protobuf.StringValue
+	116, // 340: SpaceX.API.Device.starlink_router_client_speedtests.client_rssi:type_name -> google.protobuf.FloatValue
+	116, // 341: SpaceX.API.Device.starlink_router_client_speedtests.router_rssi:type_name -> google.protobuf.FloatValue
+	113, // 342: SpaceX.API.Device.starlink_router_client_speedtests.client_iface:type_name -> google.protobuf.UInt32Value
+	112, // 343: SpaceX.API.Device.starlink_router_client_speedtests.client_oui:type_name -> google.protobuf.StringValue
+	113, // 344: SpaceX.API.Device.starlink_router_client_speedtests.client_tx_rate:type_name -> google.protobuf.UInt32Value
+	113, // 345: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_rate:type_name -> google.protobuf.UInt32Value
+	112, // 346: SpaceX.API.Device.starlink_router_client_speedtests.client_platform_type:type_name -> google.protobuf.StringValue
+	112, // 347: SpaceX.API.Device.starlink_router_client_speedtests.client_app_version:type_name -> google.protobuf.StringValue
+	113, // 348: SpaceX.API.Device.starlink_router_client_speedtests.client_app_build:type_name -> google.protobuf.UInt32Value
+	113, // 349: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_phy_mode:type_name -> google.protobuf.UInt32Value
+	113, // 350: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_spatial_streams:type_name -> google.protobuf.UInt32Value
+	113, // 351: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_mcs:type_name -> google.protobuf.UInt32Value
+	114, // 352: SpaceX.API.Device.starlink_router_client_speedtests.client_download_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	114, // 353: SpaceX.API.Device.starlink_router_client_speedtests.client_upload_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	116, // 354: SpaceX.API.Device.starlink_router_client_speedtests.client_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 355: SpaceX.API.Device.starlink_router_client_speedtests.client_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	112, // 356: SpaceX.API.Device.starlink_router_client_speedtests.client_target:type_name -> google.protobuf.StringValue
+	113, // 357: SpaceX.API.Device.starlink_router_client_speedtests.client_tcp_streams:type_name -> google.protobuf.UInt32Value
+	114, // 358: SpaceX.API.Device.starlink_router_client_speedtests.router_download_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	114, // 359: SpaceX.API.Device.starlink_router_client_speedtests.router_upload_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	116, // 360: SpaceX.API.Device.starlink_router_client_speedtests.router_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 361: SpaceX.API.Device.starlink_router_client_speedtests.router_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	112, // 362: SpaceX.API.Device.starlink_router_client_speedtests.router_target:type_name -> google.protobuf.StringValue
+	113, // 363: SpaceX.API.Device.starlink_router_client_speedtests.router_tcp_streams:type_name -> google.protobuf.UInt32Value
+	114, // 364: SpaceX.API.Device.starlink_router_client_speedtests.wifi_download_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	114, // 365: SpaceX.API.Device.starlink_router_client_speedtests.wifi_upload_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	116, // 366: SpaceX.API.Device.starlink_router_client_speedtests.wifi_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 367: SpaceX.API.Device.starlink_router_client_speedtests.wifi_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	114, // 368: SpaceX.API.Device.StarlinkRouterClients.timestamp:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	112, // 369: SpaceX.API.Device.StarlinkRouterClients.router_hw:type_name -> google.protobuf.StringValue
+	112, // 370: SpaceX.API.Device.StarlinkRouterClients.router_sw:type_name -> google.protobuf.StringValue
+	113, // 371: SpaceX.API.Device.StarlinkRouterClients.router_uptime_s:type_name -> google.protobuf.UInt32Value
+	112, // 372: SpaceX.API.Device.StarlinkRouterClients.client_router_id:type_name -> google.protobuf.StringValue
+	112, // 373: SpaceX.API.Device.StarlinkRouterClients.client_hw:type_name -> google.protobuf.StringValue
+	112, // 374: SpaceX.API.Device.StarlinkRouterClients.client_sw:type_name -> google.protobuf.StringValue
+	112, // 375: SpaceX.API.Device.StarlinkRouterClients.oui:type_name -> google.protobuf.StringValue
+	112, // 376: SpaceX.API.Device.StarlinkRouterClients.upstream_id:type_name -> google.protobuf.StringValue
+	115, // 377: SpaceX.API.Device.StarlinkRouterClients.is_repeater:type_name -> google.protobuf.BoolValue
+	113, // 378: SpaceX.API.Device.StarlinkRouterClients.connected_s:type_name -> google.protobuf.UInt32Value
+	112, // 379: SpaceX.API.Device.StarlinkRouterClients.interface:type_name -> google.protobuf.StringValue
+	113, // 380: SpaceX.API.Device.StarlinkRouterClients.radio_channel:type_name -> google.protobuf.UInt32Value
+	116, // 381: SpaceX.API.Device.StarlinkRouterClients.rssi:type_name -> google.protobuf.FloatValue
+	113, // 382: SpaceX.API.Device.StarlinkRouterClients.rx_mcs:type_name -> google.protobuf.UInt32Value
+	113, // 383: SpaceX.API.Device.StarlinkRouterClients.tx_mcs:type_name -> google.protobuf.UInt32Value
+	113, // 384: SpaceX.API.Device.StarlinkRouterClients.rx_rate:type_name -> google.protobuf.UInt32Value
+	113, // 385: SpaceX.API.Device.StarlinkRouterClients.tx_rate:type_name -> google.protobuf.UInt32Value
+	113, // 386: SpaceX.API.Device.StarlinkRouterClients.rx_bandwidth:type_name -> google.protobuf.UInt32Value
+	113, // 387: SpaceX.API.Device.StarlinkRouterClients.rx_spatial_streams:type_name -> google.protobuf.UInt32Value
+	113, // 388: SpaceX.API.Device.StarlinkRouterClients.rx_phy_mode:type_name -> google.protobuf.UInt32Value
+	113, // 389: SpaceX.API.Device.StarlinkRouterClients.mesh_hops:type_name -> google.protobuf.UInt32Value
+	116, // 390: SpaceX.API.Device.StarlinkRouterClients.speedtest_upload_mbps:type_name -> google.protobuf.FloatValue
+	116, // 391: SpaceX.API.Device.StarlinkRouterClients.speedtest_download_mbps:type_name -> google.protobuf.FloatValue
+	116, // 392: SpaceX.API.Device.StarlinkRouterClients.site_survey_rssi:type_name -> google.protobuf.FloatValue
+	116, // 393: SpaceX.API.Device.StarlinkRouterClients.site_survey_est_rx_rate:type_name -> google.protobuf.FloatValue
+	113, // 394: SpaceX.API.Device.StarlinkRouterClients.est_controller_throughput_mbps:type_name -> google.protobuf.UInt32Value
+	116, // 395: SpaceX.API.Device.StarlinkRouterClients.ping_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
+	116, // 396: SpaceX.API.Device.StarlinkRouterClients.ping_latency_last_1h:type_name -> google.protobuf.FloatValue
+	112, // 397: SpaceX.API.Device.StarlinkRouterClients.steer_state:type_name -> google.protobuf.StringValue
+	115, // 398: SpaceX.API.Device.StarlinkRouterClients.blocked:type_name -> google.protobuf.BoolValue
+	114, // 399: SpaceX.API.Device.StarlinkRouterClients.throughput_limited_last_fired:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	115, // 400: SpaceX.API.Device.StarlinkRouterClients.has_dhcp_v4_lease:type_name -> google.protobuf.BoolValue
+	112, // 401: SpaceX.API.Device.StarlinkRouterClients.ipv4_address:type_name -> google.protobuf.StringValue
+	115, // 402: SpaceX.API.Device.StarlinkRouterClients.has_hostname:type_name -> google.protobuf.BoolValue
+	115, // 403: SpaceX.API.Device.StarlinkRouterClients.dhcp_v4_lease_is_active:type_name -> google.protobuf.BoolValue
+	115, // 404: SpaceX.API.Device.StarlinkRouterClients.dhcp_v4_lease_was_renewed:type_name -> google.protobuf.BoolValue
+	116, // 405: SpaceX.API.Device.StarlinkRouterClients.seconds_until_dhcp_v4_lease_expires:type_name -> google.protobuf.FloatValue
+	113, // 406: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_10s:type_name -> google.protobuf.UInt32Value
+	113, // 407: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_30s:type_name -> google.protobuf.UInt32Value
+	113, // 408: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_60s:type_name -> google.protobuf.UInt32Value
+	113, // 409: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_120s:type_name -> google.protobuf.UInt32Value
+	116, // 410: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_tcp_ipv4:type_name -> google.protobuf.FloatValue
+	116, // 411: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_tcp_ipv6:type_name -> google.protobuf.FloatValue
+	116, // 412: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_udp_ipv4:type_name -> google.protobuf.FloatValue
+	116, // 413: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_udp_ipv6:type_name -> google.protobuf.FloatValue
+	113, // 414: SpaceX.API.Device.StarlinkRouterClients.flows_tcp_ipv4:type_name -> google.protobuf.UInt32Value
+	113, // 415: SpaceX.API.Device.StarlinkRouterClients.flows_tcp_ipv6:type_name -> google.protobuf.UInt32Value
+	113, // 416: SpaceX.API.Device.StarlinkRouterClients.flows_udp_ipv4:type_name -> google.protobuf.UInt32Value
+	113, // 417: SpaceX.API.Device.StarlinkRouterClients.flows_udp_ipv6:type_name -> google.protobuf.UInt32Value
+	114, // 418: SpaceX.API.Device.StarlinkRouterClientTesterRun.timestamp:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	112, // 419: SpaceX.API.Device.StarlinkRouterClientTesterRun.client_iface_name:type_name -> google.protobuf.StringValue
+	112, // 420: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_ssid:type_name -> google.protobuf.StringValue
+	115, // 421: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_has_password:type_name -> google.protobuf.BoolValue
+	112, // 422: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_auth:type_name -> google.protobuf.StringValue
+	112, // 423: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_encryption:type_name -> google.protobuf.StringValue
+	112, // 424: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_bssid:type_name -> google.protobuf.StringValue
+	112, // 425: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_irtt_server:type_name -> google.protobuf.StringValue
+	113, // 426: SpaceX.API.Device.StarlinkRouterClientTesterRun.iteration:type_name -> google.protobuf.UInt32Value
+	112, // 427: SpaceX.API.Device.StarlinkRouterClientTesterRun.error_code:type_name -> google.protobuf.StringValue
+	116, // 428: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_associate:type_name -> google.protobuf.FloatValue
+	116, // 429: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_lease:type_name -> google.protobuf.FloatValue
+	116, // 430: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_resolve_router:type_name -> google.protobuf.FloatValue
+	116, // 431: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_resolve_internet:type_name -> google.protobuf.FloatValue
+	116, // 432: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_ping_dish:type_name -> google.protobuf.FloatValue
+	116, // 433: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_test_duration_s:type_name -> google.protobuf.FloatValue
+	116, // 434: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_min_ms:type_name -> google.protobuf.FloatValue
+	116, // 435: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_mean_ms:type_name -> google.protobuf.FloatValue
+	116, // 436: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_median_ms:type_name -> google.protobuf.FloatValue
+	116, // 437: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_max_ms:type_name -> google.protobuf.FloatValue
+	116, // 438: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_std_dev_ms:type_name -> google.protobuf.FloatValue
+	113, // 439: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_pkts_sent:type_name -> google.protobuf.UInt32Value
+	113, // 440: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_pkts_recv:type_name -> google.protobuf.UInt32Value
+	116, // 441: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_loss_percent:type_name -> google.protobuf.FloatValue
+	119, // 442: SpaceX.API.Device.WifiSetClientGivenNameRequest.client_name:type_name -> SpaceX.API.Device.ClientName
+	120, // 443: SpaceX.API.Device.WifiSetClientGivenNameRequest.client_config:type_name -> SpaceX.API.Device.ClientConfig
+	17,  // 444: SpaceX.API.Device.WifiSelfTestResponse.self_test:type_name -> SpaceX.API.Device.WifiSelfTest
+	112, // 445: SpaceX.API.Device.starlink_router_hourly_metrics_v2.id:type_name -> google.protobuf.StringValue
+	112, // 446: SpaceX.API.Device.starlink_router_hourly_metrics_v2.timestamp_date:type_name -> google.protobuf.StringValue
+	113, // 447: SpaceX.API.Device.starlink_router_hourly_metrics_v2.timestamp_hour:type_name -> google.protobuf.UInt32Value
+	113, // 448: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_hw_gen:type_name -> google.protobuf.UInt32Value
+	112, // 449: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_sw:type_name -> google.protobuf.StringValue
+	112, // 450: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_country:type_name -> google.protobuf.StringValue
+	115, // 451: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_is_dev:type_name -> google.protobuf.BoolValue
+	113, // 452: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_alloc_fds:type_name -> google.protobuf.UInt32Value
+	116, // 453: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_cpu_usage:type_name -> google.protobuf.FloatValue
+	116, // 454: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_mem_free_kb:type_name -> google.protobuf.FloatValue
+	117, // 455: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_bootcount:type_name -> google.protobuf.Int32Value
+	115, // 456: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_partitions_equal:type_name -> google.protobuf.BoolValue
+	113, // 457: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_uptime_seconds:type_name -> google.protobuf.UInt32Value
+	117, // 458: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_anti_rollback_version:type_name -> google.protobuf.Int32Value
+	113, // 459: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_channel:type_name -> google.protobuf.UInt32Value
+	116, // 460: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
+	116, // 461: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
+	116, // 462: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
+	113, // 463: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_iface_count:type_name -> google.protobuf.UInt32Value
+	116, // 464: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
+	116, // 465: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
+	116, // 466: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
+	113, // 467: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_bytes:type_name -> google.protobuf.UInt32Value
+	113, // 468: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_packets:type_name -> google.protobuf.UInt32Value
+	113, // 469: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_errors:type_name -> google.protobuf.UInt32Value
+	113, // 470: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_frame_errors:type_name -> google.protobuf.UInt32Value
+	116, // 471: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	116, // 472: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	113, // 473: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_bytes:type_name -> google.protobuf.UInt32Value
+	113, // 474: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_packets:type_name -> google.protobuf.UInt32Value
+	113, // 475: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_errors:type_name -> google.protobuf.UInt32Value
+	116, // 476: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	116, // 477: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	113, // 478: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_channel:type_name -> google.protobuf.UInt32Value
+	116, // 479: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
+	116, // 480: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
+	116, // 481: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
+	113, // 482: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_iface_count:type_name -> google.protobuf.UInt32Value
+	116, // 483: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
+	116, // 484: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
+	116, // 485: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
+	113, // 486: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_bytes:type_name -> google.protobuf.UInt32Value
+	113, // 487: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_packets:type_name -> google.protobuf.UInt32Value
+	113, // 488: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_errors:type_name -> google.protobuf.UInt32Value
+	113, // 489: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_frame_errors:type_name -> google.protobuf.UInt32Value
+	116, // 490: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	116, // 491: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	113, // 492: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_bytes:type_name -> google.protobuf.UInt32Value
+	113, // 493: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_packets:type_name -> google.protobuf.UInt32Value
+	113, // 494: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_errors:type_name -> google.protobuf.UInt32Value
+	116, // 495: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	116, // 496: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	116, // 497: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_thermal_temp:type_name -> google.protobuf.FloatValue
+	116, // 498: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_thermal_temp:type_name -> google.protobuf.FloatValue
+	116, // 499: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
+	116, // 500: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
+	113, // 501: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
+	113, // 502: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
+	113, // 503: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_bytes:type_name -> google.protobuf.UInt32Value
+	113, // 504: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_packets:type_name -> google.protobuf.UInt32Value
+	113, // 505: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_errors:type_name -> google.protobuf.UInt32Value
+	113, // 506: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_frame_errors:type_name -> google.protobuf.UInt32Value
+	113, // 507: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_tx_bytes:type_name -> google.protobuf.UInt32Value
+	113, // 508: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_tx_packets:type_name -> google.protobuf.UInt32Value
+	113, // 509: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_tx_errors:type_name -> google.protobuf.UInt32Value
+	113, // 510: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_bytes:type_name -> google.protobuf.UInt32Value
+	113, // 511: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_packets:type_name -> google.protobuf.UInt32Value
+	113, // 512: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_errors:type_name -> google.protobuf.UInt32Value
+	113, // 513: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_frame_errors:type_name -> google.protobuf.UInt32Value
+	113, // 514: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_tx_bytes:type_name -> google.protobuf.UInt32Value
+	113, // 515: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_tx_packets:type_name -> google.protobuf.UInt32Value
+	113, // 516: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_tx_errors:type_name -> google.protobuf.UInt32Value
+	113, // 517: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients:type_name -> google.protobuf.UInt32Value
+	113, // 518: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_2ghz:type_name -> google.protobuf.UInt32Value
+	113, // 519: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_5ghz:type_name -> google.protobuf.UInt32Value
+	113, // 520: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_eth:type_name -> google.protobuf.UInt32Value
+	113, // 521: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater:type_name -> google.protobuf.UInt32Value
+	113, // 522: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater_2ghz:type_name -> google.protobuf.UInt32Value
+	113, // 523: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater_5ghz:type_name -> google.protobuf.UInt32Value
+	113, // 524: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater_eth:type_name -> google.protobuf.UInt32Value
+	113, // 525: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_hops:type_name -> google.protobuf.UInt32Value
+	116, // 526: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_one_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
+	116, // 527: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_one_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
+	116, // 528: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_two_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
+	116, // 529: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_two_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
+	116, // 530: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
+	116, // 531: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
+	116, // 532: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
+	116, // 533: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
+	116, // 534: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
+	116, // 535: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_drop_rate:type_name -> google.protobuf.FloatValue
+	116, // 536: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
+	116, // 537: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_latency:type_name -> google.protobuf.FloatValue
+	116, // 538: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
+	116, // 539: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
+	116, // 540: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
+	116, // 541: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
+	116, // 542: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
+	116, // 543: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_drop_rate:type_name -> google.protobuf.FloatValue
+	116, // 544: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
+	116, // 545: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_latency:type_name -> google.protobuf.FloatValue
+	116, // 546: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_router_download_mbps:type_name -> google.protobuf.FloatValue
+	116, // 547: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_router_upload_mbps:type_name -> google.protobuf.FloatValue
+	116, // 548: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_router_rssi:type_name -> google.protobuf.FloatValue
+	116, // 549: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_wifi_download_mbps:type_name -> google.protobuf.FloatValue
+	116, // 550: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_wifi_upload_mbps:type_name -> google.protobuf.FloatValue
+	116, // 551: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_download_mbps:type_name -> google.protobuf.FloatValue
+	116, // 552: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_upload_mbps:type_name -> google.protobuf.FloatValue
+	116, // 553: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_rssi:type_name -> google.protobuf.FloatValue
+	113, // 554: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_iface:type_name -> google.protobuf.UInt32Value
+	112, // 555: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_oui:type_name -> google.protobuf.StringValue
+	113, // 556: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_tx_rate:type_name -> google.protobuf.UInt32Value
+	113, // 557: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_rx_rate:type_name -> google.protobuf.UInt32Value
+	113, // 558: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_platform_type:type_name -> google.protobuf.UInt32Value
+	116, // 559: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 560: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_download_mbps_max:type_name -> google.protobuf.FloatValue
+	116, // 561: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 562: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_max:type_name -> google.protobuf.FloatValue
+	116, // 563: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 564: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_download_mbps_max:type_name -> google.protobuf.FloatValue
+	116, // 565: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	116, // 566: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_max:type_name -> google.protobuf.FloatValue
+	113, // 567: SpaceX.API.Device.starlink_router_hourly_metrics_v2.dish_cell_id:type_name -> google.protobuf.UInt32Value
+	115, // 568: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_setup_complete:type_name -> google.protobuf.BoolValue
+	115, // 569: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_bands_split:type_name -> google.protobuf.BoolValue
+	115, // 570: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_is_repeater:type_name -> google.protobuf.BoolValue
+	115, // 571: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_open_network:type_name -> google.protobuf.BoolValue
+	115, // 572: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_is_aviation:type_name -> google.protobuf.BoolValue
+	115, // 573: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_secure_dns:type_name -> google.protobuf.BoolValue
+	115, // 574: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_legacy:type_name -> google.protobuf.BoolValue
+	115, // 575: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_ap_mode:type_name -> google.protobuf.BoolValue
+	115, // 576: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_dfs_enabled:type_name -> google.protobuf.BoolValue
+	115, // 577: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_network_name_is_default:type_name -> google.protobuf.BoolValue
+	115, // 578: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_remote_ssh_enabled:type_name -> google.protobuf.BoolValue
+	70,  // 579: SpaceX.API.Device.WifiFactoryTestCommandRequest.iwpriv_command:type_name -> SpaceX.API.Device.IwprivCommand
+	71,  // 580: SpaceX.API.Device.WifiFactoryTestCommandRequest.ip_link_set_command:type_name -> SpaceX.API.Device.IpLinkSetCommand
+	72,  // 581: SpaceX.API.Device.WifiFactoryTestCommandRequest.ip_addr_set_command:type_name -> SpaceX.API.Device.IpAddrSetCommand
+	4,   // 582: SpaceX.API.Device.IwprivCommand.ioctl:type_name -> SpaceX.API.Device.IwprivCommand.Ioctl
+	94,  // 583: SpaceX.API.Device.WifiBackhaulStatsResponse.iface:type_name -> SpaceX.API.Device.IfaceType
+	11,  // 584: SpaceX.API.Device.WifiBackhaulStatsResponse.siteSurveyScan:type_name -> SpaceX.API.Device.WifiSiteSurveyResult
+	105, // 585: SpaceX.API.Device.WifiUpdateResponse.stats:type_name -> SpaceX.API.Device.WifiSoftwareUpdateStats
+	82,  // 586: SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverDropRateEntry.value:type_name -> SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverHistory
+	6,   // 587: SpaceX.API.Device.Mesh.MeshStream:input_type -> SpaceX.API.Device.ToController
+	14,  // 588: SpaceX.API.Device.Mesh.MeshStream:output_type -> SpaceX.API.Device.FromController
+	588, // [588:589] is the sub-list for method output_type
+	587, // [587:588] is the sub-list for method input_type
+	587, // [587:587] is the sub-list for extension type_name
+	587, // [587:587] is the sub-list for extension extendee
+	0,   // [0:587] is the sub-list for field type_name
 }
 
 func init() { file_spacex_api_device_wifi_proto_init() }
