@@ -182,7 +182,7 @@ const (
 	EventReason_EVENT_REASON_ROUTER_POWER_CYCLE              EventReason = 15
 	EventReason_EVENT_REASON_ROUTER_CONFIG_UPDATE            EventReason = 16
 	EventReason_EVENT_REASON_ROUTER_SOFTWARE_UPDATE          EventReason = 17
-	EventReason_EVENT_REASON_UNAUTHORIZED_USER               EventReason = 18
+	EventReason_EVENT_REASON_ROUTER_THERMAL_THROTTLED        EventReason = 18
 )
 
 // Enum value maps for EventReason.
@@ -206,7 +206,7 @@ var (
 		15: "EVENT_REASON_ROUTER_POWER_CYCLE",
 		16: "EVENT_REASON_ROUTER_CONFIG_UPDATE",
 		17: "EVENT_REASON_ROUTER_SOFTWARE_UPDATE",
-		18: "EVENT_REASON_UNAUTHORIZED_USER",
+		18: "EVENT_REASON_ROUTER_THERMAL_THROTTLED",
 	}
 	EventReason_value = map[string]int32{
 		"EVENT_REASON_UNKNOWN":                         0,
@@ -227,7 +227,7 @@ var (
 		"EVENT_REASON_ROUTER_POWER_CYCLE":              15,
 		"EVENT_REASON_ROUTER_CONFIG_UPDATE":            16,
 		"EVENT_REASON_ROUTER_SOFTWARE_UPDATE":          17,
-		"EVENT_REASON_UNAUTHORIZED_USER":               18,
+		"EVENT_REASON_ROUTER_THERMAL_THROTTLED":        18,
 	}
 )
 
@@ -2282,7 +2282,7 @@ const file_spacex_api_device_common_proto_rawDesc = "" +
 	"\x16EVENT_SEVERITY_UNKNOWN\x10\x00\x12\x1a\n" +
 	"\x16EVENT_SEVERITY_WARNING\x10\x01\x12\x1a\n" +
 	"\x16EVENT_SEVERITY_CAUTION\x10\x02\x12\x1b\n" +
-	"\x17EVENT_SEVERITY_ADVISORY\x10\x03*\xc4\x05\n" +
+	"\x17EVENT_SEVERITY_ADVISORY\x10\x03*\xcb\x05\n" +
 	"\vEventReason\x12\x18\n" +
 	"\x14EVENT_REASON_UNKNOWN\x10\x00\x12\x1f\n" +
 	"\x1bEVENT_REASON_OUTAGE_UNKNOWN\x10\x01\x12\x1f\n" +
@@ -2302,8 +2302,8 @@ const file_spacex_api_device_common_proto_rawDesc = "" +
 	"\x1aEVENT_REASON_ROUTER_REBOOT\x10\x0e\x12#\n" +
 	"\x1fEVENT_REASON_ROUTER_POWER_CYCLE\x10\x0f\x12%\n" +
 	"!EVENT_REASON_ROUTER_CONFIG_UPDATE\x10\x10\x12'\n" +
-	"#EVENT_REASON_ROUTER_SOFTWARE_UPDATE\x10\x11\x12\"\n" +
-	"\x1eEVENT_REASON_UNAUTHORIZED_USER\x10\x12B\x17Z\x15spacex.com/api/deviceb\x06proto3"
+	"#EVENT_REASON_ROUTER_SOFTWARE_UPDATE\x10\x11\x12)\n" +
+	"%EVENT_REASON_ROUTER_THERMAL_THROTTLED\x10\x12B\x17Z\x15spacex.com/api/deviceb\x06proto3"
 
 var (
 	file_spacex_api_device_common_proto_rawDescOnce sync.Once
