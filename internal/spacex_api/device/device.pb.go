@@ -80,43 +80,46 @@ func (WifiClientSandboxAlert) EnumDescriptor() ([]byte, []int) {
 type PositionSource int32
 
 const (
-	PositionSource_AUTO      PositionSource = 0
-	PositionSource_NONE      PositionSource = 1
-	PositionSource_UT_INFO   PositionSource = 2
-	PositionSource_EXTERNAL  PositionSource = 3
-	PositionSource_GPS       PositionSource = 4
-	PositionSource_STARLINK  PositionSource = 5
-	PositionSource_GNC_GPS   PositionSource = 6
-	PositionSource_GNC_PNT   PositionSource = 7
-	PositionSource_GNC_FUSED PositionSource = 8
-	PositionSource_GNC_RAW   PositionSource = 9
+	PositionSource_AUTO         PositionSource = 0
+	PositionSource_NONE         PositionSource = 1
+	PositionSource_UT_INFO      PositionSource = 2
+	PositionSource_EXTERNAL     PositionSource = 3
+	PositionSource_GPS          PositionSource = 4
+	PositionSource_STARLINK     PositionSource = 5
+	PositionSource_GNC_FUSED    PositionSource = 6
+	PositionSource_GNC_BAD_SAT  PositionSource = 7
+	PositionSource_GNC_NO_ACCEL PositionSource = 8
+	PositionSource_GNC_PNT      PositionSource = 9
+	PositionSource_GNC_STATIC   PositionSource = 10
 )
 
 // Enum value maps for PositionSource.
 var (
 	PositionSource_name = map[int32]string{
-		0: "AUTO",
-		1: "NONE",
-		2: "UT_INFO",
-		3: "EXTERNAL",
-		4: "GPS",
-		5: "STARLINK",
-		6: "GNC_GPS",
-		7: "GNC_PNT",
-		8: "GNC_FUSED",
-		9: "GNC_RAW",
+		0:  "AUTO",
+		1:  "NONE",
+		2:  "UT_INFO",
+		3:  "EXTERNAL",
+		4:  "GPS",
+		5:  "STARLINK",
+		6:  "GNC_FUSED",
+		7:  "GNC_BAD_SAT",
+		8:  "GNC_NO_ACCEL",
+		9:  "GNC_PNT",
+		10: "GNC_STATIC",
 	}
 	PositionSource_value = map[string]int32{
-		"AUTO":      0,
-		"NONE":      1,
-		"UT_INFO":   2,
-		"EXTERNAL":  3,
-		"GPS":       4,
-		"STARLINK":  5,
-		"GNC_GPS":   6,
-		"GNC_PNT":   7,
-		"GNC_FUSED": 8,
-		"GNC_RAW":   9,
+		"AUTO":         0,
+		"NONE":         1,
+		"UT_INFO":      2,
+		"EXTERNAL":     3,
+		"GPS":          4,
+		"STARLINK":     5,
+		"GNC_FUSED":    6,
+		"GNC_BAD_SAT":  7,
+		"GNC_NO_ACCEL": 8,
+		"GNC_PNT":      9,
+		"GNC_STATIC":   10,
 	}
 )
 
@@ -9094,18 +9097,21 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\x15SANDBOX_ALERT_UNKNOWN\x10\x00\x12\x18\n" +
 	"\x14SANDBOX_ALERT_PORTAL\x10\x01\x12\x1c\n" +
 	"\x18SANDBOX_ALERT_GROUND_API\x10\x02\x12\x1e\n" +
-	"\x1aSANDBOX_ALERT_STARLINK_API\x10\x03*\x8c\x01\n" +
+	"\x1aSANDBOX_ALERT_STARLINK_API\x10\x03*\xa5\x01\n" +
 	"\x0ePositionSource\x12\b\n" +
 	"\x04AUTO\x10\x00\x12\b\n" +
 	"\x04NONE\x10\x01\x12\v\n" +
 	"\aUT_INFO\x10\x02\x12\f\n" +
 	"\bEXTERNAL\x10\x03\x12\a\n" +
 	"\x03GPS\x10\x04\x12\f\n" +
-	"\bSTARLINK\x10\x05\x12\v\n" +
-	"\aGNC_GPS\x10\x06\x12\v\n" +
-	"\aGNC_PNT\x10\a\x12\r\n" +
-	"\tGNC_FUSED\x10\b\x12\v\n" +
-	"\aGNC_RAW\x10\t*\xb7\x01\n" +
+	"\bSTARLINK\x10\x05\x12\r\n" +
+	"\tGNC_FUSED\x10\x06\x12\x0f\n" +
+	"\vGNC_BAD_SAT\x10\a\x12\x10\n" +
+	"\fGNC_NO_ACCEL\x10\b\x12\v\n" +
+	"\aGNC_PNT\x10\t\x12\x0e\n" +
+	"\n" +
+	"GNC_STATIC\x10\n" +
+	"*\xb7\x01\n" +
 	"\x0eSpeedtestError\x12\x18\n" +
 	"\x14SPEEDTEST_ERROR_NONE\x10\x00\x12\x1b\n" +
 	"\x17SPEEDTEST_ERROR_UNKNOWN\x10\x01\x12\x19\n" +

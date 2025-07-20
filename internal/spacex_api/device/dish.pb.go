@@ -440,6 +440,7 @@ const (
 	RebootReason_REBOOT_REASON_AAP_CRASH              RebootReason = 14
 	RebootReason_REBOOT_REASON_XP70_SACS              RebootReason = 15
 	RebootReason_REBOOT_REASON_INE_FAILED             RebootReason = 16
+	RebootReason_REBOOT_REASON_KERNEL_TAINTED         RebootReason = 17
 )
 
 // Enum value maps for RebootReason.
@@ -462,6 +463,7 @@ var (
 		14: "REBOOT_REASON_AAP_CRASH",
 		15: "REBOOT_REASON_XP70_SACS",
 		16: "REBOOT_REASON_INE_FAILED",
+		17: "REBOOT_REASON_KERNEL_TAINTED",
 	}
 	RebootReason_value = map[string]int32{
 		"REBOOT_REASON_NONE":                   0,
@@ -481,6 +483,7 @@ var (
 		"REBOOT_REASON_AAP_CRASH":              14,
 		"REBOOT_REASON_XP70_SACS":              15,
 		"REBOOT_REASON_INE_FAILED":             16,
+		"REBOOT_REASON_KERNEL_TAINTED":         17,
 	}
 )
 
@@ -4570,7 +4573,7 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\x12FILTER_UNCONVERGED\x10\x01\x12\x14\n" +
 	"\x10FILTER_CONVERGED\x10\x02\x12\x12\n" +
 	"\x0eFILTER_FAULTED\x10\x03\x12\x12\n" +
-	"\x0eFILTER_INVALID\x10\x04*\xa8\x04\n" +
+	"\x0eFILTER_INVALID\x10\x04*\xca\x04\n" +
 	"\fRebootReason\x12\x16\n" +
 	"\x12REBOOT_REASON_NONE\x10\x00\x12\x18\n" +
 	"\x14REBOOT_REASON_MANUAL\x10\x01\x12\x1e\n" +
@@ -4589,7 +4592,8 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"!REBOOT_REASON_SWUPDATE_STATIONARY\x10\r\x12\x1b\n" +
 	"\x17REBOOT_REASON_AAP_CRASH\x10\x0e\x12\x1b\n" +
 	"\x17REBOOT_REASON_XP70_SACS\x10\x0f\x12\x1c\n" +
-	"\x18REBOOT_REASON_INE_FAILED\x10\x10*I\n" +
+	"\x18REBOOT_REASON_INE_FAILED\x10\x10\x12 \n" +
+	"\x1cREBOOT_REASON_KERNEL_TAINTED\x10\x11*I\n" +
 	"\n" +
 	"RouterRole\x12\x0f\n" +
 	"\vUNSPECIFIED\x10\x00\x12\x0e\n" +
