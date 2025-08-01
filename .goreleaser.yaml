@@ -59,7 +59,7 @@ archives:
 source:
   enabled: true
   name_template: "{{ .ProjectName }}_v{{ .Version }}_sources"
-  format: "tar.gz"
+  formats: ["tar.gz"]
 
 # Create checksums file.
 checksum:
@@ -102,6 +102,8 @@ dockers:
       - "--build-arg=VERSION={{ .Version }}"
       - "--build-arg=VCS_REF={{ .FullCommit }}"
       - "--build-arg=BUILD_DATE={{ .Date }}"
+      - "--sbom=true"
+      - "--provenance=mode=max"
 
   # linux/arm64/v8
   - id: "{{ .ProjectName }}-arm64"
@@ -117,6 +119,8 @@ dockers:
       - "--build-arg=VERSION={{ .Version }}"
       - "--build-arg=VCS_REF={{ .FullCommit }}"
       - "--build-arg=BUILD_DATE={{ .Date }}"
+      - "--sbom=true"
+      - "--provenance=mode=max"
 
   # linux/arm/v7
   - id: "{{ .ProjectName }}-armv7"
@@ -133,6 +137,8 @@ dockers:
       - "--build-arg=VERSION={{ .Version }}"
       - "--build-arg=VCS_REF={{ .FullCommit }}"
       - "--build-arg=BUILD_DATE={{ .Date }}"
+      - "--sbom=true"
+      - "--provenance=mode=max"
 
 # Create Docker manifests for each image, containing the images for each
 # supported system architecture.
@@ -175,10 +181,7 @@ docker_manifests:
 docker_signs:
   - artifacts: "all"
     cmd: "cosign"
-    args:
-      - "sign"
-      - "${artifact}"
-      - "--yes"
+    args: ["sign", "${artifact}", "--yes"]
 
 # Snapshot version settings.
 snapshot:
