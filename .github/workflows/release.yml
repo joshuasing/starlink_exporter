@@ -38,6 +38,16 @@ jobs:
           cache: true
           check-latest: true
 
+      - name: "Setup Docker"
+        run: |
+          # Enable Docker containerd image store
+          if [ ! -s "/etc/docker/daemon.json" ]; then
+            echo '{}' | sudo tee /etc/docker/daemon.json
+          fi
+          cat /etc/docker/daemon.json | jq '. += {"features": {"containerd-snapshotter": true}}' | sudo tee /etc/docker/daemon.json
+          sudo systemctl restart docker
+          docker info -f '{{ .DriverStatus }}'
+
       - name: "Install cosign"
         uses: sigstore/cosign-installer@d58896d6a1865668819e1d91763c7751a165e159 # v3.9.2
 

@@ -98,6 +98,7 @@ dockers:
       - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-amd64"
       - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-amd64"
     build_flag_templates:
+      - "--pull"
       - "--platform=linux/amd64"
       - "--build-arg=VERSION={{ .Version }}"
       - "--build-arg=VCS_REF={{ .FullCommit }}"
@@ -115,6 +116,7 @@ dockers:
       - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-arm64"
       - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-arm64"
     build_flag_templates:
+      - "--pull"
       - "--platform=linux/arm64/v8"
       - "--build-arg=VERSION={{ .Version }}"
       - "--build-arg=VCS_REF={{ .FullCommit }}"
@@ -133,6 +135,7 @@ dockers:
       - "{{ .Env.DOCKER_HUB_USER }}/{{ .ProjectName }}:{{ .Version }}-armv7"
       - "ghcr.io/{{ .Env.GITHUB_USER }}/{{ .ProjectName }}:{{ .Version }}-armv7"
     build_flag_templates:
+      - "--pull"
       - "--platform=linux/arm/v7"
       - "--build-arg=VERSION={{ .Version }}"
       - "--build-arg=VCS_REF={{ .FullCommit }}"
