@@ -9,7 +9,6 @@ package device
 import (
 	status "github.com/joshuasing/starlink_exporter/internal/spacex_api/common/status"
 	unlock "github.com/joshuasing/starlink_exporter/internal/spacex_api/device/services/unlock"
-	integrations "github.com/joshuasing/starlink_exporter/internal/spacex_api/telemetron/public/integrations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -7572,22 +7571,21 @@ func (x *WifiGetDiagnosticsResponse) GetNetworks() []*WifiGetDiagnosticsResponse
 }
 
 type DishGetDiagnosticsResponse struct {
-	state                       protoimpl.MessageState                      `protogen:"open.v1"`
-	Id                          string                                      `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	HardwareVersion             string                                      `protobuf:"bytes,2,opt,name=hardware_version,json=hardwareVersion,proto3" json:"hardware_version,omitempty"`
-	SoftwareVersion             string                                      `protobuf:"bytes,3,opt,name=software_version,json=softwareVersion,proto3" json:"software_version,omitempty"`
-	UtcOffsetS                  int32                                       `protobuf:"varint,4,opt,name=utc_offset_s,json=utcOffsetS,proto3" json:"utc_offset_s,omitempty"`
-	HardwareSelfTest            DishGetDiagnosticsResponse_TestResult       `protobuf:"varint,7,opt,name=hardware_self_test,json=hardwareSelfTest,proto3,enum=SpaceX.API.Device.DishGetDiagnosticsResponse_TestResult" json:"hardware_self_test,omitempty"`
-	HardwareSelfTestCodes       []DishGetDiagnosticsResponse_TestResultCode `protobuf:"varint,11,rep,packed,name=hardware_self_test_codes,json=hardwareSelfTestCodes,proto3,enum=SpaceX.API.Device.DishGetDiagnosticsResponse_TestResultCode" json:"hardware_self_test_codes,omitempty"`
-	Alerts                      *DishGetDiagnosticsResponse_Alerts          `protobuf:"bytes,5,opt,name=alerts,proto3" json:"alerts,omitempty"`
-	DisablementCode             DishGetDiagnosticsResponse_DisablementCode  `protobuf:"varint,6,opt,name=disablement_code,json=disablementCode,proto3,enum=SpaceX.API.Device.DishGetDiagnosticsResponse_DisablementCode" json:"disablement_code,omitempty"`
-	Location                    *DishGetDiagnosticsResponse_Location        `protobuf:"bytes,8,opt,name=location,proto3" json:"location,omitempty"`
-	AlignmentStats              *DishGetDiagnosticsResponse_AlignmentStats  `protobuf:"bytes,9,opt,name=alignment_stats,json=alignmentStats,proto3" json:"alignment_stats,omitempty"`
-	Stowed                      bool                                        `protobuf:"varint,10,opt,name=stowed,proto3" json:"stowed,omitempty"`
-	DlBandwidthRestrictedReason integrations.RateLimitReason                `protobuf:"varint,12,opt,name=dl_bandwidth_restricted_reason,json=dlBandwidthRestrictedReason,proto3,enum=SpaceX.API.Telemetron.Public.Integrations.RateLimitReason" json:"dl_bandwidth_restricted_reason,omitempty"`
-	UlBandwidthRestrictedReason integrations.RateLimitReason                `protobuf:"varint,13,opt,name=ul_bandwidth_restricted_reason,json=ulBandwidthRestrictedReason,proto3,enum=SpaceX.API.Telemetron.Public.Integrations.RateLimitReason" json:"ul_bandwidth_restricted_reason,omitempty"`
-	unknownFields               protoimpl.UnknownFields
-	sizeCache                   protoimpl.SizeCache
+	state                 protoimpl.MessageState                      `protogen:"open.v1"`
+	Id                    string                                      `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	HardwareVersion       string                                      `protobuf:"bytes,2,opt,name=hardware_version,json=hardwareVersion,proto3" json:"hardware_version,omitempty"`
+	SoftwareVersion       string                                      `protobuf:"bytes,3,opt,name=software_version,json=softwareVersion,proto3" json:"software_version,omitempty"`
+	UtcOffsetS            int32                                       `protobuf:"varint,4,opt,name=utc_offset_s,json=utcOffsetS,proto3" json:"utc_offset_s,omitempty"`
+	HardwareSelfTest      DishGetDiagnosticsResponse_TestResult       `protobuf:"varint,7,opt,name=hardware_self_test,json=hardwareSelfTest,proto3,enum=SpaceX.API.Device.DishGetDiagnosticsResponse_TestResult" json:"hardware_self_test,omitempty"`
+	HardwareSelfTestCodes []DishGetDiagnosticsResponse_TestResultCode `protobuf:"varint,11,rep,packed,name=hardware_self_test_codes,json=hardwareSelfTestCodes,proto3,enum=SpaceX.API.Device.DishGetDiagnosticsResponse_TestResultCode" json:"hardware_self_test_codes,omitempty"`
+	Alerts                *DishGetDiagnosticsResponse_Alerts          `protobuf:"bytes,5,opt,name=alerts,proto3" json:"alerts,omitempty"`
+	DisablementCode       DishGetDiagnosticsResponse_DisablementCode  `protobuf:"varint,6,opt,name=disablement_code,json=disablementCode,proto3,enum=SpaceX.API.Device.DishGetDiagnosticsResponse_DisablementCode" json:"disablement_code,omitempty"`
+	Location              *DishGetDiagnosticsResponse_Location        `protobuf:"bytes,8,opt,name=location,proto3" json:"location,omitempty"`
+	AlignmentStats        *DishGetDiagnosticsResponse_AlignmentStats  `protobuf:"bytes,9,opt,name=alignment_stats,json=alignmentStats,proto3" json:"alignment_stats,omitempty"`
+	Stowed                bool                                        `protobuf:"varint,10,opt,name=stowed,proto3" json:"stowed,omitempty"`
+	OverageRateLimited    bool                                        `protobuf:"varint,14,opt,name=overage_rate_limited,json=overageRateLimited,proto3" json:"overage_rate_limited,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *DishGetDiagnosticsResponse) Reset() {
@@ -7697,18 +7695,11 @@ func (x *DishGetDiagnosticsResponse) GetStowed() bool {
 	return false
 }
 
-func (x *DishGetDiagnosticsResponse) GetDlBandwidthRestrictedReason() integrations.RateLimitReason {
+func (x *DishGetDiagnosticsResponse) GetOverageRateLimited() bool {
 	if x != nil {
-		return x.DlBandwidthRestrictedReason
+		return x.OverageRateLimited
 	}
-	return integrations.RateLimitReason(0)
-}
-
-func (x *DishGetDiagnosticsResponse) GetUlBandwidthRestrictedReason() integrations.RateLimitReason {
-	if x != nil {
-		return x.UlBandwidthRestrictedReason
-	}
-	return integrations.RateLimitReason(0)
+	return false
 }
 
 type TcpConnectivityTestRequest struct {
@@ -8451,7 +8442,7 @@ var File_spacex_api_device_device_proto protoreflect.FileDescriptor
 
 const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\n" +
-	"\x1espacex_api/device/device.proto\x12\x11SpaceX.API.Device\x1a%spacex_api/common/status/status.proto\x1a\x1fspacex_api/device/command.proto\x1a\x1espacex_api/device/common.proto\x1a\x1cspacex_api/device/dish.proto\x1a#spacex_api/device/transceiver.proto\x1a\x1cspacex_api/device/wifi.proto\x1a/spacex_api/device/services/unlock/service.proto\x1aBspacex_api/telemetron/public/integrations/ut_pop_link_report.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x92\x01\n" +
+	"\x1espacex_api/device/device.proto\x12\x11SpaceX.API.Device\x1a%spacex_api/common/status/status.proto\x1a\x1fspacex_api/device/command.proto\x1a\x1espacex_api/device/common.proto\x1a\x1cspacex_api/device/dish.proto\x1a#spacex_api/device/transceiver.proto\x1a\x1cspacex_api/device/wifi.proto\x1a/spacex_api/device/services/unlock/service.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x92\x01\n" +
 	"\bToDevice\x126\n" +
 	"\arequest\x18\x01 \x01(\v2\x1a.SpaceX.API.Device.RequestH\x00R\arequest\x12C\n" +
 	"\fhealth_check\x18\x02 \x01(\v2\x1e.SpaceX.API.Device.HealthCheckH\x00R\vhealthCheckB\t\n" +
@@ -8963,7 +8954,7 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\x10clients_ethernet\x18\n" +
 	" \x01(\rR\x0fclientsEthernet\x12!\n" +
 	"\fclients_2ghz\x18\v \x01(\rR\vclients2ghz\x12!\n" +
-	"\fclients_5ghz\x18\f \x01(\rR\vclients5ghz\"\xa1\x16\n" +
+	"\fclients_5ghz\x18\f \x01(\rR\vclients5ghz\"\x9d\x15\n" +
 	"\x1aDishGetDiagnosticsResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12)\n" +
 	"\x10hardware_version\x18\x02 \x01(\tR\x0fhardwareVersion\x12)\n" +
@@ -8977,9 +8968,8 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\blocation\x18\b \x01(\v26.SpaceX.API.Device.DishGetDiagnosticsResponse.LocationR\blocation\x12e\n" +
 	"\x0falignment_stats\x18\t \x01(\v2<.SpaceX.API.Device.DishGetDiagnosticsResponse.AlignmentStatsR\x0ealignmentStats\x12\x16\n" +
 	"\x06stowed\x18\n" +
-	" \x01(\bR\x06stowed\x12\x7f\n" +
-	"\x1edl_bandwidth_restricted_reason\x18\f \x01(\x0e2:.SpaceX.API.Telemetron.Public.Integrations.RateLimitReasonR\x1bdlBandwidthRestrictedReason\x12\x7f\n" +
-	"\x1eul_bandwidth_restricted_reason\x18\r \x01(\x0e2:.SpaceX.API.Telemetron.Public.Integrations.RateLimitReasonR\x1bulBandwidthRestrictedReason\x1a\xe1\x03\n" +
+	" \x01(\bR\x06stowed\x120\n" +
+	"\x14overage_rate_limited\x18\x0e \x01(\bR\x12overageRateLimited\x1a\xe1\x03\n" +
 	"\x06Alerts\x12&\n" +
 	"\x0fdish_is_heating\x18\x01 \x01(\bR\rdishIsHeating\x122\n" +
 	"\x15dish_thermal_throttle\x18\x02 \x01(\bR\x13dishThermalThrottle\x122\n" +
@@ -9055,7 +9045,7 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\x13UNSUPPORTED_VERSION\x10\r\x12\x1e\n" +
 	"\x1aMOVING_TOO_FAST_FOR_POLICY\x10\x0e\x12!\n" +
 	"\x1dUNDER_AVIATION_FLYOVER_LIMITS\x10\x0f\x12\x10\n" +
-	"\fBLOCKED_AREA\x10\x10\"\x04\b\x05\x10\x05\"\x04\b\t\x10\t*\x0fINVALID_COUNTRY*\x12UNLICENSED_COUNTRY\"H\n" +
+	"\fBLOCKED_AREA\x10\x10\"\x04\b\x05\x10\x05\"\x04\b\t\x10\t*\x0fINVALID_COUNTRY*\x12UNLICENSED_COUNTRYJ\x04\b\f\x10\rJ\x04\b\r\x10\x0eR\x1edl_bandwidth_restricted_reasonR\x1eul_bandwidth_restricted_reason\"H\n" +
 	"\x1aTcpConnectivityTestRequest\x12\x16\n" +
 	"\x06target\x18\x01 \x01(\tR\x06target\x12\x12\n" +
 	"\x04port\x18\x02 \x01(\rR\x04port\"\xb3\x04\n" +
@@ -9337,7 +9327,6 @@ var file_spacex_api_device_device_proto_goTypes = []any{
 	(*NetworkInterface)(nil),                          // 196: SpaceX.API.Device.NetworkInterface
 	(*RadioStats)(nil),                                // 197: SpaceX.API.Device.RadioStats
 	(*LLAPosition)(nil),                               // 198: SpaceX.API.Device.LLAPosition
-	(integrations.RateLimitReason)(0),                 // 199: SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
 }
 var file_spacex_api_device_device_proto_depIdxs = []int32{
 	13,  // 0: SpaceX.API.Device.ToDevice.request:type_name -> SpaceX.API.Device.Request
@@ -9545,21 +9534,19 @@ var file_spacex_api_device_device_proto_depIdxs = []int32{
 	7,   // 202: SpaceX.API.Device.DishGetDiagnosticsResponse.disablement_code:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.DisablementCode
 	95,  // 203: SpaceX.API.Device.DishGetDiagnosticsResponse.location:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.Location
 	96,  // 204: SpaceX.API.Device.DishGetDiagnosticsResponse.alignment_stats:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.AlignmentStats
-	199, // 205: SpaceX.API.Device.DishGetDiagnosticsResponse.dl_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
-	199, // 206: SpaceX.API.Device.DishGetDiagnosticsResponse.ul_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
-	8,   // 207: SpaceX.API.Device.UdpConnectivityTestRequest.probe_data:type_name -> SpaceX.API.Device.UdpConnectivityTestRequest.UDPProbeDataType
-	192, // 208: SpaceX.API.Device.GetPingResponse.ResultsEntry.value:type_name -> SpaceX.API.Device.PingResult
-	91,  // 209: SpaceX.API.Device.GetConnectionsResponse.ServicesEntry.value:type_name -> SpaceX.API.Device.GetConnectionsResponse.ServiceConnection
-	2,   // 210: SpaceX.API.Device.SpeedtestStatus.Direction.err:type_name -> SpaceX.API.Device.SpeedtestError
-	9,   // 211: SpaceX.API.Device.Device.Stream:input_type -> SpaceX.API.Device.ToDevice
-	13,  // 212: SpaceX.API.Device.Device.Handle:input_type -> SpaceX.API.Device.Request
-	10,  // 213: SpaceX.API.Device.Device.Stream:output_type -> SpaceX.API.Device.FromDevice
-	14,  // 214: SpaceX.API.Device.Device.Handle:output_type -> SpaceX.API.Device.Response
-	213, // [213:215] is the sub-list for method output_type
-	211, // [211:213] is the sub-list for method input_type
-	211, // [211:211] is the sub-list for extension type_name
-	211, // [211:211] is the sub-list for extension extendee
-	0,   // [0:211] is the sub-list for field type_name
+	8,   // 205: SpaceX.API.Device.UdpConnectivityTestRequest.probe_data:type_name -> SpaceX.API.Device.UdpConnectivityTestRequest.UDPProbeDataType
+	192, // 206: SpaceX.API.Device.GetPingResponse.ResultsEntry.value:type_name -> SpaceX.API.Device.PingResult
+	91,  // 207: SpaceX.API.Device.GetConnectionsResponse.ServicesEntry.value:type_name -> SpaceX.API.Device.GetConnectionsResponse.ServiceConnection
+	2,   // 208: SpaceX.API.Device.SpeedtestStatus.Direction.err:type_name -> SpaceX.API.Device.SpeedtestError
+	9,   // 209: SpaceX.API.Device.Device.Stream:input_type -> SpaceX.API.Device.ToDevice
+	13,  // 210: SpaceX.API.Device.Device.Handle:input_type -> SpaceX.API.Device.Request
+	10,  // 211: SpaceX.API.Device.Device.Stream:output_type -> SpaceX.API.Device.FromDevice
+	14,  // 212: SpaceX.API.Device.Device.Handle:output_type -> SpaceX.API.Device.Response
+	211, // [211:213] is the sub-list for method output_type
+	209, // [209:211] is the sub-list for method input_type
+	209, // [209:209] is the sub-list for extension type_name
+	209, // [209:209] is the sub-list for extension extendee
+	0,   // [0:209] is the sub-list for field type_name
 }
 
 func init() { file_spacex_api_device_device_proto_init() }
