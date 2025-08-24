@@ -2925,10 +2925,12 @@ type WifiConfig_Network struct {
 	NetworkGroups          uint32                        `protobuf:"varint,1026,opt,name=network_groups,json=networkGroups,proto3" json:"network_groups,omitempty"`
 	DnsStaticEntries       []*WifiConfig_DnsStaticEntry  `protobuf:"bytes,1027,rep,name=dns_static_entries,json=dnsStaticEntries,proto3" json:"dns_static_entries,omitempty"`
 	DnsForwardRules        []*WifiConfig_DnsForwardRule  `protobuf:"bytes,1028,rep,name=dns_forward_rules,json=dnsForwardRules,proto3" json:"dns_forward_rules,omitempty"`
-	DisableWhenOffline     bool                          `protobuf:"varint,1029,opt,name=disable_when_offline,json=disableWhenOffline,proto3" json:"disable_when_offline,omitempty"`
-	StaticRoutes           []*WifiConfig_StaticRoute     `protobuf:"bytes,1030,rep,name=static_routes,json=staticRoutes,proto3" json:"static_routes,omitempty"`
-	unknownFields          protoimpl.UnknownFields
-	sizeCache              protoimpl.SizeCache
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi_config.proto.
+	DisableWhenOfflineOld bool                      `protobuf:"varint,1029,opt,name=disable_when_offline_old,json=disableWhenOfflineOld,proto3" json:"disable_when_offline_old,omitempty"`
+	StaticRoutes          []*WifiConfig_StaticRoute `protobuf:"bytes,1030,rep,name=static_routes,json=staticRoutes,proto3" json:"static_routes,omitempty"`
+	DisableWhenOffline    bool                      `protobuf:"varint,1031,opt,name=disable_when_offline,json=disableWhenOffline,proto3" json:"disable_when_offline,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *WifiConfig_Network) Reset() {
@@ -3101,9 +3103,10 @@ func (x *WifiConfig_Network) GetDnsForwardRules() []*WifiConfig_DnsForwardRule {
 	return nil
 }
 
-func (x *WifiConfig_Network) GetDisableWhenOffline() bool {
+// Deprecated: Marked as deprecated in spacex_api/device/wifi_config.proto.
+func (x *WifiConfig_Network) GetDisableWhenOfflineOld() bool {
 	if x != nil {
-		return x.DisableWhenOffline
+		return x.DisableWhenOfflineOld
 	}
 	return false
 }
@@ -3113,6 +3116,13 @@ func (x *WifiConfig_Network) GetStaticRoutes() []*WifiConfig_StaticRoute {
 		return x.StaticRoutes
 	}
 	return nil
+}
+
+func (x *WifiConfig_Network) GetDisableWhenOffline() bool {
+	if x != nil {
+		return x.DisableWhenOffline
+	}
+	return false
 }
 
 type WifiConfig_UnbridgedEthPort struct {
@@ -3363,7 +3373,7 @@ const file_spacex_api_device_wifi_config_proto_rawDesc = "" +
 	"\x1caccess_control_allow_origins\x18\x05 \x03(\tR\x19accessControlAllowOriginsJ\x04\be\x10fR\x10pages_bundle_url\"^\n" +
 	"\rCaptivePortal\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\x12;\n" +
-	"\x1adisplay_in_captive_browser\x18\x02 \x01(\bR\x17displayInCaptiveBrowser\"\xe9V\n" +
+	"\x1adisplay_in_captive_browser\x18\x02 \x01(\bR\x17displayInCaptiveBrowser\"\xa7W\n" +
 	"\n" +
 	"WifiConfig\x12!\n" +
 	"\fcountry_code\x18\x03 \x01(\tR\vcountryCode\x12-\n" +
@@ -3529,7 +3539,7 @@ const file_spacex_api_device_wifi_config_proto_rawDesc = "" +
 	"\x10server_addresses\x18\xe9\a \x03(\tR\x0fserverAddresses\x1a?\n" +
 	"\vStaticRoute\x12\x16\n" +
 	"\x06subnet\x18\x01 \x01(\tR\x06subnet\x12\x18\n" +
-	"\agateway\x18\x02 \x01(\tR\agateway\x1a\xaa\t\n" +
+	"\agateway\x18\x02 \x01(\tR\agateway\x1a\xe8\t\n" +
 	"\aNetwork\x12\x13\n" +
 	"\x04ipv4\x18\xeb\a \x01(\tR\x04ipv4\x12\"\n" +
 	"\fdhcpv4_start\x18\xf4\a \x01(\rR\vdhcpv4Start\x12\x1e\n" +
@@ -3552,9 +3562,10 @@ const file_spacex_api_device_wifi_config_proto_rawDesc = "" +
 	"\x0ecaptive_portal\x18\x80\b \x01(\v2 .SpaceX.API.Device.CaptivePortalR\rcaptivePortal\x12&\n" +
 	"\x0enetwork_groups\x18\x82\b \x01(\rR\rnetworkGroups\x12[\n" +
 	"\x12dns_static_entries\x18\x83\b \x03(\v2,.SpaceX.API.Device.WifiConfig.DnsStaticEntryR\x10dnsStaticEntries\x12Y\n" +
-	"\x11dns_forward_rules\x18\x84\b \x03(\v2,.SpaceX.API.Device.WifiConfig.DnsForwardRuleR\x0fdnsForwardRules\x121\n" +
-	"\x14disable_when_offline\x18\x85\b \x01(\bR\x12disableWhenOffline\x12O\n" +
-	"\rstatic_routes\x18\x86\b \x03(\v2).SpaceX.API.Device.WifiConfig.StaticRouteR\fstaticRoutesJ\x06\b\xe8\a\x10\xe9\aJ\x06\b\xe9\a\x10\xea\aJ\x06\b\xea\a\x10\xeb\aJ\x06\b\xec\a\x10\xed\aJ\x06\b\xed\a\x10\xee\aJ\x06\b\xee\a\x10\xef\aJ\x06\b\xfa\a\x10\xfb\aJ\x06\b\xfb\a\x10\xfc\aR\x1dclient_authorization_requiredR%unauthorized_client_domain_allow_list\x1a\xb6\x03\n" +
+	"\x11dns_forward_rules\x18\x84\b \x03(\v2,.SpaceX.API.Device.WifiConfig.DnsForwardRuleR\x0fdnsForwardRules\x12<\n" +
+	"\x18disable_when_offline_old\x18\x85\b \x01(\bB\x02\x18\x01R\x15disableWhenOfflineOld\x12O\n" +
+	"\rstatic_routes\x18\x86\b \x03(\v2).SpaceX.API.Device.WifiConfig.StaticRouteR\fstaticRoutes\x121\n" +
+	"\x14disable_when_offline\x18\x87\b \x01(\bR\x12disableWhenOfflineJ\x06\b\xe8\a\x10\xe9\aJ\x06\b\xe9\a\x10\xea\aJ\x06\b\xea\a\x10\xeb\aJ\x06\b\xec\a\x10\xed\aJ\x06\b\xed\a\x10\xee\aJ\x06\b\xee\a\x10\xef\aJ\x06\b\xfa\a\x10\xfb\aJ\x06\b\xfb\a\x10\xfc\aR\x1dclient_authorization_requiredR%unauthorized_client_domain_allow_list\x1a\xb6\x03\n" +
 	"\x10UnbridgedEthPort\x12$\n" +
 	"\x0elan_port_index\x18\x01 \x01(\rR\flanPortIndex\x12\x0e\n" +
 	"\x02ip\x18\x02 \x01(\tR\x02ip\x12\x18\n" +
