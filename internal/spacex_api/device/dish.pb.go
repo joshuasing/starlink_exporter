@@ -679,6 +679,7 @@ const (
 	DishOutage_ACTUATOR_ACTIVITY DishOutage_Cause = 9
 	DishOutage_CABLE_TEST        DishOutage_Cause = 10
 	DishOutage_SLEEPING          DishOutage_Cause = 11
+	DishOutage_SKY_SEARCH        DishOutage_Cause = 13
 )
 
 // Enum value maps for DishOutage_Cause.
@@ -696,6 +697,7 @@ var (
 		9:  "ACTUATOR_ACTIVITY",
 		10: "CABLE_TEST",
 		11: "SLEEPING",
+		13: "SKY_SEARCH",
 	}
 	DishOutage_Cause_value = map[string]int32{
 		"UNKNOWN":           0,
@@ -710,6 +712,7 @@ var (
 		"ACTUATOR_ACTIVITY": 9,
 		"CABLE_TEST":        10,
 		"SLEEPING":          11,
+		"SKY_SEARCH":        13,
 	}
 )
 
@@ -2100,6 +2103,7 @@ type DishAlerts struct {
 	DishWaterDetected          bool                   `protobuf:"varint,20,opt,name=dish_water_detected,json=dishWaterDetected,proto3" json:"dish_water_detected,omitempty"`
 	RouterWaterDetected        bool                   `protobuf:"varint,21,opt,name=router_water_detected,json=routerWaterDetected,proto3" json:"router_water_detected,omitempty"`
 	UpsuRouterPortSlow         bool                   `protobuf:"varint,22,opt,name=upsu_router_port_slow,json=upsuRouterPortSlow,proto3" json:"upsu_router_port_slow,omitempty"`
+	NoEthernetLink             bool                   `protobuf:"varint,23,opt,name=no_ethernet_link,json=noEthernetLink,proto3" json:"no_ethernet_link,omitempty"`
 	unknownFields              protoimpl.UnknownFields
 	sizeCache                  protoimpl.SizeCache
 }
@@ -2263,6 +2267,13 @@ func (x *DishAlerts) GetRouterWaterDetected() bool {
 func (x *DishAlerts) GetUpsuRouterPortSlow() bool {
 	if x != nil {
 		return x.UpsuRouterPortSlow
+	}
+	return false
+}
+
+func (x *DishAlerts) GetNoEthernetLink() bool {
+	if x != nil {
+		return x.NoEthernetLink
 	}
 	return false
 }
@@ -4243,7 +4254,7 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\x13outage_2s_within_1h\x18\x18 \x01(\bR\x10outage2sWithin1h\x12-\n" +
 	"\x13outage_5s_within_1h\x18\x19 \x01(\bR\x10outage5sWithin1h\x12[\n" +
 	"\x10disablement_code\x18\x15 \x01(\x0e20.SpaceX.API.Satellites.Network.UtDisablementCodeR\x0fdisablementCode\x12-\n" +
-	"\x13ku_mac_active_ratio\x18\x16 \x01(\x02R\x10kuMacActiveRatio\"\x9d\x03\n" +
+	"\x13ku_mac_active_ratio\x18\x16 \x01(\x02R\x10kuMacActiveRatio\"\xad\x03\n" +
 	"\n" +
 	"DishOutage\x129\n" +
 	"\x05cause\x18\x01 \x01(\x0e2#.SpaceX.API.Device.DishOutage.CauseR\x05cause\x12,\n" +
@@ -4251,7 +4262,7 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\vduration_ns\x18\x03 \x01(\x04R\n" +
 	"durationNs\x12\x1d\n" +
 	"\n" +
-	"did_switch\x18\x04 \x01(\bR\tdidSwitch\"\xe5\x01\n" +
+	"did_switch\x18\x04 \x01(\bR\tdidSwitch\"\xf5\x01\n" +
 	"\x05Cause\x12\v\n" +
 	"\aUNKNOWN\x10\x00\x12\v\n" +
 	"\aBOOTING\x10\x01\x12\n" +
@@ -4268,7 +4279,9 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\n" +
 	"CABLE_TEST\x10\n" +
 	"\x12\f\n" +
-	"\bSLEEPING\x10\v\"\x04\b\f\x10\f*\x18MOVING_WHILE_NOT_ALLOWED\"\xaf\x03\n" +
+	"\bSLEEPING\x10\v\x12\x0e\n" +
+	"\n" +
+	"SKY_SEARCH\x10\r\"\x04\b\f\x10\f*\x18MOVING_WHILE_NOT_ALLOWED\"\xaf\x03\n" +
 	"\x16DishGetHistoryResponse\x12\x18\n" +
 	"\acurrent\x18\x01 \x01(\x04R\acurrent\x12,\n" +
 	"\x12pop_ping_drop_rate\x18\xe9\a \x03(\x02R\x0fpopPingDropRate\x12.\n" +
@@ -4337,7 +4350,7 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\x03snr\x18\x03 \x03(\x02R\x03snr\x12.\n" +
 	"\x11min_elevation_deg\x18\x04 \x01(\x02B\x02\x18\x01R\x0fminElevationDeg\x12\"\n" +
 	"\rmax_theta_deg\x18\x05 \x01(\x02R\vmaxThetaDeg\x12_\n" +
-	"\x13map_reference_frame\x18\x06 \x01(\x0e2/.SpaceX.API.Device.ObstructionMapReferenceFrameR\x11mapReferenceFrame\"\xed\a\n" +
+	"\x13map_reference_frame\x18\x06 \x01(\x0e2/.SpaceX.API.Device.ObstructionMapReferenceFrameR\x11mapReferenceFrame\"\x97\b\n" +
 	"\n" +
 	"DishAlerts\x12!\n" +
 	"\fmotors_stuck\x18\x01 \x01(\bR\vmotorsStuck\x12)\n" +
@@ -4360,7 +4373,8 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\x15obstruction_map_reset\x18\x13 \x01(\bR\x13obstructionMapReset\x12.\n" +
 	"\x13dish_water_detected\x18\x14 \x01(\bR\x11dishWaterDetected\x122\n" +
 	"\x15router_water_detected\x18\x15 \x01(\bR\x13routerWaterDetected\x121\n" +
-	"\x15upsu_router_port_slow\x18\x16 \x01(\bR\x12upsuRouterPortSlowJ\x04\b\f\x10\rJ\x04\b\r\x10\x0eJ\x04\b\x0f\x10\x10R\x1emoving_fast_while_not_aviationR\x17moving_while_not_mobileR\x1amoving_too_fast_for_policy\"\x81\x01\n" +
+	"\x15upsu_router_port_slow\x18\x16 \x01(\bR\x12upsuRouterPortSlow\x12(\n" +
+	"\x10no_ethernet_link\x18\x17 \x01(\bR\x0enoEthernetLinkJ\x04\b\f\x10\rJ\x04\b\r\x10\x0eJ\x04\b\x0f\x10\x10R\x1emoving_fast_while_not_aviationR\x17moving_while_not_mobileR\x1amoving_too_fast_for_policy\"\x81\x01\n" +
 	"\x0fDishReadyStates\x12\x12\n" +
 	"\x04cady\x18\x01 \x01(\bR\x04cady\x12\x10\n" +
 	"\x03scp\x18\x02 \x01(\bR\x03scp\x12\x12\n" +
