@@ -5,7 +5,7 @@ go 1.24.5
 require (
 	github.com/prometheus/client_golang v1.23.2
 	github.com/prometheus/common v0.66.1
-	github.com/prometheus/exporter-toolkit v0.14.0
+	github.com/prometheus/exporter-toolkit v0.14.1
 	google.golang.org/grpc v1.74.2
 	google.golang.org/protobuf v1.36.9
 )
@@ -13,7 +13,7 @@ require (
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
-	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
+	github.com/coreos/go-systemd/v22 v22.6.0 // indirect
 	github.com/jpillora/backoff v1.0.0 // indirect
 	github.com/mdlayher/socket v0.5.1 // indirect
 	github.com/mdlayher/vsock v1.2.1 // indirect
