@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 # Build stage
-FROM golang:1.24.6-alpine3.22@sha256:c8c5f95d64aa79b6547f3b626eb84b16a7ce18a139e3e9ca19a8c078b85ba80d AS builder
+FROM golang:1.25.1-alpine3.22@sha256:b6ed3fd0452c0e9bcdef5597f29cc1418f61672e9d3a2f55bf02e7222c014abd AS builder
 
 # Add ca-certificates, timezone data
 RUN apk --no-cache add --update ca-certificates tzdata
