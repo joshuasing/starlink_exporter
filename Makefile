@@ -73,4 +73,6 @@ gen:
 
 .PHONY: gen-deps
 gen-deps:
+	@echo "Using $$(protoc --version)"
+	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest

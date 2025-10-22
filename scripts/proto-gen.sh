@@ -84,9 +84,15 @@ gen_go() {
 	PROTO_FILES="$(find ./spacex_api/ -name '*.proto')"
 
 	# Create go_opt and go-grpc_opt flags for each package
-	for file in $(echo "$PROTO_FILES" | sed 's|^\./||'); do
-		package=$(echo "$file" | sed -e 's|^|github.com/joshuasing/starlink_exporter/internal/|' -e 's|/[^/]*$||')
-		PROTOC_OPTS="$PROTOC_OPTS --go_opt=M$file=$package --go-grpc_opt=M$file=$package"
+	PACKAGE="github.com/joshuasing/starlink_exporter/internal"
+	for file in $(printf '%s\n' "$PROTO_FILES" | sed 's|^\./||'); do
+		dir="$(dirname "$file")"
+		import_path="${PACKAGE}/${dir}"
+		pkg_name="$(basename "$dir")"
+		pkg_name="$(printf '%s' "$pkg_name" | sed 's/[^A-Za-z0-9_]/_/g')"
+		mapping="${import_path};${pkg_name}"
+
+		PROTOC_OPTS="${PROTOC_OPTS} --go_opt=M${file}=${mapping} --go-grpc_opt=M${file}=${mapping}"
 	done
 
 	PACKAGE_DIR="$MODULE_DIR/internal"
