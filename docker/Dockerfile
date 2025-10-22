@@ -21,32 +21,24 @@
 # Build stage
 FROM golang:1.25.3-alpine3.22@sha256:aee43c3ccbf24fdffb7295693b6e33b21e01baec1b2a55acc351fde345e9ec34 AS builder
 
-# Add ca-certificates, timezone data
-RUN apk --no-cache add --update ca-certificates tzdata
+WORKDIR /build/
 
-# Create non-root user
-RUN addgroup --gid 65532 starlink_exporter && \
-    adduser  --disabled-password --gecos "" \
-    --home "/etc/starlink_exporter" --shell="/sbin/nologin" \
-    -G starlink_exporter --uid 65532 starlink_exporter
-
-WORKDIR /build/starlink_exporter
-COPY . .
-
+COPY go.mod .
+COPY go.sum .
 RUN go mod download
 RUN go mod verify
 
+COPY . .
 RUN GOOS=$(go env GOOS) GOARCH=$(go env GOARCH) CGO_ENABLED=0 GOGC=off \
-    go build -trimpath -ldflags "-s -w" -o /build/starlink_exporter/dist/starlink_exporter ./cmd/starlink_exporter
+    go build -trimpath -ldflags "-s -w" -o ./bin/starlink_exporter ./cmd/starlink_exporter
 
-## Run stage
-FROM scratch
+# Run stage
+FROM cgr.dev/chainguard/static@sha256:bf076ce7861fe5cd50414b8ef26af247df58af0e256e17a7e4fc5ef2450393f9
 
 # Build metadata
 ARG VERSION
 ARG VCS_REF
 ARG BUILD_DATE
-
 LABEL maintainer="Joshua Sing <joshua@joshuasing.dev>"
 LABEL org.opencontainers.image.created=$BUILD_DATE \
       org.opencontainers.image.authors="Joshua Sing <joshua@joshuasing.dev>" \
@@ -59,14 +51,8 @@ LABEL org.opencontainers.image.created=$BUILD_DATE \
       org.opencontainers.image.title="Starlink Prometheus Exporter" \
       org.opencontainers.image.description="A simple Starlink exporter for Prometheus"
 
-# Copy files
-COPY --from=builder /etc/group /etc/group
-COPY --from=builder /etc/passwd /etc/passwd
-COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
-COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
-COPY --from=builder /etc/starlink_exporter /etc/starlink_exporter
-COPY --from=builder /build/starlink_exporter/dist/starlink_exporter /usr/local/bin/starlink_exporter
+# Copy binary
+COPY --from=builder /build/bin/starlink_exporter /usr/local/bin/starlink_exporter
 
-USER starlink_exporter:starlink_exporter
 EXPOSE 9451/tcp
 ENTRYPOINT ["/usr/local/bin/starlink_exporter"]
