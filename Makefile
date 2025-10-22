@@ -60,7 +60,7 @@ lint:
 
 .PHONY: lint-deps
 lint-deps:
-	go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.1
+	go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.5
 	go install github.com/joshuasing/golicenser/cmd/golicenser@v0.3
 
 .PHONY: build
