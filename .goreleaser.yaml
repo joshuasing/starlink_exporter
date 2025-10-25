@@ -24,7 +24,7 @@ builds:
       -X github.com/prometheus/common/version.Version={{ .Version }}
       -X github.com/prometheus/common/version.Revision={{ .FullCommit }}
       -X github.com/prometheus/common/version.Branch={{ .Branch }}
-      -X github.com/prometheus/common/version.BuildDate={{ .CommitDate.Format "20060102-15:04:05" }}
+      -X github.com/prometheus/common/version.BuildDate={{ .CommitDate }}
     flags: [ "-trimpath" ]
     goos:
       - "linux"
