@@ -16,8 +16,9 @@ gomod:
   proxy: true
 
 builds:
-  - binary: "{{ .ProjectName }}"
-    main: "./cmd/{{ .ProjectName }}/"
+  - id: "starlink_exporter"
+    binary: "starlink_exporter"
+    main: "./cmd/starlink_exporter/"
     env: [ "CGO_ENABLED=0", "GOGC=off" ]
     ldflags: >-
       -s -w
@@ -44,7 +45,7 @@ archives:
   - formats: ["tar.gz"]
     wrap_in_directory: true
     name_template: >-
-      {{ .ProjectName }}_v{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}
+      starlink_exporter_v{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}
     format_overrides:
       - goos: "windows"
         formats: ["zip"]
@@ -55,12 +56,12 @@ archives:
 # Create sources archive.
 source:
   enabled: true
-  name_template: "{{ .ProjectName }}_v{{ .Version }}_sources"
+  name_template: "starlink_exporter_v{{ .Version }}_sources"
   format: "tar.gz"
 
 # Create checksums file.
 checksum:
-  name_template: "{{ .ProjectName }}_v{{ .Version }}_checksums.txt"
+  name_template: "starlink_exporter_v{{ .Version }}_checksums.txt"
   algorithm: "sha256"
 
 # Create SBOMs for all archives and the source archive.
@@ -85,20 +86,19 @@ signs:
 # Create Docker images:
 #  - starlink_exporter: linux/amd64, linux/arm64, linux/arm/v7
 dockers_v2:
-  - id: "{{ .ProjectName }}"
+  - id: "starlink_exporter"
     dockerfile: "docker/goreleaser.Dockerfile"
     images:
       - "joshuasing/starlink_exporter"
       - "ghcr.io/joshuasing/starlink_exporter"
     tags:
       - "{{ .Version }}"
-      - "{{if not .Prerelease}}latest{{end}}"
-      - "{{if not .Prerelease}}{{ .Major }}{{end}}"
-      - "{{if not .Prerelease}}{{ .Major }}.{{ .Minor }}{{end}}"
+      - "{{if and (not .Prerelease) (not .IsSnapshot)}}latest{{end}}"
+      - "{{if and (not .Prerelease) (not .IsSnapshot)}}{{ .Major }}{{end}}"
+      - "{{if and (not .Prerelease) (not .IsSnapshot)}}{{ .Major }}.{{ .Minor }}{{end}}"
     platforms:
       - "linux/amd64"
       - "linux/arm64"
-      - "linux/arm/v7"
     build_args:
       VERSION: "{{ .Version }}"
       VCS_REF: "{{ .FullCommit }}"
@@ -112,7 +112,7 @@ docker_signs:
 
 # Create file with Docker image digests.
 docker_digest:
-  name_template: "{{ .ProjectName }}_v{{ .Version }}_image_digests.txt"
+  name_template: "starlink_exporter_v{{ .Version }}_image_digests.txt"
 
 # Snapshot version settings.
 snapshot:
