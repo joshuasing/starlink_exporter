@@ -119,8 +119,7 @@ snapshot:
   version_template: "{{ incpatch .Version }}-dev-{{ .ShortCommit }}"
 
 # Generate changelog for releases.
-changelog:
-  use: "github-native"
+changelog: {}
 
 # Create GitHub release.
 release:
