@@ -3,7 +3,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/joshuasing/starlink_exporter.svg)](https://pkg.go.dev/github.com/joshuasing/starlink_exporter)
 [![Go Report Card](https://goreportcard.com/badge/github.com/joshuasing/starlink_exporter)](https://goreportcard.com/report/github.com/joshuasing/starlink_exporter)
 [![Go Build Status](https://github.com/joshuasing/starlink_exporter/actions/workflows/go.yml/badge.svg)](https://github.com/joshuasing/starlink_exporter/actions/workflows/go.yml)
-[![Starlink Dishy Software Version](https://img.shields.io/badge/Starlink_Dishy_Version-2025.12.07.mr69330.2_(API_v42)-blue)](internal/spacex/README.md)
+[![Starlink Dishy Software Version](https://img.shields.io/badge/Starlink_Dishy_Version-2025.12.07.mr69330.2_(API_v42)-blue)](internal/spacex_api/README.md)
 [![MIT License](https://img.shields.io/badge/license-MIT-2155cc)](LICENSE)
 
 A simple Starlink exporter for Prometheus. *Not affiliated with Starlink or SpaceX.*
