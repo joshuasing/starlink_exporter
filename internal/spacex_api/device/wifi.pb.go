@@ -183,6 +183,116 @@ func (WifiClient_Role) EnumDescriptor() ([]byte, []int) {
 	return file_spacex_api_device_wifi_proto_rawDescGZIP(), []int{28, 1}
 }
 
+type WifiClient_CaptiveState int32
+
+const (
+	WifiClient_CAPTIVE_STATE_NOT_CONFIGURED    WifiClient_CaptiveState = 0
+	WifiClient_CAPTIVE_STATE_UNKNOWN           WifiClient_CaptiveState = 1
+	WifiClient_CAPTIVE_STATE_CAPTIVE           WifiClient_CaptiveState = 2
+	WifiClient_CAPTIVE_STATE_NOT_CAPTIVE       WifiClient_CaptiveState = 3
+	WifiClient_CAPTIVE_STATE_PARTIALLY_CAPTIVE WifiClient_CaptiveState = 4
+)
+
+// Enum value maps for WifiClient_CaptiveState.
+var (
+	WifiClient_CaptiveState_name = map[int32]string{
+		0: "CAPTIVE_STATE_NOT_CONFIGURED",
+		1: "CAPTIVE_STATE_UNKNOWN",
+		2: "CAPTIVE_STATE_CAPTIVE",
+		3: "CAPTIVE_STATE_NOT_CAPTIVE",
+		4: "CAPTIVE_STATE_PARTIALLY_CAPTIVE",
+	}
+	WifiClient_CaptiveState_value = map[string]int32{
+		"CAPTIVE_STATE_NOT_CONFIGURED":    0,
+		"CAPTIVE_STATE_UNKNOWN":           1,
+		"CAPTIVE_STATE_CAPTIVE":           2,
+		"CAPTIVE_STATE_NOT_CAPTIVE":       3,
+		"CAPTIVE_STATE_PARTIALLY_CAPTIVE": 4,
+	}
+)
+
+func (x WifiClient_CaptiveState) Enum() *WifiClient_CaptiveState {
+	p := new(WifiClient_CaptiveState)
+	*p = x
+	return p
+}
+
+func (x WifiClient_CaptiveState) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (WifiClient_CaptiveState) Descriptor() protoreflect.EnumDescriptor {
+	return file_spacex_api_device_wifi_proto_enumTypes[3].Descriptor()
+}
+
+func (WifiClient_CaptiveState) Type() protoreflect.EnumType {
+	return &file_spacex_api_device_wifi_proto_enumTypes[3]
+}
+
+func (x WifiClient_CaptiveState) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use WifiClient_CaptiveState.Descriptor instead.
+func (WifiClient_CaptiveState) EnumDescriptor() ([]byte, []int) {
+	return file_spacex_api_device_wifi_proto_rawDescGZIP(), []int{28, 2}
+}
+
+type WifiClient_SandboxState int32
+
+const (
+	WifiClient_SANDBOX_STATE_NOT_CONFIGURED      WifiClient_SandboxState = 0
+	WifiClient_SANDBOX_STATE_UNKNOWN             WifiClient_SandboxState = 1
+	WifiClient_SANDBOX_STATE_SANDBOXED           WifiClient_SandboxState = 2
+	WifiClient_SANDBOX_STATE_UNSANDBOXED         WifiClient_SandboxState = 3
+	WifiClient_SANDBOX_STATE_PARTIALLY_SANDBOXED WifiClient_SandboxState = 4
+)
+
+// Enum value maps for WifiClient_SandboxState.
+var (
+	WifiClient_SandboxState_name = map[int32]string{
+		0: "SANDBOX_STATE_NOT_CONFIGURED",
+		1: "SANDBOX_STATE_UNKNOWN",
+		2: "SANDBOX_STATE_SANDBOXED",
+		3: "SANDBOX_STATE_UNSANDBOXED",
+		4: "SANDBOX_STATE_PARTIALLY_SANDBOXED",
+	}
+	WifiClient_SandboxState_value = map[string]int32{
+		"SANDBOX_STATE_NOT_CONFIGURED":      0,
+		"SANDBOX_STATE_UNKNOWN":             1,
+		"SANDBOX_STATE_SANDBOXED":           2,
+		"SANDBOX_STATE_UNSANDBOXED":         3,
+		"SANDBOX_STATE_PARTIALLY_SANDBOXED": 4,
+	}
+)
+
+func (x WifiClient_SandboxState) Enum() *WifiClient_SandboxState {
+	p := new(WifiClient_SandboxState)
+	*p = x
+	return p
+}
+
+func (x WifiClient_SandboxState) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (WifiClient_SandboxState) Descriptor() protoreflect.EnumDescriptor {
+	return file_spacex_api_device_wifi_proto_enumTypes[4].Descriptor()
+}
+
+func (WifiClient_SandboxState) Type() protoreflect.EnumType {
+	return &file_spacex_api_device_wifi_proto_enumTypes[4]
+}
+
+func (x WifiClient_SandboxState) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use WifiClient_SandboxState.Descriptor instead.
+func (WifiClient_SandboxState) EnumDescriptor() ([]byte, []int) {
+	return file_spacex_api_device_wifi_proto_rawDescGZIP(), []int{28, 3}
+}
+
 type WifiNetwork_Band int32
 
 const (
@@ -216,11 +326,11 @@ func (x WifiNetwork_Band) String() string {
 }
 
 func (WifiNetwork_Band) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_wifi_proto_enumTypes[3].Descriptor()
+	return file_spacex_api_device_wifi_proto_enumTypes[5].Descriptor()
 }
 
 func (WifiNetwork_Band) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_wifi_proto_enumTypes[3]
+	return &file_spacex_api_device_wifi_proto_enumTypes[5]
 }
 
 func (x WifiNetwork_Band) Number() protoreflect.EnumNumber {
@@ -268,11 +378,11 @@ func (x IwprivCommand_Ioctl) String() string {
 }
 
 func (IwprivCommand_Ioctl) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_wifi_proto_enumTypes[4].Descriptor()
+	return file_spacex_api_device_wifi_proto_enumTypes[6].Descriptor()
 }
 
 func (IwprivCommand_Ioctl) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_wifi_proto_enumTypes[4]
+	return &file_spacex_api_device_wifi_proto_enumTypes[6]
 }
 
 func (x IwprivCommand_Ioctl) Number() protoreflect.EnumNumber {
@@ -2146,6 +2256,8 @@ type WifiClient struct {
 	Blocked                      bool                    `protobuf:"varint,42,opt,name=blocked,proto3" json:"blocked,omitempty"`
 	ClientId                     uint32                  `protobuf:"varint,43,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	CaptiveClientId              string                  `protobuf:"bytes,53,opt,name=captive_client_id,json=captiveClientId,proto3" json:"captive_client_id,omitempty"`
+	CaptiveState                 WifiClient_CaptiveState `protobuf:"varint,56,opt,name=captive_state,json=captiveState,proto3,enum=SpaceX.API.Device.WifiClient_CaptiveState" json:"captive_state,omitempty"`
+	SandboxState                 WifiClient_SandboxState `protobuf:"varint,57,opt,name=sandbox_state,json=sandboxState,proto3,enum=SpaceX.API.Device.WifiClient_SandboxState" json:"sandbox_state,omitempty"`
 	FqcodelInfo                  *WifiClient_FqcodelInfo `protobuf:"bytes,44,opt,name=fqcodel_info,json=fqcodelInfo,proto3" json:"fqcodel_info,omitempty"`
 	Alerts                       *WifiClient_Alerts      `protobuf:"bytes,52,opt,name=alerts,proto3" json:"alerts,omitempty"`
 	UploadMb                     uint32                  `protobuf:"varint,54,opt,name=upload_mb,json=uploadMb,proto3" json:"upload_mb,omitempty"`
@@ -2511,6 +2623,20 @@ func (x *WifiClient) GetCaptiveClientId() string {
 		return x.CaptiveClientId
 	}
 	return ""
+}
+
+func (x *WifiClient) GetCaptiveState() WifiClient_CaptiveState {
+	if x != nil {
+		return x.CaptiveState
+	}
+	return WifiClient_CAPTIVE_STATE_NOT_CONFIGURED
+}
+
+func (x *WifiClient) GetSandboxState() WifiClient_SandboxState {
+	if x != nil {
+		return x.SandboxState
+	}
+	return WifiClient_SANDBOX_STATE_NOT_CONFIGURED
 }
 
 func (x *WifiClient) GetFqcodelInfo() *WifiClient_FqcodelInfo {
@@ -4006,279 +4132,290 @@ func (x *RadioStats) GetAntennaStatus() *RadioStats_AntennaStatus {
 }
 
 type StarlinkRoutersHourlyMetricsV2 struct {
-	state                                   protoimpl.MessageState  `protogen:"open.v1"`
-	Id                                      *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	TimestampDate                           *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=timestamp_date,json=timestampDate,proto3" json:"timestamp_date,omitempty"`
-	TimestampHour                           *wrapperspb.UInt32Value `protobuf:"bytes,3,opt,name=timestamp_hour,json=timestampHour,proto3" json:"timestamp_hour,omitempty"`
-	Timestamp                               *common.TimestampInfo   `protobuf:"bytes,10000,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	SysHwGen                                *wrapperspb.UInt32Value `protobuf:"bytes,4,opt,name=sys_hw_gen,json=sysHwGen,proto3" json:"sys_hw_gen,omitempty"`
-	SysHwIndex                              *wrapperspb.UInt32Value `protobuf:"bytes,22,opt,name=sys_hw_index,json=sysHwIndex,proto3" json:"sys_hw_index,omitempty"`
-	SysSw                                   *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=sys_sw,json=sysSw,proto3" json:"sys_sw,omitempty"`
-	SysCountry                              *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=sys_country,json=sysCountry,proto3" json:"sys_country,omitempty"`
-	SysIsDev                                *wrapperspb.BoolValue   `protobuf:"bytes,7,opt,name=sys_is_dev,json=sysIsDev,proto3" json:"sys_is_dev,omitempty"`
-	SysAllocFds                             *wrapperspb.UInt32Value `protobuf:"bytes,8,opt,name=sys_alloc_fds,json=sysAllocFds,proto3" json:"sys_alloc_fds,omitempty"`
-	SysCpuUsage                             *wrapperspb.FloatValue  `protobuf:"bytes,9,opt,name=sys_cpu_usage,json=sysCpuUsage,proto3" json:"sys_cpu_usage,omitempty"`
-	SysMemFreeKb                            *wrapperspb.FloatValue  `protobuf:"bytes,10,opt,name=sys_mem_free_kb,json=sysMemFreeKb,proto3" json:"sys_mem_free_kb,omitempty"`
-	SysBootcount                            *wrapperspb.Int32Value  `protobuf:"bytes,11,opt,name=sys_bootcount,json=sysBootcount,proto3" json:"sys_bootcount,omitempty"`
-	SysPartitionsEqual                      *wrapperspb.BoolValue   `protobuf:"bytes,12,opt,name=sys_partitions_equal,json=sysPartitionsEqual,proto3" json:"sys_partitions_equal,omitempty"`
-	SysUptimeSeconds                        *wrapperspb.UInt32Value `protobuf:"bytes,13,opt,name=sys_uptime_seconds,json=sysUptimeSeconds,proto3" json:"sys_uptime_seconds,omitempty"`
-	SysAntiRollbackVersion                  *wrapperspb.Int32Value  `protobuf:"bytes,14,opt,name=sys_anti_rollback_version,json=sysAntiRollbackVersion,proto3" json:"sys_anti_rollback_version,omitempty"`
-	SysIsWitl                               *wrapperspb.BoolValue   `protobuf:"bytes,15,opt,name=sys_is_witl,json=sysIsWitl,proto3" json:"sys_is_witl,omitempty"`
-	SysIsAviationConformed                  *wrapperspb.BoolValue   `protobuf:"bytes,16,opt,name=sys_is_aviation_conformed,json=sysIsAviationConformed,proto3" json:"sys_is_aviation_conformed,omitempty"`
-	SysUbiMaxEc                             *wrapperspb.UInt32Value `protobuf:"bytes,17,opt,name=sys_ubi_max_ec,json=sysUbiMaxEc,proto3" json:"sys_ubi_max_ec,omitempty"`
-	SysUbiBadPeb                            *wrapperspb.UInt32Value `protobuf:"bytes,18,opt,name=sys_ubi_bad_peb,json=sysUbiBadPeb,proto3" json:"sys_ubi_bad_peb,omitempty"`
-	SysBoardRev                             *wrapperspb.UInt32Value `protobuf:"bytes,19,opt,name=sys_board_rev,json=sysBoardRev,proto3" json:"sys_board_rev,omitempty"`
-	SysCalibrationState                     *wrapperspb.UInt32Value `protobuf:"bytes,20,opt,name=sys_calibration_state,json=sysCalibrationState,proto3" json:"sys_calibration_state,omitempty"`
-	SysCalibrationPartitionsState           *wrapperspb.UInt32Value `protobuf:"bytes,21,opt,name=sys_calibration_partitions_state,json=sysCalibrationPartitionsState,proto3" json:"sys_calibration_partitions_state,omitempty"`
-	Radios_2GhzChannel                      *wrapperspb.UInt32Value `protobuf:"bytes,100,opt,name=radios_2ghz_channel,json=radios2ghzChannel,proto3" json:"radios_2ghz_channel,omitempty"`
-	Radios_2GhzAntenna1Rssi                 *wrapperspb.FloatValue  `protobuf:"bytes,101,opt,name=radios_2ghz_antenna1_rssi,json=radios2ghzAntenna1Rssi,proto3" json:"radios_2ghz_antenna1_rssi,omitempty"`
-	Radios_2GhzAntenna2Rssi                 *wrapperspb.FloatValue  `protobuf:"bytes,102,opt,name=radios_2ghz_antenna2_rssi,json=radios2ghzAntenna2Rssi,proto3" json:"radios_2ghz_antenna2_rssi,omitempty"`
-	Radios_2GhzAntenna3Rssi                 *wrapperspb.FloatValue  `protobuf:"bytes,103,opt,name=radios_2ghz_antenna3_rssi,json=radios2ghzAntenna3Rssi,proto3" json:"radios_2ghz_antenna3_rssi,omitempty"`
-	Radios_2GhzAntenna4Rssi                 *wrapperspb.FloatValue  `protobuf:"bytes,197,opt,name=radios_2ghz_antenna4_rssi,json=radios2ghzAntenna4Rssi,proto3" json:"radios_2ghz_antenna4_rssi,omitempty"`
-	Radios_2GhzAntenna1Tssi                 *wrapperspb.FloatValue  `protobuf:"bytes,157,opt,name=radios_2ghz_antenna1_tssi,json=radios2ghzAntenna1Tssi,proto3" json:"radios_2ghz_antenna1_tssi,omitempty"`
-	Radios_2GhzAntenna2Tssi                 *wrapperspb.FloatValue  `protobuf:"bytes,158,opt,name=radios_2ghz_antenna2_tssi,json=radios2ghzAntenna2Tssi,proto3" json:"radios_2ghz_antenna2_tssi,omitempty"`
-	Radios_2GhzAntenna3Tssi                 *wrapperspb.FloatValue  `protobuf:"bytes,159,opt,name=radios_2ghz_antenna3_tssi,json=radios2ghzAntenna3Tssi,proto3" json:"radios_2ghz_antenna3_tssi,omitempty"`
-	Radios_2GhzAntenna4Tssi                 *wrapperspb.FloatValue  `protobuf:"bytes,160,opt,name=radios_2ghz_antenna4_tssi,json=radios2ghzAntenna4Tssi,proto3" json:"radios_2ghz_antenna4_tssi,omitempty"`
-	Radios_2GhzIfaceCount                   *wrapperspb.UInt32Value `protobuf:"bytes,104,opt,name=radios_2ghz_iface_count,json=radios2ghzIfaceCount,proto3" json:"radios_2ghz_iface_count,omitempty"`
-	Radios_2GhzChanBusyFraction             *wrapperspb.FloatValue  `protobuf:"bytes,105,opt,name=radios_2ghz_chan_busy_fraction,json=radios2ghzChanBusyFraction,proto3" json:"radios_2ghz_chan_busy_fraction,omitempty"`
-	Radios_2GhzEdccaFraction                *wrapperspb.FloatValue  `protobuf:"bytes,106,opt,name=radios_2ghz_edcca_fraction,json=radios2ghzEdccaFraction,proto3" json:"radios_2ghz_edcca_fraction,omitempty"`
-	Radios_2GhzOverlappingBssFraction       *wrapperspb.FloatValue  `protobuf:"bytes,107,opt,name=radios_2ghz_overlapping_bss_fraction,json=radios2ghzOverlappingBssFraction,proto3" json:"radios_2ghz_overlapping_bss_fraction,omitempty"`
-	Radios_2GhzRxBytes                      *wrapperspb.Int64Value  `protobuf:"bytes,108,opt,name=radios_2ghz_rx_bytes,json=radios2ghzRxBytes,proto3" json:"radios_2ghz_rx_bytes,omitempty"`
-	Radios_2GhzRxPackets                    *wrapperspb.Int64Value  `protobuf:"bytes,109,opt,name=radios_2ghz_rx_packets,json=radios2ghzRxPackets,proto3" json:"radios_2ghz_rx_packets,omitempty"`
-	Radios_2GhzRxErrors                     *wrapperspb.Int64Value  `protobuf:"bytes,110,opt,name=radios_2ghz_rx_errors,json=radios2ghzRxErrors,proto3" json:"radios_2ghz_rx_errors,omitempty"`
-	Radios_2GhzRxFrameErrors                *wrapperspb.Int64Value  `protobuf:"bytes,111,opt,name=radios_2ghz_rx_frame_errors,json=radios2ghzRxFrameErrors,proto3" json:"radios_2ghz_rx_frame_errors,omitempty"`
-	Radios_2GhzRxPacketErrorRate            *wrapperspb.FloatValue  `protobuf:"bytes,112,opt,name=radios_2ghz_rx_packet_error_rate,json=radios2ghzRxPacketErrorRate,proto3" json:"radios_2ghz_rx_packet_error_rate,omitempty"`
-	Radios_2GhzRxAirtimeFraction            *wrapperspb.FloatValue  `protobuf:"bytes,113,opt,name=radios_2ghz_rx_airtime_fraction,json=radios2ghzRxAirtimeFraction,proto3" json:"radios_2ghz_rx_airtime_fraction,omitempty"`
-	Radios_2GhzTxBytes                      *wrapperspb.Int64Value  `protobuf:"bytes,114,opt,name=radios_2ghz_tx_bytes,json=radios2ghzTxBytes,proto3" json:"radios_2ghz_tx_bytes,omitempty"`
-	Radios_2GhzTxPackets                    *wrapperspb.Int64Value  `protobuf:"bytes,115,opt,name=radios_2ghz_tx_packets,json=radios2ghzTxPackets,proto3" json:"radios_2ghz_tx_packets,omitempty"`
-	Radios_2GhzTxErrors                     *wrapperspb.Int64Value  `protobuf:"bytes,116,opt,name=radios_2ghz_tx_errors,json=radios2ghzTxErrors,proto3" json:"radios_2ghz_tx_errors,omitempty"`
-	Radios_2GhzTxPacketErrorRate            *wrapperspb.FloatValue  `protobuf:"bytes,117,opt,name=radios_2ghz_tx_packet_error_rate,json=radios2ghzTxPacketErrorRate,proto3" json:"radios_2ghz_tx_packet_error_rate,omitempty"`
-	Radios_2GhzTxAirtimeFraction            *wrapperspb.FloatValue  `protobuf:"bytes,118,opt,name=radios_2ghz_tx_airtime_fraction,json=radios2ghzTxAirtimeFraction,proto3" json:"radios_2ghz_tx_airtime_fraction,omitempty"`
-	Radios_5GhzChannel                      *wrapperspb.UInt32Value `protobuf:"bytes,119,opt,name=radios_5ghz_channel,json=radios5ghzChannel,proto3" json:"radios_5ghz_channel,omitempty"`
-	Radios_5GhzAntenna1Rssi                 *wrapperspb.FloatValue  `protobuf:"bytes,120,opt,name=radios_5ghz_antenna1_rssi,json=radios5ghzAntenna1Rssi,proto3" json:"radios_5ghz_antenna1_rssi,omitempty"`
-	Radios_5GhzAntenna2Rssi                 *wrapperspb.FloatValue  `protobuf:"bytes,121,opt,name=radios_5ghz_antenna2_rssi,json=radios5ghzAntenna2Rssi,proto3" json:"radios_5ghz_antenna2_rssi,omitempty"`
-	Radios_5GhzAntenna3Rssi                 *wrapperspb.FloatValue  `protobuf:"bytes,122,opt,name=radios_5ghz_antenna3_rssi,json=radios5ghzAntenna3Rssi,proto3" json:"radios_5ghz_antenna3_rssi,omitempty"`
-	Radios_5GhzAntenna4Rssi                 *wrapperspb.FloatValue  `protobuf:"bytes,198,opt,name=radios_5ghz_antenna4_rssi,json=radios5ghzAntenna4Rssi,proto3" json:"radios_5ghz_antenna4_rssi,omitempty"`
-	Radios_5GhzAntenna1Tssi                 *wrapperspb.FloatValue  `protobuf:"bytes,161,opt,name=radios_5ghz_antenna1_tssi,json=radios5ghzAntenna1Tssi,proto3" json:"radios_5ghz_antenna1_tssi,omitempty"`
-	Radios_5GhzAntenna2Tssi                 *wrapperspb.FloatValue  `protobuf:"bytes,162,opt,name=radios_5ghz_antenna2_tssi,json=radios5ghzAntenna2Tssi,proto3" json:"radios_5ghz_antenna2_tssi,omitempty"`
-	Radios_5GhzAntenna3Tssi                 *wrapperspb.FloatValue  `protobuf:"bytes,163,opt,name=radios_5ghz_antenna3_tssi,json=radios5ghzAntenna3Tssi,proto3" json:"radios_5ghz_antenna3_tssi,omitempty"`
-	Radios_5GhzAntenna4Tssi                 *wrapperspb.FloatValue  `protobuf:"bytes,164,opt,name=radios_5ghz_antenna4_tssi,json=radios5ghzAntenna4Tssi,proto3" json:"radios_5ghz_antenna4_tssi,omitempty"`
-	Radios_5GhzIfaceCount                   *wrapperspb.UInt32Value `protobuf:"bytes,123,opt,name=radios_5ghz_iface_count,json=radios5ghzIfaceCount,proto3" json:"radios_5ghz_iface_count,omitempty"`
-	Radios_5GhzChanBusyFraction             *wrapperspb.FloatValue  `protobuf:"bytes,124,opt,name=radios_5ghz_chan_busy_fraction,json=radios5ghzChanBusyFraction,proto3" json:"radios_5ghz_chan_busy_fraction,omitempty"`
-	Radios_5GhzEdccaFraction                *wrapperspb.FloatValue  `protobuf:"bytes,125,opt,name=radios_5ghz_edcca_fraction,json=radios5ghzEdccaFraction,proto3" json:"radios_5ghz_edcca_fraction,omitempty"`
-	Radios_5GhzOverlappingBssFraction       *wrapperspb.FloatValue  `protobuf:"bytes,126,opt,name=radios_5ghz_overlapping_bss_fraction,json=radios5ghzOverlappingBssFraction,proto3" json:"radios_5ghz_overlapping_bss_fraction,omitempty"`
-	Radios_5GhzRxBytes                      *wrapperspb.Int64Value  `protobuf:"bytes,127,opt,name=radios_5ghz_rx_bytes,json=radios5ghzRxBytes,proto3" json:"radios_5ghz_rx_bytes,omitempty"`
-	Radios_5GhzRxPackets                    *wrapperspb.Int64Value  `protobuf:"bytes,128,opt,name=radios_5ghz_rx_packets,json=radios5ghzRxPackets,proto3" json:"radios_5ghz_rx_packets,omitempty"`
-	Radios_5GhzRxErrors                     *wrapperspb.Int64Value  `protobuf:"bytes,129,opt,name=radios_5ghz_rx_errors,json=radios5ghzRxErrors,proto3" json:"radios_5ghz_rx_errors,omitempty"`
-	Radios_5GhzRxFrameErrors                *wrapperspb.Int64Value  `protobuf:"bytes,130,opt,name=radios_5ghz_rx_frame_errors,json=radios5ghzRxFrameErrors,proto3" json:"radios_5ghz_rx_frame_errors,omitempty"`
-	Radios_5GhzRxPacketErrorRate            *wrapperspb.FloatValue  `protobuf:"bytes,131,opt,name=radios_5ghz_rx_packet_error_rate,json=radios5ghzRxPacketErrorRate,proto3" json:"radios_5ghz_rx_packet_error_rate,omitempty"`
-	Radios_5GhzRxAirtimeFraction            *wrapperspb.FloatValue  `protobuf:"bytes,132,opt,name=radios_5ghz_rx_airtime_fraction,json=radios5ghzRxAirtimeFraction,proto3" json:"radios_5ghz_rx_airtime_fraction,omitempty"`
-	Radios_5GhzTxBytes                      *wrapperspb.Int64Value  `protobuf:"bytes,133,opt,name=radios_5ghz_tx_bytes,json=radios5ghzTxBytes,proto3" json:"radios_5ghz_tx_bytes,omitempty"`
-	Radios_5GhzTxPackets                    *wrapperspb.Int64Value  `protobuf:"bytes,134,opt,name=radios_5ghz_tx_packets,json=radios5ghzTxPackets,proto3" json:"radios_5ghz_tx_packets,omitempty"`
-	Radios_5GhzTxErrors                     *wrapperspb.Int64Value  `protobuf:"bytes,135,opt,name=radios_5ghz_tx_errors,json=radios5ghzTxErrors,proto3" json:"radios_5ghz_tx_errors,omitempty"`
-	Radios_5GhzTxPacketErrorRate            *wrapperspb.FloatValue  `protobuf:"bytes,136,opt,name=radios_5ghz_tx_packet_error_rate,json=radios5ghzTxPacketErrorRate,proto3" json:"radios_5ghz_tx_packet_error_rate,omitempty"`
-	Radios_5GhzTxAirtimeFraction            *wrapperspb.FloatValue  `protobuf:"bytes,137,opt,name=radios_5ghz_tx_airtime_fraction,json=radios5ghzTxAirtimeFraction,proto3" json:"radios_5ghz_tx_airtime_fraction,omitempty"`
-	Radios_5GhzHighChannel                  *wrapperspb.UInt32Value `protobuf:"bytes,138,opt,name=radios_5ghz_high_channel,json=radios5ghzHighChannel,proto3" json:"radios_5ghz_high_channel,omitempty"`
-	Radios_5GhzHighAntenna1Rssi             *wrapperspb.FloatValue  `protobuf:"bytes,139,opt,name=radios_5ghz_high_antenna1_rssi,json=radios5ghzHighAntenna1Rssi,proto3" json:"radios_5ghz_high_antenna1_rssi,omitempty"`
-	Radios_5GhzHighAntenna2Rssi             *wrapperspb.FloatValue  `protobuf:"bytes,140,opt,name=radios_5ghz_high_antenna2_rssi,json=radios5ghzHighAntenna2Rssi,proto3" json:"radios_5ghz_high_antenna2_rssi,omitempty"`
-	Radios_5GhzHighAntenna3Rssi             *wrapperspb.FloatValue  `protobuf:"bytes,141,opt,name=radios_5ghz_high_antenna3_rssi,json=radios5ghzHighAntenna3Rssi,proto3" json:"radios_5ghz_high_antenna3_rssi,omitempty"`
-	Radios_5GhzHighAntenna4Rssi             *wrapperspb.FloatValue  `protobuf:"bytes,199,opt,name=radios_5ghz_high_antenna4_rssi,json=radios5ghzHighAntenna4Rssi,proto3" json:"radios_5ghz_high_antenna4_rssi,omitempty"`
-	Radios_5GhzHighAntenna1Tssi             *wrapperspb.FloatValue  `protobuf:"bytes,165,opt,name=radios_5ghz_high_antenna1_tssi,json=radios5ghzHighAntenna1Tssi,proto3" json:"radios_5ghz_high_antenna1_tssi,omitempty"`
-	Radios_5GhzHighAntenna2Tssi             *wrapperspb.FloatValue  `protobuf:"bytes,166,opt,name=radios_5ghz_high_antenna2_tssi,json=radios5ghzHighAntenna2Tssi,proto3" json:"radios_5ghz_high_antenna2_tssi,omitempty"`
-	Radios_5GhzHighAntenna3Tssi             *wrapperspb.FloatValue  `protobuf:"bytes,167,opt,name=radios_5ghz_high_antenna3_tssi,json=radios5ghzHighAntenna3Tssi,proto3" json:"radios_5ghz_high_antenna3_tssi,omitempty"`
-	Radios_5GhzHighAntenna4Tssi             *wrapperspb.FloatValue  `protobuf:"bytes,168,opt,name=radios_5ghz_high_antenna4_tssi,json=radios5ghzHighAntenna4Tssi,proto3" json:"radios_5ghz_high_antenna4_tssi,omitempty"`
-	Radios_5GhzHighIfaceCount               *wrapperspb.UInt32Value `protobuf:"bytes,142,opt,name=radios_5ghz_high_iface_count,json=radios5ghzHighIfaceCount,proto3" json:"radios_5ghz_high_iface_count,omitempty"`
-	Radios_5GhzHighChanBusyFraction         *wrapperspb.FloatValue  `protobuf:"bytes,143,opt,name=radios_5ghz_high_chan_busy_fraction,json=radios5ghzHighChanBusyFraction,proto3" json:"radios_5ghz_high_chan_busy_fraction,omitempty"`
-	Radios_5GhzHighEdccaFraction            *wrapperspb.FloatValue  `protobuf:"bytes,144,opt,name=radios_5ghz_high_edcca_fraction,json=radios5ghzHighEdccaFraction,proto3" json:"radios_5ghz_high_edcca_fraction,omitempty"`
-	Radios_5GhzHighOverlappingBssFraction   *wrapperspb.FloatValue  `protobuf:"bytes,145,opt,name=radios_5ghz_high_overlapping_bss_fraction,json=radios5ghzHighOverlappingBssFraction,proto3" json:"radios_5ghz_high_overlapping_bss_fraction,omitempty"`
-	Radios_5GhzHighRxBytes                  *wrapperspb.Int64Value  `protobuf:"bytes,146,opt,name=radios_5ghz_high_rx_bytes,json=radios5ghzHighRxBytes,proto3" json:"radios_5ghz_high_rx_bytes,omitempty"`
-	Radios_5GhzHighRxPackets                *wrapperspb.Int64Value  `protobuf:"bytes,147,opt,name=radios_5ghz_high_rx_packets,json=radios5ghzHighRxPackets,proto3" json:"radios_5ghz_high_rx_packets,omitempty"`
-	Radios_5GhzHighRxErrors                 *wrapperspb.Int64Value  `protobuf:"bytes,148,opt,name=radios_5ghz_high_rx_errors,json=radios5ghzHighRxErrors,proto3" json:"radios_5ghz_high_rx_errors,omitempty"`
-	Radios_5GhzHighRxFrameErrors            *wrapperspb.Int64Value  `protobuf:"bytes,149,opt,name=radios_5ghz_high_rx_frame_errors,json=radios5ghzHighRxFrameErrors,proto3" json:"radios_5ghz_high_rx_frame_errors,omitempty"`
-	Radios_5GhzHighRxPacketErrorRate        *wrapperspb.FloatValue  `protobuf:"bytes,150,opt,name=radios_5ghz_high_rx_packet_error_rate,json=radios5ghzHighRxPacketErrorRate,proto3" json:"radios_5ghz_high_rx_packet_error_rate,omitempty"`
-	Radios_5GhzHighRxAirtimeFraction        *wrapperspb.FloatValue  `protobuf:"bytes,151,opt,name=radios_5ghz_high_rx_airtime_fraction,json=radios5ghzHighRxAirtimeFraction,proto3" json:"radios_5ghz_high_rx_airtime_fraction,omitempty"`
-	Radios_5GhzHighTxBytes                  *wrapperspb.Int64Value  `protobuf:"bytes,152,opt,name=radios_5ghz_high_tx_bytes,json=radios5ghzHighTxBytes,proto3" json:"radios_5ghz_high_tx_bytes,omitempty"`
-	Radios_5GhzHighTxPackets                *wrapperspb.Int64Value  `protobuf:"bytes,153,opt,name=radios_5ghz_high_tx_packets,json=radios5ghzHighTxPackets,proto3" json:"radios_5ghz_high_tx_packets,omitempty"`
-	Radios_5GhzHighTxErrors                 *wrapperspb.Int64Value  `protobuf:"bytes,154,opt,name=radios_5ghz_high_tx_errors,json=radios5ghzHighTxErrors,proto3" json:"radios_5ghz_high_tx_errors,omitempty"`
-	Radios_5GhzHighTxPacketErrorRate        *wrapperspb.FloatValue  `protobuf:"bytes,155,opt,name=radios_5ghz_high_tx_packet_error_rate,json=radios5ghzHighTxPacketErrorRate,proto3" json:"radios_5ghz_high_tx_packet_error_rate,omitempty"`
-	Radios_5GhzHighTxAirtimeFraction        *wrapperspb.FloatValue  `protobuf:"bytes,156,opt,name=radios_5ghz_high_tx_airtime_fraction,json=radios5ghzHighTxAirtimeFraction,proto3" json:"radios_5ghz_high_tx_airtime_fraction,omitempty"`
-	Radios_2GhzThermalTemp                  *wrapperspb.FloatValue  `protobuf:"bytes,200,opt,name=radios_2ghz_thermal_temp,json=radios2ghzThermalTemp,proto3" json:"radios_2ghz_thermal_temp,omitempty"`
-	Radios_5GhzThermalTemp                  *wrapperspb.FloatValue  `protobuf:"bytes,201,opt,name=radios_5ghz_thermal_temp,json=radios5ghzThermalTemp,proto3" json:"radios_5ghz_thermal_temp,omitempty"`
-	Radios_5GhzHighThermalTemp              *wrapperspb.FloatValue  `protobuf:"bytes,206,opt,name=radios_5ghz_high_thermal_temp,json=radios5ghzHighThermalTemp,proto3" json:"radios_5ghz_high_thermal_temp,omitempty"`
-	Radios_2GhzThermalDutyCycle             *wrapperspb.FloatValue  `protobuf:"bytes,202,opt,name=radios_2ghz_thermal_duty_cycle,json=radios2ghzThermalDutyCycle,proto3" json:"radios_2ghz_thermal_duty_cycle,omitempty"`
-	Radios_5GhzThermalDutyCycle             *wrapperspb.FloatValue  `protobuf:"bytes,203,opt,name=radios_5ghz_thermal_duty_cycle,json=radios5ghzThermalDutyCycle,proto3" json:"radios_5ghz_thermal_duty_cycle,omitempty"`
-	Radios_5GhzHighThermalDutyCycle         *wrapperspb.FloatValue  `protobuf:"bytes,207,opt,name=radios_5ghz_high_thermal_duty_cycle,json=radios5ghzHighThermalDutyCycle,proto3" json:"radios_5ghz_high_thermal_duty_cycle,omitempty"`
-	Radios_2GhzThermalThrottledSeconds      *wrapperspb.UInt32Value `protobuf:"bytes,204,opt,name=radios_2ghz_thermal_throttled_seconds,json=radios2ghzThermalThrottledSeconds,proto3" json:"radios_2ghz_thermal_throttled_seconds,omitempty"`
-	Radios_5GhzThermalThrottledSeconds      *wrapperspb.UInt32Value `protobuf:"bytes,205,opt,name=radios_5ghz_thermal_throttled_seconds,json=radios5ghzThermalThrottledSeconds,proto3" json:"radios_5ghz_thermal_throttled_seconds,omitempty"`
-	Radios_5GhzHighThermalThrottledSeconds  *wrapperspb.UInt32Value `protobuf:"bytes,208,opt,name=radios_5ghz_high_thermal_throttled_seconds,json=radios5ghzHighThermalThrottledSeconds,proto3" json:"radios_5ghz_high_thermal_throttled_seconds,omitempty"`
-	BoardTemp                               *wrapperspb.FloatValue  `protobuf:"bytes,210,opt,name=board_temp,json=boardTemp,proto3" json:"board_temp,omitempty"`
-	PoeMcuDieTemp                           *wrapperspb.FloatValue  `protobuf:"bytes,211,opt,name=poe_mcu_die_temp,json=poeMcuDieTemp,proto3" json:"poe_mcu_die_temp,omitempty"`
-	PoePercentWaterDetectAvg                *wrapperspb.FloatValue  `protobuf:"bytes,212,opt,name=poe_percent_water_detect_avg,json=poePercentWaterDetectAvg,proto3" json:"poe_percent_water_detect_avg,omitempty"`
-	IfacesLanEthRxBytes                     *wrapperspb.Int64Value  `protobuf:"bytes,300,opt,name=ifaces_lan_eth_rx_bytes,json=ifacesLanEthRxBytes,proto3" json:"ifaces_lan_eth_rx_bytes,omitempty"`
-	IfacesLanEthRxPackets                   *wrapperspb.Int64Value  `protobuf:"bytes,301,opt,name=ifaces_lan_eth_rx_packets,json=ifacesLanEthRxPackets,proto3" json:"ifaces_lan_eth_rx_packets,omitempty"`
-	IfacesLanEthRxErrors                    *wrapperspb.Int64Value  `protobuf:"bytes,302,opt,name=ifaces_lan_eth_rx_errors,json=ifacesLanEthRxErrors,proto3" json:"ifaces_lan_eth_rx_errors,omitempty"`
-	IfacesLanEthRxFrameErrors               *wrapperspb.Int64Value  `protobuf:"bytes,303,opt,name=ifaces_lan_eth_rx_frame_errors,json=ifacesLanEthRxFrameErrors,proto3" json:"ifaces_lan_eth_rx_frame_errors,omitempty"`
-	IfacesLanEthTxBytes                     *wrapperspb.Int64Value  `protobuf:"bytes,304,opt,name=ifaces_lan_eth_tx_bytes,json=ifacesLanEthTxBytes,proto3" json:"ifaces_lan_eth_tx_bytes,omitempty"`
-	IfacesLanEthTxPackets                   *wrapperspb.Int64Value  `protobuf:"bytes,305,opt,name=ifaces_lan_eth_tx_packets,json=ifacesLanEthTxPackets,proto3" json:"ifaces_lan_eth_tx_packets,omitempty"`
-	IfacesLanEthTxErrors                    *wrapperspb.Int64Value  `protobuf:"bytes,306,opt,name=ifaces_lan_eth_tx_errors,json=ifacesLanEthTxErrors,proto3" json:"ifaces_lan_eth_tx_errors,omitempty"`
-	IfacesLan1EthRxBytes                    *wrapperspb.Int64Value  `protobuf:"bytes,314,opt,name=ifaces_lan1_eth_rx_bytes,json=ifacesLan1EthRxBytes,proto3" json:"ifaces_lan1_eth_rx_bytes,omitempty"`
-	IfacesLan1EthRxPackets                  *wrapperspb.Int64Value  `protobuf:"bytes,315,opt,name=ifaces_lan1_eth_rx_packets,json=ifacesLan1EthRxPackets,proto3" json:"ifaces_lan1_eth_rx_packets,omitempty"`
-	IfacesLan1EthRxErrors                   *wrapperspb.Int64Value  `protobuf:"bytes,316,opt,name=ifaces_lan1_eth_rx_errors,json=ifacesLan1EthRxErrors,proto3" json:"ifaces_lan1_eth_rx_errors,omitempty"`
-	IfacesLan1EthRxFrameErrors              *wrapperspb.Int64Value  `protobuf:"bytes,317,opt,name=ifaces_lan1_eth_rx_frame_errors,json=ifacesLan1EthRxFrameErrors,proto3" json:"ifaces_lan1_eth_rx_frame_errors,omitempty"`
-	IfacesLan1EthTxBytes                    *wrapperspb.Int64Value  `protobuf:"bytes,318,opt,name=ifaces_lan1_eth_tx_bytes,json=ifacesLan1EthTxBytes,proto3" json:"ifaces_lan1_eth_tx_bytes,omitempty"`
-	IfacesLan1EthTxPackets                  *wrapperspb.Int64Value  `protobuf:"bytes,319,opt,name=ifaces_lan1_eth_tx_packets,json=ifacesLan1EthTxPackets,proto3" json:"ifaces_lan1_eth_tx_packets,omitempty"`
-	IfacesLan1EthTxErrors                   *wrapperspb.Int64Value  `protobuf:"bytes,320,opt,name=ifaces_lan1_eth_tx_errors,json=ifacesLan1EthTxErrors,proto3" json:"ifaces_lan1_eth_tx_errors,omitempty"`
-	IfacesWanEthRxBytes                     *wrapperspb.Int64Value  `protobuf:"bytes,307,opt,name=ifaces_wan_eth_rx_bytes,json=ifacesWanEthRxBytes,proto3" json:"ifaces_wan_eth_rx_bytes,omitempty"`
-	IfacesWanEthRxPackets                   *wrapperspb.Int64Value  `protobuf:"bytes,308,opt,name=ifaces_wan_eth_rx_packets,json=ifacesWanEthRxPackets,proto3" json:"ifaces_wan_eth_rx_packets,omitempty"`
-	IfacesWanEthRxErrors                    *wrapperspb.Int64Value  `protobuf:"bytes,309,opt,name=ifaces_wan_eth_rx_errors,json=ifacesWanEthRxErrors,proto3" json:"ifaces_wan_eth_rx_errors,omitempty"`
-	IfacesWanEthRxFrameErrors               *wrapperspb.Int64Value  `protobuf:"bytes,310,opt,name=ifaces_wan_eth_rx_frame_errors,json=ifacesWanEthRxFrameErrors,proto3" json:"ifaces_wan_eth_rx_frame_errors,omitempty"`
-	IfacesWanEthTxBytes                     *wrapperspb.Int64Value  `protobuf:"bytes,311,opt,name=ifaces_wan_eth_tx_bytes,json=ifacesWanEthTxBytes,proto3" json:"ifaces_wan_eth_tx_bytes,omitempty"`
-	IfacesWanEthTxPackets                   *wrapperspb.Int64Value  `protobuf:"bytes,312,opt,name=ifaces_wan_eth_tx_packets,json=ifacesWanEthTxPackets,proto3" json:"ifaces_wan_eth_tx_packets,omitempty"`
-	IfacesWanEthTxErrors                    *wrapperspb.Int64Value  `protobuf:"bytes,313,opt,name=ifaces_wan_eth_tx_errors,json=ifacesWanEthTxErrors,proto3" json:"ifaces_wan_eth_tx_errors,omitempty"`
-	Clients                                 *wrapperspb.UInt32Value `protobuf:"bytes,400,opt,name=clients,proto3" json:"clients,omitempty"`
-	Clients_2Ghz                            *wrapperspb.UInt32Value `protobuf:"bytes,401,opt,name=clients_2ghz,json=clients2ghz,proto3" json:"clients_2ghz,omitempty"`
-	Clients_5Ghz                            *wrapperspb.UInt32Value `protobuf:"bytes,402,opt,name=clients_5ghz,json=clients5ghz,proto3" json:"clients_5ghz,omitempty"`
-	Clients_5GhzHigh                        *wrapperspb.UInt32Value `protobuf:"bytes,413,opt,name=clients_5ghz_high,json=clients5ghzHigh,proto3" json:"clients_5ghz_high,omitempty"`
-	ClientsEth                              *wrapperspb.UInt32Value `protobuf:"bytes,403,opt,name=clients_eth,json=clientsEth,proto3" json:"clients_eth,omitempty"`
-	Clients_5GhzRxBandwidth_20Mhz           *wrapperspb.UInt32Value `protobuf:"bytes,429,opt,name=clients_5ghz_rx_bandwidth_20mhz,json=clients5ghzRxBandwidth20mhz,proto3" json:"clients_5ghz_rx_bandwidth_20mhz,omitempty"`
-	Clients_5GhzRxBandwidth_40Mhz           *wrapperspb.UInt32Value `protobuf:"bytes,430,opt,name=clients_5ghz_rx_bandwidth_40mhz,json=clients5ghzRxBandwidth40mhz,proto3" json:"clients_5ghz_rx_bandwidth_40mhz,omitempty"`
-	Clients_5GhzRxBandwidth_80Mhz           *wrapperspb.UInt32Value `protobuf:"bytes,431,opt,name=clients_5ghz_rx_bandwidth_80mhz,json=clients5ghzRxBandwidth80mhz,proto3" json:"clients_5ghz_rx_bandwidth_80mhz,omitempty"`
-	ClientsRepeater                         *wrapperspb.UInt32Value `protobuf:"bytes,404,opt,name=clients_repeater,json=clientsRepeater,proto3" json:"clients_repeater,omitempty"`
-	ClientsRepeater_2Ghz                    *wrapperspb.UInt32Value `protobuf:"bytes,405,opt,name=clients_repeater_2ghz,json=clientsRepeater2ghz,proto3" json:"clients_repeater_2ghz,omitempty"`
-	ClientsRepeater_5Ghz                    *wrapperspb.UInt32Value `protobuf:"bytes,406,opt,name=clients_repeater_5ghz,json=clientsRepeater5ghz,proto3" json:"clients_repeater_5ghz,omitempty"`
-	ClientsRepeater_5GhzHigh                *wrapperspb.UInt32Value `protobuf:"bytes,416,opt,name=clients_repeater_5ghz_high,json=clientsRepeater5ghzHigh,proto3" json:"clients_repeater_5ghz_high,omitempty"`
-	ClientsRepeaterEth                      *wrapperspb.UInt32Value `protobuf:"bytes,407,opt,name=clients_repeater_eth,json=clientsRepeaterEth,proto3" json:"clients_repeater_eth,omitempty"`
-	MeshHops                                *wrapperspb.UInt32Value `protobuf:"bytes,408,opt,name=mesh_hops,json=meshHops,proto3" json:"mesh_hops,omitempty"`
-	MeshOneHopRssiAvg_2Ghz                  *wrapperspb.FloatValue  `protobuf:"bytes,409,opt,name=mesh_one_hop_rssi_avg_2ghz,json=meshOneHopRssiAvg2ghz,proto3" json:"mesh_one_hop_rssi_avg_2ghz,omitempty"`
-	MeshOneHopRssiAvg_5Ghz                  *wrapperspb.FloatValue  `protobuf:"bytes,410,opt,name=mesh_one_hop_rssi_avg_5ghz,json=meshOneHopRssiAvg5ghz,proto3" json:"mesh_one_hop_rssi_avg_5ghz,omitempty"`
-	MeshOneHopRssiAvg_5GhzHigh              *wrapperspb.FloatValue  `protobuf:"bytes,414,opt,name=mesh_one_hop_rssi_avg_5ghz_high,json=meshOneHopRssiAvg5ghzHigh,proto3" json:"mesh_one_hop_rssi_avg_5ghz_high,omitempty"`
-	MeshTwoHopRssiAvg_2Ghz                  *wrapperspb.FloatValue  `protobuf:"bytes,411,opt,name=mesh_two_hop_rssi_avg_2ghz,json=meshTwoHopRssiAvg2ghz,proto3" json:"mesh_two_hop_rssi_avg_2ghz,omitempty"`
-	MeshTwoHopRssiAvg_5Ghz                  *wrapperspb.FloatValue  `protobuf:"bytes,412,opt,name=mesh_two_hop_rssi_avg_5ghz,json=meshTwoHopRssiAvg5ghz,proto3" json:"mesh_two_hop_rssi_avg_5ghz,omitempty"`
-	MeshTwoHopRssiAvg_5GhzHigh              *wrapperspb.FloatValue  `protobuf:"bytes,415,opt,name=mesh_two_hop_rssi_avg_5ghz_high,json=meshTwoHopRssiAvg5ghzHigh,proto3" json:"mesh_two_hop_rssi_avg_5ghz_high,omitempty"`
-	RepeaterTxRateMbpsMin                   *wrapperspb.FloatValue  `protobuf:"bytes,418,opt,name=repeater_tx_rate_mbps_min,json=repeaterTxRateMbpsMin,proto3" json:"repeater_tx_rate_mbps_min,omitempty"`
-	RepeaterRxRateMbpsMin                   *wrapperspb.FloatValue  `protobuf:"bytes,419,opt,name=repeater_rx_rate_mbps_min,json=repeaterRxRateMbpsMin,proto3" json:"repeater_rx_rate_mbps_min,omitempty"`
-	RepeaterTxRateMbpsAvg                   *wrapperspb.FloatValue  `protobuf:"bytes,420,opt,name=repeater_tx_rate_mbps_avg,json=repeaterTxRateMbpsAvg,proto3" json:"repeater_tx_rate_mbps_avg,omitempty"`
-	RepeaterRxRateMbpsAvg                   *wrapperspb.FloatValue  `protobuf:"bytes,421,opt,name=repeater_rx_rate_mbps_avg,json=repeaterRxRateMbpsAvg,proto3" json:"repeater_rx_rate_mbps_avg,omitempty"`
-	RepeaterSecondsSince_2SOutageMin        *wrapperspb.FloatValue  `protobuf:"bytes,422,opt,name=repeater_seconds_since_2s_outage_min,json=repeaterSecondsSince2sOutageMin,proto3" json:"repeater_seconds_since_2s_outage_min,omitempty"`
-	RepeaterSecondsSince_5SOutageMin        *wrapperspb.FloatValue  `protobuf:"bytes,424,opt,name=repeater_seconds_since_5s_outage_min,json=repeaterSecondsSince5sOutageMin,proto3" json:"repeater_seconds_since_5s_outage_min,omitempty"`
-	RepeaterSecondsSince_2SOutageAvg        *wrapperspb.FloatValue  `protobuf:"bytes,423,opt,name=repeater_seconds_since_2s_outage_avg,json=repeaterSecondsSince2sOutageAvg,proto3" json:"repeater_seconds_since_2s_outage_avg,omitempty"`
-	RepeaterSecondsSince_5SOutageAvg        *wrapperspb.FloatValue  `protobuf:"bytes,425,opt,name=repeater_seconds_since_5s_outage_avg,json=repeaterSecondsSince5sOutageAvg,proto3" json:"repeater_seconds_since_5s_outage_avg,omitempty"`
-	RepeaterLatencyMs_1HMax                 *wrapperspb.FloatValue  `protobuf:"bytes,426,opt,name=repeater_latency_ms_1h_max,json=repeaterLatencyMs1hMax,proto3" json:"repeater_latency_ms_1h_max,omitempty"`
-	RepeaterLatencyMs_1HAvg                 *wrapperspb.FloatValue  `protobuf:"bytes,427,opt,name=repeater_latency_ms_1h_avg,json=repeaterLatencyMs1hAvg,proto3" json:"repeater_latency_ms_1h_avg,omitempty"`
-	MeshTopologyChangeCount_1D              *wrapperspb.UInt32Value `protobuf:"bytes,428,opt,name=mesh_topology_change_count_1d,json=meshTopologyChangeCount1d,proto3" json:"mesh_topology_change_count_1d,omitempty"`
-	PingSecondsSinceLast_1SOutage           *wrapperspb.FloatValue  `protobuf:"bytes,600,opt,name=ping_seconds_since_last_1s_outage,json=pingSecondsSinceLast1sOutage,proto3" json:"ping_seconds_since_last_1s_outage,omitempty"`
-	PingSecondsSinceLast_2SOutage           *wrapperspb.FloatValue  `protobuf:"bytes,601,opt,name=ping_seconds_since_last_2s_outage,json=pingSecondsSinceLast2sOutage,proto3" json:"ping_seconds_since_last_2s_outage,omitempty"`
-	PingSecondsSinceLast_5SOutage           *wrapperspb.FloatValue  `protobuf:"bytes,602,opt,name=ping_seconds_since_last_5s_outage,json=pingSecondsSinceLast5sOutage,proto3" json:"ping_seconds_since_last_5s_outage,omitempty"`
-	PingSecondsSinceLast_60SOutage          *wrapperspb.FloatValue  `protobuf:"bytes,603,opt,name=ping_seconds_since_last_60s_outage,json=pingSecondsSinceLast60sOutage,proto3" json:"ping_seconds_since_last_60s_outage,omitempty"`
-	PingSecondsSinceLast_300SOutage         *wrapperspb.FloatValue  `protobuf:"bytes,604,opt,name=ping_seconds_since_last_300s_outage,json=pingSecondsSinceLast300sOutage,proto3" json:"ping_seconds_since_last_300s_outage,omitempty"`
-	PingDropRate                            *wrapperspb.FloatValue  `protobuf:"bytes,605,opt,name=ping_drop_rate,json=pingDropRate,proto3" json:"ping_drop_rate,omitempty"`
-	PingDropRateLast_1H                     *wrapperspb.FloatValue  `protobuf:"bytes,606,opt,name=ping_drop_rate_last_1h,json=pingDropRateLast1h,proto3" json:"ping_drop_rate_last_1h,omitempty"`
-	PingLatency                             *wrapperspb.FloatValue  `protobuf:"bytes,607,opt,name=ping_latency,json=pingLatency,proto3" json:"ping_latency,omitempty"`
-	PingLatencyLast_1H                      *wrapperspb.FloatValue  `protobuf:"bytes,618,opt,name=ping_latency_last_1h,json=pingLatencyLast1h,proto3" json:"ping_latency_last_1h,omitempty"`
-	PingDishSecondsSinceLast_1SOutage       *wrapperspb.FloatValue  `protobuf:"bytes,610,opt,name=ping_dish_seconds_since_last_1s_outage,json=pingDishSecondsSinceLast1sOutage,proto3" json:"ping_dish_seconds_since_last_1s_outage,omitempty"`
-	PingDishSecondsSinceLast_2SOutage       *wrapperspb.FloatValue  `protobuf:"bytes,611,opt,name=ping_dish_seconds_since_last_2s_outage,json=pingDishSecondsSinceLast2sOutage,proto3" json:"ping_dish_seconds_since_last_2s_outage,omitempty"`
-	PingDishSecondsSinceLast_5SOutage       *wrapperspb.FloatValue  `protobuf:"bytes,612,opt,name=ping_dish_seconds_since_last_5s_outage,json=pingDishSecondsSinceLast5sOutage,proto3" json:"ping_dish_seconds_since_last_5s_outage,omitempty"`
-	PingDishSecondsSinceLast_60SOutage      *wrapperspb.FloatValue  `protobuf:"bytes,613,opt,name=ping_dish_seconds_since_last_60s_outage,json=pingDishSecondsSinceLast60sOutage,proto3" json:"ping_dish_seconds_since_last_60s_outage,omitempty"`
-	PingDishSecondsSinceLast_300SOutage     *wrapperspb.FloatValue  `protobuf:"bytes,614,opt,name=ping_dish_seconds_since_last_300s_outage,json=pingDishSecondsSinceLast300sOutage,proto3" json:"ping_dish_seconds_since_last_300s_outage,omitempty"`
-	PingDishDropRate                        *wrapperspb.FloatValue  `protobuf:"bytes,615,opt,name=ping_dish_drop_rate,json=pingDishDropRate,proto3" json:"ping_dish_drop_rate,omitempty"`
-	PingDishDropRateLast_1H                 *wrapperspb.FloatValue  `protobuf:"bytes,616,opt,name=ping_dish_drop_rate_last_1h,json=pingDishDropRateLast1h,proto3" json:"ping_dish_drop_rate_last_1h,omitempty"`
-	PingDishLatency                         *wrapperspb.FloatValue  `protobuf:"bytes,617,opt,name=ping_dish_latency,json=pingDishLatency,proto3" json:"ping_dish_latency,omitempty"`
-	PingDishLatencyLast_1H                  *wrapperspb.FloatValue  `protobuf:"bytes,619,opt,name=ping_dish_latency_last_1h,json=pingDishLatencyLast1h,proto3" json:"ping_dish_latency_last_1h,omitempty"`
-	PingPopIpv6DropRateLast_1H              *wrapperspb.FloatValue  `protobuf:"bytes,621,opt,name=ping_pop_ipv6_drop_rate_last_1h,json=pingPopIpv6DropRateLast1h,proto3" json:"ping_pop_ipv6_drop_rate_last_1h,omitempty"`
-	PingPopIpv6LatencyLast_1H               *wrapperspb.FloatValue  `protobuf:"bytes,623,opt,name=ping_pop_ipv6_latency_last_1h,json=pingPopIpv6LatencyLast1h,proto3" json:"ping_pop_ipv6_latency_last_1h,omitempty"`
-	ClientSpeedtestRouterDownloadMbps       *wrapperspb.FloatValue  `protobuf:"bytes,700,opt,name=client_speedtest_router_download_mbps,json=clientSpeedtestRouterDownloadMbps,proto3" json:"client_speedtest_router_download_mbps,omitempty"`
-	ClientSpeedtestRouterUploadMbps         *wrapperspb.FloatValue  `protobuf:"bytes,701,opt,name=client_speedtest_router_upload_mbps,json=clientSpeedtestRouterUploadMbps,proto3" json:"client_speedtest_router_upload_mbps,omitempty"`
-	ClientSpeedtestRouterRssi               *wrapperspb.FloatValue  `protobuf:"bytes,702,opt,name=client_speedtest_router_rssi,json=clientSpeedtestRouterRssi,proto3" json:"client_speedtest_router_rssi,omitempty"`
-	ClientSpeedtestWifiDownloadMbps         *wrapperspb.FloatValue  `protobuf:"bytes,703,opt,name=client_speedtest_wifi_download_mbps,json=clientSpeedtestWifiDownloadMbps,proto3" json:"client_speedtest_wifi_download_mbps,omitempty"`
-	ClientSpeedtestWifiUploadMbps           *wrapperspb.FloatValue  `protobuf:"bytes,704,opt,name=client_speedtest_wifi_upload_mbps,json=clientSpeedtestWifiUploadMbps,proto3" json:"client_speedtest_wifi_upload_mbps,omitempty"`
-	ClientSpeedtestClientDownloadMbps       *wrapperspb.FloatValue  `protobuf:"bytes,705,opt,name=client_speedtest_client_download_mbps,json=clientSpeedtestClientDownloadMbps,proto3" json:"client_speedtest_client_download_mbps,omitempty"`
-	ClientSpeedtestClientUploadMbps         *wrapperspb.FloatValue  `protobuf:"bytes,706,opt,name=client_speedtest_client_upload_mbps,json=clientSpeedtestClientUploadMbps,proto3" json:"client_speedtest_client_upload_mbps,omitempty"`
-	ClientSpeedtestClientRssi               *wrapperspb.FloatValue  `protobuf:"bytes,707,opt,name=client_speedtest_client_rssi,json=clientSpeedtestClientRssi,proto3" json:"client_speedtest_client_rssi,omitempty"`
-	ClientSpeedtestClientIface              *wrapperspb.UInt32Value `protobuf:"bytes,708,opt,name=client_speedtest_client_iface,json=clientSpeedtestClientIface,proto3" json:"client_speedtest_client_iface,omitempty"`
-	ClientSpeedtestClientOui                *wrapperspb.StringValue `protobuf:"bytes,709,opt,name=client_speedtest_client_oui,json=clientSpeedtestClientOui,proto3" json:"client_speedtest_client_oui,omitempty"`
-	ClientSpeedtestClientTxRate             *wrapperspb.UInt32Value `protobuf:"bytes,710,opt,name=client_speedtest_client_tx_rate,json=clientSpeedtestClientTxRate,proto3" json:"client_speedtest_client_tx_rate,omitempty"`
-	ClientSpeedtestClientRxRate             *wrapperspb.UInt32Value `protobuf:"bytes,711,opt,name=client_speedtest_client_rx_rate,json=clientSpeedtestClientRxRate,proto3" json:"client_speedtest_client_rx_rate,omitempty"`
-	ClientSpeedtestClientPlatformType       *wrapperspb.UInt32Value `protobuf:"bytes,712,opt,name=client_speedtest_client_platform_type,json=clientSpeedtestClientPlatformType,proto3" json:"client_speedtest_client_platform_type,omitempty"`
-	SpeedtestTcp_8DownloadMbpsAvg           *wrapperspb.FloatValue  `protobuf:"bytes,800,opt,name=speedtest_tcp_8_download_mbps_avg,json=speedtestTcp8DownloadMbpsAvg,proto3" json:"speedtest_tcp_8_download_mbps_avg,omitempty"`
-	SpeedtestTcp_8DownloadMbpsMax           *wrapperspb.FloatValue  `protobuf:"bytes,801,opt,name=speedtest_tcp_8_download_mbps_max,json=speedtestTcp8DownloadMbpsMax,proto3" json:"speedtest_tcp_8_download_mbps_max,omitempty"`
-	SpeedtestTcp_8UploadMbpsAvg             *wrapperspb.FloatValue  `protobuf:"bytes,802,opt,name=speedtest_tcp_8_upload_mbps_avg,json=speedtestTcp8UploadMbpsAvg,proto3" json:"speedtest_tcp_8_upload_mbps_avg,omitempty"`
-	SpeedtestTcp_8UploadMbpsMax             *wrapperspb.FloatValue  `protobuf:"bytes,803,opt,name=speedtest_tcp_8_upload_mbps_max,json=speedtestTcp8UploadMbpsMax,proto3" json:"speedtest_tcp_8_upload_mbps_max,omitempty"`
-	SpeedtestTcp_64DownloadMbpsAvg          *wrapperspb.FloatValue  `protobuf:"bytes,804,opt,name=speedtest_tcp_64_download_mbps_avg,json=speedtestTcp64DownloadMbpsAvg,proto3" json:"speedtest_tcp_64_download_mbps_avg,omitempty"`
-	SpeedtestTcp_64DownloadMbpsMax          *wrapperspb.FloatValue  `protobuf:"bytes,805,opt,name=speedtest_tcp_64_download_mbps_max,json=speedtestTcp64DownloadMbpsMax,proto3" json:"speedtest_tcp_64_download_mbps_max,omitempty"`
-	SpeedtestTcp_64UploadMbpsAvg            *wrapperspb.FloatValue  `protobuf:"bytes,806,opt,name=speedtest_tcp_64_upload_mbps_avg,json=speedtestTcp64UploadMbpsAvg,proto3" json:"speedtest_tcp_64_upload_mbps_avg,omitempty"`
-	SpeedtestTcp_64UploadMbpsMax            *wrapperspb.FloatValue  `protobuf:"bytes,807,opt,name=speedtest_tcp_64_upload_mbps_max,json=speedtestTcp64UploadMbpsMax,proto3" json:"speedtest_tcp_64_upload_mbps_max,omitempty"`
-	SpeedtestTcp_1DownloadMbpsAvg           *wrapperspb.FloatValue  `protobuf:"bytes,808,opt,name=speedtest_tcp_1_download_mbps_avg,json=speedtestTcp1DownloadMbpsAvg,proto3" json:"speedtest_tcp_1_download_mbps_avg,omitempty"`
-	SpeedtestTcp_1DownloadMbpsMax           *wrapperspb.FloatValue  `protobuf:"bytes,809,opt,name=speedtest_tcp_1_download_mbps_max,json=speedtestTcp1DownloadMbpsMax,proto3" json:"speedtest_tcp_1_download_mbps_max,omitempty"`
-	SpeedtestTcp_1UploadMbpsAvg             *wrapperspb.FloatValue  `protobuf:"bytes,810,opt,name=speedtest_tcp_1_upload_mbps_avg,json=speedtestTcp1UploadMbpsAvg,proto3" json:"speedtest_tcp_1_upload_mbps_avg,omitempty"`
-	SpeedtestTcp_1UploadMbpsMax             *wrapperspb.FloatValue  `protobuf:"bytes,811,opt,name=speedtest_tcp_1_upload_mbps_max,json=speedtestTcp1UploadMbpsMax,proto3" json:"speedtest_tcp_1_upload_mbps_max,omitempty"`
-	DishCellId                              *wrapperspb.UInt32Value `protobuf:"bytes,900,opt,name=dish_cell_id,json=dishCellId,proto3" json:"dish_cell_id,omitempty"`
-	ConfigSetupComplete                     *wrapperspb.BoolValue   `protobuf:"bytes,1000,opt,name=config_setup_complete,json=configSetupComplete,proto3" json:"config_setup_complete,omitempty"`
-	ConfigBandsSplit                        *wrapperspb.BoolValue   `protobuf:"bytes,1001,opt,name=config_bands_split,json=configBandsSplit,proto3" json:"config_bands_split,omitempty"`
-	ConfigIsRepeater                        *wrapperspb.BoolValue   `protobuf:"bytes,1002,opt,name=config_is_repeater,json=configIsRepeater,proto3" json:"config_is_repeater,omitempty"`
-	ConfigOpenNetwork                       *wrapperspb.BoolValue   `protobuf:"bytes,1003,opt,name=config_open_network,json=configOpenNetwork,proto3" json:"config_open_network,omitempty"`
-	ConfigIsAviation                        *wrapperspb.BoolValue   `protobuf:"bytes,1004,opt,name=config_is_aviation,json=configIsAviation,proto3" json:"config_is_aviation,omitempty"`
-	ConfigSecureDns                         *wrapperspb.BoolValue   `protobuf:"bytes,1005,opt,name=config_secure_dns,json=configSecureDns,proto3" json:"config_secure_dns,omitempty"`
-	ConfigLegacy                            *wrapperspb.BoolValue   `protobuf:"bytes,1006,opt,name=config_legacy,json=configLegacy,proto3" json:"config_legacy,omitempty"`
-	ConfigApMode                            *wrapperspb.BoolValue   `protobuf:"bytes,1007,opt,name=config_ap_mode,json=configApMode,proto3" json:"config_ap_mode,omitempty"`
-	ConfigDfsEnabled                        *wrapperspb.BoolValue   `protobuf:"bytes,1008,opt,name=config_dfs_enabled,json=configDfsEnabled,proto3" json:"config_dfs_enabled,omitempty"`
-	ConfigNetworkNameIsDefault              *wrapperspb.BoolValue   `protobuf:"bytes,1009,opt,name=config_network_name_is_default,json=configNetworkNameIsDefault,proto3" json:"config_network_name_is_default,omitempty"`
-	ConfigRemoteSshEnabled                  *wrapperspb.BoolValue   `protobuf:"bytes,1010,opt,name=config_remote_ssh_enabled,json=configRemoteSshEnabled,proto3" json:"config_remote_ssh_enabled,omitempty"`
-	ConfigIsRepeaterWired                   *wrapperspb.BoolValue   `protobuf:"bytes,1011,opt,name=config_is_repeater_wired,json=configIsRepeaterWired,proto3" json:"config_is_repeater_wired,omitempty"`
-	ConfigIsRepeaterWireless                *wrapperspb.BoolValue   `protobuf:"bytes,1012,opt,name=config_is_repeater_wireless,json=configIsRepeaterWireless,proto3" json:"config_is_repeater_wireless,omitempty"`
-	ConfigBlockSchedulesSet                 *wrapperspb.UInt32Value `protobuf:"bytes,1013,opt,name=config_block_schedules_set,json=configBlockSchedulesSet,proto3" json:"config_block_schedules_set,omitempty"`
-	ConfigCustomNameservers                 *wrapperspb.BoolValue   `protobuf:"bytes,1014,opt,name=config_custom_nameservers,json=configCustomNameservers,proto3" json:"config_custom_nameservers,omitempty"`
-	ConfigDisableMeshOnboarding             *wrapperspb.BoolValue   `protobuf:"bytes,1015,opt,name=config_disable_mesh_onboarding,json=configDisableMeshOnboarding,proto3" json:"config_disable_mesh_onboarding,omitempty"`
-	ConfigPinCountryCode                    *wrapperspb.BoolValue   `protobuf:"bytes,1016,opt,name=config_pin_country_code,json=configPinCountryCode,proto3" json:"config_pin_country_code,omitempty"`
-	ConfigDisableUpdateReboot               *wrapperspb.BoolValue   `protobuf:"bytes,1017,opt,name=config_disable_update_reboot,json=configDisableUpdateReboot,proto3" json:"config_disable_update_reboot,omitempty"`
-	ConfigHttpsContentHostingEnabled        *wrapperspb.BoolValue   `protobuf:"bytes,1031,opt,name=config_https_content_hosting_enabled,json=configHttpsContentHostingEnabled,proto3" json:"config_https_content_hosting_enabled,omitempty"`
-	ConfigOnlyOverflightBlockingEnabled     *wrapperspb.BoolValue   `protobuf:"bytes,1032,opt,name=config_only_overflight_blocking_enabled,json=configOnlyOverflightBlockingEnabled,proto3" json:"config_only_overflight_blocking_enabled,omitempty"`
-	ConfigOfflineNetworksDisablementEnabled *wrapperspb.BoolValue   `protobuf:"bytes,1033,opt,name=config_offline_networks_disablement_enabled,json=configOfflineNetworksDisablementEnabled,proto3" json:"config_offline_networks_disablement_enabled,omitempty"`
-	ConfigCustomDnsDisabled                 *wrapperspb.BoolValue   `protobuf:"bytes,1034,opt,name=config_custom_dns_disabled,json=configCustomDnsDisabled,proto3" json:"config_custom_dns_disabled,omitempty"`
-	ConfigDisable_2Ghz                      *wrapperspb.BoolValue   `protobuf:"bytes,1018,opt,name=config_disable_2ghz,json=configDisable2ghz,proto3" json:"config_disable_2ghz,omitempty"`
-	ConfigDisable_5Ghz                      *wrapperspb.BoolValue   `protobuf:"bytes,1019,opt,name=config_disable_5ghz,json=configDisable5ghz,proto3" json:"config_disable_5ghz,omitempty"`
-	ConfigDisable_5GhzHigh                  *wrapperspb.BoolValue   `protobuf:"bytes,1029,opt,name=config_disable_5ghz_high,json=configDisable5ghzHigh,proto3" json:"config_disable_5ghz_high,omitempty"`
-	ConfigChannel_2Ghz                      *wrapperspb.UInt32Value `protobuf:"bytes,1020,opt,name=config_channel_2ghz,json=configChannel2ghz,proto3" json:"config_channel_2ghz,omitempty"`
-	ConfigChannel_5Ghz                      *wrapperspb.UInt32Value `protobuf:"bytes,1021,opt,name=config_channel_5ghz,json=configChannel5ghz,proto3" json:"config_channel_5ghz,omitempty"`
-	ConfigChannel_5GhzHigh                  *wrapperspb.UInt32Value `protobuf:"bytes,1022,opt,name=config_channel_5ghz_high,json=configChannel5ghzHigh,proto3" json:"config_channel_5ghz_high,omitempty"`
-	ConfigNetworks                          *wrapperspb.UInt32Value `protobuf:"bytes,1023,opt,name=config_networks,json=configNetworks,proto3" json:"config_networks,omitempty"`
-	ConfigNetworksGuest                     *wrapperspb.UInt32Value `protobuf:"bytes,1024,opt,name=config_networks_guest,json=configNetworksGuest,proto3" json:"config_networks_guest,omitempty"`
-	ConfigNetworksHidden                    *wrapperspb.UInt32Value `protobuf:"bytes,1025,opt,name=config_networks_hidden,json=configNetworksHidden,proto3" json:"config_networks_hidden,omitempty"`
-	ConfigNetworksClientIsolation           *wrapperspb.UInt32Value `protobuf:"bytes,1026,opt,name=config_networks_client_isolation,json=configNetworksClientIsolation,proto3" json:"config_networks_client_isolation,omitempty"`
-	ConfigNetworksBandsSplit                *wrapperspb.UInt32Value `protobuf:"bytes,1027,opt,name=config_networks_bands_split,json=configNetworksBandsSplit,proto3" json:"config_networks_bands_split,omitempty"`
-	ConfigNetworksUser                      *wrapperspb.UInt32Value `protobuf:"bytes,1035,opt,name=config_networks_user,json=configNetworksUser,proto3" json:"config_networks_user,omitempty"`
-	WifiReloadCount                         *wrapperspb.UInt32Value `protobuf:"bytes,1040,opt,name=wifi_reload_count,json=wifiReloadCount,proto3" json:"wifi_reload_count,omitempty"`
-	RadiusReloadCount                       *wrapperspb.UInt32Value `protobuf:"bytes,1041,opt,name=radius_reload_count,json=radiusReloadCount,proto3" json:"radius_reload_count,omitempty"`
-	OpensshReloadCount                      *wrapperspb.UInt32Value `protobuf:"bytes,1042,opt,name=openssh_reload_count,json=opensshReloadCount,proto3" json:"openssh_reload_count,omitempty"`
-	IptablesReloadCount                     *wrapperspb.UInt32Value `protobuf:"bytes,1043,opt,name=iptables_reload_count,json=iptablesReloadCount,proto3" json:"iptables_reload_count,omitempty"`
-	EbtablesReloadCount                     *wrapperspb.UInt32Value `protobuf:"bytes,1044,opt,name=ebtables_reload_count,json=ebtablesReloadCount,proto3" json:"ebtables_reload_count,omitempty"`
-	TrafficControlReloadCount               *wrapperspb.UInt32Value `protobuf:"bytes,1045,opt,name=traffic_control_reload_count,json=trafficControlReloadCount,proto3" json:"traffic_control_reload_count,omitempty"`
-	DhcpReloadCount                         *wrapperspb.UInt32Value `protobuf:"bytes,1046,opt,name=dhcp_reload_count,json=dhcpReloadCount,proto3" json:"dhcp_reload_count,omitempty"`
-	Dhcpv6ReloadCount                       *wrapperspb.UInt32Value `protobuf:"bytes,1047,opt,name=dhcpv6_reload_count,json=dhcpv6ReloadCount,proto3" json:"dhcpv6_reload_count,omitempty"`
-	SystemReloadCount                       *wrapperspb.UInt32Value `protobuf:"bytes,1048,opt,name=system_reload_count,json=systemReloadCount,proto3" json:"system_reload_count,omitempty"`
-	DnsReloadCount                          *wrapperspb.UInt32Value `protobuf:"bytes,1049,opt,name=dns_reload_count,json=dnsReloadCount,proto3" json:"dns_reload_count,omitempty"`
-	HttpsReloadCount                        *wrapperspb.UInt32Value `protobuf:"bytes,1050,opt,name=https_reload_count,json=httpsReloadCount,proto3" json:"https_reload_count,omitempty"`
-	BandSteeringReloadCount                 *wrapperspb.UInt32Value `protobuf:"bytes,1051,opt,name=band_steering_reload_count,json=bandSteeringReloadCount,proto3" json:"band_steering_reload_count,omitempty"`
-	CommitCount                             *wrapperspb.UInt32Value `protobuf:"bytes,1052,opt,name=commit_count,json=commitCount,proto3" json:"commit_count,omitempty"`
-	NetworkReloadCount                      *wrapperspb.UInt32Value `protobuf:"bytes,1053,opt,name=network_reload_count,json=networkReloadCount,proto3" json:"network_reload_count,omitempty"`
-	WanTrafficControlCakeBytes              *wrapperspb.Int64Value  `protobuf:"bytes,1101,opt,name=wan_traffic_control_cake_bytes,json=wanTrafficControlCakeBytes,proto3" json:"wan_traffic_control_cake_bytes,omitempty"`
-	WanTrafficControlCakePackets            *wrapperspb.Int64Value  `protobuf:"bytes,1102,opt,name=wan_traffic_control_cake_packets,json=wanTrafficControlCakePackets,proto3" json:"wan_traffic_control_cake_packets,omitempty"`
-	WanTrafficControlCakeDrops              *wrapperspb.Int64Value  `protobuf:"bytes,1103,opt,name=wan_traffic_control_cake_drops,json=wanTrafficControlCakeDrops,proto3" json:"wan_traffic_control_cake_drops,omitempty"`
-	WanTrafficControlCakeAckDrops           *wrapperspb.Int64Value  `protobuf:"bytes,1104,opt,name=wan_traffic_control_cake_ack_drops,json=wanTrafficControlCakeAckDrops,proto3" json:"wan_traffic_control_cake_ack_drops,omitempty"`
-	ConntrackEntries                        *wrapperspb.UInt32Value `protobuf:"bytes,1100,opt,name=conntrack_entries,json=conntrackEntries,proto3" json:"conntrack_entries,omitempty"`
-	DhcpSecsEq_0                            *wrapperspb.UInt32Value `protobuf:"bytes,1105,opt,name=dhcp_secs_eq_0,json=dhcpSecsEq0,proto3" json:"dhcp_secs_eq_0,omitempty"`
-	DhcpSecsGt_0                            *wrapperspb.UInt32Value `protobuf:"bytes,1106,opt,name=dhcp_secs_gt_0,json=dhcpSecsGt0,proto3" json:"dhcp_secs_gt_0,omitempty"`
-	DhcpSecsGt_10                           *wrapperspb.UInt32Value `protobuf:"bytes,1107,opt,name=dhcp_secs_gt_10,json=dhcpSecsGt10,proto3" json:"dhcp_secs_gt_10,omitempty"`
-	DhcpSecsGt_30                           *wrapperspb.UInt32Value `protobuf:"bytes,1108,opt,name=dhcp_secs_gt_30,json=dhcpSecsGt30,proto3" json:"dhcp_secs_gt_30,omitempty"`
-	DhcpSecsGt_60                           *wrapperspb.UInt32Value `protobuf:"bytes,1109,opt,name=dhcp_secs_gt_60,json=dhcpSecsGt60,proto3" json:"dhcp_secs_gt_60,omitempty"`
-	DnsForwards                             *wrapperspb.UInt32Value `protobuf:"bytes,1200,opt,name=dns_forwards,json=dnsForwards,proto3" json:"dns_forwards,omitempty"`
-	DnsForwardsSuccess                      *wrapperspb.UInt32Value `protobuf:"bytes,1201,opt,name=dns_forwards_success,json=dnsForwardsSuccess,proto3" json:"dns_forwards_success,omitempty"`
-	DnsForwardsServerFailure                *wrapperspb.UInt32Value `protobuf:"bytes,1202,opt,name=dns_forwards_server_failure,json=dnsForwardsServerFailure,proto3" json:"dns_forwards_server_failure,omitempty"`
-	DnsForwardsNoServerResponse             *wrapperspb.UInt32Value `protobuf:"bytes,1203,opt,name=dns_forwards_no_server_response,json=dnsForwardsNoServerResponse,proto3" json:"dns_forwards_no_server_response,omitempty"`
-	DnsForwardsSuccessOnDefaultBackup       *wrapperspb.UInt32Value `protobuf:"bytes,1204,opt,name=dns_forwards_success_on_default_backup,json=dnsForwardsSuccessOnDefaultBackup,proto3" json:"dns_forwards_success_on_default_backup,omitempty"`
-	DnsForwardsDropped                      *wrapperspb.UInt32Value `protobuf:"bytes,1205,opt,name=dns_forwards_dropped,json=dnsForwardsDropped,proto3" json:"dns_forwards_dropped,omitempty"`
-	DnsForwardsWithBackup                   *wrapperspb.UInt32Value `protobuf:"bytes,1206,opt,name=dns_forwards_with_backup,json=dnsForwardsWithBackup,proto3" json:"dns_forwards_with_backup,omitempty"`
-	unknownFields                           protoimpl.UnknownFields
-	sizeCache                               protoimpl.SizeCache
+	state                                    protoimpl.MessageState  `protogen:"open.v1"`
+	Id                                       *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	TimestampDate                            *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=timestamp_date,json=timestampDate,proto3" json:"timestamp_date,omitempty"`
+	TimestampHour                            *wrapperspb.UInt32Value `protobuf:"bytes,3,opt,name=timestamp_hour,json=timestampHour,proto3" json:"timestamp_hour,omitempty"`
+	Timestamp                                *common.TimestampInfo   `protobuf:"bytes,10000,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	SysHwGen                                 *wrapperspb.UInt32Value `protobuf:"bytes,4,opt,name=sys_hw_gen,json=sysHwGen,proto3" json:"sys_hw_gen,omitempty"`
+	SysHwIndex                               *wrapperspb.UInt32Value `protobuf:"bytes,22,opt,name=sys_hw_index,json=sysHwIndex,proto3" json:"sys_hw_index,omitempty"`
+	SysSw                                    *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=sys_sw,json=sysSw,proto3" json:"sys_sw,omitempty"`
+	SysCountry                               *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=sys_country,json=sysCountry,proto3" json:"sys_country,omitempty"`
+	SysIsDev                                 *wrapperspb.BoolValue   `protobuf:"bytes,7,opt,name=sys_is_dev,json=sysIsDev,proto3" json:"sys_is_dev,omitempty"`
+	SysAllocFds                              *wrapperspb.UInt32Value `protobuf:"bytes,8,opt,name=sys_alloc_fds,json=sysAllocFds,proto3" json:"sys_alloc_fds,omitempty"`
+	SysCpuUsage                              *wrapperspb.FloatValue  `protobuf:"bytes,9,opt,name=sys_cpu_usage,json=sysCpuUsage,proto3" json:"sys_cpu_usage,omitempty"`
+	SysMemFreeKb                             *wrapperspb.FloatValue  `protobuf:"bytes,10,opt,name=sys_mem_free_kb,json=sysMemFreeKb,proto3" json:"sys_mem_free_kb,omitempty"`
+	SysBootcount                             *wrapperspb.Int32Value  `protobuf:"bytes,11,opt,name=sys_bootcount,json=sysBootcount,proto3" json:"sys_bootcount,omitempty"`
+	SysPartitionsEqual                       *wrapperspb.BoolValue   `protobuf:"bytes,12,opt,name=sys_partitions_equal,json=sysPartitionsEqual,proto3" json:"sys_partitions_equal,omitempty"`
+	SysUptimeSeconds                         *wrapperspb.UInt32Value `protobuf:"bytes,13,opt,name=sys_uptime_seconds,json=sysUptimeSeconds,proto3" json:"sys_uptime_seconds,omitempty"`
+	SysAntiRollbackVersion                   *wrapperspb.Int32Value  `protobuf:"bytes,14,opt,name=sys_anti_rollback_version,json=sysAntiRollbackVersion,proto3" json:"sys_anti_rollback_version,omitempty"`
+	SysIsWitl                                *wrapperspb.BoolValue   `protobuf:"bytes,15,opt,name=sys_is_witl,json=sysIsWitl,proto3" json:"sys_is_witl,omitempty"`
+	SysIsAviationConformed                   *wrapperspb.BoolValue   `protobuf:"bytes,16,opt,name=sys_is_aviation_conformed,json=sysIsAviationConformed,proto3" json:"sys_is_aviation_conformed,omitempty"`
+	SysUbiMaxEc                              *wrapperspb.UInt32Value `protobuf:"bytes,17,opt,name=sys_ubi_max_ec,json=sysUbiMaxEc,proto3" json:"sys_ubi_max_ec,omitempty"`
+	SysUbiBadPeb                             *wrapperspb.UInt32Value `protobuf:"bytes,18,opt,name=sys_ubi_bad_peb,json=sysUbiBadPeb,proto3" json:"sys_ubi_bad_peb,omitempty"`
+	SysBoardRev                              *wrapperspb.UInt32Value `protobuf:"bytes,19,opt,name=sys_board_rev,json=sysBoardRev,proto3" json:"sys_board_rev,omitempty"`
+	SysCalibrationState                      *wrapperspb.UInt32Value `protobuf:"bytes,20,opt,name=sys_calibration_state,json=sysCalibrationState,proto3" json:"sys_calibration_state,omitempty"`
+	SysCalibrationPartitionsState            *wrapperspb.UInt32Value `protobuf:"bytes,21,opt,name=sys_calibration_partitions_state,json=sysCalibrationPartitionsState,proto3" json:"sys_calibration_partitions_state,omitempty"`
+	Radios_2GhzChannel                       *wrapperspb.UInt32Value `protobuf:"bytes,100,opt,name=radios_2ghz_channel,json=radios2ghzChannel,proto3" json:"radios_2ghz_channel,omitempty"`
+	Radios_2GhzAntenna1Rssi                  *wrapperspb.FloatValue  `protobuf:"bytes,101,opt,name=radios_2ghz_antenna1_rssi,json=radios2ghzAntenna1Rssi,proto3" json:"radios_2ghz_antenna1_rssi,omitempty"`
+	Radios_2GhzAntenna2Rssi                  *wrapperspb.FloatValue  `protobuf:"bytes,102,opt,name=radios_2ghz_antenna2_rssi,json=radios2ghzAntenna2Rssi,proto3" json:"radios_2ghz_antenna2_rssi,omitempty"`
+	Radios_2GhzAntenna3Rssi                  *wrapperspb.FloatValue  `protobuf:"bytes,103,opt,name=radios_2ghz_antenna3_rssi,json=radios2ghzAntenna3Rssi,proto3" json:"radios_2ghz_antenna3_rssi,omitempty"`
+	Radios_2GhzAntenna4Rssi                  *wrapperspb.FloatValue  `protobuf:"bytes,197,opt,name=radios_2ghz_antenna4_rssi,json=radios2ghzAntenna4Rssi,proto3" json:"radios_2ghz_antenna4_rssi,omitempty"`
+	Radios_2GhzAntenna1Tssi                  *wrapperspb.FloatValue  `protobuf:"bytes,157,opt,name=radios_2ghz_antenna1_tssi,json=radios2ghzAntenna1Tssi,proto3" json:"radios_2ghz_antenna1_tssi,omitempty"`
+	Radios_2GhzAntenna2Tssi                  *wrapperspb.FloatValue  `protobuf:"bytes,158,opt,name=radios_2ghz_antenna2_tssi,json=radios2ghzAntenna2Tssi,proto3" json:"radios_2ghz_antenna2_tssi,omitempty"`
+	Radios_2GhzAntenna3Tssi                  *wrapperspb.FloatValue  `protobuf:"bytes,159,opt,name=radios_2ghz_antenna3_tssi,json=radios2ghzAntenna3Tssi,proto3" json:"radios_2ghz_antenna3_tssi,omitempty"`
+	Radios_2GhzAntenna4Tssi                  *wrapperspb.FloatValue  `protobuf:"bytes,160,opt,name=radios_2ghz_antenna4_tssi,json=radios2ghzAntenna4Tssi,proto3" json:"radios_2ghz_antenna4_tssi,omitempty"`
+	Radios_2GhzIfaceCount                    *wrapperspb.UInt32Value `protobuf:"bytes,104,opt,name=radios_2ghz_iface_count,json=radios2ghzIfaceCount,proto3" json:"radios_2ghz_iface_count,omitempty"`
+	Radios_2GhzChanBusyFraction              *wrapperspb.FloatValue  `protobuf:"bytes,105,opt,name=radios_2ghz_chan_busy_fraction,json=radios2ghzChanBusyFraction,proto3" json:"radios_2ghz_chan_busy_fraction,omitempty"`
+	Radios_2GhzEdccaFraction                 *wrapperspb.FloatValue  `protobuf:"bytes,106,opt,name=radios_2ghz_edcca_fraction,json=radios2ghzEdccaFraction,proto3" json:"radios_2ghz_edcca_fraction,omitempty"`
+	Radios_2GhzOverlappingBssFraction        *wrapperspb.FloatValue  `protobuf:"bytes,107,opt,name=radios_2ghz_overlapping_bss_fraction,json=radios2ghzOverlappingBssFraction,proto3" json:"radios_2ghz_overlapping_bss_fraction,omitempty"`
+	Radios_2GhzRxBytes                       *wrapperspb.Int64Value  `protobuf:"bytes,108,opt,name=radios_2ghz_rx_bytes,json=radios2ghzRxBytes,proto3" json:"radios_2ghz_rx_bytes,omitempty"`
+	Radios_2GhzRxPackets                     *wrapperspb.Int64Value  `protobuf:"bytes,109,opt,name=radios_2ghz_rx_packets,json=radios2ghzRxPackets,proto3" json:"radios_2ghz_rx_packets,omitempty"`
+	Radios_2GhzRxErrors                      *wrapperspb.Int64Value  `protobuf:"bytes,110,opt,name=radios_2ghz_rx_errors,json=radios2ghzRxErrors,proto3" json:"radios_2ghz_rx_errors,omitempty"`
+	Radios_2GhzRxFrameErrors                 *wrapperspb.Int64Value  `protobuf:"bytes,111,opt,name=radios_2ghz_rx_frame_errors,json=radios2ghzRxFrameErrors,proto3" json:"radios_2ghz_rx_frame_errors,omitempty"`
+	Radios_2GhzRxPacketErrorRate             *wrapperspb.FloatValue  `protobuf:"bytes,112,opt,name=radios_2ghz_rx_packet_error_rate,json=radios2ghzRxPacketErrorRate,proto3" json:"radios_2ghz_rx_packet_error_rate,omitempty"`
+	Radios_2GhzRxAirtimeFraction             *wrapperspb.FloatValue  `protobuf:"bytes,113,opt,name=radios_2ghz_rx_airtime_fraction,json=radios2ghzRxAirtimeFraction,proto3" json:"radios_2ghz_rx_airtime_fraction,omitempty"`
+	Radios_2GhzTxBytes                       *wrapperspb.Int64Value  `protobuf:"bytes,114,opt,name=radios_2ghz_tx_bytes,json=radios2ghzTxBytes,proto3" json:"radios_2ghz_tx_bytes,omitempty"`
+	Radios_2GhzTxPackets                     *wrapperspb.Int64Value  `protobuf:"bytes,115,opt,name=radios_2ghz_tx_packets,json=radios2ghzTxPackets,proto3" json:"radios_2ghz_tx_packets,omitempty"`
+	Radios_2GhzTxErrors                      *wrapperspb.Int64Value  `protobuf:"bytes,116,opt,name=radios_2ghz_tx_errors,json=radios2ghzTxErrors,proto3" json:"radios_2ghz_tx_errors,omitempty"`
+	Radios_2GhzTxPacketErrorRate             *wrapperspb.FloatValue  `protobuf:"bytes,117,opt,name=radios_2ghz_tx_packet_error_rate,json=radios2ghzTxPacketErrorRate,proto3" json:"radios_2ghz_tx_packet_error_rate,omitempty"`
+	Radios_2GhzTxAirtimeFraction             *wrapperspb.FloatValue  `protobuf:"bytes,118,opt,name=radios_2ghz_tx_airtime_fraction,json=radios2ghzTxAirtimeFraction,proto3" json:"radios_2ghz_tx_airtime_fraction,omitempty"`
+	Radios_5GhzChannel                       *wrapperspb.UInt32Value `protobuf:"bytes,119,opt,name=radios_5ghz_channel,json=radios5ghzChannel,proto3" json:"radios_5ghz_channel,omitempty"`
+	Radios_5GhzAntenna1Rssi                  *wrapperspb.FloatValue  `protobuf:"bytes,120,opt,name=radios_5ghz_antenna1_rssi,json=radios5ghzAntenna1Rssi,proto3" json:"radios_5ghz_antenna1_rssi,omitempty"`
+	Radios_5GhzAntenna2Rssi                  *wrapperspb.FloatValue  `protobuf:"bytes,121,opt,name=radios_5ghz_antenna2_rssi,json=radios5ghzAntenna2Rssi,proto3" json:"radios_5ghz_antenna2_rssi,omitempty"`
+	Radios_5GhzAntenna3Rssi                  *wrapperspb.FloatValue  `protobuf:"bytes,122,opt,name=radios_5ghz_antenna3_rssi,json=radios5ghzAntenna3Rssi,proto3" json:"radios_5ghz_antenna3_rssi,omitempty"`
+	Radios_5GhzAntenna4Rssi                  *wrapperspb.FloatValue  `protobuf:"bytes,198,opt,name=radios_5ghz_antenna4_rssi,json=radios5ghzAntenna4Rssi,proto3" json:"radios_5ghz_antenna4_rssi,omitempty"`
+	Radios_5GhzAntenna1Tssi                  *wrapperspb.FloatValue  `protobuf:"bytes,161,opt,name=radios_5ghz_antenna1_tssi,json=radios5ghzAntenna1Tssi,proto3" json:"radios_5ghz_antenna1_tssi,omitempty"`
+	Radios_5GhzAntenna2Tssi                  *wrapperspb.FloatValue  `protobuf:"bytes,162,opt,name=radios_5ghz_antenna2_tssi,json=radios5ghzAntenna2Tssi,proto3" json:"radios_5ghz_antenna2_tssi,omitempty"`
+	Radios_5GhzAntenna3Tssi                  *wrapperspb.FloatValue  `protobuf:"bytes,163,opt,name=radios_5ghz_antenna3_tssi,json=radios5ghzAntenna3Tssi,proto3" json:"radios_5ghz_antenna3_tssi,omitempty"`
+	Radios_5GhzAntenna4Tssi                  *wrapperspb.FloatValue  `protobuf:"bytes,164,opt,name=radios_5ghz_antenna4_tssi,json=radios5ghzAntenna4Tssi,proto3" json:"radios_5ghz_antenna4_tssi,omitempty"`
+	Radios_5GhzIfaceCount                    *wrapperspb.UInt32Value `protobuf:"bytes,123,opt,name=radios_5ghz_iface_count,json=radios5ghzIfaceCount,proto3" json:"radios_5ghz_iface_count,omitempty"`
+	Radios_5GhzChanBusyFraction              *wrapperspb.FloatValue  `protobuf:"bytes,124,opt,name=radios_5ghz_chan_busy_fraction,json=radios5ghzChanBusyFraction,proto3" json:"radios_5ghz_chan_busy_fraction,omitempty"`
+	Radios_5GhzEdccaFraction                 *wrapperspb.FloatValue  `protobuf:"bytes,125,opt,name=radios_5ghz_edcca_fraction,json=radios5ghzEdccaFraction,proto3" json:"radios_5ghz_edcca_fraction,omitempty"`
+	Radios_5GhzOverlappingBssFraction        *wrapperspb.FloatValue  `protobuf:"bytes,126,opt,name=radios_5ghz_overlapping_bss_fraction,json=radios5ghzOverlappingBssFraction,proto3" json:"radios_5ghz_overlapping_bss_fraction,omitempty"`
+	Radios_5GhzRxBytes                       *wrapperspb.Int64Value  `protobuf:"bytes,127,opt,name=radios_5ghz_rx_bytes,json=radios5ghzRxBytes,proto3" json:"radios_5ghz_rx_bytes,omitempty"`
+	Radios_5GhzRxPackets                     *wrapperspb.Int64Value  `protobuf:"bytes,128,opt,name=radios_5ghz_rx_packets,json=radios5ghzRxPackets,proto3" json:"radios_5ghz_rx_packets,omitempty"`
+	Radios_5GhzRxErrors                      *wrapperspb.Int64Value  `protobuf:"bytes,129,opt,name=radios_5ghz_rx_errors,json=radios5ghzRxErrors,proto3" json:"radios_5ghz_rx_errors,omitempty"`
+	Radios_5GhzRxFrameErrors                 *wrapperspb.Int64Value  `protobuf:"bytes,130,opt,name=radios_5ghz_rx_frame_errors,json=radios5ghzRxFrameErrors,proto3" json:"radios_5ghz_rx_frame_errors,omitempty"`
+	Radios_5GhzRxPacketErrorRate             *wrapperspb.FloatValue  `protobuf:"bytes,131,opt,name=radios_5ghz_rx_packet_error_rate,json=radios5ghzRxPacketErrorRate,proto3" json:"radios_5ghz_rx_packet_error_rate,omitempty"`
+	Radios_5GhzRxAirtimeFraction             *wrapperspb.FloatValue  `protobuf:"bytes,132,opt,name=radios_5ghz_rx_airtime_fraction,json=radios5ghzRxAirtimeFraction,proto3" json:"radios_5ghz_rx_airtime_fraction,omitempty"`
+	Radios_5GhzTxBytes                       *wrapperspb.Int64Value  `protobuf:"bytes,133,opt,name=radios_5ghz_tx_bytes,json=radios5ghzTxBytes,proto3" json:"radios_5ghz_tx_bytes,omitempty"`
+	Radios_5GhzTxPackets                     *wrapperspb.Int64Value  `protobuf:"bytes,134,opt,name=radios_5ghz_tx_packets,json=radios5ghzTxPackets,proto3" json:"radios_5ghz_tx_packets,omitempty"`
+	Radios_5GhzTxErrors                      *wrapperspb.Int64Value  `protobuf:"bytes,135,opt,name=radios_5ghz_tx_errors,json=radios5ghzTxErrors,proto3" json:"radios_5ghz_tx_errors,omitempty"`
+	Radios_5GhzTxPacketErrorRate             *wrapperspb.FloatValue  `protobuf:"bytes,136,opt,name=radios_5ghz_tx_packet_error_rate,json=radios5ghzTxPacketErrorRate,proto3" json:"radios_5ghz_tx_packet_error_rate,omitempty"`
+	Radios_5GhzTxAirtimeFraction             *wrapperspb.FloatValue  `protobuf:"bytes,137,opt,name=radios_5ghz_tx_airtime_fraction,json=radios5ghzTxAirtimeFraction,proto3" json:"radios_5ghz_tx_airtime_fraction,omitempty"`
+	Radios_5GhzHighChannel                   *wrapperspb.UInt32Value `protobuf:"bytes,138,opt,name=radios_5ghz_high_channel,json=radios5ghzHighChannel,proto3" json:"radios_5ghz_high_channel,omitempty"`
+	Radios_5GhzHighAntenna1Rssi              *wrapperspb.FloatValue  `protobuf:"bytes,139,opt,name=radios_5ghz_high_antenna1_rssi,json=radios5ghzHighAntenna1Rssi,proto3" json:"radios_5ghz_high_antenna1_rssi,omitempty"`
+	Radios_5GhzHighAntenna2Rssi              *wrapperspb.FloatValue  `protobuf:"bytes,140,opt,name=radios_5ghz_high_antenna2_rssi,json=radios5ghzHighAntenna2Rssi,proto3" json:"radios_5ghz_high_antenna2_rssi,omitempty"`
+	Radios_5GhzHighAntenna3Rssi              *wrapperspb.FloatValue  `protobuf:"bytes,141,opt,name=radios_5ghz_high_antenna3_rssi,json=radios5ghzHighAntenna3Rssi,proto3" json:"radios_5ghz_high_antenna3_rssi,omitempty"`
+	Radios_5GhzHighAntenna4Rssi              *wrapperspb.FloatValue  `protobuf:"bytes,199,opt,name=radios_5ghz_high_antenna4_rssi,json=radios5ghzHighAntenna4Rssi,proto3" json:"radios_5ghz_high_antenna4_rssi,omitempty"`
+	Radios_5GhzHighAntenna1Tssi              *wrapperspb.FloatValue  `protobuf:"bytes,165,opt,name=radios_5ghz_high_antenna1_tssi,json=radios5ghzHighAntenna1Tssi,proto3" json:"radios_5ghz_high_antenna1_tssi,omitempty"`
+	Radios_5GhzHighAntenna2Tssi              *wrapperspb.FloatValue  `protobuf:"bytes,166,opt,name=radios_5ghz_high_antenna2_tssi,json=radios5ghzHighAntenna2Tssi,proto3" json:"radios_5ghz_high_antenna2_tssi,omitempty"`
+	Radios_5GhzHighAntenna3Tssi              *wrapperspb.FloatValue  `protobuf:"bytes,167,opt,name=radios_5ghz_high_antenna3_tssi,json=radios5ghzHighAntenna3Tssi,proto3" json:"radios_5ghz_high_antenna3_tssi,omitempty"`
+	Radios_5GhzHighAntenna4Tssi              *wrapperspb.FloatValue  `protobuf:"bytes,168,opt,name=radios_5ghz_high_antenna4_tssi,json=radios5ghzHighAntenna4Tssi,proto3" json:"radios_5ghz_high_antenna4_tssi,omitempty"`
+	Radios_5GhzHighIfaceCount                *wrapperspb.UInt32Value `protobuf:"bytes,142,opt,name=radios_5ghz_high_iface_count,json=radios5ghzHighIfaceCount,proto3" json:"radios_5ghz_high_iface_count,omitempty"`
+	Radios_5GhzHighChanBusyFraction          *wrapperspb.FloatValue  `protobuf:"bytes,143,opt,name=radios_5ghz_high_chan_busy_fraction,json=radios5ghzHighChanBusyFraction,proto3" json:"radios_5ghz_high_chan_busy_fraction,omitempty"`
+	Radios_5GhzHighEdccaFraction             *wrapperspb.FloatValue  `protobuf:"bytes,144,opt,name=radios_5ghz_high_edcca_fraction,json=radios5ghzHighEdccaFraction,proto3" json:"radios_5ghz_high_edcca_fraction,omitempty"`
+	Radios_5GhzHighOverlappingBssFraction    *wrapperspb.FloatValue  `protobuf:"bytes,145,opt,name=radios_5ghz_high_overlapping_bss_fraction,json=radios5ghzHighOverlappingBssFraction,proto3" json:"radios_5ghz_high_overlapping_bss_fraction,omitempty"`
+	Radios_5GhzHighRxBytes                   *wrapperspb.Int64Value  `protobuf:"bytes,146,opt,name=radios_5ghz_high_rx_bytes,json=radios5ghzHighRxBytes,proto3" json:"radios_5ghz_high_rx_bytes,omitempty"`
+	Radios_5GhzHighRxPackets                 *wrapperspb.Int64Value  `protobuf:"bytes,147,opt,name=radios_5ghz_high_rx_packets,json=radios5ghzHighRxPackets,proto3" json:"radios_5ghz_high_rx_packets,omitempty"`
+	Radios_5GhzHighRxErrors                  *wrapperspb.Int64Value  `protobuf:"bytes,148,opt,name=radios_5ghz_high_rx_errors,json=radios5ghzHighRxErrors,proto3" json:"radios_5ghz_high_rx_errors,omitempty"`
+	Radios_5GhzHighRxFrameErrors             *wrapperspb.Int64Value  `protobuf:"bytes,149,opt,name=radios_5ghz_high_rx_frame_errors,json=radios5ghzHighRxFrameErrors,proto3" json:"radios_5ghz_high_rx_frame_errors,omitempty"`
+	Radios_5GhzHighRxPacketErrorRate         *wrapperspb.FloatValue  `protobuf:"bytes,150,opt,name=radios_5ghz_high_rx_packet_error_rate,json=radios5ghzHighRxPacketErrorRate,proto3" json:"radios_5ghz_high_rx_packet_error_rate,omitempty"`
+	Radios_5GhzHighRxAirtimeFraction         *wrapperspb.FloatValue  `protobuf:"bytes,151,opt,name=radios_5ghz_high_rx_airtime_fraction,json=radios5ghzHighRxAirtimeFraction,proto3" json:"radios_5ghz_high_rx_airtime_fraction,omitempty"`
+	Radios_5GhzHighTxBytes                   *wrapperspb.Int64Value  `protobuf:"bytes,152,opt,name=radios_5ghz_high_tx_bytes,json=radios5ghzHighTxBytes,proto3" json:"radios_5ghz_high_tx_bytes,omitempty"`
+	Radios_5GhzHighTxPackets                 *wrapperspb.Int64Value  `protobuf:"bytes,153,opt,name=radios_5ghz_high_tx_packets,json=radios5ghzHighTxPackets,proto3" json:"radios_5ghz_high_tx_packets,omitempty"`
+	Radios_5GhzHighTxErrors                  *wrapperspb.Int64Value  `protobuf:"bytes,154,opt,name=radios_5ghz_high_tx_errors,json=radios5ghzHighTxErrors,proto3" json:"radios_5ghz_high_tx_errors,omitempty"`
+	Radios_5GhzHighTxPacketErrorRate         *wrapperspb.FloatValue  `protobuf:"bytes,155,opt,name=radios_5ghz_high_tx_packet_error_rate,json=radios5ghzHighTxPacketErrorRate,proto3" json:"radios_5ghz_high_tx_packet_error_rate,omitempty"`
+	Radios_5GhzHighTxAirtimeFraction         *wrapperspb.FloatValue  `protobuf:"bytes,156,opt,name=radios_5ghz_high_tx_airtime_fraction,json=radios5ghzHighTxAirtimeFraction,proto3" json:"radios_5ghz_high_tx_airtime_fraction,omitempty"`
+	Radios_2GhzThermalTemp                   *wrapperspb.FloatValue  `protobuf:"bytes,200,opt,name=radios_2ghz_thermal_temp,json=radios2ghzThermalTemp,proto3" json:"radios_2ghz_thermal_temp,omitempty"`
+	Radios_5GhzThermalTemp                   *wrapperspb.FloatValue  `protobuf:"bytes,201,opt,name=radios_5ghz_thermal_temp,json=radios5ghzThermalTemp,proto3" json:"radios_5ghz_thermal_temp,omitempty"`
+	Radios_5GhzHighThermalTemp               *wrapperspb.FloatValue  `protobuf:"bytes,206,opt,name=radios_5ghz_high_thermal_temp,json=radios5ghzHighThermalTemp,proto3" json:"radios_5ghz_high_thermal_temp,omitempty"`
+	Radios_2GhzThermalDutyCycle              *wrapperspb.FloatValue  `protobuf:"bytes,202,opt,name=radios_2ghz_thermal_duty_cycle,json=radios2ghzThermalDutyCycle,proto3" json:"radios_2ghz_thermal_duty_cycle,omitempty"`
+	Radios_5GhzThermalDutyCycle              *wrapperspb.FloatValue  `protobuf:"bytes,203,opt,name=radios_5ghz_thermal_duty_cycle,json=radios5ghzThermalDutyCycle,proto3" json:"radios_5ghz_thermal_duty_cycle,omitempty"`
+	Radios_5GhzHighThermalDutyCycle          *wrapperspb.FloatValue  `protobuf:"bytes,207,opt,name=radios_5ghz_high_thermal_duty_cycle,json=radios5ghzHighThermalDutyCycle,proto3" json:"radios_5ghz_high_thermal_duty_cycle,omitempty"`
+	Radios_2GhzThermalThrottledSeconds       *wrapperspb.UInt32Value `protobuf:"bytes,204,opt,name=radios_2ghz_thermal_throttled_seconds,json=radios2ghzThermalThrottledSeconds,proto3" json:"radios_2ghz_thermal_throttled_seconds,omitempty"`
+	Radios_5GhzThermalThrottledSeconds       *wrapperspb.UInt32Value `protobuf:"bytes,205,opt,name=radios_5ghz_thermal_throttled_seconds,json=radios5ghzThermalThrottledSeconds,proto3" json:"radios_5ghz_thermal_throttled_seconds,omitempty"`
+	Radios_5GhzHighThermalThrottledSeconds   *wrapperspb.UInt32Value `protobuf:"bytes,208,opt,name=radios_5ghz_high_thermal_throttled_seconds,json=radios5ghzHighThermalThrottledSeconds,proto3" json:"radios_5ghz_high_thermal_throttled_seconds,omitempty"`
+	BoardTemp                                *wrapperspb.FloatValue  `protobuf:"bytes,210,opt,name=board_temp,json=boardTemp,proto3" json:"board_temp,omitempty"`
+	PoeMcuDieTemp                            *wrapperspb.FloatValue  `protobuf:"bytes,211,opt,name=poe_mcu_die_temp,json=poeMcuDieTemp,proto3" json:"poe_mcu_die_temp,omitempty"`
+	PoePercentWaterDetectAvg                 *wrapperspb.FloatValue  `protobuf:"bytes,212,opt,name=poe_percent_water_detect_avg,json=poePercentWaterDetectAvg,proto3" json:"poe_percent_water_detect_avg,omitempty"`
+	IfacesLanEthRxBytes                      *wrapperspb.Int64Value  `protobuf:"bytes,300,opt,name=ifaces_lan_eth_rx_bytes,json=ifacesLanEthRxBytes,proto3" json:"ifaces_lan_eth_rx_bytes,omitempty"`
+	IfacesLanEthRxPackets                    *wrapperspb.Int64Value  `protobuf:"bytes,301,opt,name=ifaces_lan_eth_rx_packets,json=ifacesLanEthRxPackets,proto3" json:"ifaces_lan_eth_rx_packets,omitempty"`
+	IfacesLanEthRxErrors                     *wrapperspb.Int64Value  `protobuf:"bytes,302,opt,name=ifaces_lan_eth_rx_errors,json=ifacesLanEthRxErrors,proto3" json:"ifaces_lan_eth_rx_errors,omitempty"`
+	IfacesLanEthRxFrameErrors                *wrapperspb.Int64Value  `protobuf:"bytes,303,opt,name=ifaces_lan_eth_rx_frame_errors,json=ifacesLanEthRxFrameErrors,proto3" json:"ifaces_lan_eth_rx_frame_errors,omitempty"`
+	IfacesLanEthTxBytes                      *wrapperspb.Int64Value  `protobuf:"bytes,304,opt,name=ifaces_lan_eth_tx_bytes,json=ifacesLanEthTxBytes,proto3" json:"ifaces_lan_eth_tx_bytes,omitempty"`
+	IfacesLanEthTxPackets                    *wrapperspb.Int64Value  `protobuf:"bytes,305,opt,name=ifaces_lan_eth_tx_packets,json=ifacesLanEthTxPackets,proto3" json:"ifaces_lan_eth_tx_packets,omitempty"`
+	IfacesLanEthTxErrors                     *wrapperspb.Int64Value  `protobuf:"bytes,306,opt,name=ifaces_lan_eth_tx_errors,json=ifacesLanEthTxErrors,proto3" json:"ifaces_lan_eth_tx_errors,omitempty"`
+	IfacesLan1EthRxBytes                     *wrapperspb.Int64Value  `protobuf:"bytes,314,opt,name=ifaces_lan1_eth_rx_bytes,json=ifacesLan1EthRxBytes,proto3" json:"ifaces_lan1_eth_rx_bytes,omitempty"`
+	IfacesLan1EthRxPackets                   *wrapperspb.Int64Value  `protobuf:"bytes,315,opt,name=ifaces_lan1_eth_rx_packets,json=ifacesLan1EthRxPackets,proto3" json:"ifaces_lan1_eth_rx_packets,omitempty"`
+	IfacesLan1EthRxErrors                    *wrapperspb.Int64Value  `protobuf:"bytes,316,opt,name=ifaces_lan1_eth_rx_errors,json=ifacesLan1EthRxErrors,proto3" json:"ifaces_lan1_eth_rx_errors,omitempty"`
+	IfacesLan1EthRxFrameErrors               *wrapperspb.Int64Value  `protobuf:"bytes,317,opt,name=ifaces_lan1_eth_rx_frame_errors,json=ifacesLan1EthRxFrameErrors,proto3" json:"ifaces_lan1_eth_rx_frame_errors,omitempty"`
+	IfacesLan1EthTxBytes                     *wrapperspb.Int64Value  `protobuf:"bytes,318,opt,name=ifaces_lan1_eth_tx_bytes,json=ifacesLan1EthTxBytes,proto3" json:"ifaces_lan1_eth_tx_bytes,omitempty"`
+	IfacesLan1EthTxPackets                   *wrapperspb.Int64Value  `protobuf:"bytes,319,opt,name=ifaces_lan1_eth_tx_packets,json=ifacesLan1EthTxPackets,proto3" json:"ifaces_lan1_eth_tx_packets,omitempty"`
+	IfacesLan1EthTxErrors                    *wrapperspb.Int64Value  `protobuf:"bytes,320,opt,name=ifaces_lan1_eth_tx_errors,json=ifacesLan1EthTxErrors,proto3" json:"ifaces_lan1_eth_tx_errors,omitempty"`
+	IfacesWanEthRxBytes                      *wrapperspb.Int64Value  `protobuf:"bytes,307,opt,name=ifaces_wan_eth_rx_bytes,json=ifacesWanEthRxBytes,proto3" json:"ifaces_wan_eth_rx_bytes,omitempty"`
+	IfacesWanEthRxPackets                    *wrapperspb.Int64Value  `protobuf:"bytes,308,opt,name=ifaces_wan_eth_rx_packets,json=ifacesWanEthRxPackets,proto3" json:"ifaces_wan_eth_rx_packets,omitempty"`
+	IfacesWanEthRxErrors                     *wrapperspb.Int64Value  `protobuf:"bytes,309,opt,name=ifaces_wan_eth_rx_errors,json=ifacesWanEthRxErrors,proto3" json:"ifaces_wan_eth_rx_errors,omitempty"`
+	IfacesWanEthRxFrameErrors                *wrapperspb.Int64Value  `protobuf:"bytes,310,opt,name=ifaces_wan_eth_rx_frame_errors,json=ifacesWanEthRxFrameErrors,proto3" json:"ifaces_wan_eth_rx_frame_errors,omitempty"`
+	IfacesWanEthTxBytes                      *wrapperspb.Int64Value  `protobuf:"bytes,311,opt,name=ifaces_wan_eth_tx_bytes,json=ifacesWanEthTxBytes,proto3" json:"ifaces_wan_eth_tx_bytes,omitempty"`
+	IfacesWanEthTxPackets                    *wrapperspb.Int64Value  `protobuf:"bytes,312,opt,name=ifaces_wan_eth_tx_packets,json=ifacesWanEthTxPackets,proto3" json:"ifaces_wan_eth_tx_packets,omitempty"`
+	IfacesWanEthTxErrors                     *wrapperspb.Int64Value  `protobuf:"bytes,313,opt,name=ifaces_wan_eth_tx_errors,json=ifacesWanEthTxErrors,proto3" json:"ifaces_wan_eth_tx_errors,omitempty"`
+	IfacesWanPort                            *wrapperspb.StringValue `protobuf:"bytes,321,opt,name=ifaces_wan_port,json=ifacesWanPort,proto3" json:"ifaces_wan_port,omitempty"`
+	Clients                                  *wrapperspb.UInt32Value `protobuf:"bytes,400,opt,name=clients,proto3" json:"clients,omitempty"`
+	Clients_2Ghz                             *wrapperspb.UInt32Value `protobuf:"bytes,401,opt,name=clients_2ghz,json=clients2ghz,proto3" json:"clients_2ghz,omitempty"`
+	Clients_5Ghz                             *wrapperspb.UInt32Value `protobuf:"bytes,402,opt,name=clients_5ghz,json=clients5ghz,proto3" json:"clients_5ghz,omitempty"`
+	Clients_5GhzHigh                         *wrapperspb.UInt32Value `protobuf:"bytes,413,opt,name=clients_5ghz_high,json=clients5ghzHigh,proto3" json:"clients_5ghz_high,omitempty"`
+	ClientsEth                               *wrapperspb.UInt32Value `protobuf:"bytes,403,opt,name=clients_eth,json=clientsEth,proto3" json:"clients_eth,omitempty"`
+	Clients_5GhzRxBandwidth_20Mhz            *wrapperspb.UInt32Value `protobuf:"bytes,429,opt,name=clients_5ghz_rx_bandwidth_20mhz,json=clients5ghzRxBandwidth20mhz,proto3" json:"clients_5ghz_rx_bandwidth_20mhz,omitempty"`
+	Clients_5GhzRxBandwidth_40Mhz            *wrapperspb.UInt32Value `protobuf:"bytes,430,opt,name=clients_5ghz_rx_bandwidth_40mhz,json=clients5ghzRxBandwidth40mhz,proto3" json:"clients_5ghz_rx_bandwidth_40mhz,omitempty"`
+	Clients_5GhzRxBandwidth_80Mhz            *wrapperspb.UInt32Value `protobuf:"bytes,431,opt,name=clients_5ghz_rx_bandwidth_80mhz,json=clients5ghzRxBandwidth80mhz,proto3" json:"clients_5ghz_rx_bandwidth_80mhz,omitempty"`
+	ClientsRepeater                          *wrapperspb.UInt32Value `protobuf:"bytes,404,opt,name=clients_repeater,json=clientsRepeater,proto3" json:"clients_repeater,omitempty"`
+	ClientsRepeater_2Ghz                     *wrapperspb.UInt32Value `protobuf:"bytes,405,opt,name=clients_repeater_2ghz,json=clientsRepeater2ghz,proto3" json:"clients_repeater_2ghz,omitempty"`
+	ClientsRepeater_5Ghz                     *wrapperspb.UInt32Value `protobuf:"bytes,406,opt,name=clients_repeater_5ghz,json=clientsRepeater5ghz,proto3" json:"clients_repeater_5ghz,omitempty"`
+	ClientsRepeater_5GhzHigh                 *wrapperspb.UInt32Value `protobuf:"bytes,416,opt,name=clients_repeater_5ghz_high,json=clientsRepeater5ghzHigh,proto3" json:"clients_repeater_5ghz_high,omitempty"`
+	ClientsRepeaterEth                       *wrapperspb.UInt32Value `protobuf:"bytes,407,opt,name=clients_repeater_eth,json=clientsRepeaterEth,proto3" json:"clients_repeater_eth,omitempty"`
+	MeshHops                                 *wrapperspb.UInt32Value `protobuf:"bytes,408,opt,name=mesh_hops,json=meshHops,proto3" json:"mesh_hops,omitempty"`
+	MeshOneHopRssiAvg_2Ghz                   *wrapperspb.FloatValue  `protobuf:"bytes,409,opt,name=mesh_one_hop_rssi_avg_2ghz,json=meshOneHopRssiAvg2ghz,proto3" json:"mesh_one_hop_rssi_avg_2ghz,omitempty"`
+	MeshOneHopRssiAvg_5Ghz                   *wrapperspb.FloatValue  `protobuf:"bytes,410,opt,name=mesh_one_hop_rssi_avg_5ghz,json=meshOneHopRssiAvg5ghz,proto3" json:"mesh_one_hop_rssi_avg_5ghz,omitempty"`
+	MeshOneHopRssiAvg_5GhzHigh               *wrapperspb.FloatValue  `protobuf:"bytes,414,opt,name=mesh_one_hop_rssi_avg_5ghz_high,json=meshOneHopRssiAvg5ghzHigh,proto3" json:"mesh_one_hop_rssi_avg_5ghz_high,omitempty"`
+	MeshTwoHopRssiAvg_2Ghz                   *wrapperspb.FloatValue  `protobuf:"bytes,411,opt,name=mesh_two_hop_rssi_avg_2ghz,json=meshTwoHopRssiAvg2ghz,proto3" json:"mesh_two_hop_rssi_avg_2ghz,omitempty"`
+	MeshTwoHopRssiAvg_5Ghz                   *wrapperspb.FloatValue  `protobuf:"bytes,412,opt,name=mesh_two_hop_rssi_avg_5ghz,json=meshTwoHopRssiAvg5ghz,proto3" json:"mesh_two_hop_rssi_avg_5ghz,omitempty"`
+	MeshTwoHopRssiAvg_5GhzHigh               *wrapperspb.FloatValue  `protobuf:"bytes,415,opt,name=mesh_two_hop_rssi_avg_5ghz_high,json=meshTwoHopRssiAvg5ghzHigh,proto3" json:"mesh_two_hop_rssi_avg_5ghz_high,omitempty"`
+	RepeaterTxRateMbpsMin                    *wrapperspb.FloatValue  `protobuf:"bytes,418,opt,name=repeater_tx_rate_mbps_min,json=repeaterTxRateMbpsMin,proto3" json:"repeater_tx_rate_mbps_min,omitempty"`
+	RepeaterRxRateMbpsMin                    *wrapperspb.FloatValue  `protobuf:"bytes,419,opt,name=repeater_rx_rate_mbps_min,json=repeaterRxRateMbpsMin,proto3" json:"repeater_rx_rate_mbps_min,omitempty"`
+	RepeaterTxRateMbpsAvg                    *wrapperspb.FloatValue  `protobuf:"bytes,420,opt,name=repeater_tx_rate_mbps_avg,json=repeaterTxRateMbpsAvg,proto3" json:"repeater_tx_rate_mbps_avg,omitempty"`
+	RepeaterRxRateMbpsAvg                    *wrapperspb.FloatValue  `protobuf:"bytes,421,opt,name=repeater_rx_rate_mbps_avg,json=repeaterRxRateMbpsAvg,proto3" json:"repeater_rx_rate_mbps_avg,omitempty"`
+	RepeaterSecondsSince_2SOutageMin         *wrapperspb.FloatValue  `protobuf:"bytes,422,opt,name=repeater_seconds_since_2s_outage_min,json=repeaterSecondsSince2sOutageMin,proto3" json:"repeater_seconds_since_2s_outage_min,omitempty"`
+	RepeaterSecondsSince_5SOutageMin         *wrapperspb.FloatValue  `protobuf:"bytes,424,opt,name=repeater_seconds_since_5s_outage_min,json=repeaterSecondsSince5sOutageMin,proto3" json:"repeater_seconds_since_5s_outage_min,omitempty"`
+	RepeaterSecondsSince_2SOutageAvg         *wrapperspb.FloatValue  `protobuf:"bytes,423,opt,name=repeater_seconds_since_2s_outage_avg,json=repeaterSecondsSince2sOutageAvg,proto3" json:"repeater_seconds_since_2s_outage_avg,omitempty"`
+	RepeaterSecondsSince_5SOutageAvg         *wrapperspb.FloatValue  `protobuf:"bytes,425,opt,name=repeater_seconds_since_5s_outage_avg,json=repeaterSecondsSince5sOutageAvg,proto3" json:"repeater_seconds_since_5s_outage_avg,omitempty"`
+	RepeaterLatencyMs_1HMax                  *wrapperspb.FloatValue  `protobuf:"bytes,426,opt,name=repeater_latency_ms_1h_max,json=repeaterLatencyMs1hMax,proto3" json:"repeater_latency_ms_1h_max,omitempty"`
+	RepeaterLatencyMs_1HAvg                  *wrapperspb.FloatValue  `protobuf:"bytes,427,opt,name=repeater_latency_ms_1h_avg,json=repeaterLatencyMs1hAvg,proto3" json:"repeater_latency_ms_1h_avg,omitempty"`
+	MeshTopologyChangeCount_1D               *wrapperspb.UInt32Value `protobuf:"bytes,428,opt,name=mesh_topology_change_count_1d,json=meshTopologyChangeCount1d,proto3" json:"mesh_topology_change_count_1d,omitempty"`
+	PingSecondsSinceLast_1SOutage            *wrapperspb.FloatValue  `protobuf:"bytes,600,opt,name=ping_seconds_since_last_1s_outage,json=pingSecondsSinceLast1sOutage,proto3" json:"ping_seconds_since_last_1s_outage,omitempty"`
+	PingSecondsSinceLast_2SOutage            *wrapperspb.FloatValue  `protobuf:"bytes,601,opt,name=ping_seconds_since_last_2s_outage,json=pingSecondsSinceLast2sOutage,proto3" json:"ping_seconds_since_last_2s_outage,omitempty"`
+	PingSecondsSinceLast_5SOutage            *wrapperspb.FloatValue  `protobuf:"bytes,602,opt,name=ping_seconds_since_last_5s_outage,json=pingSecondsSinceLast5sOutage,proto3" json:"ping_seconds_since_last_5s_outage,omitempty"`
+	PingSecondsSinceLast_60SOutage           *wrapperspb.FloatValue  `protobuf:"bytes,603,opt,name=ping_seconds_since_last_60s_outage,json=pingSecondsSinceLast60sOutage,proto3" json:"ping_seconds_since_last_60s_outage,omitempty"`
+	PingSecondsSinceLast_300SOutage          *wrapperspb.FloatValue  `protobuf:"bytes,604,opt,name=ping_seconds_since_last_300s_outage,json=pingSecondsSinceLast300sOutage,proto3" json:"ping_seconds_since_last_300s_outage,omitempty"`
+	PingDropRate                             *wrapperspb.FloatValue  `protobuf:"bytes,605,opt,name=ping_drop_rate,json=pingDropRate,proto3" json:"ping_drop_rate,omitempty"`
+	PingDropRateLast_1H                      *wrapperspb.FloatValue  `protobuf:"bytes,606,opt,name=ping_drop_rate_last_1h,json=pingDropRateLast1h,proto3" json:"ping_drop_rate_last_1h,omitempty"`
+	PingLatency                              *wrapperspb.FloatValue  `protobuf:"bytes,607,opt,name=ping_latency,json=pingLatency,proto3" json:"ping_latency,omitempty"`
+	PingLatencyLast_1H                       *wrapperspb.FloatValue  `protobuf:"bytes,618,opt,name=ping_latency_last_1h,json=pingLatencyLast1h,proto3" json:"ping_latency_last_1h,omitempty"`
+	PingDishSecondsSinceLast_1SOutage        *wrapperspb.FloatValue  `protobuf:"bytes,610,opt,name=ping_dish_seconds_since_last_1s_outage,json=pingDishSecondsSinceLast1sOutage,proto3" json:"ping_dish_seconds_since_last_1s_outage,omitempty"`
+	PingDishSecondsSinceLast_2SOutage        *wrapperspb.FloatValue  `protobuf:"bytes,611,opt,name=ping_dish_seconds_since_last_2s_outage,json=pingDishSecondsSinceLast2sOutage,proto3" json:"ping_dish_seconds_since_last_2s_outage,omitempty"`
+	PingDishSecondsSinceLast_5SOutage        *wrapperspb.FloatValue  `protobuf:"bytes,612,opt,name=ping_dish_seconds_since_last_5s_outage,json=pingDishSecondsSinceLast5sOutage,proto3" json:"ping_dish_seconds_since_last_5s_outage,omitempty"`
+	PingDishSecondsSinceLast_60SOutage       *wrapperspb.FloatValue  `protobuf:"bytes,613,opt,name=ping_dish_seconds_since_last_60s_outage,json=pingDishSecondsSinceLast60sOutage,proto3" json:"ping_dish_seconds_since_last_60s_outage,omitempty"`
+	PingDishSecondsSinceLast_300SOutage      *wrapperspb.FloatValue  `protobuf:"bytes,614,opt,name=ping_dish_seconds_since_last_300s_outage,json=pingDishSecondsSinceLast300sOutage,proto3" json:"ping_dish_seconds_since_last_300s_outage,omitempty"`
+	PingDishDropRate                         *wrapperspb.FloatValue  `protobuf:"bytes,615,opt,name=ping_dish_drop_rate,json=pingDishDropRate,proto3" json:"ping_dish_drop_rate,omitempty"`
+	PingDishDropRateLast_1H                  *wrapperspb.FloatValue  `protobuf:"bytes,616,opt,name=ping_dish_drop_rate_last_1h,json=pingDishDropRateLast1h,proto3" json:"ping_dish_drop_rate_last_1h,omitempty"`
+	PingDishLatency                          *wrapperspb.FloatValue  `protobuf:"bytes,617,opt,name=ping_dish_latency,json=pingDishLatency,proto3" json:"ping_dish_latency,omitempty"`
+	PingDishLatencyLast_1H                   *wrapperspb.FloatValue  `protobuf:"bytes,619,opt,name=ping_dish_latency_last_1h,json=pingDishLatencyLast1h,proto3" json:"ping_dish_latency_last_1h,omitempty"`
+	PingPopIpv6DropRateLast_1H               *wrapperspb.FloatValue  `protobuf:"bytes,621,opt,name=ping_pop_ipv6_drop_rate_last_1h,json=pingPopIpv6DropRateLast1h,proto3" json:"ping_pop_ipv6_drop_rate_last_1h,omitempty"`
+	PingPopIpv6LatencyLast_1H                *wrapperspb.FloatValue  `protobuf:"bytes,623,opt,name=ping_pop_ipv6_latency_last_1h,json=pingPopIpv6LatencyLast1h,proto3" json:"ping_pop_ipv6_latency_last_1h,omitempty"`
+	ClientSpeedtestRouterDownloadMbps        *wrapperspb.FloatValue  `protobuf:"bytes,700,opt,name=client_speedtest_router_download_mbps,json=clientSpeedtestRouterDownloadMbps,proto3" json:"client_speedtest_router_download_mbps,omitempty"`
+	ClientSpeedtestRouterUploadMbps          *wrapperspb.FloatValue  `protobuf:"bytes,701,opt,name=client_speedtest_router_upload_mbps,json=clientSpeedtestRouterUploadMbps,proto3" json:"client_speedtest_router_upload_mbps,omitempty"`
+	ClientSpeedtestRouterRssi                *wrapperspb.FloatValue  `protobuf:"bytes,702,opt,name=client_speedtest_router_rssi,json=clientSpeedtestRouterRssi,proto3" json:"client_speedtest_router_rssi,omitempty"`
+	ClientSpeedtestWifiDownloadMbps          *wrapperspb.FloatValue  `protobuf:"bytes,703,opt,name=client_speedtest_wifi_download_mbps,json=clientSpeedtestWifiDownloadMbps,proto3" json:"client_speedtest_wifi_download_mbps,omitempty"`
+	ClientSpeedtestWifiUploadMbps            *wrapperspb.FloatValue  `protobuf:"bytes,704,opt,name=client_speedtest_wifi_upload_mbps,json=clientSpeedtestWifiUploadMbps,proto3" json:"client_speedtest_wifi_upload_mbps,omitempty"`
+	ClientSpeedtestClientDownloadMbps        *wrapperspb.FloatValue  `protobuf:"bytes,705,opt,name=client_speedtest_client_download_mbps,json=clientSpeedtestClientDownloadMbps,proto3" json:"client_speedtest_client_download_mbps,omitempty"`
+	ClientSpeedtestClientUploadMbps          *wrapperspb.FloatValue  `protobuf:"bytes,706,opt,name=client_speedtest_client_upload_mbps,json=clientSpeedtestClientUploadMbps,proto3" json:"client_speedtest_client_upload_mbps,omitempty"`
+	ClientSpeedtestClientRssi                *wrapperspb.FloatValue  `protobuf:"bytes,707,opt,name=client_speedtest_client_rssi,json=clientSpeedtestClientRssi,proto3" json:"client_speedtest_client_rssi,omitempty"`
+	ClientSpeedtestClientIface               *wrapperspb.UInt32Value `protobuf:"bytes,708,opt,name=client_speedtest_client_iface,json=clientSpeedtestClientIface,proto3" json:"client_speedtest_client_iface,omitempty"`
+	ClientSpeedtestClientOui                 *wrapperspb.StringValue `protobuf:"bytes,709,opt,name=client_speedtest_client_oui,json=clientSpeedtestClientOui,proto3" json:"client_speedtest_client_oui,omitempty"`
+	ClientSpeedtestClientTxRate              *wrapperspb.UInt32Value `protobuf:"bytes,710,opt,name=client_speedtest_client_tx_rate,json=clientSpeedtestClientTxRate,proto3" json:"client_speedtest_client_tx_rate,omitempty"`
+	ClientSpeedtestClientRxRate              *wrapperspb.UInt32Value `protobuf:"bytes,711,opt,name=client_speedtest_client_rx_rate,json=clientSpeedtestClientRxRate,proto3" json:"client_speedtest_client_rx_rate,omitempty"`
+	ClientSpeedtestClientPlatformType        *wrapperspb.UInt32Value `protobuf:"bytes,712,opt,name=client_speedtest_client_platform_type,json=clientSpeedtestClientPlatformType,proto3" json:"client_speedtest_client_platform_type,omitempty"`
+	SpeedtestTcp_8DownloadMbpsAvg            *wrapperspb.FloatValue  `protobuf:"bytes,800,opt,name=speedtest_tcp_8_download_mbps_avg,json=speedtestTcp8DownloadMbpsAvg,proto3" json:"speedtest_tcp_8_download_mbps_avg,omitempty"`
+	SpeedtestTcp_8DownloadMbpsMax            *wrapperspb.FloatValue  `protobuf:"bytes,801,opt,name=speedtest_tcp_8_download_mbps_max,json=speedtestTcp8DownloadMbpsMax,proto3" json:"speedtest_tcp_8_download_mbps_max,omitempty"`
+	SpeedtestTcp_8UploadMbpsAvg              *wrapperspb.FloatValue  `protobuf:"bytes,802,opt,name=speedtest_tcp_8_upload_mbps_avg,json=speedtestTcp8UploadMbpsAvg,proto3" json:"speedtest_tcp_8_upload_mbps_avg,omitempty"`
+	SpeedtestTcp_8UploadMbpsMax              *wrapperspb.FloatValue  `protobuf:"bytes,803,opt,name=speedtest_tcp_8_upload_mbps_max,json=speedtestTcp8UploadMbpsMax,proto3" json:"speedtest_tcp_8_upload_mbps_max,omitempty"`
+	SpeedtestTcp_64DownloadMbpsAvg           *wrapperspb.FloatValue  `protobuf:"bytes,804,opt,name=speedtest_tcp_64_download_mbps_avg,json=speedtestTcp64DownloadMbpsAvg,proto3" json:"speedtest_tcp_64_download_mbps_avg,omitempty"`
+	SpeedtestTcp_64DownloadMbpsMax           *wrapperspb.FloatValue  `protobuf:"bytes,805,opt,name=speedtest_tcp_64_download_mbps_max,json=speedtestTcp64DownloadMbpsMax,proto3" json:"speedtest_tcp_64_download_mbps_max,omitempty"`
+	SpeedtestTcp_64UploadMbpsAvg             *wrapperspb.FloatValue  `protobuf:"bytes,806,opt,name=speedtest_tcp_64_upload_mbps_avg,json=speedtestTcp64UploadMbpsAvg,proto3" json:"speedtest_tcp_64_upload_mbps_avg,omitempty"`
+	SpeedtestTcp_64UploadMbpsMax             *wrapperspb.FloatValue  `protobuf:"bytes,807,opt,name=speedtest_tcp_64_upload_mbps_max,json=speedtestTcp64UploadMbpsMax,proto3" json:"speedtest_tcp_64_upload_mbps_max,omitempty"`
+	SpeedtestTcp_1DownloadMbpsAvg            *wrapperspb.FloatValue  `protobuf:"bytes,808,opt,name=speedtest_tcp_1_download_mbps_avg,json=speedtestTcp1DownloadMbpsAvg,proto3" json:"speedtest_tcp_1_download_mbps_avg,omitempty"`
+	SpeedtestTcp_1DownloadMbpsMax            *wrapperspb.FloatValue  `protobuf:"bytes,809,opt,name=speedtest_tcp_1_download_mbps_max,json=speedtestTcp1DownloadMbpsMax,proto3" json:"speedtest_tcp_1_download_mbps_max,omitempty"`
+	SpeedtestTcp_1UploadMbpsAvg              *wrapperspb.FloatValue  `protobuf:"bytes,810,opt,name=speedtest_tcp_1_upload_mbps_avg,json=speedtestTcp1UploadMbpsAvg,proto3" json:"speedtest_tcp_1_upload_mbps_avg,omitempty"`
+	SpeedtestTcp_1UploadMbpsMax              *wrapperspb.FloatValue  `protobuf:"bytes,811,opt,name=speedtest_tcp_1_upload_mbps_max,json=speedtestTcp1UploadMbpsMax,proto3" json:"speedtest_tcp_1_upload_mbps_max,omitempty"`
+	SpeedtestTcp_8DownloadMeanTcpConnectTime *wrapperspb.FloatValue  `protobuf:"bytes,812,opt,name=speedtest_tcp_8_download_mean_tcp_connect_time,json=speedtestTcp8DownloadMeanTcpConnectTime,proto3" json:"speedtest_tcp_8_download_mean_tcp_connect_time,omitempty"`
+	SpeedtestTcp_8UploadMeanTcpConnectTime   *wrapperspb.FloatValue  `protobuf:"bytes,813,opt,name=speedtest_tcp_8_upload_mean_tcp_connect_time,json=speedtestTcp8UploadMeanTcpConnectTime,proto3" json:"speedtest_tcp_8_upload_mean_tcp_connect_time,omitempty"`
+	SpeedtestTcp_8DownloadCfRayHeaders       []string                `protobuf:"bytes,814,rep,name=speedtest_tcp_8_download_cf_ray_headers,json=speedtestTcp8DownloadCfRayHeaders,proto3" json:"speedtest_tcp_8_download_cf_ray_headers,omitempty"`
+	SpeedtestTcp_8UploadCfRayHeaders         []string                `protobuf:"bytes,815,rep,name=speedtest_tcp_8_upload_cf_ray_headers,json=speedtestTcp8UploadCfRayHeaders,proto3" json:"speedtest_tcp_8_upload_cf_ray_headers,omitempty"`
+	SpeedtestTcp_1DownloadMeanTcpConnectTime *wrapperspb.FloatValue  `protobuf:"bytes,816,opt,name=speedtest_tcp_1_download_mean_tcp_connect_time,json=speedtestTcp1DownloadMeanTcpConnectTime,proto3" json:"speedtest_tcp_1_download_mean_tcp_connect_time,omitempty"`
+	SpeedtestTcp_1UploadMeanTcpConnectTime   *wrapperspb.FloatValue  `protobuf:"bytes,817,opt,name=speedtest_tcp_1_upload_mean_tcp_connect_time,json=speedtestTcp1UploadMeanTcpConnectTime,proto3" json:"speedtest_tcp_1_upload_mean_tcp_connect_time,omitempty"`
+	SpeedtestTcp_1DownloadCfRayHeaders       []string                `protobuf:"bytes,818,rep,name=speedtest_tcp_1_download_cf_ray_headers,json=speedtestTcp1DownloadCfRayHeaders,proto3" json:"speedtest_tcp_1_download_cf_ray_headers,omitempty"`
+	SpeedtestTcp_1UploadCfRayHeaders         []string                `protobuf:"bytes,819,rep,name=speedtest_tcp_1_upload_cf_ray_headers,json=speedtestTcp1UploadCfRayHeaders,proto3" json:"speedtest_tcp_1_upload_cf_ray_headers,omitempty"`
+	DishCellId                               *wrapperspb.UInt32Value `protobuf:"bytes,900,opt,name=dish_cell_id,json=dishCellId,proto3" json:"dish_cell_id,omitempty"`
+	ConfigSetupComplete                      *wrapperspb.BoolValue   `protobuf:"bytes,1000,opt,name=config_setup_complete,json=configSetupComplete,proto3" json:"config_setup_complete,omitempty"`
+	ConfigBandsSplit                         *wrapperspb.BoolValue   `protobuf:"bytes,1001,opt,name=config_bands_split,json=configBandsSplit,proto3" json:"config_bands_split,omitempty"`
+	ConfigIsRepeater                         *wrapperspb.BoolValue   `protobuf:"bytes,1002,opt,name=config_is_repeater,json=configIsRepeater,proto3" json:"config_is_repeater,omitempty"`
+	ConfigOpenNetwork                        *wrapperspb.BoolValue   `protobuf:"bytes,1003,opt,name=config_open_network,json=configOpenNetwork,proto3" json:"config_open_network,omitempty"`
+	ConfigIsAviation                         *wrapperspb.BoolValue   `protobuf:"bytes,1004,opt,name=config_is_aviation,json=configIsAviation,proto3" json:"config_is_aviation,omitempty"`
+	ConfigSecureDns                          *wrapperspb.BoolValue   `protobuf:"bytes,1005,opt,name=config_secure_dns,json=configSecureDns,proto3" json:"config_secure_dns,omitempty"`
+	ConfigLegacy                             *wrapperspb.BoolValue   `protobuf:"bytes,1006,opt,name=config_legacy,json=configLegacy,proto3" json:"config_legacy,omitempty"`
+	ConfigApMode                             *wrapperspb.BoolValue   `protobuf:"bytes,1007,opt,name=config_ap_mode,json=configApMode,proto3" json:"config_ap_mode,omitempty"`
+	ConfigDfsEnabled                         *wrapperspb.BoolValue   `protobuf:"bytes,1008,opt,name=config_dfs_enabled,json=configDfsEnabled,proto3" json:"config_dfs_enabled,omitempty"`
+	ConfigNetworkNameIsDefault               *wrapperspb.BoolValue   `protobuf:"bytes,1009,opt,name=config_network_name_is_default,json=configNetworkNameIsDefault,proto3" json:"config_network_name_is_default,omitempty"`
+	ConfigRemoteSshEnabled                   *wrapperspb.BoolValue   `protobuf:"bytes,1010,opt,name=config_remote_ssh_enabled,json=configRemoteSshEnabled,proto3" json:"config_remote_ssh_enabled,omitempty"`
+	ConfigIsRepeaterWired                    *wrapperspb.BoolValue   `protobuf:"bytes,1011,opt,name=config_is_repeater_wired,json=configIsRepeaterWired,proto3" json:"config_is_repeater_wired,omitempty"`
+	ConfigIsRepeaterWireless                 *wrapperspb.BoolValue   `protobuf:"bytes,1012,opt,name=config_is_repeater_wireless,json=configIsRepeaterWireless,proto3" json:"config_is_repeater_wireless,omitempty"`
+	ConfigBlockSchedulesSet                  *wrapperspb.UInt32Value `protobuf:"bytes,1013,opt,name=config_block_schedules_set,json=configBlockSchedulesSet,proto3" json:"config_block_schedules_set,omitempty"`
+	ConfigCustomNameservers                  *wrapperspb.BoolValue   `protobuf:"bytes,1014,opt,name=config_custom_nameservers,json=configCustomNameservers,proto3" json:"config_custom_nameservers,omitempty"`
+	ConfigDisableMeshOnboarding              *wrapperspb.BoolValue   `protobuf:"bytes,1015,opt,name=config_disable_mesh_onboarding,json=configDisableMeshOnboarding,proto3" json:"config_disable_mesh_onboarding,omitempty"`
+	ConfigPinCountryCode                     *wrapperspb.BoolValue   `protobuf:"bytes,1016,opt,name=config_pin_country_code,json=configPinCountryCode,proto3" json:"config_pin_country_code,omitempty"`
+	ConfigDisableUpdateReboot                *wrapperspb.BoolValue   `protobuf:"bytes,1017,opt,name=config_disable_update_reboot,json=configDisableUpdateReboot,proto3" json:"config_disable_update_reboot,omitempty"`
+	ConfigHttpsContentHostingEnabled         *wrapperspb.BoolValue   `protobuf:"bytes,1031,opt,name=config_https_content_hosting_enabled,json=configHttpsContentHostingEnabled,proto3" json:"config_https_content_hosting_enabled,omitempty"`
+	ConfigOnlyOverflightBlockingEnabled      *wrapperspb.BoolValue   `protobuf:"bytes,1032,opt,name=config_only_overflight_blocking_enabled,json=configOnlyOverflightBlockingEnabled,proto3" json:"config_only_overflight_blocking_enabled,omitempty"`
+	ConfigOfflineNetworksDisablementEnabled  *wrapperspb.BoolValue   `protobuf:"bytes,1033,opt,name=config_offline_networks_disablement_enabled,json=configOfflineNetworksDisablementEnabled,proto3" json:"config_offline_networks_disablement_enabled,omitempty"`
+	ConfigCustomDnsDisabled                  *wrapperspb.BoolValue   `protobuf:"bytes,1034,opt,name=config_custom_dns_disabled,json=configCustomDnsDisabled,proto3" json:"config_custom_dns_disabled,omitempty"`
+	ConfigForeflightEnabled                  *wrapperspb.BoolValue   `protobuf:"bytes,1036,opt,name=config_foreflight_enabled,json=configForeflightEnabled,proto3" json:"config_foreflight_enabled,omitempty"`
+	ConfigDisable_2Ghz                       *wrapperspb.BoolValue   `protobuf:"bytes,1018,opt,name=config_disable_2ghz,json=configDisable2ghz,proto3" json:"config_disable_2ghz,omitempty"`
+	ConfigDisable_5Ghz                       *wrapperspb.BoolValue   `protobuf:"bytes,1019,opt,name=config_disable_5ghz,json=configDisable5ghz,proto3" json:"config_disable_5ghz,omitempty"`
+	ConfigDisable_5GhzHigh                   *wrapperspb.BoolValue   `protobuf:"bytes,1029,opt,name=config_disable_5ghz_high,json=configDisable5ghzHigh,proto3" json:"config_disable_5ghz_high,omitempty"`
+	ConfigChannel_2Ghz                       *wrapperspb.UInt32Value `protobuf:"bytes,1020,opt,name=config_channel_2ghz,json=configChannel2ghz,proto3" json:"config_channel_2ghz,omitempty"`
+	ConfigChannel_5Ghz                       *wrapperspb.UInt32Value `protobuf:"bytes,1021,opt,name=config_channel_5ghz,json=configChannel5ghz,proto3" json:"config_channel_5ghz,omitempty"`
+	ConfigChannel_5GhzHigh                   *wrapperspb.UInt32Value `protobuf:"bytes,1022,opt,name=config_channel_5ghz_high,json=configChannel5ghzHigh,proto3" json:"config_channel_5ghz_high,omitempty"`
+	ConfigNetworks                           *wrapperspb.UInt32Value `protobuf:"bytes,1023,opt,name=config_networks,json=configNetworks,proto3" json:"config_networks,omitempty"`
+	ConfigNetworksGuest                      *wrapperspb.UInt32Value `protobuf:"bytes,1024,opt,name=config_networks_guest,json=configNetworksGuest,proto3" json:"config_networks_guest,omitempty"`
+	ConfigNetworksHidden                     *wrapperspb.UInt32Value `protobuf:"bytes,1025,opt,name=config_networks_hidden,json=configNetworksHidden,proto3" json:"config_networks_hidden,omitempty"`
+	ConfigNetworksClientIsolation            *wrapperspb.UInt32Value `protobuf:"bytes,1026,opt,name=config_networks_client_isolation,json=configNetworksClientIsolation,proto3" json:"config_networks_client_isolation,omitempty"`
+	ConfigNetworksBandsSplit                 *wrapperspb.UInt32Value `protobuf:"bytes,1027,opt,name=config_networks_bands_split,json=configNetworksBandsSplit,proto3" json:"config_networks_bands_split,omitempty"`
+	ConfigNetworksUser                       *wrapperspb.UInt32Value `protobuf:"bytes,1035,opt,name=config_networks_user,json=configNetworksUser,proto3" json:"config_networks_user,omitempty"`
+	WifiReloadCount                          *wrapperspb.UInt32Value `protobuf:"bytes,1040,opt,name=wifi_reload_count,json=wifiReloadCount,proto3" json:"wifi_reload_count,omitempty"`
+	RadiusReloadCount                        *wrapperspb.UInt32Value `protobuf:"bytes,1041,opt,name=radius_reload_count,json=radiusReloadCount,proto3" json:"radius_reload_count,omitempty"`
+	OpensshReloadCount                       *wrapperspb.UInt32Value `protobuf:"bytes,1042,opt,name=openssh_reload_count,json=opensshReloadCount,proto3" json:"openssh_reload_count,omitempty"`
+	IptablesReloadCount                      *wrapperspb.UInt32Value `protobuf:"bytes,1043,opt,name=iptables_reload_count,json=iptablesReloadCount,proto3" json:"iptables_reload_count,omitempty"`
+	EbtablesReloadCount                      *wrapperspb.UInt32Value `protobuf:"bytes,1044,opt,name=ebtables_reload_count,json=ebtablesReloadCount,proto3" json:"ebtables_reload_count,omitempty"`
+	TrafficControlReloadCount                *wrapperspb.UInt32Value `protobuf:"bytes,1045,opt,name=traffic_control_reload_count,json=trafficControlReloadCount,proto3" json:"traffic_control_reload_count,omitempty"`
+	DhcpReloadCount                          *wrapperspb.UInt32Value `protobuf:"bytes,1046,opt,name=dhcp_reload_count,json=dhcpReloadCount,proto3" json:"dhcp_reload_count,omitempty"`
+	Dhcpv6ReloadCount                        *wrapperspb.UInt32Value `protobuf:"bytes,1047,opt,name=dhcpv6_reload_count,json=dhcpv6ReloadCount,proto3" json:"dhcpv6_reload_count,omitempty"`
+	SystemReloadCount                        *wrapperspb.UInt32Value `protobuf:"bytes,1048,opt,name=system_reload_count,json=systemReloadCount,proto3" json:"system_reload_count,omitempty"`
+	DnsReloadCount                           *wrapperspb.UInt32Value `protobuf:"bytes,1049,opt,name=dns_reload_count,json=dnsReloadCount,proto3" json:"dns_reload_count,omitempty"`
+	HttpsReloadCount                         *wrapperspb.UInt32Value `protobuf:"bytes,1050,opt,name=https_reload_count,json=httpsReloadCount,proto3" json:"https_reload_count,omitempty"`
+	BandSteeringReloadCount                  *wrapperspb.UInt32Value `protobuf:"bytes,1051,opt,name=band_steering_reload_count,json=bandSteeringReloadCount,proto3" json:"band_steering_reload_count,omitempty"`
+	CommitCount                              *wrapperspb.UInt32Value `protobuf:"bytes,1052,opt,name=commit_count,json=commitCount,proto3" json:"commit_count,omitempty"`
+	NetworkReloadCount                       *wrapperspb.UInt32Value `protobuf:"bytes,1053,opt,name=network_reload_count,json=networkReloadCount,proto3" json:"network_reload_count,omitempty"`
+	ForeflightReloadCount                    *wrapperspb.UInt32Value `protobuf:"bytes,1054,opt,name=foreflight_reload_count,json=foreflightReloadCount,proto3" json:"foreflight_reload_count,omitempty"`
+	WanTrafficControlCakeBytes               *wrapperspb.Int64Value  `protobuf:"bytes,1101,opt,name=wan_traffic_control_cake_bytes,json=wanTrafficControlCakeBytes,proto3" json:"wan_traffic_control_cake_bytes,omitempty"`
+	WanTrafficControlCakePackets             *wrapperspb.Int64Value  `protobuf:"bytes,1102,opt,name=wan_traffic_control_cake_packets,json=wanTrafficControlCakePackets,proto3" json:"wan_traffic_control_cake_packets,omitempty"`
+	WanTrafficControlCakeDrops               *wrapperspb.Int64Value  `protobuf:"bytes,1103,opt,name=wan_traffic_control_cake_drops,json=wanTrafficControlCakeDrops,proto3" json:"wan_traffic_control_cake_drops,omitempty"`
+	WanTrafficControlCakeAckDrops            *wrapperspb.Int64Value  `protobuf:"bytes,1104,opt,name=wan_traffic_control_cake_ack_drops,json=wanTrafficControlCakeAckDrops,proto3" json:"wan_traffic_control_cake_ack_drops,omitempty"`
+	ConntrackEntries                         *wrapperspb.UInt32Value `protobuf:"bytes,1100,opt,name=conntrack_entries,json=conntrackEntries,proto3" json:"conntrack_entries,omitempty"`
+	DhcpSecsEq_0                             *wrapperspb.UInt32Value `protobuf:"bytes,1105,opt,name=dhcp_secs_eq_0,json=dhcpSecsEq0,proto3" json:"dhcp_secs_eq_0,omitempty"`
+	DhcpSecsGt_0                             *wrapperspb.UInt32Value `protobuf:"bytes,1106,opt,name=dhcp_secs_gt_0,json=dhcpSecsGt0,proto3" json:"dhcp_secs_gt_0,omitempty"`
+	DhcpSecsGt_10                            *wrapperspb.UInt32Value `protobuf:"bytes,1107,opt,name=dhcp_secs_gt_10,json=dhcpSecsGt10,proto3" json:"dhcp_secs_gt_10,omitempty"`
+	DhcpSecsGt_30                            *wrapperspb.UInt32Value `protobuf:"bytes,1108,opt,name=dhcp_secs_gt_30,json=dhcpSecsGt30,proto3" json:"dhcp_secs_gt_30,omitempty"`
+	DhcpSecsGt_60                            *wrapperspb.UInt32Value `protobuf:"bytes,1109,opt,name=dhcp_secs_gt_60,json=dhcpSecsGt60,proto3" json:"dhcp_secs_gt_60,omitempty"`
+	DnsForwards                              *wrapperspb.UInt32Value `protobuf:"bytes,1200,opt,name=dns_forwards,json=dnsForwards,proto3" json:"dns_forwards,omitempty"`
+	DnsForwardsSuccess                       *wrapperspb.UInt32Value `protobuf:"bytes,1201,opt,name=dns_forwards_success,json=dnsForwardsSuccess,proto3" json:"dns_forwards_success,omitempty"`
+	DnsForwardsServerFailure                 *wrapperspb.UInt32Value `protobuf:"bytes,1202,opt,name=dns_forwards_server_failure,json=dnsForwardsServerFailure,proto3" json:"dns_forwards_server_failure,omitempty"`
+	DnsForwardsNoServerResponse              *wrapperspb.UInt32Value `protobuf:"bytes,1203,opt,name=dns_forwards_no_server_response,json=dnsForwardsNoServerResponse,proto3" json:"dns_forwards_no_server_response,omitempty"`
+	DnsForwardsSuccessOnDefaultBackup        *wrapperspb.UInt32Value `protobuf:"bytes,1204,opt,name=dns_forwards_success_on_default_backup,json=dnsForwardsSuccessOnDefaultBackup,proto3" json:"dns_forwards_success_on_default_backup,omitempty"`
+	DnsForwardsDropped                       *wrapperspb.UInt32Value `protobuf:"bytes,1205,opt,name=dns_forwards_dropped,json=dnsForwardsDropped,proto3" json:"dns_forwards_dropped,omitempty"`
+	DnsForwardsWithBackup                    *wrapperspb.UInt32Value `protobuf:"bytes,1206,opt,name=dns_forwards_with_backup,json=dnsForwardsWithBackup,proto3" json:"dns_forwards_with_backup,omitempty"`
+	unknownFields                            protoimpl.UnknownFields
+	sizeCache                                protoimpl.SizeCache
 }
 
 func (x *StarlinkRoutersHourlyMetricsV2) Reset() {
@@ -5207,6 +5344,13 @@ func (x *StarlinkRoutersHourlyMetricsV2) GetIfacesWanEthTxErrors() *wrapperspb.I
 	return nil
 }
 
+func (x *StarlinkRoutersHourlyMetricsV2) GetIfacesWanPort() *wrapperspb.StringValue {
+	if x != nil {
+		return x.IfacesWanPort
+	}
+	return nil
+}
+
 func (x *StarlinkRoutersHourlyMetricsV2) GetClients() *wrapperspb.UInt32Value {
 	if x != nil {
 		return x.Clients
@@ -5739,6 +5883,62 @@ func (x *StarlinkRoutersHourlyMetricsV2) GetSpeedtestTcp_1UploadMbpsMax() *wrapp
 	return nil
 }
 
+func (x *StarlinkRoutersHourlyMetricsV2) GetSpeedtestTcp_8DownloadMeanTcpConnectTime() *wrapperspb.FloatValue {
+	if x != nil {
+		return x.SpeedtestTcp_8DownloadMeanTcpConnectTime
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetSpeedtestTcp_8UploadMeanTcpConnectTime() *wrapperspb.FloatValue {
+	if x != nil {
+		return x.SpeedtestTcp_8UploadMeanTcpConnectTime
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetSpeedtestTcp_8DownloadCfRayHeaders() []string {
+	if x != nil {
+		return x.SpeedtestTcp_8DownloadCfRayHeaders
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetSpeedtestTcp_8UploadCfRayHeaders() []string {
+	if x != nil {
+		return x.SpeedtestTcp_8UploadCfRayHeaders
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetSpeedtestTcp_1DownloadMeanTcpConnectTime() *wrapperspb.FloatValue {
+	if x != nil {
+		return x.SpeedtestTcp_1DownloadMeanTcpConnectTime
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetSpeedtestTcp_1UploadMeanTcpConnectTime() *wrapperspb.FloatValue {
+	if x != nil {
+		return x.SpeedtestTcp_1UploadMeanTcpConnectTime
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetSpeedtestTcp_1DownloadCfRayHeaders() []string {
+	if x != nil {
+		return x.SpeedtestTcp_1DownloadCfRayHeaders
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetSpeedtestTcp_1UploadCfRayHeaders() []string {
+	if x != nil {
+		return x.SpeedtestTcp_1UploadCfRayHeaders
+	}
+	return nil
+}
+
 func (x *StarlinkRoutersHourlyMetricsV2) GetDishCellId() *wrapperspb.UInt32Value {
 	if x != nil {
 		return x.DishCellId
@@ -5896,6 +6096,13 @@ func (x *StarlinkRoutersHourlyMetricsV2) GetConfigOfflineNetworksDisablementEnab
 func (x *StarlinkRoutersHourlyMetricsV2) GetConfigCustomDnsDisabled() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.ConfigCustomDnsDisabled
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetConfigForeflightEnabled() *wrapperspb.BoolValue {
+	if x != nil {
+		return x.ConfigForeflightEnabled
 	}
 	return nil
 }
@@ -6078,6 +6285,13 @@ func (x *StarlinkRoutersHourlyMetricsV2) GetCommitCount() *wrapperspb.UInt32Valu
 func (x *StarlinkRoutersHourlyMetricsV2) GetNetworkReloadCount() *wrapperspb.UInt32Value {
 	if x != nil {
 		return x.NetworkReloadCount
+	}
+	return nil
+}
+
+func (x *StarlinkRoutersHourlyMetricsV2) GetForeflightReloadCount() *wrapperspb.UInt32Value {
+	if x != nil {
+		return x.ForeflightReloadCount
 	}
 	return nil
 }
@@ -10879,7 +11093,7 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\x12DnsResolverHistory\x12+\n" +
 	"\x12drop_rate_last_15s\x18\x02 \x03(\x02R\x0fdropRateLast15s\"T\n" +
 	"\x1bWifiNewClientConnectedEvent\x125\n" +
-	"\x06client\x18\x01 \x01(\v2\x1d.SpaceX.API.Device.WifiClientR\x06client\"\xf4\x1f\n" +
+	"\x06client\x18\x01 \x01(\v2\x1d.SpaceX.API.Device.WifiClientR\x06client\"\xf4#\n" +
 	"\n" +
 	"WifiClient\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1d\n" +
@@ -10936,7 +11150,9 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\fping_metrics\x18( \x01(\v2).SpaceX.API.Device.WifiClient.PingMetricsR\vpingMetrics\x12\x18\n" +
 	"\ablocked\x18* \x01(\bR\ablocked\x12\x1b\n" +
 	"\tclient_id\x18+ \x01(\rR\bclientId\x12*\n" +
-	"\x11captive_client_id\x185 \x01(\tR\x0fcaptiveClientId\x12L\n" +
+	"\x11captive_client_id\x185 \x01(\tR\x0fcaptiveClientId\x12O\n" +
+	"\rcaptive_state\x188 \x01(\x0e2*.SpaceX.API.Device.WifiClient.CaptiveStateR\fcaptiveState\x12O\n" +
+	"\rsandbox_state\x189 \x01(\x0e2*.SpaceX.API.Device.WifiClient.SandboxStateR\fsandboxState\x12L\n" +
 	"\ffqcodel_info\x18, \x01(\v2).SpaceX.API.Device.WifiClient.FqcodelInfoR\vfqcodelInfo\x12<\n" +
 	"\x06alerts\x184 \x01(\v2$.SpaceX.API.Device.WifiClient.AlertsR\x06alerts\x12\x1b\n" +
 	"\tupload_mb\x186 \x01(\rR\buploadMb\x12\x1f\n" +
@@ -11008,7 +11224,19 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\x06CLIENT\x10\x01\x12\f\n" +
 	"\bREPEATER\x10\x02\x12\x0e\n" +
 	"\n" +
-	"CONTROLLER\x10\x03J\x04\b2\x103J\x04\b3\x104R\n" +
+	"CONTROLLER\x10\x03\"\xaa\x01\n" +
+	"\fCaptiveState\x12 \n" +
+	"\x1cCAPTIVE_STATE_NOT_CONFIGURED\x10\x00\x12\x19\n" +
+	"\x15CAPTIVE_STATE_UNKNOWN\x10\x01\x12\x19\n" +
+	"\x15CAPTIVE_STATE_CAPTIVE\x10\x02\x12\x1d\n" +
+	"\x19CAPTIVE_STATE_NOT_CAPTIVE\x10\x03\x12#\n" +
+	"\x1fCAPTIVE_STATE_PARTIALLY_CAPTIVE\x10\x04\"\xae\x01\n" +
+	"\fSandboxState\x12 \n" +
+	"\x1cSANDBOX_STATE_NOT_CONFIGURED\x10\x00\x12\x19\n" +
+	"\x15SANDBOX_STATE_UNKNOWN\x10\x01\x12\x1b\n" +
+	"\x17SANDBOX_STATE_SANDBOXED\x10\x02\x12\x1d\n" +
+	"\x19SANDBOX_STATE_UNSANDBOXED\x10\x03\x12%\n" +
+	"!SANDBOX_STATE_PARTIALLY_SANDBOXED\x10\x04J\x04\b2\x103J\x04\b3\x104R\n" +
 	"authorizedR\x11sandbox_client_id\"\x8c\x01\n" +
 	"\x10WifiSetupRequest\x12\x12\n" +
 	"\x04skip\x18\x01 \x01(\bR\x04skip\x12!\n" +
@@ -11165,7 +11393,7 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\x05rssi1\x18\x01 \x01(\x02R\x05rssi1\x12\x14\n" +
 	"\x05rssi2\x18\x02 \x01(\x02R\x05rssi2\x12\x14\n" +
 	"\x05rssi3\x18\x03 \x01(\x02R\x05rssi3\x12\x14\n" +
-	"\x05rssi4\x18\x04 \x01(\x02R\x05rssi4\"\xf4\xbb\x01\n" +
+	"\x05rssi4\x18\x04 \x01(\x02R\x05rssi4\"\xab\xc4\x01\n" +
 	"\"starlink_routers_hourly_metrics_v2\x12,\n" +
 	"\x02id\x18\x01 \x01(\v2\x1c.google.protobuf.StringValueR\x02id\x12C\n" +
 	"\x0etimestamp_date\x18\x02 \x01(\v2\x1c.google.protobuf.StringValueR\rtimestampDate\x12C\n" +
@@ -11300,7 +11528,8 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\x1eifaces_wan_eth_rx_frame_errors\x18\xb6\x02 \x01(\v2\x1b.google.protobuf.Int64ValueR\x19ifacesWanEthRxFrameErrors\x12R\n" +
 	"\x17ifaces_wan_eth_tx_bytes\x18\xb7\x02 \x01(\v2\x1b.google.protobuf.Int64ValueR\x13ifacesWanEthTxBytes\x12V\n" +
 	"\x19ifaces_wan_eth_tx_packets\x18\xb8\x02 \x01(\v2\x1b.google.protobuf.Int64ValueR\x15ifacesWanEthTxPackets\x12T\n" +
-	"\x18ifaces_wan_eth_tx_errors\x18\xb9\x02 \x01(\v2\x1b.google.protobuf.Int64ValueR\x14ifacesWanEthTxErrors\x127\n" +
+	"\x18ifaces_wan_eth_tx_errors\x18\xb9\x02 \x01(\v2\x1b.google.protobuf.Int64ValueR\x14ifacesWanEthTxErrors\x12E\n" +
+	"\x0fifaces_wan_port\x18\xc1\x02 \x01(\v2\x1c.google.protobuf.StringValueR\rifacesWanPort\x127\n" +
 	"\aclients\x18\x90\x03 \x01(\v2\x1c.google.protobuf.UInt32ValueR\aclients\x12@\n" +
 	"\fclients_2ghz\x18\x91\x03 \x01(\v2\x1c.google.protobuf.UInt32ValueR\vclients2ghz\x12@\n" +
 	"\fclients_5ghz\x18\x92\x03 \x01(\v2\x1c.google.protobuf.UInt32ValueR\vclients5ghz\x12I\n" +
@@ -11377,7 +11606,15 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"!speedtest_tcp_1_download_mbps_avg\x18\xa8\x06 \x01(\v2\x1b.google.protobuf.FloatValueR\x1cspeedtestTcp1DownloadMbpsAvg\x12e\n" +
 	"!speedtest_tcp_1_download_mbps_max\x18\xa9\x06 \x01(\v2\x1b.google.protobuf.FloatValueR\x1cspeedtestTcp1DownloadMbpsMax\x12a\n" +
 	"\x1fspeedtest_tcp_1_upload_mbps_avg\x18\xaa\x06 \x01(\v2\x1b.google.protobuf.FloatValueR\x1aspeedtestTcp1UploadMbpsAvg\x12a\n" +
-	"\x1fspeedtest_tcp_1_upload_mbps_max\x18\xab\x06 \x01(\v2\x1b.google.protobuf.FloatValueR\x1aspeedtestTcp1UploadMbpsMax\x12?\n" +
+	"\x1fspeedtest_tcp_1_upload_mbps_max\x18\xab\x06 \x01(\v2\x1b.google.protobuf.FloatValueR\x1aspeedtestTcp1UploadMbpsMax\x12}\n" +
+	".speedtest_tcp_8_download_mean_tcp_connect_time\x18\xac\x06 \x01(\v2\x1b.google.protobuf.FloatValueR'speedtestTcp8DownloadMeanTcpConnectTime\x12y\n" +
+	",speedtest_tcp_8_upload_mean_tcp_connect_time\x18\xad\x06 \x01(\v2\x1b.google.protobuf.FloatValueR%speedtestTcp8UploadMeanTcpConnectTime\x12S\n" +
+	"'speedtest_tcp_8_download_cf_ray_headers\x18\xae\x06 \x03(\tR!speedtestTcp8DownloadCfRayHeaders\x12O\n" +
+	"%speedtest_tcp_8_upload_cf_ray_headers\x18\xaf\x06 \x03(\tR\x1fspeedtestTcp8UploadCfRayHeaders\x12}\n" +
+	".speedtest_tcp_1_download_mean_tcp_connect_time\x18\xb0\x06 \x01(\v2\x1b.google.protobuf.FloatValueR'speedtestTcp1DownloadMeanTcpConnectTime\x12y\n" +
+	",speedtest_tcp_1_upload_mean_tcp_connect_time\x18\xb1\x06 \x01(\v2\x1b.google.protobuf.FloatValueR%speedtestTcp1UploadMeanTcpConnectTime\x12S\n" +
+	"'speedtest_tcp_1_download_cf_ray_headers\x18\xb2\x06 \x03(\tR!speedtestTcp1DownloadCfRayHeaders\x12O\n" +
+	"%speedtest_tcp_1_upload_cf_ray_headers\x18\xb3\x06 \x03(\tR\x1fspeedtestTcp1UploadCfRayHeaders\x12?\n" +
 	"\fdish_cell_id\x18\x84\a \x01(\v2\x1c.google.protobuf.UInt32ValueR\n" +
 	"dishCellId\x12O\n" +
 	"\x15config_setup_complete\x18\xe8\a \x01(\v2\x1a.google.protobuf.BoolValueR\x13configSetupComplete\x12I\n" +
@@ -11401,7 +11638,8 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"$config_https_content_hosting_enabled\x18\x87\b \x01(\v2\x1a.google.protobuf.BoolValueR configHttpsContentHostingEnabled\x12q\n" +
 	"'config_only_overflight_blocking_enabled\x18\x88\b \x01(\v2\x1a.google.protobuf.BoolValueR#configOnlyOverflightBlockingEnabled\x12y\n" +
 	"+config_offline_networks_disablement_enabled\x18\x89\b \x01(\v2\x1a.google.protobuf.BoolValueR'configOfflineNetworksDisablementEnabled\x12X\n" +
-	"\x1aconfig_custom_dns_disabled\x18\x8a\b \x01(\v2\x1a.google.protobuf.BoolValueR\x17configCustomDnsDisabled\x12K\n" +
+	"\x1aconfig_custom_dns_disabled\x18\x8a\b \x01(\v2\x1a.google.protobuf.BoolValueR\x17configCustomDnsDisabled\x12W\n" +
+	"\x19config_foreflight_enabled\x18\x8c\b \x01(\v2\x1a.google.protobuf.BoolValueR\x17configForeflightEnabled\x12K\n" +
 	"\x13config_disable_2ghz\x18\xfa\a \x01(\v2\x1a.google.protobuf.BoolValueR\x11configDisable2ghz\x12K\n" +
 	"\x13config_disable_5ghz\x18\xfb\a \x01(\v2\x1a.google.protobuf.BoolValueR\x11configDisable5ghz\x12T\n" +
 	"\x18config_disable_5ghz_high\x18\x85\b \x01(\v2\x1a.google.protobuf.BoolValueR\x15configDisable5ghzHigh\x12M\n" +
@@ -11427,7 +11665,8 @@ const file_spacex_api_device_wifi_proto_rawDesc = "" +
 	"\x12https_reload_count\x18\x9a\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x10httpsReloadCount\x12Z\n" +
 	"\x1aband_steering_reload_count\x18\x9b\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x17bandSteeringReloadCount\x12@\n" +
 	"\fcommit_count\x18\x9c\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\vcommitCount\x12O\n" +
-	"\x14network_reload_count\x18\x9d\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x12networkReloadCount\x12`\n" +
+	"\x14network_reload_count\x18\x9d\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x12networkReloadCount\x12U\n" +
+	"\x17foreflight_reload_count\x18\x9e\b \x01(\v2\x1c.google.protobuf.UInt32ValueR\x15foreflightReloadCount\x12`\n" +
 	"\x1ewan_traffic_control_cake_bytes\x18\xcd\b \x01(\v2\x1b.google.protobuf.Int64ValueR\x1awanTrafficControlCakeBytes\x12d\n" +
 	" wan_traffic_control_cake_packets\x18\xce\b \x01(\v2\x1b.google.protobuf.Int64ValueR\x1cwanTrafficControlCakePackets\x12`\n" +
 	"\x1ewan_traffic_control_cake_drops\x18\xcf\b \x01(\v2\x1b.google.protobuf.Int64ValueR\x1awanTrafficControlCakeDrops\x12g\n" +
@@ -11820,739 +12059,750 @@ func file_spacex_api_device_wifi_proto_rawDescGZIP() []byte {
 	return file_spacex_api_device_wifi_proto_rawDescData
 }
 
-var file_spacex_api_device_wifi_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
+var file_spacex_api_device_wifi_proto_enumTypes = make([]protoimpl.EnumInfo, 7)
 var file_spacex_api_device_wifi_proto_msgTypes = make([]protoimpl.MessageInfo, 92)
 var file_spacex_api_device_wifi_proto_goTypes = []any{
 	(WifiGetClientHistoryResponse_WifiLimitedReason)(0), // 0: SpaceX.API.Device.WifiGetClientHistoryResponse.WifiLimitedReason
 	(WifiClient_Interface)(0),                           // 1: SpaceX.API.Device.WifiClient.Interface
 	(WifiClient_Role)(0),                                // 2: SpaceX.API.Device.WifiClient.Role
-	(WifiNetwork_Band)(0),                               // 3: SpaceX.API.Device.WifiNetwork.Band
-	(IwprivCommand_Ioctl)(0),                            // 4: SpaceX.API.Device.IwprivCommand.Ioctl
-	(*WifiClients)(nil),                                 // 5: SpaceX.API.Device.WifiClients
-	(*ToController)(nil),                                // 6: SpaceX.API.Device.ToController
-	(*WifiMeshJoin)(nil),                                // 7: SpaceX.API.Device.WifiMeshJoin
-	(*WifiMeshStatus)(nil),                              // 8: SpaceX.API.Device.WifiMeshStatus
-	(*MeshSpeedtestRequest)(nil),                        // 9: SpaceX.API.Device.MeshSpeedtestRequest
-	(*MeshSpeedtest)(nil),                               // 10: SpaceX.API.Device.MeshSpeedtest
-	(*WifiSiteSurveyResult)(nil),                        // 11: SpaceX.API.Device.WifiSiteSurveyResult
-	(*WifiGlobalMeshStatus)(nil),                        // 12: SpaceX.API.Device.WifiGlobalMeshStatus
-	(*BackhaulRequest)(nil),                             // 13: SpaceX.API.Device.BackhaulRequest
-	(*FromController)(nil),                              // 14: SpaceX.API.Device.FromController
-	(*SteerClientRequest)(nil),                          // 15: SpaceX.API.Device.SteerClientRequest
-	(*WifiBtmRequest)(nil),                              // 16: SpaceX.API.Device.WifiBtmRequest
-	(*WifiSelfTest)(nil),                                // 17: SpaceX.API.Device.WifiSelfTest
-	(*WifiSetConfigRequest)(nil),                        // 18: SpaceX.API.Device.WifiSetConfigRequest
-	(*WifiSetConfigResponse)(nil),                       // 19: SpaceX.API.Device.WifiSetConfigResponse
-	(*WifiGetConfigRequest)(nil),                        // 20: SpaceX.API.Device.WifiGetConfigRequest
-	(*WifiGetConfigResponse)(nil),                       // 21: SpaceX.API.Device.WifiGetConfigResponse
-	(*WifiSetMeshDeviceTrustRequest)(nil),               // 22: SpaceX.API.Device.WifiSetMeshDeviceTrustRequest
-	(*WifiSetMeshDeviceTrustResponse)(nil),              // 23: SpaceX.API.Device.WifiSetMeshDeviceTrustResponse
-	(*WifiSetMeshConfigRequest)(nil),                    // 24: SpaceX.API.Device.WifiSetMeshConfigRequest
-	(*WifiSetMeshConfigResponse)(nil),                   // 25: SpaceX.API.Device.WifiSetMeshConfigResponse
-	(*WifiGetClientsRequest)(nil),                       // 26: SpaceX.API.Device.WifiGetClientsRequest
-	(*WifiGetClientsResponse)(nil),                      // 27: SpaceX.API.Device.WifiGetClientsResponse
-	(*WifiGetClientHistoryRequest)(nil),                 // 28: SpaceX.API.Device.WifiGetClientHistoryRequest
-	(*WifiGetClientHistoryResponse)(nil),                // 29: SpaceX.API.Device.WifiGetClientHistoryResponse
-	(*WifiSetAviationConformedRequest)(nil),             // 30: SpaceX.API.Device.WifiSetAviationConformedRequest
-	(*WifiGetHistoryResponse)(nil),                      // 31: SpaceX.API.Device.WifiGetHistoryResponse
-	(*WifiNewClientConnectedEvent)(nil),                 // 32: SpaceX.API.Device.WifiNewClientConnectedEvent
-	(*WifiClient)(nil),                                  // 33: SpaceX.API.Device.WifiClient
-	(*WifiSetupRequest)(nil),                            // 34: SpaceX.API.Device.WifiSetupRequest
-	(*WifiSetupResponse)(nil),                           // 35: SpaceX.API.Device.WifiSetupResponse
-	(*WifiBandStatus)(nil),                              // 36: SpaceX.API.Device.WifiBandStatus
-	(*WifiAlerts)(nil),                                  // 37: SpaceX.API.Device.WifiAlerts
-	(*WifiGetStatusResponse)(nil),                       // 38: SpaceX.API.Device.WifiGetStatusResponse
-	(*WifiAuthenticateRequest)(nil),                     // 39: SpaceX.API.Device.WifiAuthenticateRequest
-	(*WifiAuthenticateResponse)(nil),                    // 40: SpaceX.API.Device.WifiAuthenticateResponse
-	(*WifiAccountBondingEvent)(nil),                     // 41: SpaceX.API.Device.WifiAccountBondingEvent
-	(*WifiNewPeerEvent)(nil),                            // 42: SpaceX.API.Device.WifiNewPeerEvent
-	(*PingMetrics)(nil),                                 // 43: SpaceX.API.Device.PingMetrics
-	(*WifiGetPingMetricsRequest)(nil),                   // 44: SpaceX.API.Device.WifiGetPingMetricsRequest
-	(*WifiGetPingMetricsResponse)(nil),                  // 45: SpaceX.API.Device.WifiGetPingMetricsResponse
-	(*WifiNetwork)(nil),                                 // 46: SpaceX.API.Device.WifiNetwork
-	(*WifiPersistentStats)(nil),                         // 47: SpaceX.API.Device.WifiPersistentStats
-	(*WifiGetPersistentStatsResponse)(nil),              // 48: SpaceX.API.Device.WifiGetPersistentStatsResponse
-	(*RadioStats)(nil),                                  // 49: SpaceX.API.Device.RadioStats
-	(*StarlinkRoutersHourlyMetricsV2)(nil),              // 50: SpaceX.API.Device.starlink_routers_hourly_metrics_v2
-	(*StarlinkRouterAlerts)(nil),                        // 51: SpaceX.API.Device.starlink_router_alerts
-	(*StarlinkRouterClientSpeedtests)(nil),              // 52: SpaceX.API.Device.starlink_router_client_speedtests
-	(*StarlinkRouterClients)(nil),                       // 53: SpaceX.API.Device.StarlinkRouterClients
-	(*StarlinkRouterClientTesterRun)(nil),               // 54: SpaceX.API.Device.StarlinkRouterClientTesterRun
-	(*WifiSetClientGivenNameRequest)(nil),               // 55: SpaceX.API.Device.WifiSetClientGivenNameRequest
-	(*WifiSelfTestRequest)(nil),                         // 56: SpaceX.API.Device.WifiSelfTestRequest
-	(*WifiSelfTestResponse)(nil),                        // 57: SpaceX.API.Device.WifiSelfTestResponse
-	(*WifiRunSelfTestRequest)(nil),                      // 58: SpaceX.API.Device.WifiRunSelfTestRequest
-	(*WifiRfTestRequest)(nil),                           // 59: SpaceX.API.Device.WifiRfTestRequest
-	(*WifiRfTestResponse)(nil),                          // 60: SpaceX.API.Device.WifiRfTestResponse
-	(*WifiGetFirewallRequest)(nil),                      // 61: SpaceX.API.Device.WifiGetFirewallRequest
-	(*WifiGetFirewallResponse)(nil),                     // 62: SpaceX.API.Device.WifiGetFirewallResponse
-	(*WifiTogglePoeNegotiationRequest)(nil),             // 63: SpaceX.API.Device.WifiTogglePoeNegotiationRequest
-	(*WifiCalibrationModeRequest)(nil),                  // 64: SpaceX.API.Device.WifiCalibrationModeRequest
-	(*StarlinkRouterHourlyMetricsV2)(nil),               // 65: SpaceX.API.Device.starlink_router_hourly_metrics_v2
-	(*WifiGuestInfoRequest)(nil),                        // 66: SpaceX.API.Device.WifiGuestInfoRequest
-	(*WifiGuestInfoResponse)(nil),                       // 67: SpaceX.API.Device.WifiGuestInfoResponse
-	(*WifiFactoryTestCommandRequest)(nil),               // 68: SpaceX.API.Device.WifiFactoryTestCommandRequest
-	(*WifiFactoryTestCommandResponse)(nil),              // 69: SpaceX.API.Device.WifiFactoryTestCommandResponse
-	(*IwprivCommand)(nil),                               // 70: SpaceX.API.Device.IwprivCommand
-	(*IpLinkSetCommand)(nil),                            // 71: SpaceX.API.Device.IpLinkSetCommand
-	(*IpAddrSetCommand)(nil),                            // 72: SpaceX.API.Device.IpAddrSetCommand
-	(*WifiStartLocalTelemProxyRequest)(nil),             // 73: SpaceX.API.Device.WifiStartLocalTelemProxyRequest
-	(*WifiBackhaulStatsRequest)(nil),                    // 74: SpaceX.API.Device.WifiBackhaulStatsRequest
-	(*WifiBackhaulStatsResponse)(nil),                   // 75: SpaceX.API.Device.WifiBackhaulStatsResponse
-	(*WifiToggleUmbilicalModeRequest)(nil),              // 76: SpaceX.API.Device.WifiToggleUmbilicalModeRequest
-	(*WifiUpdateResponse)(nil),                          // 77: SpaceX.API.Device.WifiUpdateResponse
-	(*WifiRunDebugNetsysRequest)(nil),                   // 78: SpaceX.API.Device.WifiRunDebugNetsysRequest
-	(*WifiRunDebugNetsysResponse)(nil),                  // 79: SpaceX.API.Device.WifiRunDebugNetsysResponse
-	(*WifiResetEthPhyRequest)(nil),                      // 80: SpaceX.API.Device.WifiResetEthPhyRequest
-	(*WifiResetEthPhyResponse)(nil),                     // 81: SpaceX.API.Device.WifiResetEthPhyResponse
-	(*WifiFlushHardwareNatRequest)(nil),                 // 82: SpaceX.API.Device.WifiFlushHardwareNatRequest
-	(*WifiFlushHardwareNatResponse)(nil),                // 83: SpaceX.API.Device.WifiFlushHardwareNatResponse
-	(*SteerClientRequest_SteerTarget)(nil),              // 84: SpaceX.API.Device.SteerClientRequest.SteerTarget
-	(*WifiBtmRequest_NeighborReport)(nil),               // 85: SpaceX.API.Device.WifiBtmRequest.NeighborReport
-	(*WifiSelfTest_TestResult)(nil),                     // 86: SpaceX.API.Device.WifiSelfTest.TestResult
-	nil,                                                 // 87: SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverDropRateEntry
-	(*WifiGetHistoryResponse_DnsResolverHistory)(nil),   // 88: SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverHistory
-	(*WifiClient_RxStats)(nil),                          // 89: SpaceX.API.Device.WifiClient.RxStats
-	(*WifiClient_TxStats)(nil),                          // 90: SpaceX.API.Device.WifiClient.TxStats
-	(*WifiClient_PingMetrics)(nil),                      // 91: SpaceX.API.Device.WifiClient.PingMetrics
-	(*WifiClient_FqcodelInfo)(nil),                      // 92: SpaceX.API.Device.WifiClient.FqcodelInfo
-	(*WifiClient_Alerts)(nil),                           // 93: SpaceX.API.Device.WifiClient.Alerts
-	(*WifiPersistentStats_Event)(nil),                   // 94: SpaceX.API.Device.WifiPersistentStats.Event
-	(*RadioStats_ThermalStatus)(nil),                    // 95: SpaceX.API.Device.RadioStats.ThermalStatus
-	(*RadioStats_AntennaStatus)(nil),                    // 96: SpaceX.API.Device.RadioStats.AntennaStatus
-	(*InflatedBasicServiceSet)(nil),                     // 97: SpaceX.API.Device.InflatedBasicServiceSet
-	(WifiSecurity)(0),                                   // 98: SpaceX.API.Device.WifiSecurity
-	(WifiMode)(0),                                       // 99: SpaceX.API.Device.WifiMode
-	(IfaceType)(0),                                      // 100: SpaceX.API.Device.IfaceType
-	(*WifiConfig)(nil),                                  // 101: SpaceX.API.Device.WifiConfig
-	(MeshAuth)(0),                                       // 102: SpaceX.API.Device.MeshAuth
-	(*MeshConfig)(nil),                                  // 103: SpaceX.API.Device.MeshConfig
-	(*EventLog)(nil),                                    // 104: SpaceX.API.Device.EventLog
-	(*DeviceInfo)(nil),                                  // 105: SpaceX.API.Device.DeviceInfo
-	(*DeviceState)(nil),                                 // 106: SpaceX.API.Device.DeviceState
-	(*RadiusStatsMap)(nil),                              // 107: SpaceX.API.Device.RadiusStatsMap
-	(*DhcpServer)(nil),                                  // 108: SpaceX.API.Device.DhcpServer
-	(*PoeStats)(nil),                                    // 109: SpaceX.API.Device.PoeStats
-	(network.UtDisablementCode)(0),                      // 110: SpaceX.API.Satellites.Network.UtDisablementCode
-	(*WifiSoftwareUpdateStats)(nil),                     // 111: SpaceX.API.Device.WifiSoftwareUpdateStats
-	(*WifiSetupRequirement)(nil),                        // 112: SpaceX.API.Device.WifiSetupRequirement
-	(CalibrationPartitionsState)(0),                     // 113: SpaceX.API.Device.CalibrationPartitionsState
-	(*SignedData)(nil),                                  // 114: SpaceX.API.Device.SignedData
-	(*ChallengeResponse)(nil),                           // 115: SpaceX.API.Device.ChallengeResponse
-	(WifiConfig_Band)(0),                                // 116: SpaceX.API.Device.WifiConfig.Band
-	(*NetworkInterface_RxStats)(nil),                    // 117: SpaceX.API.Device.NetworkInterface.RxStats
-	(*NetworkInterface_TxStats)(nil),                    // 118: SpaceX.API.Device.NetworkInterface.TxStats
-	(*wrapperspb.StringValue)(nil),                      // 119: google.protobuf.StringValue
-	(*wrapperspb.UInt32Value)(nil),                      // 120: google.protobuf.UInt32Value
-	(*common.TimestampInfo)(nil),                        // 121: SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	(*wrapperspb.BoolValue)(nil),                        // 122: google.protobuf.BoolValue
-	(*wrapperspb.FloatValue)(nil),                       // 123: google.protobuf.FloatValue
-	(*wrapperspb.Int32Value)(nil),                       // 124: google.protobuf.Int32Value
-	(*wrapperspb.Int64Value)(nil),                       // 125: google.protobuf.Int64Value
-	(*ClientName)(nil),                                  // 126: SpaceX.API.Device.ClientName
-	(*ClientConfig)(nil),                                // 127: SpaceX.API.Device.ClientConfig
+	(WifiClient_CaptiveState)(0),                        // 3: SpaceX.API.Device.WifiClient.CaptiveState
+	(WifiClient_SandboxState)(0),                        // 4: SpaceX.API.Device.WifiClient.SandboxState
+	(WifiNetwork_Band)(0),                               // 5: SpaceX.API.Device.WifiNetwork.Band
+	(IwprivCommand_Ioctl)(0),                            // 6: SpaceX.API.Device.IwprivCommand.Ioctl
+	(*WifiClients)(nil),                                 // 7: SpaceX.API.Device.WifiClients
+	(*ToController)(nil),                                // 8: SpaceX.API.Device.ToController
+	(*WifiMeshJoin)(nil),                                // 9: SpaceX.API.Device.WifiMeshJoin
+	(*WifiMeshStatus)(nil),                              // 10: SpaceX.API.Device.WifiMeshStatus
+	(*MeshSpeedtestRequest)(nil),                        // 11: SpaceX.API.Device.MeshSpeedtestRequest
+	(*MeshSpeedtest)(nil),                               // 12: SpaceX.API.Device.MeshSpeedtest
+	(*WifiSiteSurveyResult)(nil),                        // 13: SpaceX.API.Device.WifiSiteSurveyResult
+	(*WifiGlobalMeshStatus)(nil),                        // 14: SpaceX.API.Device.WifiGlobalMeshStatus
+	(*BackhaulRequest)(nil),                             // 15: SpaceX.API.Device.BackhaulRequest
+	(*FromController)(nil),                              // 16: SpaceX.API.Device.FromController
+	(*SteerClientRequest)(nil),                          // 17: SpaceX.API.Device.SteerClientRequest
+	(*WifiBtmRequest)(nil),                              // 18: SpaceX.API.Device.WifiBtmRequest
+	(*WifiSelfTest)(nil),                                // 19: SpaceX.API.Device.WifiSelfTest
+	(*WifiSetConfigRequest)(nil),                        // 20: SpaceX.API.Device.WifiSetConfigRequest
+	(*WifiSetConfigResponse)(nil),                       // 21: SpaceX.API.Device.WifiSetConfigResponse
+	(*WifiGetConfigRequest)(nil),                        // 22: SpaceX.API.Device.WifiGetConfigRequest
+	(*WifiGetConfigResponse)(nil),                       // 23: SpaceX.API.Device.WifiGetConfigResponse
+	(*WifiSetMeshDeviceTrustRequest)(nil),               // 24: SpaceX.API.Device.WifiSetMeshDeviceTrustRequest
+	(*WifiSetMeshDeviceTrustResponse)(nil),              // 25: SpaceX.API.Device.WifiSetMeshDeviceTrustResponse
+	(*WifiSetMeshConfigRequest)(nil),                    // 26: SpaceX.API.Device.WifiSetMeshConfigRequest
+	(*WifiSetMeshConfigResponse)(nil),                   // 27: SpaceX.API.Device.WifiSetMeshConfigResponse
+	(*WifiGetClientsRequest)(nil),                       // 28: SpaceX.API.Device.WifiGetClientsRequest
+	(*WifiGetClientsResponse)(nil),                      // 29: SpaceX.API.Device.WifiGetClientsResponse
+	(*WifiGetClientHistoryRequest)(nil),                 // 30: SpaceX.API.Device.WifiGetClientHistoryRequest
+	(*WifiGetClientHistoryResponse)(nil),                // 31: SpaceX.API.Device.WifiGetClientHistoryResponse
+	(*WifiSetAviationConformedRequest)(nil),             // 32: SpaceX.API.Device.WifiSetAviationConformedRequest
+	(*WifiGetHistoryResponse)(nil),                      // 33: SpaceX.API.Device.WifiGetHistoryResponse
+	(*WifiNewClientConnectedEvent)(nil),                 // 34: SpaceX.API.Device.WifiNewClientConnectedEvent
+	(*WifiClient)(nil),                                  // 35: SpaceX.API.Device.WifiClient
+	(*WifiSetupRequest)(nil),                            // 36: SpaceX.API.Device.WifiSetupRequest
+	(*WifiSetupResponse)(nil),                           // 37: SpaceX.API.Device.WifiSetupResponse
+	(*WifiBandStatus)(nil),                              // 38: SpaceX.API.Device.WifiBandStatus
+	(*WifiAlerts)(nil),                                  // 39: SpaceX.API.Device.WifiAlerts
+	(*WifiGetStatusResponse)(nil),                       // 40: SpaceX.API.Device.WifiGetStatusResponse
+	(*WifiAuthenticateRequest)(nil),                     // 41: SpaceX.API.Device.WifiAuthenticateRequest
+	(*WifiAuthenticateResponse)(nil),                    // 42: SpaceX.API.Device.WifiAuthenticateResponse
+	(*WifiAccountBondingEvent)(nil),                     // 43: SpaceX.API.Device.WifiAccountBondingEvent
+	(*WifiNewPeerEvent)(nil),                            // 44: SpaceX.API.Device.WifiNewPeerEvent
+	(*PingMetrics)(nil),                                 // 45: SpaceX.API.Device.PingMetrics
+	(*WifiGetPingMetricsRequest)(nil),                   // 46: SpaceX.API.Device.WifiGetPingMetricsRequest
+	(*WifiGetPingMetricsResponse)(nil),                  // 47: SpaceX.API.Device.WifiGetPingMetricsResponse
+	(*WifiNetwork)(nil),                                 // 48: SpaceX.API.Device.WifiNetwork
+	(*WifiPersistentStats)(nil),                         // 49: SpaceX.API.Device.WifiPersistentStats
+	(*WifiGetPersistentStatsResponse)(nil),              // 50: SpaceX.API.Device.WifiGetPersistentStatsResponse
+	(*RadioStats)(nil),                                  // 51: SpaceX.API.Device.RadioStats
+	(*StarlinkRoutersHourlyMetricsV2)(nil),              // 52: SpaceX.API.Device.starlink_routers_hourly_metrics_v2
+	(*StarlinkRouterAlerts)(nil),                        // 53: SpaceX.API.Device.starlink_router_alerts
+	(*StarlinkRouterClientSpeedtests)(nil),              // 54: SpaceX.API.Device.starlink_router_client_speedtests
+	(*StarlinkRouterClients)(nil),                       // 55: SpaceX.API.Device.StarlinkRouterClients
+	(*StarlinkRouterClientTesterRun)(nil),               // 56: SpaceX.API.Device.StarlinkRouterClientTesterRun
+	(*WifiSetClientGivenNameRequest)(nil),               // 57: SpaceX.API.Device.WifiSetClientGivenNameRequest
+	(*WifiSelfTestRequest)(nil),                         // 58: SpaceX.API.Device.WifiSelfTestRequest
+	(*WifiSelfTestResponse)(nil),                        // 59: SpaceX.API.Device.WifiSelfTestResponse
+	(*WifiRunSelfTestRequest)(nil),                      // 60: SpaceX.API.Device.WifiRunSelfTestRequest
+	(*WifiRfTestRequest)(nil),                           // 61: SpaceX.API.Device.WifiRfTestRequest
+	(*WifiRfTestResponse)(nil),                          // 62: SpaceX.API.Device.WifiRfTestResponse
+	(*WifiGetFirewallRequest)(nil),                      // 63: SpaceX.API.Device.WifiGetFirewallRequest
+	(*WifiGetFirewallResponse)(nil),                     // 64: SpaceX.API.Device.WifiGetFirewallResponse
+	(*WifiTogglePoeNegotiationRequest)(nil),             // 65: SpaceX.API.Device.WifiTogglePoeNegotiationRequest
+	(*WifiCalibrationModeRequest)(nil),                  // 66: SpaceX.API.Device.WifiCalibrationModeRequest
+	(*StarlinkRouterHourlyMetricsV2)(nil),               // 67: SpaceX.API.Device.starlink_router_hourly_metrics_v2
+	(*WifiGuestInfoRequest)(nil),                        // 68: SpaceX.API.Device.WifiGuestInfoRequest
+	(*WifiGuestInfoResponse)(nil),                       // 69: SpaceX.API.Device.WifiGuestInfoResponse
+	(*WifiFactoryTestCommandRequest)(nil),               // 70: SpaceX.API.Device.WifiFactoryTestCommandRequest
+	(*WifiFactoryTestCommandResponse)(nil),              // 71: SpaceX.API.Device.WifiFactoryTestCommandResponse
+	(*IwprivCommand)(nil),                               // 72: SpaceX.API.Device.IwprivCommand
+	(*IpLinkSetCommand)(nil),                            // 73: SpaceX.API.Device.IpLinkSetCommand
+	(*IpAddrSetCommand)(nil),                            // 74: SpaceX.API.Device.IpAddrSetCommand
+	(*WifiStartLocalTelemProxyRequest)(nil),             // 75: SpaceX.API.Device.WifiStartLocalTelemProxyRequest
+	(*WifiBackhaulStatsRequest)(nil),                    // 76: SpaceX.API.Device.WifiBackhaulStatsRequest
+	(*WifiBackhaulStatsResponse)(nil),                   // 77: SpaceX.API.Device.WifiBackhaulStatsResponse
+	(*WifiToggleUmbilicalModeRequest)(nil),              // 78: SpaceX.API.Device.WifiToggleUmbilicalModeRequest
+	(*WifiUpdateResponse)(nil),                          // 79: SpaceX.API.Device.WifiUpdateResponse
+	(*WifiRunDebugNetsysRequest)(nil),                   // 80: SpaceX.API.Device.WifiRunDebugNetsysRequest
+	(*WifiRunDebugNetsysResponse)(nil),                  // 81: SpaceX.API.Device.WifiRunDebugNetsysResponse
+	(*WifiResetEthPhyRequest)(nil),                      // 82: SpaceX.API.Device.WifiResetEthPhyRequest
+	(*WifiResetEthPhyResponse)(nil),                     // 83: SpaceX.API.Device.WifiResetEthPhyResponse
+	(*WifiFlushHardwareNatRequest)(nil),                 // 84: SpaceX.API.Device.WifiFlushHardwareNatRequest
+	(*WifiFlushHardwareNatResponse)(nil),                // 85: SpaceX.API.Device.WifiFlushHardwareNatResponse
+	(*SteerClientRequest_SteerTarget)(nil),              // 86: SpaceX.API.Device.SteerClientRequest.SteerTarget
+	(*WifiBtmRequest_NeighborReport)(nil),               // 87: SpaceX.API.Device.WifiBtmRequest.NeighborReport
+	(*WifiSelfTest_TestResult)(nil),                     // 88: SpaceX.API.Device.WifiSelfTest.TestResult
+	nil,                                                 // 89: SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverDropRateEntry
+	(*WifiGetHistoryResponse_DnsResolverHistory)(nil),   // 90: SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverHistory
+	(*WifiClient_RxStats)(nil),                          // 91: SpaceX.API.Device.WifiClient.RxStats
+	(*WifiClient_TxStats)(nil),                          // 92: SpaceX.API.Device.WifiClient.TxStats
+	(*WifiClient_PingMetrics)(nil),                      // 93: SpaceX.API.Device.WifiClient.PingMetrics
+	(*WifiClient_FqcodelInfo)(nil),                      // 94: SpaceX.API.Device.WifiClient.FqcodelInfo
+	(*WifiClient_Alerts)(nil),                           // 95: SpaceX.API.Device.WifiClient.Alerts
+	(*WifiPersistentStats_Event)(nil),                   // 96: SpaceX.API.Device.WifiPersistentStats.Event
+	(*RadioStats_ThermalStatus)(nil),                    // 97: SpaceX.API.Device.RadioStats.ThermalStatus
+	(*RadioStats_AntennaStatus)(nil),                    // 98: SpaceX.API.Device.RadioStats.AntennaStatus
+	(*InflatedBasicServiceSet)(nil),                     // 99: SpaceX.API.Device.InflatedBasicServiceSet
+	(WifiSecurity)(0),                                   // 100: SpaceX.API.Device.WifiSecurity
+	(WifiMode)(0),                                       // 101: SpaceX.API.Device.WifiMode
+	(IfaceType)(0),                                      // 102: SpaceX.API.Device.IfaceType
+	(*WifiConfig)(nil),                                  // 103: SpaceX.API.Device.WifiConfig
+	(MeshAuth)(0),                                       // 104: SpaceX.API.Device.MeshAuth
+	(*MeshConfig)(nil),                                  // 105: SpaceX.API.Device.MeshConfig
+	(*EventLog)(nil),                                    // 106: SpaceX.API.Device.EventLog
+	(*DeviceInfo)(nil),                                  // 107: SpaceX.API.Device.DeviceInfo
+	(*DeviceState)(nil),                                 // 108: SpaceX.API.Device.DeviceState
+	(*RadiusStatsMap)(nil),                              // 109: SpaceX.API.Device.RadiusStatsMap
+	(*DhcpServer)(nil),                                  // 110: SpaceX.API.Device.DhcpServer
+	(*PoeStats)(nil),                                    // 111: SpaceX.API.Device.PoeStats
+	(network.UtDisablementCode)(0),                      // 112: SpaceX.API.Satellites.Network.UtDisablementCode
+	(*WifiSoftwareUpdateStats)(nil),                     // 113: SpaceX.API.Device.WifiSoftwareUpdateStats
+	(*WifiSetupRequirement)(nil),                        // 114: SpaceX.API.Device.WifiSetupRequirement
+	(CalibrationPartitionsState)(0),                     // 115: SpaceX.API.Device.CalibrationPartitionsState
+	(*SignedData)(nil),                                  // 116: SpaceX.API.Device.SignedData
+	(*ChallengeResponse)(nil),                           // 117: SpaceX.API.Device.ChallengeResponse
+	(WifiConfig_Band)(0),                                // 118: SpaceX.API.Device.WifiConfig.Band
+	(*NetworkInterface_RxStats)(nil),                    // 119: SpaceX.API.Device.NetworkInterface.RxStats
+	(*NetworkInterface_TxStats)(nil),                    // 120: SpaceX.API.Device.NetworkInterface.TxStats
+	(*wrapperspb.StringValue)(nil),                      // 121: google.protobuf.StringValue
+	(*wrapperspb.UInt32Value)(nil),                      // 122: google.protobuf.UInt32Value
+	(*common.TimestampInfo)(nil),                        // 123: SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	(*wrapperspb.BoolValue)(nil),                        // 124: google.protobuf.BoolValue
+	(*wrapperspb.FloatValue)(nil),                       // 125: google.protobuf.FloatValue
+	(*wrapperspb.Int32Value)(nil),                       // 126: google.protobuf.Int32Value
+	(*wrapperspb.Int64Value)(nil),                       // 127: google.protobuf.Int64Value
+	(*ClientName)(nil),                                  // 128: SpaceX.API.Device.ClientName
+	(*ClientConfig)(nil),                                // 129: SpaceX.API.Device.ClientConfig
 }
 var file_spacex_api_device_wifi_proto_depIdxs = []int32{
-	33,  // 0: SpaceX.API.Device.WifiClients.clients:type_name -> SpaceX.API.Device.WifiClient
-	5,   // 1: SpaceX.API.Device.ToController.clients:type_name -> SpaceX.API.Device.WifiClients
-	7,   // 2: SpaceX.API.Device.ToController.mesh_join:type_name -> SpaceX.API.Device.WifiMeshJoin
-	8,   // 3: SpaceX.API.Device.ToController.status:type_name -> SpaceX.API.Device.WifiMeshStatus
-	10,  // 4: SpaceX.API.Device.ToController.speedtest:type_name -> SpaceX.API.Device.MeshSpeedtest
-	11,  // 5: SpaceX.API.Device.WifiMeshJoin.siteSurveyScan:type_name -> SpaceX.API.Device.WifiSiteSurveyResult
-	33,  // 6: SpaceX.API.Device.WifiMeshStatus.clients:type_name -> SpaceX.API.Device.WifiClient
-	97,  // 7: SpaceX.API.Device.WifiMeshStatus.bss_list:type_name -> SpaceX.API.Device.InflatedBasicServiceSet
-	98,  // 8: SpaceX.API.Device.WifiSiteSurveyResult.security:type_name -> SpaceX.API.Device.WifiSecurity
-	99,  // 9: SpaceX.API.Device.WifiSiteSurveyResult.wireless_mode:type_name -> SpaceX.API.Device.WifiMode
-	100, // 10: SpaceX.API.Device.WifiSiteSurveyResult.iface:type_name -> SpaceX.API.Device.IfaceType
-	97,  // 11: SpaceX.API.Device.WifiGlobalMeshStatus.bss_list:type_name -> SpaceX.API.Device.InflatedBasicServiceSet
-	101, // 12: SpaceX.API.Device.BackhaulRequest.golden_bss:type_name -> SpaceX.API.Device.WifiConfig
-	101, // 13: SpaceX.API.Device.FromController.wifi_config:type_name -> SpaceX.API.Device.WifiConfig
-	15,  // 14: SpaceX.API.Device.FromController.steer_client_request:type_name -> SpaceX.API.Device.SteerClientRequest
-	12,  // 15: SpaceX.API.Device.FromController.status:type_name -> SpaceX.API.Device.WifiGlobalMeshStatus
-	13,  // 16: SpaceX.API.Device.FromController.backhaul_request:type_name -> SpaceX.API.Device.BackhaulRequest
-	9,   // 17: SpaceX.API.Device.FromController.start_speedtest:type_name -> SpaceX.API.Device.MeshSpeedtestRequest
-	16,  // 18: SpaceX.API.Device.FromController.wifi_btm_request:type_name -> SpaceX.API.Device.WifiBtmRequest
-	84,  // 19: SpaceX.API.Device.SteerClientRequest.targets:type_name -> SpaceX.API.Device.SteerClientRequest.SteerTarget
-	85,  // 20: SpaceX.API.Device.WifiBtmRequest.neighbor_report:type_name -> SpaceX.API.Device.WifiBtmRequest.NeighborReport
-	86,  // 21: SpaceX.API.Device.WifiSelfTest.fused:type_name -> SpaceX.API.Device.WifiSelfTest.TestResult
-	86,  // 22: SpaceX.API.Device.WifiSelfTest.eth_phys:type_name -> SpaceX.API.Device.WifiSelfTest.TestResult
-	86,  // 23: SpaceX.API.Device.WifiSelfTest.pcis:type_name -> SpaceX.API.Device.WifiSelfTest.TestResult
-	86,  // 24: SpaceX.API.Device.WifiSelfTest.bl2_prod:type_name -> SpaceX.API.Device.WifiSelfTest.TestResult
-	101, // 25: SpaceX.API.Device.WifiSetConfigRequest.wifi_config:type_name -> SpaceX.API.Device.WifiConfig
-	101, // 26: SpaceX.API.Device.WifiSetConfigResponse.updated_wifi_config:type_name -> SpaceX.API.Device.WifiConfig
-	101, // 27: SpaceX.API.Device.WifiGetConfigResponse.wifi_config:type_name -> SpaceX.API.Device.WifiConfig
-	102, // 28: SpaceX.API.Device.WifiSetMeshDeviceTrustRequest.auth:type_name -> SpaceX.API.Device.MeshAuth
-	103, // 29: SpaceX.API.Device.WifiSetMeshConfigRequest.mesh_config:type_name -> SpaceX.API.Device.MeshConfig
-	33,  // 30: SpaceX.API.Device.WifiGetClientsResponse.clients:type_name -> SpaceX.API.Device.WifiClient
+	35,  // 0: SpaceX.API.Device.WifiClients.clients:type_name -> SpaceX.API.Device.WifiClient
+	7,   // 1: SpaceX.API.Device.ToController.clients:type_name -> SpaceX.API.Device.WifiClients
+	9,   // 2: SpaceX.API.Device.ToController.mesh_join:type_name -> SpaceX.API.Device.WifiMeshJoin
+	10,  // 3: SpaceX.API.Device.ToController.status:type_name -> SpaceX.API.Device.WifiMeshStatus
+	12,  // 4: SpaceX.API.Device.ToController.speedtest:type_name -> SpaceX.API.Device.MeshSpeedtest
+	13,  // 5: SpaceX.API.Device.WifiMeshJoin.siteSurveyScan:type_name -> SpaceX.API.Device.WifiSiteSurveyResult
+	35,  // 6: SpaceX.API.Device.WifiMeshStatus.clients:type_name -> SpaceX.API.Device.WifiClient
+	99,  // 7: SpaceX.API.Device.WifiMeshStatus.bss_list:type_name -> SpaceX.API.Device.InflatedBasicServiceSet
+	100, // 8: SpaceX.API.Device.WifiSiteSurveyResult.security:type_name -> SpaceX.API.Device.WifiSecurity
+	101, // 9: SpaceX.API.Device.WifiSiteSurveyResult.wireless_mode:type_name -> SpaceX.API.Device.WifiMode
+	102, // 10: SpaceX.API.Device.WifiSiteSurveyResult.iface:type_name -> SpaceX.API.Device.IfaceType
+	99,  // 11: SpaceX.API.Device.WifiGlobalMeshStatus.bss_list:type_name -> SpaceX.API.Device.InflatedBasicServiceSet
+	103, // 12: SpaceX.API.Device.BackhaulRequest.golden_bss:type_name -> SpaceX.API.Device.WifiConfig
+	103, // 13: SpaceX.API.Device.FromController.wifi_config:type_name -> SpaceX.API.Device.WifiConfig
+	17,  // 14: SpaceX.API.Device.FromController.steer_client_request:type_name -> SpaceX.API.Device.SteerClientRequest
+	14,  // 15: SpaceX.API.Device.FromController.status:type_name -> SpaceX.API.Device.WifiGlobalMeshStatus
+	15,  // 16: SpaceX.API.Device.FromController.backhaul_request:type_name -> SpaceX.API.Device.BackhaulRequest
+	11,  // 17: SpaceX.API.Device.FromController.start_speedtest:type_name -> SpaceX.API.Device.MeshSpeedtestRequest
+	18,  // 18: SpaceX.API.Device.FromController.wifi_btm_request:type_name -> SpaceX.API.Device.WifiBtmRequest
+	86,  // 19: SpaceX.API.Device.SteerClientRequest.targets:type_name -> SpaceX.API.Device.SteerClientRequest.SteerTarget
+	87,  // 20: SpaceX.API.Device.WifiBtmRequest.neighbor_report:type_name -> SpaceX.API.Device.WifiBtmRequest.NeighborReport
+	88,  // 21: SpaceX.API.Device.WifiSelfTest.fused:type_name -> SpaceX.API.Device.WifiSelfTest.TestResult
+	88,  // 22: SpaceX.API.Device.WifiSelfTest.eth_phys:type_name -> SpaceX.API.Device.WifiSelfTest.TestResult
+	88,  // 23: SpaceX.API.Device.WifiSelfTest.pcis:type_name -> SpaceX.API.Device.WifiSelfTest.TestResult
+	88,  // 24: SpaceX.API.Device.WifiSelfTest.bl2_prod:type_name -> SpaceX.API.Device.WifiSelfTest.TestResult
+	103, // 25: SpaceX.API.Device.WifiSetConfigRequest.wifi_config:type_name -> SpaceX.API.Device.WifiConfig
+	103, // 26: SpaceX.API.Device.WifiSetConfigResponse.updated_wifi_config:type_name -> SpaceX.API.Device.WifiConfig
+	103, // 27: SpaceX.API.Device.WifiGetConfigResponse.wifi_config:type_name -> SpaceX.API.Device.WifiConfig
+	104, // 28: SpaceX.API.Device.WifiSetMeshDeviceTrustRequest.auth:type_name -> SpaceX.API.Device.MeshAuth
+	105, // 29: SpaceX.API.Device.WifiSetMeshConfigRequest.mesh_config:type_name -> SpaceX.API.Device.MeshConfig
+	35,  // 30: SpaceX.API.Device.WifiGetClientsResponse.clients:type_name -> SpaceX.API.Device.WifiClient
 	0,   // 31: SpaceX.API.Device.WifiGetClientHistoryResponse.throughput_limited:type_name -> SpaceX.API.Device.WifiGetClientHistoryResponse.WifiLimitedReason
-	87,  // 32: SpaceX.API.Device.WifiGetHistoryResponse.dns_resolver_drop_rate:type_name -> SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverDropRateEntry
-	104, // 33: SpaceX.API.Device.WifiGetHistoryResponse.event_log:type_name -> SpaceX.API.Device.EventLog
-	33,  // 34: SpaceX.API.Device.WifiNewClientConnectedEvent.client:type_name -> SpaceX.API.Device.WifiClient
-	89,  // 35: SpaceX.API.Device.WifiClient.rx_stats:type_name -> SpaceX.API.Device.WifiClient.RxStats
-	90,  // 36: SpaceX.API.Device.WifiClient.tx_stats:type_name -> SpaceX.API.Device.WifiClient.TxStats
+	89,  // 32: SpaceX.API.Device.WifiGetHistoryResponse.dns_resolver_drop_rate:type_name -> SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverDropRateEntry
+	106, // 33: SpaceX.API.Device.WifiGetHistoryResponse.event_log:type_name -> SpaceX.API.Device.EventLog
+	35,  // 34: SpaceX.API.Device.WifiNewClientConnectedEvent.client:type_name -> SpaceX.API.Device.WifiClient
+	91,  // 35: SpaceX.API.Device.WifiClient.rx_stats:type_name -> SpaceX.API.Device.WifiClient.RxStats
+	92,  // 36: SpaceX.API.Device.WifiClient.tx_stats:type_name -> SpaceX.API.Device.WifiClient.TxStats
 	1,   // 37: SpaceX.API.Device.WifiClient.iface:type_name -> SpaceX.API.Device.WifiClient.Interface
 	2,   // 38: SpaceX.API.Device.WifiClient.role:type_name -> SpaceX.API.Device.WifiClient.Role
-	91,  // 39: SpaceX.API.Device.WifiClient.ping_metrics:type_name -> SpaceX.API.Device.WifiClient.PingMetrics
-	92,  // 40: SpaceX.API.Device.WifiClient.fqcodel_info:type_name -> SpaceX.API.Device.WifiClient.FqcodelInfo
-	93,  // 41: SpaceX.API.Device.WifiClient.alerts:type_name -> SpaceX.API.Device.WifiClient.Alerts
-	105, // 42: SpaceX.API.Device.WifiGetStatusResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
-	106, // 43: SpaceX.API.Device.WifiGetStatusResponse.device_state:type_name -> SpaceX.API.Device.DeviceState
-	36,  // 44: SpaceX.API.Device.WifiGetStatusResponse.rf_2ghz_status:type_name -> SpaceX.API.Device.WifiBandStatus
-	36,  // 45: SpaceX.API.Device.WifiGetStatusResponse.rf_5ghz_status:type_name -> SpaceX.API.Device.WifiBandStatus
-	37,  // 46: SpaceX.API.Device.WifiGetStatusResponse.alerts:type_name -> SpaceX.API.Device.WifiAlerts
-	101, // 47: SpaceX.API.Device.WifiGetStatusResponse.config:type_name -> SpaceX.API.Device.WifiConfig
-	33,  // 48: SpaceX.API.Device.WifiGetStatusResponse.clients:type_name -> SpaceX.API.Device.WifiClient
-	107, // 49: SpaceX.API.Device.WifiGetStatusResponse.radius_stats:type_name -> SpaceX.API.Device.RadiusStatsMap
-	108, // 50: SpaceX.API.Device.WifiGetStatusResponse.dhcp_servers:type_name -> SpaceX.API.Device.DhcpServer
-	109, // 51: SpaceX.API.Device.WifiGetStatusResponse.poe_stats:type_name -> SpaceX.API.Device.PoeStats
-	110, // 52: SpaceX.API.Device.WifiGetStatusResponse.dish_disablement_code:type_name -> SpaceX.API.Satellites.Network.UtDisablementCode
-	111, // 53: SpaceX.API.Device.WifiGetStatusResponse.software_update_stats:type_name -> SpaceX.API.Device.WifiSoftwareUpdateStats
-	112, // 54: SpaceX.API.Device.WifiGetStatusResponse.setup_requirement:type_name -> SpaceX.API.Device.WifiSetupRequirement
-	113, // 55: SpaceX.API.Device.WifiGetStatusResponse.calibration_partitions_state:type_name -> SpaceX.API.Device.CalibrationPartitionsState
-	114, // 56: SpaceX.API.Device.WifiAuthenticateRequest.challenge:type_name -> SpaceX.API.Device.SignedData
-	115, // 57: SpaceX.API.Device.WifiAuthenticateResponse.wifi:type_name -> SpaceX.API.Device.ChallengeResponse
-	115, // 58: SpaceX.API.Device.WifiAuthenticateResponse.dish:type_name -> SpaceX.API.Device.ChallengeResponse
-	43,  // 59: SpaceX.API.Device.WifiGetPingMetricsResponse.internet:type_name -> SpaceX.API.Device.PingMetrics
-	3,   // 60: SpaceX.API.Device.WifiNetwork.band:type_name -> SpaceX.API.Device.WifiNetwork.Band
-	94,  // 61: SpaceX.API.Device.WifiPersistentStats.factory_reset_button:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
-	94,  // 62: SpaceX.API.Device.WifiPersistentStats.factory_reset_plug_unplug:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
-	94,  // 63: SpaceX.API.Device.WifiPersistentStats.factory_reset_command:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
-	94,  // 64: SpaceX.API.Device.WifiPersistentStats.factory_reset_failed_load_wifi_config:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
-	94,  // 65: SpaceX.API.Device.WifiPersistentStats.reboot_from_software_update:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
-	47,  // 66: SpaceX.API.Device.WifiGetPersistentStatsResponse.stats:type_name -> SpaceX.API.Device.WifiPersistentStats
-	116, // 67: SpaceX.API.Device.RadioStats.band:type_name -> SpaceX.API.Device.WifiConfig.Band
-	117, // 68: SpaceX.API.Device.RadioStats.rx_stats:type_name -> SpaceX.API.Device.NetworkInterface.RxStats
-	118, // 69: SpaceX.API.Device.RadioStats.tx_stats:type_name -> SpaceX.API.Device.NetworkInterface.TxStats
-	95,  // 70: SpaceX.API.Device.RadioStats.thermal_status:type_name -> SpaceX.API.Device.RadioStats.ThermalStatus
-	96,  // 71: SpaceX.API.Device.RadioStats.antenna_status:type_name -> SpaceX.API.Device.RadioStats.AntennaStatus
-	119, // 72: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.id:type_name -> google.protobuf.StringValue
-	119, // 73: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.timestamp_date:type_name -> google.protobuf.StringValue
-	120, // 74: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.timestamp_hour:type_name -> google.protobuf.UInt32Value
-	121, // 75: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.timestamp:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	120, // 76: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_hw_gen:type_name -> google.protobuf.UInt32Value
-	120, // 77: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_hw_index:type_name -> google.protobuf.UInt32Value
-	119, // 78: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_sw:type_name -> google.protobuf.StringValue
-	119, // 79: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_country:type_name -> google.protobuf.StringValue
-	122, // 80: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_is_dev:type_name -> google.protobuf.BoolValue
-	120, // 81: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_alloc_fds:type_name -> google.protobuf.UInt32Value
-	123, // 82: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_cpu_usage:type_name -> google.protobuf.FloatValue
-	123, // 83: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_mem_free_kb:type_name -> google.protobuf.FloatValue
-	124, // 84: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_bootcount:type_name -> google.protobuf.Int32Value
-	122, // 85: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_partitions_equal:type_name -> google.protobuf.BoolValue
-	120, // 86: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_uptime_seconds:type_name -> google.protobuf.UInt32Value
-	124, // 87: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_anti_rollback_version:type_name -> google.protobuf.Int32Value
-	122, // 88: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_is_witl:type_name -> google.protobuf.BoolValue
-	122, // 89: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_is_aviation_conformed:type_name -> google.protobuf.BoolValue
-	120, // 90: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_ubi_max_ec:type_name -> google.protobuf.UInt32Value
-	120, // 91: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_ubi_bad_peb:type_name -> google.protobuf.UInt32Value
-	120, // 92: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_board_rev:type_name -> google.protobuf.UInt32Value
-	120, // 93: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_calibration_state:type_name -> google.protobuf.UInt32Value
-	120, // 94: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_calibration_partitions_state:type_name -> google.protobuf.UInt32Value
-	120, // 95: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_channel:type_name -> google.protobuf.UInt32Value
-	123, // 96: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
-	123, // 97: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
-	123, // 98: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
-	123, // 99: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna4_rssi:type_name -> google.protobuf.FloatValue
-	123, // 100: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna1_tssi:type_name -> google.protobuf.FloatValue
-	123, // 101: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna2_tssi:type_name -> google.protobuf.FloatValue
-	123, // 102: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna3_tssi:type_name -> google.protobuf.FloatValue
-	123, // 103: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna4_tssi:type_name -> google.protobuf.FloatValue
-	120, // 104: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_iface_count:type_name -> google.protobuf.UInt32Value
-	123, // 105: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
-	123, // 106: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
-	123, // 107: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
-	125, // 108: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_bytes:type_name -> google.protobuf.Int64Value
-	125, // 109: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_packets:type_name -> google.protobuf.Int64Value
-	125, // 110: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_errors:type_name -> google.protobuf.Int64Value
-	125, // 111: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_frame_errors:type_name -> google.protobuf.Int64Value
-	123, // 112: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	123, // 113: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	125, // 114: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_bytes:type_name -> google.protobuf.Int64Value
-	125, // 115: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_packets:type_name -> google.protobuf.Int64Value
-	125, // 116: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_errors:type_name -> google.protobuf.Int64Value
-	123, // 117: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	123, // 118: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	120, // 119: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_channel:type_name -> google.protobuf.UInt32Value
-	123, // 120: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
-	123, // 121: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
-	123, // 122: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
-	123, // 123: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna4_rssi:type_name -> google.protobuf.FloatValue
-	123, // 124: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna1_tssi:type_name -> google.protobuf.FloatValue
-	123, // 125: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna2_tssi:type_name -> google.protobuf.FloatValue
-	123, // 126: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna3_tssi:type_name -> google.protobuf.FloatValue
-	123, // 127: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna4_tssi:type_name -> google.protobuf.FloatValue
-	120, // 128: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_iface_count:type_name -> google.protobuf.UInt32Value
-	123, // 129: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
-	123, // 130: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
-	123, // 131: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
-	125, // 132: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_bytes:type_name -> google.protobuf.Int64Value
-	125, // 133: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_packets:type_name -> google.protobuf.Int64Value
-	125, // 134: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_errors:type_name -> google.protobuf.Int64Value
-	125, // 135: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_frame_errors:type_name -> google.protobuf.Int64Value
-	123, // 136: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	123, // 137: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	125, // 138: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_bytes:type_name -> google.protobuf.Int64Value
-	125, // 139: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_packets:type_name -> google.protobuf.Int64Value
-	125, // 140: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_errors:type_name -> google.protobuf.Int64Value
-	123, // 141: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	123, // 142: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	120, // 143: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_channel:type_name -> google.protobuf.UInt32Value
-	123, // 144: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna1_rssi:type_name -> google.protobuf.FloatValue
-	123, // 145: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna2_rssi:type_name -> google.protobuf.FloatValue
-	123, // 146: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna3_rssi:type_name -> google.protobuf.FloatValue
-	123, // 147: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna4_rssi:type_name -> google.protobuf.FloatValue
-	123, // 148: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna1_tssi:type_name -> google.protobuf.FloatValue
-	123, // 149: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna2_tssi:type_name -> google.protobuf.FloatValue
-	123, // 150: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna3_tssi:type_name -> google.protobuf.FloatValue
-	123, // 151: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna4_tssi:type_name -> google.protobuf.FloatValue
-	120, // 152: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_iface_count:type_name -> google.protobuf.UInt32Value
-	123, // 153: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_chan_busy_fraction:type_name -> google.protobuf.FloatValue
-	123, // 154: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_edcca_fraction:type_name -> google.protobuf.FloatValue
-	123, // 155: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
-	125, // 156: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_bytes:type_name -> google.protobuf.Int64Value
-	125, // 157: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_packets:type_name -> google.protobuf.Int64Value
-	125, // 158: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_errors:type_name -> google.protobuf.Int64Value
-	125, // 159: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_frame_errors:type_name -> google.protobuf.Int64Value
-	123, // 160: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	123, // 161: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	125, // 162: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_bytes:type_name -> google.protobuf.Int64Value
-	125, // 163: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_packets:type_name -> google.protobuf.Int64Value
-	125, // 164: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_errors:type_name -> google.protobuf.Int64Value
-	123, // 165: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	123, // 166: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	123, // 167: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_thermal_temp:type_name -> google.protobuf.FloatValue
-	123, // 168: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_thermal_temp:type_name -> google.protobuf.FloatValue
-	123, // 169: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_thermal_temp:type_name -> google.protobuf.FloatValue
-	123, // 170: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
-	123, // 171: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
-	123, // 172: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
-	120, // 173: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
-	120, // 174: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
-	120, // 175: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
-	123, // 176: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.board_temp:type_name -> google.protobuf.FloatValue
-	123, // 177: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.poe_mcu_die_temp:type_name -> google.protobuf.FloatValue
-	123, // 178: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.poe_percent_water_detect_avg:type_name -> google.protobuf.FloatValue
-	125, // 179: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_bytes:type_name -> google.protobuf.Int64Value
-	125, // 180: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_packets:type_name -> google.protobuf.Int64Value
-	125, // 181: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_errors:type_name -> google.protobuf.Int64Value
-	125, // 182: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_frame_errors:type_name -> google.protobuf.Int64Value
-	125, // 183: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_tx_bytes:type_name -> google.protobuf.Int64Value
-	125, // 184: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_tx_packets:type_name -> google.protobuf.Int64Value
-	125, // 185: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_tx_errors:type_name -> google.protobuf.Int64Value
-	125, // 186: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_bytes:type_name -> google.protobuf.Int64Value
-	125, // 187: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_packets:type_name -> google.protobuf.Int64Value
-	125, // 188: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_errors:type_name -> google.protobuf.Int64Value
-	125, // 189: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_frame_errors:type_name -> google.protobuf.Int64Value
-	125, // 190: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_tx_bytes:type_name -> google.protobuf.Int64Value
-	125, // 191: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_tx_packets:type_name -> google.protobuf.Int64Value
-	125, // 192: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_tx_errors:type_name -> google.protobuf.Int64Value
-	125, // 193: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_bytes:type_name -> google.protobuf.Int64Value
-	125, // 194: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_packets:type_name -> google.protobuf.Int64Value
-	125, // 195: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_errors:type_name -> google.protobuf.Int64Value
-	125, // 196: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_frame_errors:type_name -> google.protobuf.Int64Value
-	125, // 197: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_tx_bytes:type_name -> google.protobuf.Int64Value
-	125, // 198: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_tx_packets:type_name -> google.protobuf.Int64Value
-	125, // 199: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_tx_errors:type_name -> google.protobuf.Int64Value
-	120, // 200: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients:type_name -> google.protobuf.UInt32Value
-	120, // 201: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_2ghz:type_name -> google.protobuf.UInt32Value
-	120, // 202: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz:type_name -> google.protobuf.UInt32Value
-	120, // 203: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_high:type_name -> google.protobuf.UInt32Value
-	120, // 204: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_eth:type_name -> google.protobuf.UInt32Value
-	120, // 205: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_rx_bandwidth_20mhz:type_name -> google.protobuf.UInt32Value
-	120, // 206: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_rx_bandwidth_40mhz:type_name -> google.protobuf.UInt32Value
-	120, // 207: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_rx_bandwidth_80mhz:type_name -> google.protobuf.UInt32Value
-	120, // 208: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater:type_name -> google.protobuf.UInt32Value
-	120, // 209: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_2ghz:type_name -> google.protobuf.UInt32Value
-	120, // 210: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_5ghz:type_name -> google.protobuf.UInt32Value
-	120, // 211: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_5ghz_high:type_name -> google.protobuf.UInt32Value
-	120, // 212: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_eth:type_name -> google.protobuf.UInt32Value
-	120, // 213: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_hops:type_name -> google.protobuf.UInt32Value
-	123, // 214: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_one_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
-	123, // 215: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_one_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
-	123, // 216: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_one_hop_rssi_avg_5ghz_high:type_name -> google.protobuf.FloatValue
-	123, // 217: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_two_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
-	123, // 218: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_two_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
-	123, // 219: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_two_hop_rssi_avg_5ghz_high:type_name -> google.protobuf.FloatValue
-	123, // 220: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_tx_rate_mbps_min:type_name -> google.protobuf.FloatValue
-	123, // 221: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_rx_rate_mbps_min:type_name -> google.protobuf.FloatValue
-	123, // 222: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_tx_rate_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 223: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_rx_rate_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 224: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_2s_outage_min:type_name -> google.protobuf.FloatValue
-	123, // 225: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_5s_outage_min:type_name -> google.protobuf.FloatValue
-	123, // 226: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_2s_outage_avg:type_name -> google.protobuf.FloatValue
-	123, // 227: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_5s_outage_avg:type_name -> google.protobuf.FloatValue
-	123, // 228: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_latency_ms_1h_max:type_name -> google.protobuf.FloatValue
-	123, // 229: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_latency_ms_1h_avg:type_name -> google.protobuf.FloatValue
-	120, // 230: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_topology_change_count_1d:type_name -> google.protobuf.UInt32Value
-	123, // 231: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
-	123, // 232: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
-	123, // 233: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
-	123, // 234: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
-	123, // 235: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
-	123, // 236: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_drop_rate:type_name -> google.protobuf.FloatValue
-	123, // 237: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
-	123, // 238: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_latency:type_name -> google.protobuf.FloatValue
-	123, // 239: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_latency_last_1h:type_name -> google.protobuf.FloatValue
-	123, // 240: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
-	123, // 241: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
-	123, // 242: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
-	123, // 243: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
-	123, // 244: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
-	123, // 245: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_drop_rate:type_name -> google.protobuf.FloatValue
-	123, // 246: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
-	123, // 247: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_latency:type_name -> google.protobuf.FloatValue
-	123, // 248: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_latency_last_1h:type_name -> google.protobuf.FloatValue
-	123, // 249: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_pop_ipv6_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
-	123, // 250: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_pop_ipv6_latency_last_1h:type_name -> google.protobuf.FloatValue
-	123, // 251: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_router_download_mbps:type_name -> google.protobuf.FloatValue
-	123, // 252: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_router_upload_mbps:type_name -> google.protobuf.FloatValue
-	123, // 253: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_router_rssi:type_name -> google.protobuf.FloatValue
-	123, // 254: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_wifi_download_mbps:type_name -> google.protobuf.FloatValue
-	123, // 255: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_wifi_upload_mbps:type_name -> google.protobuf.FloatValue
-	123, // 256: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_download_mbps:type_name -> google.protobuf.FloatValue
-	123, // 257: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_upload_mbps:type_name -> google.protobuf.FloatValue
-	123, // 258: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_rssi:type_name -> google.protobuf.FloatValue
-	120, // 259: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_iface:type_name -> google.protobuf.UInt32Value
-	119, // 260: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_oui:type_name -> google.protobuf.StringValue
-	120, // 261: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_tx_rate:type_name -> google.protobuf.UInt32Value
-	120, // 262: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_rx_rate:type_name -> google.protobuf.UInt32Value
-	120, // 263: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_platform_type:type_name -> google.protobuf.UInt32Value
-	123, // 264: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 265: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_download_mbps_max:type_name -> google.protobuf.FloatValue
-	123, // 266: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 267: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_max:type_name -> google.protobuf.FloatValue
-	123, // 268: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 269: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_download_mbps_max:type_name -> google.protobuf.FloatValue
-	123, // 270: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 271: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_max:type_name -> google.protobuf.FloatValue
-	123, // 272: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 273: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_download_mbps_max:type_name -> google.protobuf.FloatValue
-	123, // 274: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 275: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_upload_mbps_max:type_name -> google.protobuf.FloatValue
-	120, // 276: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dish_cell_id:type_name -> google.protobuf.UInt32Value
-	122, // 277: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_setup_complete:type_name -> google.protobuf.BoolValue
-	122, // 278: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_bands_split:type_name -> google.protobuf.BoolValue
-	122, // 279: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_repeater:type_name -> google.protobuf.BoolValue
-	122, // 280: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_open_network:type_name -> google.protobuf.BoolValue
-	122, // 281: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_aviation:type_name -> google.protobuf.BoolValue
-	122, // 282: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_secure_dns:type_name -> google.protobuf.BoolValue
-	122, // 283: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_legacy:type_name -> google.protobuf.BoolValue
-	122, // 284: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_ap_mode:type_name -> google.protobuf.BoolValue
-	122, // 285: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_dfs_enabled:type_name -> google.protobuf.BoolValue
-	122, // 286: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_network_name_is_default:type_name -> google.protobuf.BoolValue
-	122, // 287: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_remote_ssh_enabled:type_name -> google.protobuf.BoolValue
-	122, // 288: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_repeater_wired:type_name -> google.protobuf.BoolValue
-	122, // 289: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_repeater_wireless:type_name -> google.protobuf.BoolValue
-	120, // 290: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_block_schedules_set:type_name -> google.protobuf.UInt32Value
-	122, // 291: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_custom_nameservers:type_name -> google.protobuf.BoolValue
-	122, // 292: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_mesh_onboarding:type_name -> google.protobuf.BoolValue
-	122, // 293: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_pin_country_code:type_name -> google.protobuf.BoolValue
-	122, // 294: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_update_reboot:type_name -> google.protobuf.BoolValue
-	122, // 295: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_https_content_hosting_enabled:type_name -> google.protobuf.BoolValue
-	122, // 296: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_only_overflight_blocking_enabled:type_name -> google.protobuf.BoolValue
-	122, // 297: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_offline_networks_disablement_enabled:type_name -> google.protobuf.BoolValue
-	122, // 298: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_custom_dns_disabled:type_name -> google.protobuf.BoolValue
-	122, // 299: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_2ghz:type_name -> google.protobuf.BoolValue
-	122, // 300: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_5ghz:type_name -> google.protobuf.BoolValue
-	122, // 301: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_5ghz_high:type_name -> google.protobuf.BoolValue
-	120, // 302: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_channel_2ghz:type_name -> google.protobuf.UInt32Value
-	120, // 303: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_channel_5ghz:type_name -> google.protobuf.UInt32Value
-	120, // 304: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_channel_5ghz_high:type_name -> google.protobuf.UInt32Value
-	120, // 305: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks:type_name -> google.protobuf.UInt32Value
-	120, // 306: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_guest:type_name -> google.protobuf.UInt32Value
-	120, // 307: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_hidden:type_name -> google.protobuf.UInt32Value
-	120, // 308: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_client_isolation:type_name -> google.protobuf.UInt32Value
-	120, // 309: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_bands_split:type_name -> google.protobuf.UInt32Value
-	120, // 310: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_user:type_name -> google.protobuf.UInt32Value
-	120, // 311: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wifi_reload_count:type_name -> google.protobuf.UInt32Value
-	120, // 312: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radius_reload_count:type_name -> google.protobuf.UInt32Value
-	120, // 313: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.openssh_reload_count:type_name -> google.protobuf.UInt32Value
-	120, // 314: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.iptables_reload_count:type_name -> google.protobuf.UInt32Value
-	120, // 315: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ebtables_reload_count:type_name -> google.protobuf.UInt32Value
-	120, // 316: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.traffic_control_reload_count:type_name -> google.protobuf.UInt32Value
-	120, // 317: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_reload_count:type_name -> google.protobuf.UInt32Value
-	120, // 318: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcpv6_reload_count:type_name -> google.protobuf.UInt32Value
-	120, // 319: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.system_reload_count:type_name -> google.protobuf.UInt32Value
-	120, // 320: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_reload_count:type_name -> google.protobuf.UInt32Value
-	120, // 321: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.https_reload_count:type_name -> google.protobuf.UInt32Value
-	120, // 322: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.band_steering_reload_count:type_name -> google.protobuf.UInt32Value
-	120, // 323: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.commit_count:type_name -> google.protobuf.UInt32Value
-	120, // 324: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.network_reload_count:type_name -> google.protobuf.UInt32Value
-	125, // 325: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_bytes:type_name -> google.protobuf.Int64Value
-	125, // 326: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_packets:type_name -> google.protobuf.Int64Value
-	125, // 327: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_drops:type_name -> google.protobuf.Int64Value
-	125, // 328: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_ack_drops:type_name -> google.protobuf.Int64Value
-	120, // 329: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.conntrack_entries:type_name -> google.protobuf.UInt32Value
-	120, // 330: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_eq_0:type_name -> google.protobuf.UInt32Value
-	120, // 331: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_0:type_name -> google.protobuf.UInt32Value
-	120, // 332: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_10:type_name -> google.protobuf.UInt32Value
-	120, // 333: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_30:type_name -> google.protobuf.UInt32Value
-	120, // 334: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_60:type_name -> google.protobuf.UInt32Value
-	120, // 335: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards:type_name -> google.protobuf.UInt32Value
-	120, // 336: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_success:type_name -> google.protobuf.UInt32Value
-	120, // 337: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_server_failure:type_name -> google.protobuf.UInt32Value
-	120, // 338: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_no_server_response:type_name -> google.protobuf.UInt32Value
-	120, // 339: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_success_on_default_backup:type_name -> google.protobuf.UInt32Value
-	120, // 340: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_dropped:type_name -> google.protobuf.UInt32Value
-	120, // 341: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_with_backup:type_name -> google.protobuf.UInt32Value
-	121, // 342: SpaceX.API.Device.starlink_router_alerts.start:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	121, // 343: SpaceX.API.Device.starlink_router_alerts.end:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	121, // 344: SpaceX.API.Device.starlink_router_client_speedtests.data_record:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	119, // 345: SpaceX.API.Device.starlink_router_client_speedtests.speedtest_id:type_name -> google.protobuf.StringValue
-	123, // 346: SpaceX.API.Device.starlink_router_client_speedtests.client_rssi:type_name -> google.protobuf.FloatValue
-	123, // 347: SpaceX.API.Device.starlink_router_client_speedtests.router_rssi:type_name -> google.protobuf.FloatValue
-	120, // 348: SpaceX.API.Device.starlink_router_client_speedtests.client_iface:type_name -> google.protobuf.UInt32Value
-	119, // 349: SpaceX.API.Device.starlink_router_client_speedtests.client_oui:type_name -> google.protobuf.StringValue
-	120, // 350: SpaceX.API.Device.starlink_router_client_speedtests.client_tx_rate:type_name -> google.protobuf.UInt32Value
-	120, // 351: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_rate:type_name -> google.protobuf.UInt32Value
-	119, // 352: SpaceX.API.Device.starlink_router_client_speedtests.client_platform_type:type_name -> google.protobuf.StringValue
-	119, // 353: SpaceX.API.Device.starlink_router_client_speedtests.client_app_version:type_name -> google.protobuf.StringValue
-	120, // 354: SpaceX.API.Device.starlink_router_client_speedtests.client_app_build:type_name -> google.protobuf.UInt32Value
-	120, // 355: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_phy_mode:type_name -> google.protobuf.UInt32Value
-	120, // 356: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_spatial_streams:type_name -> google.protobuf.UInt32Value
-	120, // 357: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_mcs:type_name -> google.protobuf.UInt32Value
-	121, // 358: SpaceX.API.Device.starlink_router_client_speedtests.client_download_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	121, // 359: SpaceX.API.Device.starlink_router_client_speedtests.client_upload_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	123, // 360: SpaceX.API.Device.starlink_router_client_speedtests.client_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 361: SpaceX.API.Device.starlink_router_client_speedtests.client_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	119, // 362: SpaceX.API.Device.starlink_router_client_speedtests.client_target:type_name -> google.protobuf.StringValue
-	120, // 363: SpaceX.API.Device.starlink_router_client_speedtests.client_tcp_streams:type_name -> google.protobuf.UInt32Value
-	121, // 364: SpaceX.API.Device.starlink_router_client_speedtests.router_download_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	121, // 365: SpaceX.API.Device.starlink_router_client_speedtests.router_upload_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	123, // 366: SpaceX.API.Device.starlink_router_client_speedtests.router_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 367: SpaceX.API.Device.starlink_router_client_speedtests.router_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	119, // 368: SpaceX.API.Device.starlink_router_client_speedtests.router_target:type_name -> google.protobuf.StringValue
-	120, // 369: SpaceX.API.Device.starlink_router_client_speedtests.router_tcp_streams:type_name -> google.protobuf.UInt32Value
-	121, // 370: SpaceX.API.Device.starlink_router_client_speedtests.wifi_download_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	121, // 371: SpaceX.API.Device.starlink_router_client_speedtests.wifi_upload_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	123, // 372: SpaceX.API.Device.starlink_router_client_speedtests.wifi_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 373: SpaceX.API.Device.starlink_router_client_speedtests.wifi_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	121, // 374: SpaceX.API.Device.StarlinkRouterClients.timestamp:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	119, // 375: SpaceX.API.Device.StarlinkRouterClients.router_hw:type_name -> google.protobuf.StringValue
-	119, // 376: SpaceX.API.Device.StarlinkRouterClients.router_sw:type_name -> google.protobuf.StringValue
-	120, // 377: SpaceX.API.Device.StarlinkRouterClients.router_uptime_s:type_name -> google.protobuf.UInt32Value
-	119, // 378: SpaceX.API.Device.StarlinkRouterClients.client_router_id:type_name -> google.protobuf.StringValue
-	119, // 379: SpaceX.API.Device.StarlinkRouterClients.client_hw:type_name -> google.protobuf.StringValue
-	119, // 380: SpaceX.API.Device.StarlinkRouterClients.client_sw:type_name -> google.protobuf.StringValue
-	119, // 381: SpaceX.API.Device.StarlinkRouterClients.oui:type_name -> google.protobuf.StringValue
-	119, // 382: SpaceX.API.Device.StarlinkRouterClients.upstream_id:type_name -> google.protobuf.StringValue
-	122, // 383: SpaceX.API.Device.StarlinkRouterClients.is_repeater:type_name -> google.protobuf.BoolValue
-	120, // 384: SpaceX.API.Device.StarlinkRouterClients.connected_s:type_name -> google.protobuf.UInt32Value
-	119, // 385: SpaceX.API.Device.StarlinkRouterClients.interface:type_name -> google.protobuf.StringValue
-	120, // 386: SpaceX.API.Device.StarlinkRouterClients.radio_channel:type_name -> google.protobuf.UInt32Value
-	123, // 387: SpaceX.API.Device.StarlinkRouterClients.rssi:type_name -> google.protobuf.FloatValue
-	120, // 388: SpaceX.API.Device.StarlinkRouterClients.rx_mcs:type_name -> google.protobuf.UInt32Value
-	120, // 389: SpaceX.API.Device.StarlinkRouterClients.tx_mcs:type_name -> google.protobuf.UInt32Value
-	120, // 390: SpaceX.API.Device.StarlinkRouterClients.rx_rate:type_name -> google.protobuf.UInt32Value
-	120, // 391: SpaceX.API.Device.StarlinkRouterClients.tx_rate:type_name -> google.protobuf.UInt32Value
-	120, // 392: SpaceX.API.Device.StarlinkRouterClients.rx_bandwidth:type_name -> google.protobuf.UInt32Value
-	120, // 393: SpaceX.API.Device.StarlinkRouterClients.rx_spatial_streams:type_name -> google.protobuf.UInt32Value
-	120, // 394: SpaceX.API.Device.StarlinkRouterClients.rx_phy_mode:type_name -> google.protobuf.UInt32Value
-	120, // 395: SpaceX.API.Device.StarlinkRouterClients.mesh_hops:type_name -> google.protobuf.UInt32Value
-	123, // 396: SpaceX.API.Device.StarlinkRouterClients.speedtest_upload_mbps:type_name -> google.protobuf.FloatValue
-	123, // 397: SpaceX.API.Device.StarlinkRouterClients.speedtest_download_mbps:type_name -> google.protobuf.FloatValue
-	123, // 398: SpaceX.API.Device.StarlinkRouterClients.site_survey_rssi:type_name -> google.protobuf.FloatValue
-	123, // 399: SpaceX.API.Device.StarlinkRouterClients.site_survey_est_rx_rate:type_name -> google.protobuf.FloatValue
-	120, // 400: SpaceX.API.Device.StarlinkRouterClients.est_controller_throughput_mbps:type_name -> google.protobuf.UInt32Value
-	123, // 401: SpaceX.API.Device.StarlinkRouterClients.ping_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
-	123, // 402: SpaceX.API.Device.StarlinkRouterClients.ping_latency_last_1h:type_name -> google.protobuf.FloatValue
-	119, // 403: SpaceX.API.Device.StarlinkRouterClients.steer_state:type_name -> google.protobuf.StringValue
-	122, // 404: SpaceX.API.Device.StarlinkRouterClients.blocked:type_name -> google.protobuf.BoolValue
-	121, // 405: SpaceX.API.Device.StarlinkRouterClients.throughput_limited_last_fired:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	122, // 406: SpaceX.API.Device.StarlinkRouterClients.has_dhcp_v4_lease:type_name -> google.protobuf.BoolValue
-	119, // 407: SpaceX.API.Device.StarlinkRouterClients.ipv4_address:type_name -> google.protobuf.StringValue
-	122, // 408: SpaceX.API.Device.StarlinkRouterClients.has_hostname:type_name -> google.protobuf.BoolValue
-	122, // 409: SpaceX.API.Device.StarlinkRouterClients.dhcp_v4_lease_is_active:type_name -> google.protobuf.BoolValue
-	122, // 410: SpaceX.API.Device.StarlinkRouterClients.dhcp_v4_lease_was_renewed:type_name -> google.protobuf.BoolValue
-	123, // 411: SpaceX.API.Device.StarlinkRouterClients.seconds_until_dhcp_v4_lease_expires:type_name -> google.protobuf.FloatValue
-	120, // 412: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_10s:type_name -> google.protobuf.UInt32Value
-	120, // 413: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_30s:type_name -> google.protobuf.UInt32Value
-	120, // 414: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_60s:type_name -> google.protobuf.UInt32Value
-	120, // 415: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_120s:type_name -> google.protobuf.UInt32Value
-	123, // 416: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_tcp_ipv4:type_name -> google.protobuf.FloatValue
-	123, // 417: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_tcp_ipv6:type_name -> google.protobuf.FloatValue
-	123, // 418: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_udp_ipv4:type_name -> google.protobuf.FloatValue
-	123, // 419: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_udp_ipv6:type_name -> google.protobuf.FloatValue
-	120, // 420: SpaceX.API.Device.StarlinkRouterClients.flows_tcp_ipv4:type_name -> google.protobuf.UInt32Value
-	120, // 421: SpaceX.API.Device.StarlinkRouterClients.flows_tcp_ipv6:type_name -> google.protobuf.UInt32Value
-	120, // 422: SpaceX.API.Device.StarlinkRouterClients.flows_udp_ipv4:type_name -> google.protobuf.UInt32Value
-	120, // 423: SpaceX.API.Device.StarlinkRouterClients.flows_udp_ipv6:type_name -> google.protobuf.UInt32Value
-	121, // 424: SpaceX.API.Device.StarlinkRouterClientTesterRun.timestamp:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
-	119, // 425: SpaceX.API.Device.StarlinkRouterClientTesterRun.client_iface_name:type_name -> google.protobuf.StringValue
-	119, // 426: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_ssid:type_name -> google.protobuf.StringValue
-	122, // 427: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_has_password:type_name -> google.protobuf.BoolValue
-	119, // 428: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_auth:type_name -> google.protobuf.StringValue
-	119, // 429: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_encryption:type_name -> google.protobuf.StringValue
-	119, // 430: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_bssid:type_name -> google.protobuf.StringValue
-	119, // 431: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_irtt_server:type_name -> google.protobuf.StringValue
-	120, // 432: SpaceX.API.Device.StarlinkRouterClientTesterRun.iteration:type_name -> google.protobuf.UInt32Value
-	119, // 433: SpaceX.API.Device.StarlinkRouterClientTesterRun.error_code:type_name -> google.protobuf.StringValue
-	123, // 434: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_associate:type_name -> google.protobuf.FloatValue
-	123, // 435: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_lease:type_name -> google.protobuf.FloatValue
-	123, // 436: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_resolve_router:type_name -> google.protobuf.FloatValue
-	123, // 437: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_resolve_internet:type_name -> google.protobuf.FloatValue
-	123, // 438: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_ping_dish:type_name -> google.protobuf.FloatValue
-	123, // 439: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_test_duration_s:type_name -> google.protobuf.FloatValue
-	123, // 440: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_min_ms:type_name -> google.protobuf.FloatValue
-	123, // 441: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_mean_ms:type_name -> google.protobuf.FloatValue
-	123, // 442: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_median_ms:type_name -> google.protobuf.FloatValue
-	123, // 443: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_max_ms:type_name -> google.protobuf.FloatValue
-	123, // 444: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_std_dev_ms:type_name -> google.protobuf.FloatValue
-	120, // 445: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_pkts_sent:type_name -> google.protobuf.UInt32Value
-	120, // 446: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_pkts_recv:type_name -> google.protobuf.UInt32Value
-	123, // 447: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_loss_percent:type_name -> google.protobuf.FloatValue
-	126, // 448: SpaceX.API.Device.WifiSetClientGivenNameRequest.client_name:type_name -> SpaceX.API.Device.ClientName
-	127, // 449: SpaceX.API.Device.WifiSetClientGivenNameRequest.client_config:type_name -> SpaceX.API.Device.ClientConfig
-	17,  // 450: SpaceX.API.Device.WifiSelfTestResponse.self_test:type_name -> SpaceX.API.Device.WifiSelfTest
-	119, // 451: SpaceX.API.Device.starlink_router_hourly_metrics_v2.id:type_name -> google.protobuf.StringValue
-	119, // 452: SpaceX.API.Device.starlink_router_hourly_metrics_v2.timestamp_date:type_name -> google.protobuf.StringValue
-	120, // 453: SpaceX.API.Device.starlink_router_hourly_metrics_v2.timestamp_hour:type_name -> google.protobuf.UInt32Value
-	120, // 454: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_hw_gen:type_name -> google.protobuf.UInt32Value
-	119, // 455: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_sw:type_name -> google.protobuf.StringValue
-	119, // 456: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_country:type_name -> google.protobuf.StringValue
-	122, // 457: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_is_dev:type_name -> google.protobuf.BoolValue
-	120, // 458: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_alloc_fds:type_name -> google.protobuf.UInt32Value
-	123, // 459: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_cpu_usage:type_name -> google.protobuf.FloatValue
-	123, // 460: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_mem_free_kb:type_name -> google.protobuf.FloatValue
-	124, // 461: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_bootcount:type_name -> google.protobuf.Int32Value
-	122, // 462: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_partitions_equal:type_name -> google.protobuf.BoolValue
-	120, // 463: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_uptime_seconds:type_name -> google.protobuf.UInt32Value
-	124, // 464: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_anti_rollback_version:type_name -> google.protobuf.Int32Value
-	120, // 465: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_channel:type_name -> google.protobuf.UInt32Value
-	123, // 466: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
-	123, // 467: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
-	123, // 468: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
-	120, // 469: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_iface_count:type_name -> google.protobuf.UInt32Value
-	123, // 470: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
-	123, // 471: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
-	123, // 472: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
-	120, // 473: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_bytes:type_name -> google.protobuf.UInt32Value
-	120, // 474: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_packets:type_name -> google.protobuf.UInt32Value
-	120, // 475: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_errors:type_name -> google.protobuf.UInt32Value
-	120, // 476: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_frame_errors:type_name -> google.protobuf.UInt32Value
-	123, // 477: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	123, // 478: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	120, // 479: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_bytes:type_name -> google.protobuf.UInt32Value
-	120, // 480: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_packets:type_name -> google.protobuf.UInt32Value
-	120, // 481: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_errors:type_name -> google.protobuf.UInt32Value
-	123, // 482: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	123, // 483: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	120, // 484: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_channel:type_name -> google.protobuf.UInt32Value
-	123, // 485: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
-	123, // 486: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
-	123, // 487: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
-	120, // 488: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_iface_count:type_name -> google.protobuf.UInt32Value
-	123, // 489: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
-	123, // 490: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
-	123, // 491: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
-	120, // 492: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_bytes:type_name -> google.protobuf.UInt32Value
-	120, // 493: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_packets:type_name -> google.protobuf.UInt32Value
-	120, // 494: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_errors:type_name -> google.protobuf.UInt32Value
-	120, // 495: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_frame_errors:type_name -> google.protobuf.UInt32Value
-	123, // 496: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	123, // 497: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	120, // 498: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_bytes:type_name -> google.protobuf.UInt32Value
-	120, // 499: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_packets:type_name -> google.protobuf.UInt32Value
-	120, // 500: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_errors:type_name -> google.protobuf.UInt32Value
-	123, // 501: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
-	123, // 502: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
-	123, // 503: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_thermal_temp:type_name -> google.protobuf.FloatValue
-	123, // 504: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_thermal_temp:type_name -> google.protobuf.FloatValue
-	123, // 505: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
-	123, // 506: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
-	120, // 507: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
-	120, // 508: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
-	120, // 509: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_bytes:type_name -> google.protobuf.UInt32Value
-	120, // 510: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_packets:type_name -> google.protobuf.UInt32Value
-	120, // 511: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_errors:type_name -> google.protobuf.UInt32Value
-	120, // 512: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_frame_errors:type_name -> google.protobuf.UInt32Value
-	120, // 513: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_tx_bytes:type_name -> google.protobuf.UInt32Value
-	120, // 514: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_tx_packets:type_name -> google.protobuf.UInt32Value
-	120, // 515: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_tx_errors:type_name -> google.protobuf.UInt32Value
-	120, // 516: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_bytes:type_name -> google.protobuf.UInt32Value
-	120, // 517: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_packets:type_name -> google.protobuf.UInt32Value
-	120, // 518: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_errors:type_name -> google.protobuf.UInt32Value
-	120, // 519: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_frame_errors:type_name -> google.protobuf.UInt32Value
-	120, // 520: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_tx_bytes:type_name -> google.protobuf.UInt32Value
-	120, // 521: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_tx_packets:type_name -> google.protobuf.UInt32Value
-	120, // 522: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_tx_errors:type_name -> google.protobuf.UInt32Value
-	120, // 523: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients:type_name -> google.protobuf.UInt32Value
-	120, // 524: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_2ghz:type_name -> google.protobuf.UInt32Value
-	120, // 525: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_5ghz:type_name -> google.protobuf.UInt32Value
-	120, // 526: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_eth:type_name -> google.protobuf.UInt32Value
-	120, // 527: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater:type_name -> google.protobuf.UInt32Value
-	120, // 528: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater_2ghz:type_name -> google.protobuf.UInt32Value
-	120, // 529: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater_5ghz:type_name -> google.protobuf.UInt32Value
-	120, // 530: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater_eth:type_name -> google.protobuf.UInt32Value
-	120, // 531: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_hops:type_name -> google.protobuf.UInt32Value
-	123, // 532: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_one_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
-	123, // 533: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_one_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
-	123, // 534: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_two_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
-	123, // 535: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_two_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
-	123, // 536: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
-	123, // 537: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
-	123, // 538: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
-	123, // 539: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
-	123, // 540: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
-	123, // 541: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_drop_rate:type_name -> google.protobuf.FloatValue
-	123, // 542: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
-	123, // 543: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_latency:type_name -> google.protobuf.FloatValue
-	123, // 544: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
-	123, // 545: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
-	123, // 546: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
-	123, // 547: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
-	123, // 548: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
-	123, // 549: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_drop_rate:type_name -> google.protobuf.FloatValue
-	123, // 550: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
-	123, // 551: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_latency:type_name -> google.protobuf.FloatValue
-	123, // 552: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_router_download_mbps:type_name -> google.protobuf.FloatValue
-	123, // 553: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_router_upload_mbps:type_name -> google.protobuf.FloatValue
-	123, // 554: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_router_rssi:type_name -> google.protobuf.FloatValue
-	123, // 555: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_wifi_download_mbps:type_name -> google.protobuf.FloatValue
-	123, // 556: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_wifi_upload_mbps:type_name -> google.protobuf.FloatValue
-	123, // 557: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_download_mbps:type_name -> google.protobuf.FloatValue
-	123, // 558: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_upload_mbps:type_name -> google.protobuf.FloatValue
-	123, // 559: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_rssi:type_name -> google.protobuf.FloatValue
-	120, // 560: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_iface:type_name -> google.protobuf.UInt32Value
-	119, // 561: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_oui:type_name -> google.protobuf.StringValue
-	120, // 562: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_tx_rate:type_name -> google.protobuf.UInt32Value
-	120, // 563: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_rx_rate:type_name -> google.protobuf.UInt32Value
-	120, // 564: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_platform_type:type_name -> google.protobuf.UInt32Value
-	123, // 565: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 566: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_download_mbps_max:type_name -> google.protobuf.FloatValue
-	123, // 567: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 568: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_max:type_name -> google.protobuf.FloatValue
-	123, // 569: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_download_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 570: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_download_mbps_max:type_name -> google.protobuf.FloatValue
-	123, // 571: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_avg:type_name -> google.protobuf.FloatValue
-	123, // 572: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_max:type_name -> google.protobuf.FloatValue
-	120, // 573: SpaceX.API.Device.starlink_router_hourly_metrics_v2.dish_cell_id:type_name -> google.protobuf.UInt32Value
-	122, // 574: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_setup_complete:type_name -> google.protobuf.BoolValue
-	122, // 575: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_bands_split:type_name -> google.protobuf.BoolValue
-	122, // 576: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_is_repeater:type_name -> google.protobuf.BoolValue
-	122, // 577: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_open_network:type_name -> google.protobuf.BoolValue
-	122, // 578: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_is_aviation:type_name -> google.protobuf.BoolValue
-	122, // 579: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_secure_dns:type_name -> google.protobuf.BoolValue
-	122, // 580: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_legacy:type_name -> google.protobuf.BoolValue
-	122, // 581: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_ap_mode:type_name -> google.protobuf.BoolValue
-	122, // 582: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_dfs_enabled:type_name -> google.protobuf.BoolValue
-	122, // 583: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_network_name_is_default:type_name -> google.protobuf.BoolValue
-	122, // 584: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_remote_ssh_enabled:type_name -> google.protobuf.BoolValue
-	70,  // 585: SpaceX.API.Device.WifiFactoryTestCommandRequest.iwpriv_command:type_name -> SpaceX.API.Device.IwprivCommand
-	71,  // 586: SpaceX.API.Device.WifiFactoryTestCommandRequest.ip_link_set_command:type_name -> SpaceX.API.Device.IpLinkSetCommand
-	72,  // 587: SpaceX.API.Device.WifiFactoryTestCommandRequest.ip_addr_set_command:type_name -> SpaceX.API.Device.IpAddrSetCommand
-	4,   // 588: SpaceX.API.Device.IwprivCommand.ioctl:type_name -> SpaceX.API.Device.IwprivCommand.Ioctl
-	100, // 589: SpaceX.API.Device.WifiBackhaulStatsResponse.iface:type_name -> SpaceX.API.Device.IfaceType
-	11,  // 590: SpaceX.API.Device.WifiBackhaulStatsResponse.siteSurveyScan:type_name -> SpaceX.API.Device.WifiSiteSurveyResult
-	111, // 591: SpaceX.API.Device.WifiUpdateResponse.stats:type_name -> SpaceX.API.Device.WifiSoftwareUpdateStats
-	88,  // 592: SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverDropRateEntry.value:type_name -> SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverHistory
-	6,   // 593: SpaceX.API.Device.Mesh.MeshStream:input_type -> SpaceX.API.Device.ToController
-	14,  // 594: SpaceX.API.Device.Mesh.MeshStream:output_type -> SpaceX.API.Device.FromController
-	594, // [594:595] is the sub-list for method output_type
-	593, // [593:594] is the sub-list for method input_type
-	593, // [593:593] is the sub-list for extension type_name
-	593, // [593:593] is the sub-list for extension extendee
-	0,   // [0:593] is the sub-list for field type_name
+	93,  // 39: SpaceX.API.Device.WifiClient.ping_metrics:type_name -> SpaceX.API.Device.WifiClient.PingMetrics
+	3,   // 40: SpaceX.API.Device.WifiClient.captive_state:type_name -> SpaceX.API.Device.WifiClient.CaptiveState
+	4,   // 41: SpaceX.API.Device.WifiClient.sandbox_state:type_name -> SpaceX.API.Device.WifiClient.SandboxState
+	94,  // 42: SpaceX.API.Device.WifiClient.fqcodel_info:type_name -> SpaceX.API.Device.WifiClient.FqcodelInfo
+	95,  // 43: SpaceX.API.Device.WifiClient.alerts:type_name -> SpaceX.API.Device.WifiClient.Alerts
+	107, // 44: SpaceX.API.Device.WifiGetStatusResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
+	108, // 45: SpaceX.API.Device.WifiGetStatusResponse.device_state:type_name -> SpaceX.API.Device.DeviceState
+	38,  // 46: SpaceX.API.Device.WifiGetStatusResponse.rf_2ghz_status:type_name -> SpaceX.API.Device.WifiBandStatus
+	38,  // 47: SpaceX.API.Device.WifiGetStatusResponse.rf_5ghz_status:type_name -> SpaceX.API.Device.WifiBandStatus
+	39,  // 48: SpaceX.API.Device.WifiGetStatusResponse.alerts:type_name -> SpaceX.API.Device.WifiAlerts
+	103, // 49: SpaceX.API.Device.WifiGetStatusResponse.config:type_name -> SpaceX.API.Device.WifiConfig
+	35,  // 50: SpaceX.API.Device.WifiGetStatusResponse.clients:type_name -> SpaceX.API.Device.WifiClient
+	109, // 51: SpaceX.API.Device.WifiGetStatusResponse.radius_stats:type_name -> SpaceX.API.Device.RadiusStatsMap
+	110, // 52: SpaceX.API.Device.WifiGetStatusResponse.dhcp_servers:type_name -> SpaceX.API.Device.DhcpServer
+	111, // 53: SpaceX.API.Device.WifiGetStatusResponse.poe_stats:type_name -> SpaceX.API.Device.PoeStats
+	112, // 54: SpaceX.API.Device.WifiGetStatusResponse.dish_disablement_code:type_name -> SpaceX.API.Satellites.Network.UtDisablementCode
+	113, // 55: SpaceX.API.Device.WifiGetStatusResponse.software_update_stats:type_name -> SpaceX.API.Device.WifiSoftwareUpdateStats
+	114, // 56: SpaceX.API.Device.WifiGetStatusResponse.setup_requirement:type_name -> SpaceX.API.Device.WifiSetupRequirement
+	115, // 57: SpaceX.API.Device.WifiGetStatusResponse.calibration_partitions_state:type_name -> SpaceX.API.Device.CalibrationPartitionsState
+	116, // 58: SpaceX.API.Device.WifiAuthenticateRequest.challenge:type_name -> SpaceX.API.Device.SignedData
+	117, // 59: SpaceX.API.Device.WifiAuthenticateResponse.wifi:type_name -> SpaceX.API.Device.ChallengeResponse
+	117, // 60: SpaceX.API.Device.WifiAuthenticateResponse.dish:type_name -> SpaceX.API.Device.ChallengeResponse
+	45,  // 61: SpaceX.API.Device.WifiGetPingMetricsResponse.internet:type_name -> SpaceX.API.Device.PingMetrics
+	5,   // 62: SpaceX.API.Device.WifiNetwork.band:type_name -> SpaceX.API.Device.WifiNetwork.Band
+	96,  // 63: SpaceX.API.Device.WifiPersistentStats.factory_reset_button:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
+	96,  // 64: SpaceX.API.Device.WifiPersistentStats.factory_reset_plug_unplug:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
+	96,  // 65: SpaceX.API.Device.WifiPersistentStats.factory_reset_command:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
+	96,  // 66: SpaceX.API.Device.WifiPersistentStats.factory_reset_failed_load_wifi_config:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
+	96,  // 67: SpaceX.API.Device.WifiPersistentStats.reboot_from_software_update:type_name -> SpaceX.API.Device.WifiPersistentStats.Event
+	49,  // 68: SpaceX.API.Device.WifiGetPersistentStatsResponse.stats:type_name -> SpaceX.API.Device.WifiPersistentStats
+	118, // 69: SpaceX.API.Device.RadioStats.band:type_name -> SpaceX.API.Device.WifiConfig.Band
+	119, // 70: SpaceX.API.Device.RadioStats.rx_stats:type_name -> SpaceX.API.Device.NetworkInterface.RxStats
+	120, // 71: SpaceX.API.Device.RadioStats.tx_stats:type_name -> SpaceX.API.Device.NetworkInterface.TxStats
+	97,  // 72: SpaceX.API.Device.RadioStats.thermal_status:type_name -> SpaceX.API.Device.RadioStats.ThermalStatus
+	98,  // 73: SpaceX.API.Device.RadioStats.antenna_status:type_name -> SpaceX.API.Device.RadioStats.AntennaStatus
+	121, // 74: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.id:type_name -> google.protobuf.StringValue
+	121, // 75: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.timestamp_date:type_name -> google.protobuf.StringValue
+	122, // 76: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.timestamp_hour:type_name -> google.protobuf.UInt32Value
+	123, // 77: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.timestamp:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	122, // 78: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_hw_gen:type_name -> google.protobuf.UInt32Value
+	122, // 79: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_hw_index:type_name -> google.protobuf.UInt32Value
+	121, // 80: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_sw:type_name -> google.protobuf.StringValue
+	121, // 81: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_country:type_name -> google.protobuf.StringValue
+	124, // 82: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_is_dev:type_name -> google.protobuf.BoolValue
+	122, // 83: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_alloc_fds:type_name -> google.protobuf.UInt32Value
+	125, // 84: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_cpu_usage:type_name -> google.protobuf.FloatValue
+	125, // 85: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_mem_free_kb:type_name -> google.protobuf.FloatValue
+	126, // 86: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_bootcount:type_name -> google.protobuf.Int32Value
+	124, // 87: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_partitions_equal:type_name -> google.protobuf.BoolValue
+	122, // 88: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_uptime_seconds:type_name -> google.protobuf.UInt32Value
+	126, // 89: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_anti_rollback_version:type_name -> google.protobuf.Int32Value
+	124, // 90: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_is_witl:type_name -> google.protobuf.BoolValue
+	124, // 91: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_is_aviation_conformed:type_name -> google.protobuf.BoolValue
+	122, // 92: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_ubi_max_ec:type_name -> google.protobuf.UInt32Value
+	122, // 93: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_ubi_bad_peb:type_name -> google.protobuf.UInt32Value
+	122, // 94: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_board_rev:type_name -> google.protobuf.UInt32Value
+	122, // 95: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_calibration_state:type_name -> google.protobuf.UInt32Value
+	122, // 96: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.sys_calibration_partitions_state:type_name -> google.protobuf.UInt32Value
+	122, // 97: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_channel:type_name -> google.protobuf.UInt32Value
+	125, // 98: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
+	125, // 99: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
+	125, // 100: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
+	125, // 101: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna4_rssi:type_name -> google.protobuf.FloatValue
+	125, // 102: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna1_tssi:type_name -> google.protobuf.FloatValue
+	125, // 103: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna2_tssi:type_name -> google.protobuf.FloatValue
+	125, // 104: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna3_tssi:type_name -> google.protobuf.FloatValue
+	125, // 105: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_antenna4_tssi:type_name -> google.protobuf.FloatValue
+	122, // 106: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_iface_count:type_name -> google.protobuf.UInt32Value
+	125, // 107: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
+	125, // 108: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
+	125, // 109: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
+	127, // 110: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_bytes:type_name -> google.protobuf.Int64Value
+	127, // 111: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_packets:type_name -> google.protobuf.Int64Value
+	127, // 112: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_errors:type_name -> google.protobuf.Int64Value
+	127, // 113: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_frame_errors:type_name -> google.protobuf.Int64Value
+	125, // 114: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	125, // 115: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	127, // 116: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_bytes:type_name -> google.protobuf.Int64Value
+	127, // 117: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_packets:type_name -> google.protobuf.Int64Value
+	127, // 118: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_errors:type_name -> google.protobuf.Int64Value
+	125, // 119: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	125, // 120: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	122, // 121: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_channel:type_name -> google.protobuf.UInt32Value
+	125, // 122: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
+	125, // 123: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
+	125, // 124: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
+	125, // 125: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna4_rssi:type_name -> google.protobuf.FloatValue
+	125, // 126: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna1_tssi:type_name -> google.protobuf.FloatValue
+	125, // 127: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna2_tssi:type_name -> google.protobuf.FloatValue
+	125, // 128: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna3_tssi:type_name -> google.protobuf.FloatValue
+	125, // 129: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_antenna4_tssi:type_name -> google.protobuf.FloatValue
+	122, // 130: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_iface_count:type_name -> google.protobuf.UInt32Value
+	125, // 131: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
+	125, // 132: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
+	125, // 133: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
+	127, // 134: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_bytes:type_name -> google.protobuf.Int64Value
+	127, // 135: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_packets:type_name -> google.protobuf.Int64Value
+	127, // 136: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_errors:type_name -> google.protobuf.Int64Value
+	127, // 137: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_frame_errors:type_name -> google.protobuf.Int64Value
+	125, // 138: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	125, // 139: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	127, // 140: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_bytes:type_name -> google.protobuf.Int64Value
+	127, // 141: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_packets:type_name -> google.protobuf.Int64Value
+	127, // 142: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_errors:type_name -> google.protobuf.Int64Value
+	125, // 143: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	125, // 144: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	122, // 145: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_channel:type_name -> google.protobuf.UInt32Value
+	125, // 146: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna1_rssi:type_name -> google.protobuf.FloatValue
+	125, // 147: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna2_rssi:type_name -> google.protobuf.FloatValue
+	125, // 148: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna3_rssi:type_name -> google.protobuf.FloatValue
+	125, // 149: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna4_rssi:type_name -> google.protobuf.FloatValue
+	125, // 150: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna1_tssi:type_name -> google.protobuf.FloatValue
+	125, // 151: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna2_tssi:type_name -> google.protobuf.FloatValue
+	125, // 152: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna3_tssi:type_name -> google.protobuf.FloatValue
+	125, // 153: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_antenna4_tssi:type_name -> google.protobuf.FloatValue
+	122, // 154: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_iface_count:type_name -> google.protobuf.UInt32Value
+	125, // 155: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_chan_busy_fraction:type_name -> google.protobuf.FloatValue
+	125, // 156: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_edcca_fraction:type_name -> google.protobuf.FloatValue
+	125, // 157: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
+	127, // 158: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_bytes:type_name -> google.protobuf.Int64Value
+	127, // 159: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_packets:type_name -> google.protobuf.Int64Value
+	127, // 160: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_errors:type_name -> google.protobuf.Int64Value
+	127, // 161: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_frame_errors:type_name -> google.protobuf.Int64Value
+	125, // 162: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	125, // 163: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	127, // 164: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_bytes:type_name -> google.protobuf.Int64Value
+	127, // 165: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_packets:type_name -> google.protobuf.Int64Value
+	127, // 166: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_errors:type_name -> google.protobuf.Int64Value
+	125, // 167: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	125, // 168: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	125, // 169: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_thermal_temp:type_name -> google.protobuf.FloatValue
+	125, // 170: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_thermal_temp:type_name -> google.protobuf.FloatValue
+	125, // 171: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_thermal_temp:type_name -> google.protobuf.FloatValue
+	125, // 172: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
+	125, // 173: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
+	125, // 174: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
+	122, // 175: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_2ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
+	122, // 176: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
+	122, // 177: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radios_5ghz_high_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
+	125, // 178: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.board_temp:type_name -> google.protobuf.FloatValue
+	125, // 179: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.poe_mcu_die_temp:type_name -> google.protobuf.FloatValue
+	125, // 180: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.poe_percent_water_detect_avg:type_name -> google.protobuf.FloatValue
+	127, // 181: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_bytes:type_name -> google.protobuf.Int64Value
+	127, // 182: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_packets:type_name -> google.protobuf.Int64Value
+	127, // 183: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_errors:type_name -> google.protobuf.Int64Value
+	127, // 184: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_rx_frame_errors:type_name -> google.protobuf.Int64Value
+	127, // 185: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_tx_bytes:type_name -> google.protobuf.Int64Value
+	127, // 186: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_tx_packets:type_name -> google.protobuf.Int64Value
+	127, // 187: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan_eth_tx_errors:type_name -> google.protobuf.Int64Value
+	127, // 188: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_bytes:type_name -> google.protobuf.Int64Value
+	127, // 189: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_packets:type_name -> google.protobuf.Int64Value
+	127, // 190: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_errors:type_name -> google.protobuf.Int64Value
+	127, // 191: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_rx_frame_errors:type_name -> google.protobuf.Int64Value
+	127, // 192: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_tx_bytes:type_name -> google.protobuf.Int64Value
+	127, // 193: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_tx_packets:type_name -> google.protobuf.Int64Value
+	127, // 194: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_lan1_eth_tx_errors:type_name -> google.protobuf.Int64Value
+	127, // 195: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_bytes:type_name -> google.protobuf.Int64Value
+	127, // 196: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_packets:type_name -> google.protobuf.Int64Value
+	127, // 197: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_errors:type_name -> google.protobuf.Int64Value
+	127, // 198: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_rx_frame_errors:type_name -> google.protobuf.Int64Value
+	127, // 199: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_tx_bytes:type_name -> google.protobuf.Int64Value
+	127, // 200: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_tx_packets:type_name -> google.protobuf.Int64Value
+	127, // 201: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_eth_tx_errors:type_name -> google.protobuf.Int64Value
+	121, // 202: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ifaces_wan_port:type_name -> google.protobuf.StringValue
+	122, // 203: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients:type_name -> google.protobuf.UInt32Value
+	122, // 204: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_2ghz:type_name -> google.protobuf.UInt32Value
+	122, // 205: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz:type_name -> google.protobuf.UInt32Value
+	122, // 206: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_high:type_name -> google.protobuf.UInt32Value
+	122, // 207: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_eth:type_name -> google.protobuf.UInt32Value
+	122, // 208: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_rx_bandwidth_20mhz:type_name -> google.protobuf.UInt32Value
+	122, // 209: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_rx_bandwidth_40mhz:type_name -> google.protobuf.UInt32Value
+	122, // 210: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_5ghz_rx_bandwidth_80mhz:type_name -> google.protobuf.UInt32Value
+	122, // 211: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater:type_name -> google.protobuf.UInt32Value
+	122, // 212: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_2ghz:type_name -> google.protobuf.UInt32Value
+	122, // 213: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_5ghz:type_name -> google.protobuf.UInt32Value
+	122, // 214: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_5ghz_high:type_name -> google.protobuf.UInt32Value
+	122, // 215: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.clients_repeater_eth:type_name -> google.protobuf.UInt32Value
+	122, // 216: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_hops:type_name -> google.protobuf.UInt32Value
+	125, // 217: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_one_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
+	125, // 218: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_one_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
+	125, // 219: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_one_hop_rssi_avg_5ghz_high:type_name -> google.protobuf.FloatValue
+	125, // 220: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_two_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
+	125, // 221: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_two_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
+	125, // 222: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_two_hop_rssi_avg_5ghz_high:type_name -> google.protobuf.FloatValue
+	125, // 223: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_tx_rate_mbps_min:type_name -> google.protobuf.FloatValue
+	125, // 224: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_rx_rate_mbps_min:type_name -> google.protobuf.FloatValue
+	125, // 225: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_tx_rate_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 226: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_rx_rate_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 227: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_2s_outage_min:type_name -> google.protobuf.FloatValue
+	125, // 228: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_5s_outage_min:type_name -> google.protobuf.FloatValue
+	125, // 229: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_2s_outage_avg:type_name -> google.protobuf.FloatValue
+	125, // 230: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_seconds_since_5s_outage_avg:type_name -> google.protobuf.FloatValue
+	125, // 231: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_latency_ms_1h_max:type_name -> google.protobuf.FloatValue
+	125, // 232: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.repeater_latency_ms_1h_avg:type_name -> google.protobuf.FloatValue
+	122, // 233: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.mesh_topology_change_count_1d:type_name -> google.protobuf.UInt32Value
+	125, // 234: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
+	125, // 235: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
+	125, // 236: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
+	125, // 237: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
+	125, // 238: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
+	125, // 239: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_drop_rate:type_name -> google.protobuf.FloatValue
+	125, // 240: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
+	125, // 241: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_latency:type_name -> google.protobuf.FloatValue
+	125, // 242: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_latency_last_1h:type_name -> google.protobuf.FloatValue
+	125, // 243: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
+	125, // 244: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
+	125, // 245: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
+	125, // 246: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
+	125, // 247: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
+	125, // 248: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_drop_rate:type_name -> google.protobuf.FloatValue
+	125, // 249: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
+	125, // 250: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_latency:type_name -> google.protobuf.FloatValue
+	125, // 251: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_dish_latency_last_1h:type_name -> google.protobuf.FloatValue
+	125, // 252: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_pop_ipv6_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
+	125, // 253: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ping_pop_ipv6_latency_last_1h:type_name -> google.protobuf.FloatValue
+	125, // 254: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_router_download_mbps:type_name -> google.protobuf.FloatValue
+	125, // 255: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_router_upload_mbps:type_name -> google.protobuf.FloatValue
+	125, // 256: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_router_rssi:type_name -> google.protobuf.FloatValue
+	125, // 257: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_wifi_download_mbps:type_name -> google.protobuf.FloatValue
+	125, // 258: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_wifi_upload_mbps:type_name -> google.protobuf.FloatValue
+	125, // 259: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_download_mbps:type_name -> google.protobuf.FloatValue
+	125, // 260: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_upload_mbps:type_name -> google.protobuf.FloatValue
+	125, // 261: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_rssi:type_name -> google.protobuf.FloatValue
+	122, // 262: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_iface:type_name -> google.protobuf.UInt32Value
+	121, // 263: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_oui:type_name -> google.protobuf.StringValue
+	122, // 264: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_tx_rate:type_name -> google.protobuf.UInt32Value
+	122, // 265: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_rx_rate:type_name -> google.protobuf.UInt32Value
+	122, // 266: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.client_speedtest_client_platform_type:type_name -> google.protobuf.UInt32Value
+	125, // 267: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 268: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_download_mbps_max:type_name -> google.protobuf.FloatValue
+	125, // 269: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 270: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_max:type_name -> google.protobuf.FloatValue
+	125, // 271: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 272: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_download_mbps_max:type_name -> google.protobuf.FloatValue
+	125, // 273: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 274: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_max:type_name -> google.protobuf.FloatValue
+	125, // 275: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 276: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_download_mbps_max:type_name -> google.protobuf.FloatValue
+	125, // 277: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 278: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_upload_mbps_max:type_name -> google.protobuf.FloatValue
+	125, // 279: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_download_mean_tcp_connect_time:type_name -> google.protobuf.FloatValue
+	125, // 280: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_8_upload_mean_tcp_connect_time:type_name -> google.protobuf.FloatValue
+	125, // 281: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_download_mean_tcp_connect_time:type_name -> google.protobuf.FloatValue
+	125, // 282: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.speedtest_tcp_1_upload_mean_tcp_connect_time:type_name -> google.protobuf.FloatValue
+	122, // 283: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dish_cell_id:type_name -> google.protobuf.UInt32Value
+	124, // 284: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_setup_complete:type_name -> google.protobuf.BoolValue
+	124, // 285: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_bands_split:type_name -> google.protobuf.BoolValue
+	124, // 286: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_repeater:type_name -> google.protobuf.BoolValue
+	124, // 287: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_open_network:type_name -> google.protobuf.BoolValue
+	124, // 288: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_aviation:type_name -> google.protobuf.BoolValue
+	124, // 289: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_secure_dns:type_name -> google.protobuf.BoolValue
+	124, // 290: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_legacy:type_name -> google.protobuf.BoolValue
+	124, // 291: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_ap_mode:type_name -> google.protobuf.BoolValue
+	124, // 292: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_dfs_enabled:type_name -> google.protobuf.BoolValue
+	124, // 293: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_network_name_is_default:type_name -> google.protobuf.BoolValue
+	124, // 294: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_remote_ssh_enabled:type_name -> google.protobuf.BoolValue
+	124, // 295: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_repeater_wired:type_name -> google.protobuf.BoolValue
+	124, // 296: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_is_repeater_wireless:type_name -> google.protobuf.BoolValue
+	122, // 297: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_block_schedules_set:type_name -> google.protobuf.UInt32Value
+	124, // 298: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_custom_nameservers:type_name -> google.protobuf.BoolValue
+	124, // 299: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_mesh_onboarding:type_name -> google.protobuf.BoolValue
+	124, // 300: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_pin_country_code:type_name -> google.protobuf.BoolValue
+	124, // 301: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_update_reboot:type_name -> google.protobuf.BoolValue
+	124, // 302: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_https_content_hosting_enabled:type_name -> google.protobuf.BoolValue
+	124, // 303: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_only_overflight_blocking_enabled:type_name -> google.protobuf.BoolValue
+	124, // 304: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_offline_networks_disablement_enabled:type_name -> google.protobuf.BoolValue
+	124, // 305: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_custom_dns_disabled:type_name -> google.protobuf.BoolValue
+	124, // 306: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_foreflight_enabled:type_name -> google.protobuf.BoolValue
+	124, // 307: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_2ghz:type_name -> google.protobuf.BoolValue
+	124, // 308: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_5ghz:type_name -> google.protobuf.BoolValue
+	124, // 309: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_disable_5ghz_high:type_name -> google.protobuf.BoolValue
+	122, // 310: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_channel_2ghz:type_name -> google.protobuf.UInt32Value
+	122, // 311: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_channel_5ghz:type_name -> google.protobuf.UInt32Value
+	122, // 312: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_channel_5ghz_high:type_name -> google.protobuf.UInt32Value
+	122, // 313: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks:type_name -> google.protobuf.UInt32Value
+	122, // 314: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_guest:type_name -> google.protobuf.UInt32Value
+	122, // 315: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_hidden:type_name -> google.protobuf.UInt32Value
+	122, // 316: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_client_isolation:type_name -> google.protobuf.UInt32Value
+	122, // 317: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_bands_split:type_name -> google.protobuf.UInt32Value
+	122, // 318: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.config_networks_user:type_name -> google.protobuf.UInt32Value
+	122, // 319: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wifi_reload_count:type_name -> google.protobuf.UInt32Value
+	122, // 320: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.radius_reload_count:type_name -> google.protobuf.UInt32Value
+	122, // 321: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.openssh_reload_count:type_name -> google.protobuf.UInt32Value
+	122, // 322: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.iptables_reload_count:type_name -> google.protobuf.UInt32Value
+	122, // 323: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.ebtables_reload_count:type_name -> google.protobuf.UInt32Value
+	122, // 324: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.traffic_control_reload_count:type_name -> google.protobuf.UInt32Value
+	122, // 325: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_reload_count:type_name -> google.protobuf.UInt32Value
+	122, // 326: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcpv6_reload_count:type_name -> google.protobuf.UInt32Value
+	122, // 327: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.system_reload_count:type_name -> google.protobuf.UInt32Value
+	122, // 328: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_reload_count:type_name -> google.protobuf.UInt32Value
+	122, // 329: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.https_reload_count:type_name -> google.protobuf.UInt32Value
+	122, // 330: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.band_steering_reload_count:type_name -> google.protobuf.UInt32Value
+	122, // 331: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.commit_count:type_name -> google.protobuf.UInt32Value
+	122, // 332: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.network_reload_count:type_name -> google.protobuf.UInt32Value
+	122, // 333: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.foreflight_reload_count:type_name -> google.protobuf.UInt32Value
+	127, // 334: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_bytes:type_name -> google.protobuf.Int64Value
+	127, // 335: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_packets:type_name -> google.protobuf.Int64Value
+	127, // 336: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_drops:type_name -> google.protobuf.Int64Value
+	127, // 337: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.wan_traffic_control_cake_ack_drops:type_name -> google.protobuf.Int64Value
+	122, // 338: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.conntrack_entries:type_name -> google.protobuf.UInt32Value
+	122, // 339: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_eq_0:type_name -> google.protobuf.UInt32Value
+	122, // 340: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_0:type_name -> google.protobuf.UInt32Value
+	122, // 341: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_10:type_name -> google.protobuf.UInt32Value
+	122, // 342: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_30:type_name -> google.protobuf.UInt32Value
+	122, // 343: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dhcp_secs_gt_60:type_name -> google.protobuf.UInt32Value
+	122, // 344: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards:type_name -> google.protobuf.UInt32Value
+	122, // 345: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_success:type_name -> google.protobuf.UInt32Value
+	122, // 346: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_server_failure:type_name -> google.protobuf.UInt32Value
+	122, // 347: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_no_server_response:type_name -> google.protobuf.UInt32Value
+	122, // 348: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_success_on_default_backup:type_name -> google.protobuf.UInt32Value
+	122, // 349: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_dropped:type_name -> google.protobuf.UInt32Value
+	122, // 350: SpaceX.API.Device.starlink_routers_hourly_metrics_v2.dns_forwards_with_backup:type_name -> google.protobuf.UInt32Value
+	123, // 351: SpaceX.API.Device.starlink_router_alerts.start:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	123, // 352: SpaceX.API.Device.starlink_router_alerts.end:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	123, // 353: SpaceX.API.Device.starlink_router_client_speedtests.data_record:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	121, // 354: SpaceX.API.Device.starlink_router_client_speedtests.speedtest_id:type_name -> google.protobuf.StringValue
+	125, // 355: SpaceX.API.Device.starlink_router_client_speedtests.client_rssi:type_name -> google.protobuf.FloatValue
+	125, // 356: SpaceX.API.Device.starlink_router_client_speedtests.router_rssi:type_name -> google.protobuf.FloatValue
+	122, // 357: SpaceX.API.Device.starlink_router_client_speedtests.client_iface:type_name -> google.protobuf.UInt32Value
+	121, // 358: SpaceX.API.Device.starlink_router_client_speedtests.client_oui:type_name -> google.protobuf.StringValue
+	122, // 359: SpaceX.API.Device.starlink_router_client_speedtests.client_tx_rate:type_name -> google.protobuf.UInt32Value
+	122, // 360: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_rate:type_name -> google.protobuf.UInt32Value
+	121, // 361: SpaceX.API.Device.starlink_router_client_speedtests.client_platform_type:type_name -> google.protobuf.StringValue
+	121, // 362: SpaceX.API.Device.starlink_router_client_speedtests.client_app_version:type_name -> google.protobuf.StringValue
+	122, // 363: SpaceX.API.Device.starlink_router_client_speedtests.client_app_build:type_name -> google.protobuf.UInt32Value
+	122, // 364: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_phy_mode:type_name -> google.protobuf.UInt32Value
+	122, // 365: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_spatial_streams:type_name -> google.protobuf.UInt32Value
+	122, // 366: SpaceX.API.Device.starlink_router_client_speedtests.client_rx_mcs:type_name -> google.protobuf.UInt32Value
+	123, // 367: SpaceX.API.Device.starlink_router_client_speedtests.client_download_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	123, // 368: SpaceX.API.Device.starlink_router_client_speedtests.client_upload_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	125, // 369: SpaceX.API.Device.starlink_router_client_speedtests.client_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 370: SpaceX.API.Device.starlink_router_client_speedtests.client_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	121, // 371: SpaceX.API.Device.starlink_router_client_speedtests.client_target:type_name -> google.protobuf.StringValue
+	122, // 372: SpaceX.API.Device.starlink_router_client_speedtests.client_tcp_streams:type_name -> google.protobuf.UInt32Value
+	123, // 373: SpaceX.API.Device.starlink_router_client_speedtests.router_download_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	123, // 374: SpaceX.API.Device.starlink_router_client_speedtests.router_upload_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	125, // 375: SpaceX.API.Device.starlink_router_client_speedtests.router_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 376: SpaceX.API.Device.starlink_router_client_speedtests.router_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	121, // 377: SpaceX.API.Device.starlink_router_client_speedtests.router_target:type_name -> google.protobuf.StringValue
+	122, // 378: SpaceX.API.Device.starlink_router_client_speedtests.router_tcp_streams:type_name -> google.protobuf.UInt32Value
+	123, // 379: SpaceX.API.Device.starlink_router_client_speedtests.wifi_download_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	123, // 380: SpaceX.API.Device.starlink_router_client_speedtests.wifi_upload_start_time:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	125, // 381: SpaceX.API.Device.starlink_router_client_speedtests.wifi_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 382: SpaceX.API.Device.starlink_router_client_speedtests.wifi_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	123, // 383: SpaceX.API.Device.StarlinkRouterClients.timestamp:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	121, // 384: SpaceX.API.Device.StarlinkRouterClients.router_hw:type_name -> google.protobuf.StringValue
+	121, // 385: SpaceX.API.Device.StarlinkRouterClients.router_sw:type_name -> google.protobuf.StringValue
+	122, // 386: SpaceX.API.Device.StarlinkRouterClients.router_uptime_s:type_name -> google.protobuf.UInt32Value
+	121, // 387: SpaceX.API.Device.StarlinkRouterClients.client_router_id:type_name -> google.protobuf.StringValue
+	121, // 388: SpaceX.API.Device.StarlinkRouterClients.client_hw:type_name -> google.protobuf.StringValue
+	121, // 389: SpaceX.API.Device.StarlinkRouterClients.client_sw:type_name -> google.protobuf.StringValue
+	121, // 390: SpaceX.API.Device.StarlinkRouterClients.oui:type_name -> google.protobuf.StringValue
+	121, // 391: SpaceX.API.Device.StarlinkRouterClients.upstream_id:type_name -> google.protobuf.StringValue
+	124, // 392: SpaceX.API.Device.StarlinkRouterClients.is_repeater:type_name -> google.protobuf.BoolValue
+	122, // 393: SpaceX.API.Device.StarlinkRouterClients.connected_s:type_name -> google.protobuf.UInt32Value
+	121, // 394: SpaceX.API.Device.StarlinkRouterClients.interface:type_name -> google.protobuf.StringValue
+	122, // 395: SpaceX.API.Device.StarlinkRouterClients.radio_channel:type_name -> google.protobuf.UInt32Value
+	125, // 396: SpaceX.API.Device.StarlinkRouterClients.rssi:type_name -> google.protobuf.FloatValue
+	122, // 397: SpaceX.API.Device.StarlinkRouterClients.rx_mcs:type_name -> google.protobuf.UInt32Value
+	122, // 398: SpaceX.API.Device.StarlinkRouterClients.tx_mcs:type_name -> google.protobuf.UInt32Value
+	122, // 399: SpaceX.API.Device.StarlinkRouterClients.rx_rate:type_name -> google.protobuf.UInt32Value
+	122, // 400: SpaceX.API.Device.StarlinkRouterClients.tx_rate:type_name -> google.protobuf.UInt32Value
+	122, // 401: SpaceX.API.Device.StarlinkRouterClients.rx_bandwidth:type_name -> google.protobuf.UInt32Value
+	122, // 402: SpaceX.API.Device.StarlinkRouterClients.rx_spatial_streams:type_name -> google.protobuf.UInt32Value
+	122, // 403: SpaceX.API.Device.StarlinkRouterClients.rx_phy_mode:type_name -> google.protobuf.UInt32Value
+	122, // 404: SpaceX.API.Device.StarlinkRouterClients.mesh_hops:type_name -> google.protobuf.UInt32Value
+	125, // 405: SpaceX.API.Device.StarlinkRouterClients.speedtest_upload_mbps:type_name -> google.protobuf.FloatValue
+	125, // 406: SpaceX.API.Device.StarlinkRouterClients.speedtest_download_mbps:type_name -> google.protobuf.FloatValue
+	125, // 407: SpaceX.API.Device.StarlinkRouterClients.site_survey_rssi:type_name -> google.protobuf.FloatValue
+	125, // 408: SpaceX.API.Device.StarlinkRouterClients.site_survey_est_rx_rate:type_name -> google.protobuf.FloatValue
+	122, // 409: SpaceX.API.Device.StarlinkRouterClients.est_controller_throughput_mbps:type_name -> google.protobuf.UInt32Value
+	125, // 410: SpaceX.API.Device.StarlinkRouterClients.ping_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
+	125, // 411: SpaceX.API.Device.StarlinkRouterClients.ping_latency_last_1h:type_name -> google.protobuf.FloatValue
+	121, // 412: SpaceX.API.Device.StarlinkRouterClients.steer_state:type_name -> google.protobuf.StringValue
+	124, // 413: SpaceX.API.Device.StarlinkRouterClients.blocked:type_name -> google.protobuf.BoolValue
+	123, // 414: SpaceX.API.Device.StarlinkRouterClients.throughput_limited_last_fired:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	124, // 415: SpaceX.API.Device.StarlinkRouterClients.has_dhcp_v4_lease:type_name -> google.protobuf.BoolValue
+	121, // 416: SpaceX.API.Device.StarlinkRouterClients.ipv4_address:type_name -> google.protobuf.StringValue
+	124, // 417: SpaceX.API.Device.StarlinkRouterClients.has_hostname:type_name -> google.protobuf.BoolValue
+	124, // 418: SpaceX.API.Device.StarlinkRouterClients.dhcp_v4_lease_is_active:type_name -> google.protobuf.BoolValue
+	124, // 419: SpaceX.API.Device.StarlinkRouterClients.dhcp_v4_lease_was_renewed:type_name -> google.protobuf.BoolValue
+	125, // 420: SpaceX.API.Device.StarlinkRouterClients.seconds_until_dhcp_v4_lease_expires:type_name -> google.protobuf.FloatValue
+	122, // 421: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_10s:type_name -> google.protobuf.UInt32Value
+	122, // 422: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_30s:type_name -> google.protobuf.UInt32Value
+	122, // 423: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_60s:type_name -> google.protobuf.UInt32Value
+	122, // 424: SpaceX.API.Device.StarlinkRouterClients.dissociations_under_120s:type_name -> google.protobuf.UInt32Value
+	125, // 425: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_tcp_ipv4:type_name -> google.protobuf.FloatValue
+	125, // 426: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_tcp_ipv6:type_name -> google.protobuf.FloatValue
+	125, // 427: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_udp_ipv4:type_name -> google.protobuf.FloatValue
+	125, // 428: SpaceX.API.Device.StarlinkRouterClients.seconds_to_conn_udp_ipv6:type_name -> google.protobuf.FloatValue
+	122, // 429: SpaceX.API.Device.StarlinkRouterClients.flows_tcp_ipv4:type_name -> google.protobuf.UInt32Value
+	122, // 430: SpaceX.API.Device.StarlinkRouterClients.flows_tcp_ipv6:type_name -> google.protobuf.UInt32Value
+	122, // 431: SpaceX.API.Device.StarlinkRouterClients.flows_udp_ipv4:type_name -> google.protobuf.UInt32Value
+	122, // 432: SpaceX.API.Device.StarlinkRouterClients.flows_udp_ipv6:type_name -> google.protobuf.UInt32Value
+	123, // 433: SpaceX.API.Device.StarlinkRouterClientTesterRun.timestamp:type_name -> SpaceX.API.Telemetron.Public.Common.TimestampInfo
+	121, // 434: SpaceX.API.Device.StarlinkRouterClientTesterRun.client_iface_name:type_name -> google.protobuf.StringValue
+	121, // 435: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_ssid:type_name -> google.protobuf.StringValue
+	124, // 436: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_has_password:type_name -> google.protobuf.BoolValue
+	121, // 437: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_auth:type_name -> google.protobuf.StringValue
+	121, // 438: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_encryption:type_name -> google.protobuf.StringValue
+	121, // 439: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_bssid:type_name -> google.protobuf.StringValue
+	121, // 440: SpaceX.API.Device.StarlinkRouterClientTesterRun.target_irtt_server:type_name -> google.protobuf.StringValue
+	122, // 441: SpaceX.API.Device.StarlinkRouterClientTesterRun.iteration:type_name -> google.protobuf.UInt32Value
+	121, // 442: SpaceX.API.Device.StarlinkRouterClientTesterRun.error_code:type_name -> google.protobuf.StringValue
+	125, // 443: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_associate:type_name -> google.protobuf.FloatValue
+	125, // 444: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_lease:type_name -> google.protobuf.FloatValue
+	125, // 445: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_resolve_router:type_name -> google.protobuf.FloatValue
+	125, // 446: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_resolve_internet:type_name -> google.protobuf.FloatValue
+	125, // 447: SpaceX.API.Device.StarlinkRouterClientTesterRun.seconds_to_ping_dish:type_name -> google.protobuf.FloatValue
+	125, // 448: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_test_duration_s:type_name -> google.protobuf.FloatValue
+	125, // 449: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_min_ms:type_name -> google.protobuf.FloatValue
+	125, // 450: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_mean_ms:type_name -> google.protobuf.FloatValue
+	125, // 451: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_median_ms:type_name -> google.protobuf.FloatValue
+	125, // 452: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_max_ms:type_name -> google.protobuf.FloatValue
+	125, // 453: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_rtt_latency_std_dev_ms:type_name -> google.protobuf.FloatValue
+	122, // 454: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_pkts_sent:type_name -> google.protobuf.UInt32Value
+	122, // 455: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_pkts_recv:type_name -> google.protobuf.UInt32Value
+	125, // 456: SpaceX.API.Device.StarlinkRouterClientTesterRun.v4_irtt_loss_percent:type_name -> google.protobuf.FloatValue
+	128, // 457: SpaceX.API.Device.WifiSetClientGivenNameRequest.client_name:type_name -> SpaceX.API.Device.ClientName
+	129, // 458: SpaceX.API.Device.WifiSetClientGivenNameRequest.client_config:type_name -> SpaceX.API.Device.ClientConfig
+	19,  // 459: SpaceX.API.Device.WifiSelfTestResponse.self_test:type_name -> SpaceX.API.Device.WifiSelfTest
+	121, // 460: SpaceX.API.Device.starlink_router_hourly_metrics_v2.id:type_name -> google.protobuf.StringValue
+	121, // 461: SpaceX.API.Device.starlink_router_hourly_metrics_v2.timestamp_date:type_name -> google.protobuf.StringValue
+	122, // 462: SpaceX.API.Device.starlink_router_hourly_metrics_v2.timestamp_hour:type_name -> google.protobuf.UInt32Value
+	122, // 463: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_hw_gen:type_name -> google.protobuf.UInt32Value
+	121, // 464: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_sw:type_name -> google.protobuf.StringValue
+	121, // 465: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_country:type_name -> google.protobuf.StringValue
+	124, // 466: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_is_dev:type_name -> google.protobuf.BoolValue
+	122, // 467: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_alloc_fds:type_name -> google.protobuf.UInt32Value
+	125, // 468: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_cpu_usage:type_name -> google.protobuf.FloatValue
+	125, // 469: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_mem_free_kb:type_name -> google.protobuf.FloatValue
+	126, // 470: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_bootcount:type_name -> google.protobuf.Int32Value
+	124, // 471: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_partitions_equal:type_name -> google.protobuf.BoolValue
+	122, // 472: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_uptime_seconds:type_name -> google.protobuf.UInt32Value
+	126, // 473: SpaceX.API.Device.starlink_router_hourly_metrics_v2.sys_anti_rollback_version:type_name -> google.protobuf.Int32Value
+	122, // 474: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_channel:type_name -> google.protobuf.UInt32Value
+	125, // 475: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
+	125, // 476: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
+	125, // 477: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
+	122, // 478: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_iface_count:type_name -> google.protobuf.UInt32Value
+	125, // 479: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
+	125, // 480: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
+	125, // 481: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
+	122, // 482: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_bytes:type_name -> google.protobuf.UInt32Value
+	122, // 483: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_packets:type_name -> google.protobuf.UInt32Value
+	122, // 484: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_errors:type_name -> google.protobuf.UInt32Value
+	122, // 485: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_frame_errors:type_name -> google.protobuf.UInt32Value
+	125, // 486: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	125, // 487: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	122, // 488: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_bytes:type_name -> google.protobuf.UInt32Value
+	122, // 489: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_packets:type_name -> google.protobuf.UInt32Value
+	122, // 490: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_errors:type_name -> google.protobuf.UInt32Value
+	125, // 491: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	125, // 492: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	122, // 493: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_channel:type_name -> google.protobuf.UInt32Value
+	125, // 494: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_antenna1_rssi:type_name -> google.protobuf.FloatValue
+	125, // 495: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_antenna2_rssi:type_name -> google.protobuf.FloatValue
+	125, // 496: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_antenna3_rssi:type_name -> google.protobuf.FloatValue
+	122, // 497: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_iface_count:type_name -> google.protobuf.UInt32Value
+	125, // 498: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_chan_busy_fraction:type_name -> google.protobuf.FloatValue
+	125, // 499: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_edcca_fraction:type_name -> google.protobuf.FloatValue
+	125, // 500: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_overlapping_bss_fraction:type_name -> google.protobuf.FloatValue
+	122, // 501: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_bytes:type_name -> google.protobuf.UInt32Value
+	122, // 502: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_packets:type_name -> google.protobuf.UInt32Value
+	122, // 503: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_errors:type_name -> google.protobuf.UInt32Value
+	122, // 504: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_frame_errors:type_name -> google.protobuf.UInt32Value
+	125, // 505: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	125, // 506: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_rx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	122, // 507: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_bytes:type_name -> google.protobuf.UInt32Value
+	122, // 508: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_packets:type_name -> google.protobuf.UInt32Value
+	122, // 509: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_errors:type_name -> google.protobuf.UInt32Value
+	125, // 510: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_packet_error_rate:type_name -> google.protobuf.FloatValue
+	125, // 511: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_tx_airtime_fraction:type_name -> google.protobuf.FloatValue
+	125, // 512: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_thermal_temp:type_name -> google.protobuf.FloatValue
+	125, // 513: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_thermal_temp:type_name -> google.protobuf.FloatValue
+	125, // 514: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
+	125, // 515: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_thermal_duty_cycle:type_name -> google.protobuf.FloatValue
+	122, // 516: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_2ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
+	122, // 517: SpaceX.API.Device.starlink_router_hourly_metrics_v2.radios_5ghz_thermal_throttled_seconds:type_name -> google.protobuf.UInt32Value
+	122, // 518: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_bytes:type_name -> google.protobuf.UInt32Value
+	122, // 519: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_packets:type_name -> google.protobuf.UInt32Value
+	122, // 520: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_errors:type_name -> google.protobuf.UInt32Value
+	122, // 521: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_rx_frame_errors:type_name -> google.protobuf.UInt32Value
+	122, // 522: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_tx_bytes:type_name -> google.protobuf.UInt32Value
+	122, // 523: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_tx_packets:type_name -> google.protobuf.UInt32Value
+	122, // 524: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_lan_eth_tx_errors:type_name -> google.protobuf.UInt32Value
+	122, // 525: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_bytes:type_name -> google.protobuf.UInt32Value
+	122, // 526: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_packets:type_name -> google.protobuf.UInt32Value
+	122, // 527: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_errors:type_name -> google.protobuf.UInt32Value
+	122, // 528: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_rx_frame_errors:type_name -> google.protobuf.UInt32Value
+	122, // 529: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_tx_bytes:type_name -> google.protobuf.UInt32Value
+	122, // 530: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_tx_packets:type_name -> google.protobuf.UInt32Value
+	122, // 531: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ifaces_wan_eth_tx_errors:type_name -> google.protobuf.UInt32Value
+	122, // 532: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients:type_name -> google.protobuf.UInt32Value
+	122, // 533: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_2ghz:type_name -> google.protobuf.UInt32Value
+	122, // 534: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_5ghz:type_name -> google.protobuf.UInt32Value
+	122, // 535: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_eth:type_name -> google.protobuf.UInt32Value
+	122, // 536: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater:type_name -> google.protobuf.UInt32Value
+	122, // 537: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater_2ghz:type_name -> google.protobuf.UInt32Value
+	122, // 538: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater_5ghz:type_name -> google.protobuf.UInt32Value
+	122, // 539: SpaceX.API.Device.starlink_router_hourly_metrics_v2.clients_repeater_eth:type_name -> google.protobuf.UInt32Value
+	122, // 540: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_hops:type_name -> google.protobuf.UInt32Value
+	125, // 541: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_one_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
+	125, // 542: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_one_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
+	125, // 543: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_two_hop_rssi_avg_2ghz:type_name -> google.protobuf.FloatValue
+	125, // 544: SpaceX.API.Device.starlink_router_hourly_metrics_v2.mesh_two_hop_rssi_avg_5ghz:type_name -> google.protobuf.FloatValue
+	125, // 545: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
+	125, // 546: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
+	125, // 547: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
+	125, // 548: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
+	125, // 549: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
+	125, // 550: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_drop_rate:type_name -> google.protobuf.FloatValue
+	125, // 551: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
+	125, // 552: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_latency:type_name -> google.protobuf.FloatValue
+	125, // 553: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_1s_outage:type_name -> google.protobuf.FloatValue
+	125, // 554: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_2s_outage:type_name -> google.protobuf.FloatValue
+	125, // 555: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_5s_outage:type_name -> google.protobuf.FloatValue
+	125, // 556: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_60s_outage:type_name -> google.protobuf.FloatValue
+	125, // 557: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_seconds_since_last_300s_outage:type_name -> google.protobuf.FloatValue
+	125, // 558: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_drop_rate:type_name -> google.protobuf.FloatValue
+	125, // 559: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_drop_rate_last_1h:type_name -> google.protobuf.FloatValue
+	125, // 560: SpaceX.API.Device.starlink_router_hourly_metrics_v2.ping_dish_latency:type_name -> google.protobuf.FloatValue
+	125, // 561: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_router_download_mbps:type_name -> google.protobuf.FloatValue
+	125, // 562: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_router_upload_mbps:type_name -> google.protobuf.FloatValue
+	125, // 563: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_router_rssi:type_name -> google.protobuf.FloatValue
+	125, // 564: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_wifi_download_mbps:type_name -> google.protobuf.FloatValue
+	125, // 565: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_wifi_upload_mbps:type_name -> google.protobuf.FloatValue
+	125, // 566: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_download_mbps:type_name -> google.protobuf.FloatValue
+	125, // 567: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_upload_mbps:type_name -> google.protobuf.FloatValue
+	125, // 568: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_rssi:type_name -> google.protobuf.FloatValue
+	122, // 569: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_iface:type_name -> google.protobuf.UInt32Value
+	121, // 570: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_oui:type_name -> google.protobuf.StringValue
+	122, // 571: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_tx_rate:type_name -> google.protobuf.UInt32Value
+	122, // 572: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_rx_rate:type_name -> google.protobuf.UInt32Value
+	122, // 573: SpaceX.API.Device.starlink_router_hourly_metrics_v2.client_speedtest_client_platform_type:type_name -> google.protobuf.UInt32Value
+	125, // 574: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 575: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_download_mbps_max:type_name -> google.protobuf.FloatValue
+	125, // 576: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 577: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_8_upload_mbps_max:type_name -> google.protobuf.FloatValue
+	125, // 578: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_download_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 579: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_download_mbps_max:type_name -> google.protobuf.FloatValue
+	125, // 580: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_avg:type_name -> google.protobuf.FloatValue
+	125, // 581: SpaceX.API.Device.starlink_router_hourly_metrics_v2.speedtest_tcp_64_upload_mbps_max:type_name -> google.protobuf.FloatValue
+	122, // 582: SpaceX.API.Device.starlink_router_hourly_metrics_v2.dish_cell_id:type_name -> google.protobuf.UInt32Value
+	124, // 583: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_setup_complete:type_name -> google.protobuf.BoolValue
+	124, // 584: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_bands_split:type_name -> google.protobuf.BoolValue
+	124, // 585: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_is_repeater:type_name -> google.protobuf.BoolValue
+	124, // 586: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_open_network:type_name -> google.protobuf.BoolValue
+	124, // 587: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_is_aviation:type_name -> google.protobuf.BoolValue
+	124, // 588: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_secure_dns:type_name -> google.protobuf.BoolValue
+	124, // 589: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_legacy:type_name -> google.protobuf.BoolValue
+	124, // 590: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_ap_mode:type_name -> google.protobuf.BoolValue
+	124, // 591: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_dfs_enabled:type_name -> google.protobuf.BoolValue
+	124, // 592: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_network_name_is_default:type_name -> google.protobuf.BoolValue
+	124, // 593: SpaceX.API.Device.starlink_router_hourly_metrics_v2.config_remote_ssh_enabled:type_name -> google.protobuf.BoolValue
+	72,  // 594: SpaceX.API.Device.WifiFactoryTestCommandRequest.iwpriv_command:type_name -> SpaceX.API.Device.IwprivCommand
+	73,  // 595: SpaceX.API.Device.WifiFactoryTestCommandRequest.ip_link_set_command:type_name -> SpaceX.API.Device.IpLinkSetCommand
+	74,  // 596: SpaceX.API.Device.WifiFactoryTestCommandRequest.ip_addr_set_command:type_name -> SpaceX.API.Device.IpAddrSetCommand
+	6,   // 597: SpaceX.API.Device.IwprivCommand.ioctl:type_name -> SpaceX.API.Device.IwprivCommand.Ioctl
+	102, // 598: SpaceX.API.Device.WifiBackhaulStatsResponse.iface:type_name -> SpaceX.API.Device.IfaceType
+	13,  // 599: SpaceX.API.Device.WifiBackhaulStatsResponse.siteSurveyScan:type_name -> SpaceX.API.Device.WifiSiteSurveyResult
+	113, // 600: SpaceX.API.Device.WifiUpdateResponse.stats:type_name -> SpaceX.API.Device.WifiSoftwareUpdateStats
+	90,  // 601: SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverDropRateEntry.value:type_name -> SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverHistory
+	8,   // 602: SpaceX.API.Device.Mesh.MeshStream:input_type -> SpaceX.API.Device.ToController
+	16,  // 603: SpaceX.API.Device.Mesh.MeshStream:output_type -> SpaceX.API.Device.FromController
+	603, // [603:604] is the sub-list for method output_type
+	602, // [602:603] is the sub-list for method input_type
+	602, // [602:602] is the sub-list for extension type_name
+	602, // [602:602] is the sub-list for extension extendee
+	0,   // [0:602] is the sub-list for field type_name
 }
 
 func init() { file_spacex_api_device_wifi_proto_init() }
@@ -12587,7 +12837,7 @@ func file_spacex_api_device_wifi_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_spacex_api_device_wifi_proto_rawDesc), len(file_spacex_api_device_wifi_proto_rawDesc)),
-			NumEnums:      5,
+			NumEnums:      7,
 			NumMessages:   92,
 			NumExtensions: 0,
 			NumServices:   1,

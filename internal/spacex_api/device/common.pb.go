@@ -208,6 +208,7 @@ const (
 	EventReason_EVENT_REASON_ROUTER_CONNTRACK_FULL               EventReason = 39
 	EventReason_EVENT_REASON_ROUTER_DISH_PING_DROP               EventReason = 40
 	EventReason_EVENT_REASON_ROUTER_UT_CONNECTED_TO_LAN          EventReason = 41
+	EventReason_EVENT_REASON_CLIENT_RECONNECTING_OFTEN           EventReason = 42
 )
 
 // Enum value maps for EventReason.
@@ -255,6 +256,7 @@ var (
 		39: "EVENT_REASON_ROUTER_CONNTRACK_FULL",
 		40: "EVENT_REASON_ROUTER_DISH_PING_DROP",
 		41: "EVENT_REASON_ROUTER_UT_CONNECTED_TO_LAN",
+		42: "EVENT_REASON_CLIENT_RECONNECTING_OFTEN",
 	}
 	EventReason_value = map[string]int32{
 		"EVENT_REASON_UNKNOWN":                              0,
@@ -299,6 +301,7 @@ var (
 		"EVENT_REASON_ROUTER_CONNTRACK_FULL":                39,
 		"EVENT_REASON_ROUTER_DISH_PING_DROP":                40,
 		"EVENT_REASON_ROUTER_UT_CONNECTED_TO_LAN":           41,
+		"EVENT_REASON_CLIENT_RECONNECTING_OFTEN":            42,
 	}
 )
 
@@ -341,6 +344,8 @@ const (
 	HardwareIndex_ROUTER_BLOCK_4         HardwareIndex = 1031
 	HardwareIndex_ROUTER_BLOCK_4P1       HardwareIndex = 1032
 	HardwareIndex_ROUTER_MINI_1          HardwareIndex = 1040
+	HardwareIndex_ROUTER_MINI_COHOUSED_2 HardwareIndex = 1041
+	HardwareIndex_ROUTER_GEN_4           HardwareIndex = 1050
 )
 
 // Enum value maps for HardwareIndex.
@@ -355,6 +360,8 @@ var (
 		1031: "ROUTER_BLOCK_4",
 		1032: "ROUTER_BLOCK_4P1",
 		1040: "ROUTER_MINI_1",
+		1041: "ROUTER_MINI_COHOUSED_2",
+		1050: "ROUTER_GEN_4",
 	}
 	HardwareIndex_value = map[string]int32{
 		"UNKNOWN_HARDWARE_INDEX": 0,
@@ -366,6 +373,8 @@ var (
 		"ROUTER_BLOCK_4":         1031,
 		"ROUTER_BLOCK_4P1":       1032,
 		"ROUTER_MINI_1":          1040,
+		"ROUTER_MINI_COHOUSED_2": 1041,
+		"ROUTER_GEN_4":           1050,
 	}
 )
 
@@ -1997,8 +2006,12 @@ type UXEvent struct {
 	Reason           EventReason            `protobuf:"varint,2,opt,name=reason,proto3,enum=SpaceX.API.Device.EventReason" json:"reason,omitempty"`
 	StartTimestampNs int64                  `protobuf:"varint,3,opt,name=start_timestamp_ns,json=startTimestampNs,proto3" json:"start_timestamp_ns,omitempty"`
 	DurationNs       uint64                 `protobuf:"varint,4,opt,name=duration_ns,json=durationNs,proto3" json:"duration_ns,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	// Types that are valid to be assigned to Metadata:
+	//
+	//	*UXEvent_ClientReconnectingOftenMetadata
+	Metadata      isUXEvent_Metadata `protobuf_oneof:"metadata"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UXEvent) Reset() {
@@ -2059,6 +2072,76 @@ func (x *UXEvent) GetDurationNs() uint64 {
 	return 0
 }
 
+func (x *UXEvent) GetMetadata() isUXEvent_Metadata {
+	if x != nil {
+		return x.Metadata
+	}
+	return nil
+}
+
+func (x *UXEvent) GetClientReconnectingOftenMetadata() *ClientReconnectingOftenMetadata {
+	if x != nil {
+		if x, ok := x.Metadata.(*UXEvent_ClientReconnectingOftenMetadata); ok {
+			return x.ClientReconnectingOftenMetadata
+		}
+	}
+	return nil
+}
+
+type isUXEvent_Metadata interface {
+	isUXEvent_Metadata()
+}
+
+type UXEvent_ClientReconnectingOftenMetadata struct {
+	ClientReconnectingOftenMetadata *ClientReconnectingOftenMetadata `protobuf:"bytes,5,opt,name=client_reconnecting_often_metadata,json=clientReconnectingOftenMetadata,proto3,oneof"`
+}
+
+func (*UXEvent_ClientReconnectingOftenMetadata) isUXEvent_Metadata() {}
+
+type ClientReconnectingOftenMetadata struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ClientId      uint32                 `protobuf:"varint,1,opt,name=clientId,proto3" json:"clientId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ClientReconnectingOftenMetadata) Reset() {
+	*x = ClientReconnectingOftenMetadata{}
+	mi := &file_spacex_api_device_common_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ClientReconnectingOftenMetadata) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ClientReconnectingOftenMetadata) ProtoMessage() {}
+
+func (x *ClientReconnectingOftenMetadata) ProtoReflect() protoreflect.Message {
+	mi := &file_spacex_api_device_common_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ClientReconnectingOftenMetadata.ProtoReflect.Descriptor instead.
+func (*ClientReconnectingOftenMetadata) Descriptor() ([]byte, []int) {
+	return file_spacex_api_device_common_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *ClientReconnectingOftenMetadata) GetClientId() uint32 {
+	if x != nil {
+		return x.ClientId
+	}
+	return 0
+}
+
 type NetworkInterface_RxStats struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Bytes         uint64                 `protobuf:"varint,1,opt,name=bytes,proto3" json:"bytes,omitempty"`
@@ -2070,7 +2153,7 @@ type NetworkInterface_RxStats struct {
 
 func (x *NetworkInterface_RxStats) Reset() {
 	*x = NetworkInterface_RxStats{}
-	mi := &file_spacex_api_device_common_proto_msgTypes[26]
+	mi := &file_spacex_api_device_common_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2082,7 +2165,7 @@ func (x *NetworkInterface_RxStats) String() string {
 func (*NetworkInterface_RxStats) ProtoMessage() {}
 
 func (x *NetworkInterface_RxStats) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_common_proto_msgTypes[26]
+	mi := &file_spacex_api_device_common_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2129,7 +2212,7 @@ type NetworkInterface_TxStats struct {
 
 func (x *NetworkInterface_TxStats) Reset() {
 	*x = NetworkInterface_TxStats{}
-	mi := &file_spacex_api_device_common_proto_msgTypes[27]
+	mi := &file_spacex_api_device_common_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2141,7 +2224,7 @@ func (x *NetworkInterface_TxStats) String() string {
 func (*NetworkInterface_TxStats) ProtoMessage() {}
 
 func (x *NetworkInterface_TxStats) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_common_proto_msgTypes[27]
+	mi := &file_spacex_api_device_common_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2184,7 +2267,7 @@ type WifiNetworkInterface_InvalidPacketCounts struct {
 
 func (x *WifiNetworkInterface_InvalidPacketCounts) Reset() {
 	*x = WifiNetworkInterface_InvalidPacketCounts{}
-	mi := &file_spacex_api_device_common_proto_msgTypes[28]
+	mi := &file_spacex_api_device_common_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2196,7 +2279,7 @@ func (x *WifiNetworkInterface_InvalidPacketCounts) String() string {
 func (*WifiNetworkInterface_InvalidPacketCounts) ProtoMessage() {}
 
 func (x *WifiNetworkInterface_InvalidPacketCounts) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_common_proto_msgTypes[28]
+	mi := &file_spacex_api_device_common_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2398,13 +2481,18 @@ const file_spacex_api_device_common_proto_rawDesc = "" +
 	"\bEventLog\x122\n" +
 	"\x06events\x18\x01 \x03(\v2\x1a.SpaceX.API.Device.UXEventR\x06events\x12,\n" +
 	"\x12start_timestamp_ns\x18\x02 \x01(\x03R\x10startTimestampNs\x120\n" +
-	"\x14current_timestamp_ns\x18\x03 \x01(\x03R\x12currentTimestampNs\"\xce\x01\n" +
+	"\x14current_timestamp_ns\x18\x03 \x01(\x03R\x12currentTimestampNs\"\xde\x02\n" +
 	"\aUXEvent\x12<\n" +
 	"\bseverity\x18\x01 \x01(\x0e2 .SpaceX.API.Device.EventSeverityR\bseverity\x126\n" +
 	"\x06reason\x18\x02 \x01(\x0e2\x1e.SpaceX.API.Device.EventReasonR\x06reason\x12,\n" +
 	"\x12start_timestamp_ns\x18\x03 \x01(\x03R\x10startTimestampNs\x12\x1f\n" +
 	"\vduration_ns\x18\x04 \x01(\x04R\n" +
-	"durationNs*\x8a\x03\n" +
+	"durationNs\x12\x81\x01\n" +
+	"\"client_reconnecting_often_metadata\x18\x05 \x01(\v22.SpaceX.API.Device.ClientReconnectingOftenMetadataH\x00R\x1fclientReconnectingOftenMetadataB\n" +
+	"\n" +
+	"\bmetadata\"=\n" +
+	"\x1fClientReconnectingOftenMetadata\x12\x1a\n" +
+	"\bclientId\x18\x01 \x01(\rR\bclientId*\x8a\x03\n" +
 	"\n" +
 	"BootReason\x12\x17\n" +
 	"\x13BOOT_REASON_UNKNOWN\x10\x00\x12\r\n" +
@@ -2429,7 +2517,7 @@ const file_spacex_api_device_common_proto_rawDesc = "" +
 	"\x16EVENT_SEVERITY_UNKNOWN\x10\x00\x12\x1a\n" +
 	"\x16EVENT_SEVERITY_WARNING\x10\x01\x12\x1a\n" +
 	"\x16EVENT_SEVERITY_CAUTION\x10\x02\x12\x1b\n" +
-	"\x17EVENT_SEVERITY_ADVISORY\x10\x03*\x88\x0e\n" +
+	"\x17EVENT_SEVERITY_ADVISORY\x10\x03*\xb4\x0e\n" +
 	"\vEventReason\x12\x18\n" +
 	"\x14EVENT_REASON_UNKNOWN\x10\x00\x12\x1f\n" +
 	"\x1bEVENT_REASON_OUTAGE_UNKNOWN\x10\x01\x12\x1f\n" +
@@ -2473,7 +2561,8 @@ const file_spacex_api_device_common_proto_rawDesc = "" +
 	"0EVENT_REASON_ROUTER_MESH_TOPOLOGY_CHANGING_OFTEN\x10&\x12&\n" +
 	"\"EVENT_REASON_ROUTER_CONNTRACK_FULL\x10'\x12&\n" +
 	"\"EVENT_REASON_ROUTER_DISH_PING_DROP\x10(\x12+\n" +
-	"'EVENT_REASON_ROUTER_UT_CONNECTED_TO_LAN\x10)*\xdb\x01\n" +
+	"'EVENT_REASON_ROUTER_UT_CONNECTED_TO_LAN\x10)\x12*\n" +
+	"&EVENT_REASON_CLIENT_RECONNECTING_OFTEN\x10**\x8b\x02\n" +
 	"\rHardwareIndex\x12\x1a\n" +
 	"\x16UNKNOWN_HARDWARE_INDEX\x10\x00\x12\x11\n" +
 	"\fROUTER_GEN_1\x10\xf2\a\x12\x11\n" +
@@ -2483,7 +2572,9 @@ const file_spacex_api_device_common_proto_rawDesc = "" +
 	"\fROUTER_GEN_3\x10\x86\b\x12\x13\n" +
 	"\x0eROUTER_BLOCK_4\x10\x87\b\x12\x15\n" +
 	"\x10ROUTER_BLOCK_4P1\x10\x88\b\x12\x12\n" +
-	"\rROUTER_MINI_1\x10\x90\bB\x17Z\x15spacex.com/api/deviceb\x06proto3"
+	"\rROUTER_MINI_1\x10\x90\b\x12\x1b\n" +
+	"\x16ROUTER_MINI_COHOUSED_2\x10\x91\b\x12\x11\n" +
+	"\fROUTER_GEN_4\x10\x9a\bB\x17Z\x15spacex.com/api/deviceb\x06proto3"
 
 var (
 	file_spacex_api_device_common_proto_rawDescOnce sync.Once
@@ -2498,7 +2589,7 @@ func file_spacex_api_device_common_proto_rawDescGZIP() []byte {
 }
 
 var file_spacex_api_device_common_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
-var file_spacex_api_device_common_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
+var file_spacex_api_device_common_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
 var file_spacex_api_device_common_proto_goTypes = []any{
 	(BootReason)(0),                                  // 0: SpaceX.API.Device.BootReason
 	(EventSeverity)(0),                               // 1: SpaceX.API.Device.EventSeverity
@@ -2529,35 +2620,37 @@ var file_spacex_api_device_common_proto_goTypes = []any{
 	(*SoftwareUpdateResponse)(nil),                   // 26: SpaceX.API.Device.SoftwareUpdateResponse
 	(*EventLog)(nil),                                 // 27: SpaceX.API.Device.EventLog
 	(*UXEvent)(nil),                                  // 28: SpaceX.API.Device.UXEvent
-	nil,                                              // 29: SpaceX.API.Device.BootInfo.CountByReasonEntry
-	nil,                                              // 30: SpaceX.API.Device.BootInfo.CountByReasonDeltaEntry
-	(*NetworkInterface_RxStats)(nil),                 // 31: SpaceX.API.Device.NetworkInterface.RxStats
-	(*NetworkInterface_TxStats)(nil),                 // 32: SpaceX.API.Device.NetworkInterface.TxStats
-	(*WifiNetworkInterface_InvalidPacketCounts)(nil), // 33: SpaceX.API.Device.WifiNetworkInterface.InvalidPacketCounts
+	(*ClientReconnectingOftenMetadata)(nil),          // 29: SpaceX.API.Device.ClientReconnectingOftenMetadata
+	nil,                                              // 30: SpaceX.API.Device.BootInfo.CountByReasonEntry
+	nil,                                              // 31: SpaceX.API.Device.BootInfo.CountByReasonDeltaEntry
+	(*NetworkInterface_RxStats)(nil),                 // 32: SpaceX.API.Device.NetworkInterface.RxStats
+	(*NetworkInterface_TxStats)(nil),                 // 33: SpaceX.API.Device.NetworkInterface.TxStats
+	(*WifiNetworkInterface_InvalidPacketCounts)(nil), // 34: SpaceX.API.Device.WifiNetworkInterface.InvalidPacketCounts
 }
 var file_spacex_api_device_common_proto_depIdxs = []int32{
 	3,  // 0: SpaceX.API.Device.DeviceInfo.hardware_index:type_name -> SpaceX.API.Device.HardwareIndex
 	10, // 1: SpaceX.API.Device.DeviceInfo.boot:type_name -> SpaceX.API.Device.BootInfo
-	29, // 2: SpaceX.API.Device.BootInfo.count_by_reason:type_name -> SpaceX.API.Device.BootInfo.CountByReasonEntry
-	30, // 3: SpaceX.API.Device.BootInfo.count_by_reason_delta:type_name -> SpaceX.API.Device.BootInfo.CountByReasonDeltaEntry
+	30, // 2: SpaceX.API.Device.BootInfo.count_by_reason:type_name -> SpaceX.API.Device.BootInfo.CountByReasonEntry
+	31, // 3: SpaceX.API.Device.BootInfo.count_by_reason_delta:type_name -> SpaceX.API.Device.BootInfo.CountByReasonDeltaEntry
 	0,  // 4: SpaceX.API.Device.BootInfo.last_reason:type_name -> SpaceX.API.Device.BootReason
 	11, // 5: SpaceX.API.Device.PingResult.target:type_name -> SpaceX.API.Device.PingTarget
 	7,  // 6: SpaceX.API.Device.AuthenticateRequest.challenge:type_name -> SpaceX.API.Device.SignedData
-	31, // 7: SpaceX.API.Device.NetworkInterface.rx_stats:type_name -> SpaceX.API.Device.NetworkInterface.RxStats
-	32, // 8: SpaceX.API.Device.NetworkInterface.tx_stats:type_name -> SpaceX.API.Device.NetworkInterface.TxStats
+	32, // 7: SpaceX.API.Device.NetworkInterface.rx_stats:type_name -> SpaceX.API.Device.NetworkInterface.RxStats
+	33, // 8: SpaceX.API.Device.NetworkInterface.tx_stats:type_name -> SpaceX.API.Device.NetworkInterface.TxStats
 	17, // 9: SpaceX.API.Device.NetworkInterface.ethernet:type_name -> SpaceX.API.Device.EthernetNetworkInterface
 	18, // 10: SpaceX.API.Device.NetworkInterface.wifi:type_name -> SpaceX.API.Device.WifiNetworkInterface
 	19, // 11: SpaceX.API.Device.NetworkInterface.bridge:type_name -> SpaceX.API.Device.BridgeNetworkInterface
 	4,  // 12: SpaceX.API.Device.EthernetNetworkInterface.duplex:type_name -> SpaceX.API.Device.EthernetNetworkInterface.Duplex
-	33, // 13: SpaceX.API.Device.WifiNetworkInterface.invalid_packet_counts:type_name -> SpaceX.API.Device.WifiNetworkInterface.InvalidPacketCounts
+	34, // 13: SpaceX.API.Device.WifiNetworkInterface.invalid_packet_counts:type_name -> SpaceX.API.Device.WifiNetworkInterface.InvalidPacketCounts
 	28, // 14: SpaceX.API.Device.EventLog.events:type_name -> SpaceX.API.Device.UXEvent
 	1,  // 15: SpaceX.API.Device.UXEvent.severity:type_name -> SpaceX.API.Device.EventSeverity
 	2,  // 16: SpaceX.API.Device.UXEvent.reason:type_name -> SpaceX.API.Device.EventReason
-	17, // [17:17] is the sub-list for method output_type
-	17, // [17:17] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	29, // 17: SpaceX.API.Device.UXEvent.client_reconnecting_often_metadata:type_name -> SpaceX.API.Device.ClientReconnectingOftenMetadata
+	18, // [18:18] is the sub-list for method output_type
+	18, // [18:18] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_spacex_api_device_common_proto_init() }
@@ -2570,13 +2663,16 @@ func file_spacex_api_device_common_proto_init() {
 		(*NetworkInterface_Wifi)(nil),
 		(*NetworkInterface_Bridge)(nil),
 	}
+	file_spacex_api_device_common_proto_msgTypes[23].OneofWrappers = []any{
+		(*UXEvent_ClientReconnectingOftenMetadata)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_spacex_api_device_common_proto_rawDesc), len(file_spacex_api_device_common_proto_rawDesc)),
 			NumEnums:      5,
-			NumMessages:   29,
+			NumMessages:   30,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
