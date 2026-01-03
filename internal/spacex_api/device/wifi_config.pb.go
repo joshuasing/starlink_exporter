@@ -562,11 +562,12 @@ func (x *MeshConfig) GetSupports_5GhzHigh() bool {
 }
 
 type TlsConfig struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	Cert          string                 `protobuf:"bytes,2,opt,name=cert,proto3" json:"cert,omitempty"`
-	ClientCaCert  string                 `protobuf:"bytes,3,opt,name=client_ca_cert,json=clientCaCert,proto3" json:"client_ca_cert,omitempty"`
-	ServerCaCert  string                 `protobuf:"bytes,4,opt,name=server_ca_cert,json=serverCaCert,proto3" json:"server_ca_cert,omitempty"`
+	state        protoimpl.MessageState `protogen:"open.v1"`
+	Key          string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Cert         string                 `protobuf:"bytes,2,opt,name=cert,proto3" json:"cert,omitempty"`
+	ClientCaCert string                 `protobuf:"bytes,3,opt,name=client_ca_cert,json=clientCaCert,proto3" json:"client_ca_cert,omitempty"`
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi_config.proto.
+	ServerCaCert  string `protobuf:"bytes,4,opt,name=server_ca_cert,json=serverCaCert,proto3" json:"server_ca_cert,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -622,6 +623,7 @@ func (x *TlsConfig) GetClientCaCert() string {
 	return ""
 }
 
+// Deprecated: Marked as deprecated in spacex_api/device/wifi_config.proto.
 func (x *TlsConfig) GetServerCaCert() string {
 	if x != nil {
 		return x.ServerCaCert
@@ -894,6 +896,8 @@ type WifiConfig struct {
 	CustomDnsDisabled                   bool                           `protobuf:"varint,1117,opt,name=custom_dns_disabled,json=customDnsDisabled,proto3" json:"custom_dns_disabled,omitempty"`
 	// Deprecated: Marked as deprecated in spacex_api/device/wifi_config.proto.
 	ApplyCustomDnsDisabled bool `protobuf:"varint,1118,opt,name=apply_custom_dns_disabled,json=applyCustomDnsDisabled,proto3" json:"apply_custom_dns_disabled,omitempty"`
+	ForeflightEnabled      bool `protobuf:"varint,1119,opt,name=foreflight_enabled,json=foreflightEnabled,proto3" json:"foreflight_enabled,omitempty"`
+	ApplyForeflightEnabled bool `protobuf:"varint,1120,opt,name=apply_foreflight_enabled,json=applyForeflightEnabled,proto3" json:"apply_foreflight_enabled,omitempty"`
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
@@ -1819,6 +1823,20 @@ func (x *WifiConfig) GetCustomDnsDisabled() bool {
 func (x *WifiConfig) GetApplyCustomDnsDisabled() bool {
 	if x != nil {
 		return x.ApplyCustomDnsDisabled
+	}
+	return false
+}
+
+func (x *WifiConfig) GetForeflightEnabled() bool {
+	if x != nil {
+		return x.ForeflightEnabled
+	}
+	return false
+}
+
+func (x *WifiConfig) GetApplyForeflightEnabled() bool {
+	if x != nil {
+		return x.ApplyForeflightEnabled
 	}
 	return false
 }
@@ -3463,12 +3481,12 @@ const file_spacex_api_device_wifi_config_proto_rawDesc = "" +
 	"\vincarnation\x18\a \x01(\x04R\vincarnation\x12)\n" +
 	"\x10hardware_version\x18\t \x01(\tR\x0fhardwareVersion\x12,\n" +
 	"\x12supports_5ghz_high\x18\n" +
-	" \x01(\bR\x10supports5ghzHighJ\x04\b\x06\x10\aJ\x04\b\b\x10\t\"}\n" +
+	" \x01(\bR\x10supports5ghzHighJ\x04\b\x06\x10\aJ\x04\b\b\x10\t\"\x81\x01\n" +
 	"\tTlsConfig\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x12\n" +
 	"\x04cert\x18\x02 \x01(\tR\x04cert\x12$\n" +
-	"\x0eclient_ca_cert\x18\x03 \x01(\tR\fclientCaCert\x12$\n" +
-	"\x0eserver_ca_cert\x18\x04 \x01(\tR\fserverCaCert\"\x8a\x02\n" +
+	"\x0eclient_ca_cert\x18\x03 \x01(\tR\fclientCaCert\x12(\n" +
+	"\x0eserver_ca_cert\x18\x04 \x01(\tB\x02\x18\x01R\fserverCaCert\"\x8a\x02\n" +
 	"\n" +
 	"HttpServer\x12\x1f\n" +
 	"\vdomain_name\x18\x01 \x01(\tR\n" +
@@ -3479,7 +3497,7 @@ const file_spacex_api_device_wifi_config_proto_rawDesc = "" +
 	"\x1caccess_control_allow_origins\x18\x05 \x03(\tR\x19accessControlAllowOriginsJ\x04\be\x10fR\x10pages_bundle_url\"^\n" +
 	"\rCaptivePortal\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\x12;\n" +
-	"\x1adisplay_in_captive_browser\x18\x02 \x01(\bR\x17displayInCaptiveBrowser\"\xb0Z\n" +
+	"\x1adisplay_in_captive_browser\x18\x02 \x01(\bR\x17displayInCaptiveBrowser\"\x9b[\n" +
 	"\n" +
 	"WifiConfig\x12!\n" +
 	"\fcountry_code\x18\x03 \x01(\tR\vcountryCode\x12-\n" +
@@ -3616,7 +3634,9 @@ const file_spacex_api_device_wifi_config_proto_rawDesc = "" +
 	"\x1fapply_disable_sandbox_fail_open\x18\xdc\b \x01(\bR\x1bapplyDisableSandboxFailOpen\x12\x10\n" +
 	"\x03tag\x18N \x01(\rR\x03tag\x12/\n" +
 	"\x13custom_dns_disabled\x18\xdd\b \x01(\bR\x11customDnsDisabled\x12>\n" +
-	"\x19apply_custom_dns_disabled\x18\xde\b \x01(\bB\x02\x18\x01R\x16applyCustomDnsDisabled\x1a]\n" +
+	"\x19apply_custom_dns_disabled\x18\xde\b \x01(\bB\x02\x18\x01R\x16applyCustomDnsDisabled\x12.\n" +
+	"\x12foreflight_enabled\x18\xdf\b \x01(\bR\x11foreflightEnabled\x129\n" +
+	"\x18apply_foreflight_enabled\x18\xe0\b \x01(\bR\x16applyForeflightEnabled\x1a]\n" +
 	"\x10MeshConfigsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x123\n" +
 	"\x05value\x18\x02 \x01(\v2\x1d.SpaceX.API.Device.MeshConfigR\x05value:\x028\x01\x1ad\n" +
