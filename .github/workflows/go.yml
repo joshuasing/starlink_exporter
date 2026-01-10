@@ -1,4 +1,4 @@
-# Copyright (c) 2024 Joshua Sing <joshua@joshuasing.dev>
+# Copyright (c) 2024-2026 Joshua Sing <joshua@joshuasing.dev>
 # Use of this source code is governed by the MIT License,
 # which can be found in the LICENSE file.
 
@@ -12,7 +12,10 @@ on:
     branches: [ "main" ]
 
 env:
-  GOLICENSER_VERSION: "0.3"
+  # renovate: datasource=github-releases depName=golangci/golangci-lint versioning=semver
+  GOLANGCI_LINT_VERSION: "v2.7.2"
+  # renovate: datasource=github-releases depName=joshuasing/golicenser versioning=semver
+  GOLICENSER_VERSION: "v0.3.1"
 
 permissions:
   contents: read
@@ -81,7 +84,7 @@ jobs:
       - name: "golangci-lint"
         uses: golangci/golangci-lint-action@1e7e51e771db61008b38414a730f564565cf7c20 # v9.2.0
         with:
-          version: "v2.5"
+          version: "${{ env.GOLANGCI_LINT_VERSION }}"
 
       - name: "golangci-lint fmt"
         run: golangci-lint fmt --diff ./...
@@ -116,7 +119,7 @@ jobs:
             SOFTWARE.
         run: |
           if ! (command -v 'golicenser' >/dev/null); then
-            go install "github.com/joshuasing/golicenser/cmd/golicenser@v$GOLICENSER_VERSION"
+            go install github.com/joshuasing/golicenser/cmd/golicenser@$GOLICENSER_VERSION
           fi
           echo "$LICENSE_HEADER" > license_header.txt
           golicenser -author="Joshua Sing <joshua@joshuasing.dev>" -year-mode=git-range ./...

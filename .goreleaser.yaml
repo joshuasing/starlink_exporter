@@ -127,8 +127,8 @@ release:
   github:
     owner: "joshuasing"
     name: "starlink_exporter"
+  draft: true
   prerelease: auto
-  mode: "append"
 
 # Close milestones for the released tag.
 milestones:
