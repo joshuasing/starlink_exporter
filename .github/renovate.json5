@@ -3,10 +3,11 @@
   extends: [
     'config:best-practices',
     ':configMigration',
-    ':enableVulnerabilityAlerts',
+    ':pinVersions',
+    ':rebaseStalePrs',
     'schedule:weekly',
-    'docker:pinDigests',
     'docker:enableMajor',
+    'docker:pinDigests',
     'preview:dockerCompose',
     'preview:dockerVersions',
     'customManagers:dockerfileVersions',
@@ -19,12 +20,41 @@
   labels: [
     'type: dependencies',
   ],
+  minimumReleaseAge: '3 days',
   packageRules: [
     {
-      matchDatasources: [
-        'docker',
-      ],
+      matchDatasources: ['go'],
+      commitMessageTopic: '{{depName}}'
+    },
+    {
+      matchDatasources: ['docker'],
       commitMessageTopic: 'image {{depName}}',
     },
+    {
+      matchManagers: ['gomod'],
+      commitMessagePrefix: 'go.mod:',
+      postUpdateOptions: ['gomodTidy'],
+    },
+    {
+      description: 'Avoid updating the minimum go version directive',
+      matchManagers: ['gomod'],
+      matchDepNames: ['go'],
+      enabled: false,
+    },
+    {
+      matchManagers: ['github-actions'],
+      commitMessagePrefix: 'ci:',
+    },
+    {
+      matchUpdateTypes: ['pin', 'pinDigest'],
+      commitMessageAction: 'pin',
+    },
   ],
+  osvVulnerabilityAlerts: true,
+  vulnerabilityAlerts: {
+    enabled: true,
+    addLabels: [
+      'type: security',
+    ],
+  },
 }
