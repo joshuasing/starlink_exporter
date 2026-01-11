@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.7.4]
+
+### Changed
+
+- Updated dependencies ([#136](https://github.com/joshuasing/starlink_exporter/pull/136),
+  [#138](https://github.com/joshuasing/starlink_exporter/pull/138),
+  [#139](https://github.com/joshuasing/starlink_exporter/pull/139))
+
+### Contributors
+
+Thank you to everyone who contributed to this release!
+
+- [@joshuasing](https://github.com/joshuasing)
+
 ## [v0.7.3]
 
 ### Added
@@ -60,6 +74,7 @@ Thank you to everyone who contributed to this release!
 _Looking for the changelog for an older version? Older releases can be found at:
 https://github.com/joshuasing/starlink_exporter/releases_
 
-[Unreleased]: https://github.com/joshuasing/starlink_exporter/compare/v0.7.3...HEAD
+[Unreleased]: https://github.com/joshuasing/starlink_exporter/compare/v0.7.4...HEAD
+[v0.7.4]: https://github.com/joshuasing/starlink_exporter/compare/v0.7.4...HEAD
 [v0.7.3]: https://github.com/joshuasing/starlink_exporter/compare/v0.7.3...HEAD
 [v0.7.1]: https://github.com/joshuasing/starlink_exporter/releases/tag/v0.7.1
