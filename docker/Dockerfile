@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 # Build stage
-FROM golang:1.25.6-alpine3.22@sha256:d9c983d2ac66c3f43208dfb6b092dd1296baa058766e3aa88a1b233adeb416c1 AS builder
+FROM golang:1.26.0-alpine3.22@sha256:169d3991a4f795124a88b33c73549955a3d856e26e8504b5530c30bd245f9f1b AS builder
 
 WORKDIR /build/
 
