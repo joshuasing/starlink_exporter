@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.8.0]
+
+### Changed
+
+- Support Starlink Dishy firmware
+  `2026.01.31.mr72966` ([#160](https://github.com/joshuasing/starlink_exporter/pull/160))
+- Updated to Go 1.26 ([#159](https://github.com/joshuasing/starlink_exporter/pull/159),
+  [#151](https://github.com/joshuasing/starlink_exporter/pull/151))
+- Updated dependencies ([#159](https://github.com/joshuasing/starlink_exporter/pull/159))
+
 ## [v0.7.4]
 
 ### Changed
@@ -74,7 +84,8 @@ Thank you to everyone who contributed to this release!
 _Looking for the changelog for an older version? Older releases can be found at:
 https://github.com/joshuasing/starlink_exporter/releases_
 
-[Unreleased]: https://github.com/joshuasing/starlink_exporter/compare/v0.7.4...HEAD
-[v0.7.4]: https://github.com/joshuasing/starlink_exporter/compare/v0.7.4...HEAD
-[v0.7.3]: https://github.com/joshuasing/starlink_exporter/compare/v0.7.3...HEAD
+[Unreleased]: https://github.com/joshuasing/starlink_exporter/compare/v0.8.0...HEAD
+[v0.8.0]: https://github.com/joshuasing/starlink_exporter/compare/v0.7.4...v0.8.0
+[v0.7.4]: https://github.com/joshuasing/starlink_exporter/compare/v0.7.3...v0.7.4
+[v0.7.3]: https://github.com/joshuasing/starlink_exporter/compare/v0.7.1...v0.7.3
 [v0.7.1]: https://github.com/joshuasing/starlink_exporter/releases/tag/v0.7.1
