@@ -33,7 +33,7 @@ RUN GOOS=$(go env GOOS) GOARCH=$(go env GOARCH) CGO_ENABLED=0 GOGC=off \
     go build -trimpath -ldflags "-s -w" -o ./bin/starlink_exporter ./cmd/starlink_exporter
 
 # Run stage
-FROM cgr.dev/chainguard/static@sha256:3348c5f7b97a4d63944034a8c6c43ad8bc69771b2564bed32ea3173bc96b4e04
+FROM cgr.dev/chainguard/static@sha256:9cef3c6a78264cb7e25923bf1bf7f39476dccbcc993af9f4ffeb191b77a7951e
 
 # Build metadata
 ARG VERSION
