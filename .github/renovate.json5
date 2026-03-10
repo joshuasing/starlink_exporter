@@ -42,6 +42,13 @@
       enabled: false,
     },
     {
+      description: 'Enable toolchain directive updates',
+      matchManagers: ['gomod'],
+      matchDepTypes: ['toolchain'],
+      enabled: true,
+      rangeStrategy: 'bump',
+    },
+    {
       matchManagers: ['github-actions'],
       commitMessagePrefix: 'ci:',
     },
