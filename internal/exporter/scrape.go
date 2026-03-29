@@ -80,7 +80,7 @@ func runScrapers(ch chan<- prometheus.Metric, scrapers ...scraper) bool {
 	defer cancel()
 
 	var wg sync.WaitGroup
-	out := make(chan bool)
+	out := make(chan bool, len(scrapers))
 
 	for _, s := range scrapers {
 		wg.Go(func() {
