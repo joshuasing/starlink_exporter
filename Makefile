@@ -72,6 +72,14 @@ lint-deps:
 build:
 	go build -trimpath -o ./bin/starlink_exporter ./cmd/starlink_exporter
 
+.PHONY: test
+test:
+	STARLINK_INTEGRATION=1 go test -covermode=atomic -coverprofile=coverage.out ./...
+
+.PHONY: cover
+cover:
+	go tool cover -html coverage.out
+
 .PHONY: gen
 gen:
 	./scripts/proto-gen.sh

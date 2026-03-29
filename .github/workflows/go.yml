@@ -40,7 +40,7 @@ jobs:
         run: govulncheck ./...
 
   build:
-    name: "Build (${{ matrix.os }})"
+    name: "Build and test (${{ matrix.os }})"
     runs-on: "${{ matrix.os }}"
     strategy:
       matrix:
@@ -55,16 +55,15 @@ jobs:
           go-version-file: "go.mod"
 
       - name: "Download dependencies"
-        run: go mod download
-
-      - name: "Verify dependencies"
-        run: go mod verify
+        run: |
+          go mod download
+          go mod verify
 
       - name: "Build"
         run: go build ./...
 
       - name: "Test"
-        run: go test ./...
+        run: go test -covermode=atomic -coverprofile=coverage.out ./...
 
   lint:
     name: "Lint"
@@ -72,8 +71,6 @@ jobs:
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          fetch-depth: 0
 
       - name: "Setup Go"
         id: "go"
