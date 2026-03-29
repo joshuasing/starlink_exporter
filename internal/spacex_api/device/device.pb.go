@@ -1010,6 +1010,8 @@ type Request struct {
 	//	*Request_SetPerVehicleConfig
 	//	*Request_DishAviationTest
 	//	*Request_DishInhibitRf
+	//	*Request_ZtlmQuery
+	//	*Request_DishStartTestModeServer
 	//	*Request_WifiGetClients
 	//	*Request_WifiGetPingMetrics
 	//	*Request_WifiSetConfig
@@ -1620,6 +1622,24 @@ func (x *Request) GetDishInhibitRf() *DishInhibitRfRequest {
 	return nil
 }
 
+func (x *Request) GetZtlmQuery() *ZtlmQueryRequest {
+	if x != nil {
+		if x, ok := x.Request.(*Request_ZtlmQuery); ok {
+			return x.ZtlmQuery
+		}
+	}
+	return nil
+}
+
+func (x *Request) GetDishStartTestModeServer() *DishStartTestModeServerRequest {
+	if x != nil {
+		if x, ok := x.Request.(*Request_DishStartTestModeServer); ok {
+			return x.DishStartTestModeServer
+		}
+	}
+	return nil
+}
+
 func (x *Request) GetWifiGetClients() *WifiGetClientsRequest {
 	if x != nil {
 		if x, ok := x.Request.(*Request_WifiGetClients); ok {
@@ -2151,6 +2171,14 @@ type Request_DishInhibitRf struct {
 	DishInhibitRf *DishInhibitRfRequest `protobuf:"bytes,2026,opt,name=dish_inhibit_rf,json=dishInhibitRf,proto3,oneof"`
 }
 
+type Request_ZtlmQuery struct {
+	ZtlmQuery *ZtlmQueryRequest `protobuf:"bytes,2027,opt,name=ztlm_query,json=ztlmQuery,proto3,oneof"`
+}
+
+type Request_DishStartTestModeServer struct {
+	DishStartTestModeServer *DishStartTestModeServerRequest `protobuf:"bytes,2028,opt,name=dish_start_test_mode_server,json=dishStartTestModeServer,proto3,oneof"`
+}
+
 type Request_WifiGetClients struct {
 	WifiGetClients *WifiGetClientsRequest `protobuf:"bytes,3002,opt,name=wifi_get_clients,json=wifiGetClients,proto3,oneof"`
 }
@@ -2398,6 +2426,10 @@ func (*Request_DishAviationTest) isRequest_Request() {}
 
 func (*Request_DishInhibitRf) isRequest_Request() {}
 
+func (*Request_ZtlmQuery) isRequest_Request() {}
+
+func (*Request_DishStartTestModeServer) isRequest_Request() {}
+
 func (*Request_WifiGetClients) isRequest_Request() {}
 
 func (*Request_WifiGetPingMetrics) isRequest_Request() {}
@@ -2520,6 +2552,8 @@ type Response struct {
 	//	*Response_SetPerVehicleConfig
 	//	*Response_DishAviationTest
 	//	*Response_DishInhibitRf
+	//	*Response_ZtlmQuery
+	//	*Response_DishStartTestModeServer
 	//	*Response_WifiAuthenticate
 	//	*Response_WifiGetClients
 	//	*Response_WifiGetHistory
@@ -3056,6 +3090,24 @@ func (x *Response) GetDishInhibitRf() *DishInhibitRfResponse {
 	return nil
 }
 
+func (x *Response) GetZtlmQuery() *ZtlmQueryResponse {
+	if x != nil {
+		if x, ok := x.Response.(*Response_ZtlmQuery); ok {
+			return x.ZtlmQuery
+		}
+	}
+	return nil
+}
+
+func (x *Response) GetDishStartTestModeServer() *DishStartTestModeServerResponse {
+	if x != nil {
+		if x, ok := x.Response.(*Response_DishStartTestModeServer); ok {
+			return x.DishStartTestModeServer
+		}
+	}
+	return nil
+}
+
 func (x *Response) GetWifiAuthenticate() *WifiAuthenticateResponse {
 	if x != nil {
 		if x, ok := x.Response.(*Response_WifiAuthenticate); ok {
@@ -3537,6 +3589,14 @@ type Response_DishInhibitRf struct {
 	DishInhibitRf *DishInhibitRfResponse `protobuf:"bytes,2026,opt,name=dish_inhibit_rf,json=dishInhibitRf,proto3,oneof"`
 }
 
+type Response_ZtlmQuery struct {
+	ZtlmQuery *ZtlmQueryResponse `protobuf:"bytes,2027,opt,name=ztlm_query,json=ztlmQuery,proto3,oneof"`
+}
+
+type Response_DishStartTestModeServer struct {
+	DishStartTestModeServer *DishStartTestModeServerResponse `protobuf:"bytes,2028,opt,name=dish_start_test_mode_server,json=dishStartTestModeServer,proto3,oneof"`
+}
+
 type Response_WifiAuthenticate struct {
 	WifiAuthenticate *WifiAuthenticateResponse `protobuf:"bytes,3005,opt,name=wifi_authenticate,json=wifiAuthenticate,proto3,oneof"`
 }
@@ -3759,6 +3819,10 @@ func (*Response_SetPerVehicleConfig) isResponse_Response() {}
 func (*Response_DishAviationTest) isResponse_Response() {}
 
 func (*Response_DishInhibitRf) isResponse_Response() {}
+
+func (*Response_ZtlmQuery) isResponse_Response() {}
+
+func (*Response_DishStartTestModeServer) isResponse_Response() {}
 
 func (*Response_WifiAuthenticate) isResponse_Response() {}
 
@@ -8766,7 +8830,7 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\ttarget_id\x18\x02 \x01(\tR\btargetId\x12J\n" +
 	"\fget_location\x18\x03 \x01(\v2%.SpaceX.API.Device.GetLocationRequestH\x00R\vgetLocationB\t\n" +
 	"\arequest\"\r\n" +
-	"\vHealthCheck\"\xb5@\n" +
+	"\vHealthCheck\"\xf0A\n" +
 	"\aRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x19\n" +
 	"\bepoch_id\x18\x0e \x01(\x04R\aepochId\x12\x1b\n" +
@@ -8833,7 +8897,10 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\freset_button\x18\xe6\x0f \x01(\v2%.SpaceX.API.Device.ResetButtonRequestH\x00R\vresetButton\x12`\n" +
 	"\x16set_per_vehicle_config\x18\xe7\x0f \x01(\v2(.SpaceX.API.Device.SoftwareUpdateRequestH\x00R\x13setPerVehicleConfig\x12[\n" +
 	"\x12dish_aviation_test\x18\xe8\x0f \x01(\v2*.SpaceX.API.Device.DishAviationTestRequestH\x00R\x10dishAviationTest\x12R\n" +
-	"\x0fdish_inhibit_rf\x18\xea\x0f \x01(\v2'.SpaceX.API.Device.DishInhibitRfRequestH\x00R\rdishInhibitRf\x12U\n" +
+	"\x0fdish_inhibit_rf\x18\xea\x0f \x01(\v2'.SpaceX.API.Device.DishInhibitRfRequestH\x00R\rdishInhibitRf\x12E\n" +
+	"\n" +
+	"ztlm_query\x18\xeb\x0f \x01(\v2#.SpaceX.API.Device.ZtlmQueryRequestH\x00R\tztlmQuery\x12r\n" +
+	"\x1bdish_start_test_mode_server\x18\xec\x0f \x01(\v21.SpaceX.API.Device.DishStartTestModeServerRequestH\x00R\x17dishStartTestModeServer\x12U\n" +
 	"\x10wifi_get_clients\x18\xba\x17 \x01(\v2(.SpaceX.API.Device.WifiGetClientsRequestH\x00R\x0ewifiGetClients\x12b\n" +
 	"\x15wifi_get_ping_metrics\x18\xbf\x17 \x01(\v2,.SpaceX.API.Device.WifiGetPingMetricsRequestH\x00R\x12wifiGetPingMetrics\x12R\n" +
 	"\x0fwifi_set_config\x18\xb9\x17 \x01(\v2'.SpaceX.API.Device.WifiSetConfigRequestH\x00R\rwifiSetConfig\x12R\n" +
@@ -8869,7 +8936,7 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\rfinish_unlock\x18\x89' \x01(\v26.SpaceX.API.Device.Services.Unlock.FinishUnlockRequestH\x00R\ffinishUnlock\x12T\n" +
 	"\x0fget_diagnostics\x18\xf0. \x01(\v2(.SpaceX.API.Device.GetDiagnosticsRequestH\x00R\x0egetDiagnostics\x12a\n" +
 	"\x14get_gnss_measurement\x18\xd86 \x01(\v2,.SpaceX.API.Device.GetGnssMeasurementRequestH\x00R\x12getGnssMeasurementB\t\n" +
-	"\arequestJ\x06\b\xfa\a\x10\xfb\aJ\x06\b\x81\b\x10\x82\bJ\x06\b\x82\b\x10\x83\bJ\x06\b\xdc\x0f\x10\xdd\x0fJ\x06\b\xe0\x0f\x10\xe1\x0fJ\x06\b\xc3\x17\x10\xc4\x17J\x06\b\xc6\x17\x10\xc7\x17J\x06\b\x82\x19\x10\x83\x19R\x14start_dish_self_test\"\xe89\n" +
+	"\arequestJ\x06\b\xfa\a\x10\xfb\aJ\x06\b\x81\b\x10\x82\bJ\x06\b\x82\b\x10\x83\bJ\x06\b\xdc\x0f\x10\xdd\x0fJ\x06\b\xe0\x0f\x10\xe1\x0fJ\x06\b\xc3\x17\x10\xc4\x17J\x06\b\xc6\x17\x10\xc7\x17J\x06\b\x82\x19\x10\x83\x19R\x14start_dish_self_test\"\xa5;\n" +
 	"\bResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x121\n" +
 	"\x06status\x18\x02 \x01(\v2\x19.SpaceX.API.Status.StatusR\x06status\x12\x1f\n" +
@@ -8926,7 +8993,10 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\freset_button\x18\xe6\x0f \x01(\v2&.SpaceX.API.Device.ResetButtonResponseH\x00R\vresetButton\x12f\n" +
 	"\x16set_per_vehicle_config\x18\xe7\x0f \x01(\v2..SpaceX.API.Device.SetPerVehicleConfigResponseH\x00R\x13setPerVehicleConfig\x12\\\n" +
 	"\x12dish_aviation_test\x18\xe8\x0f \x01(\v2+.SpaceX.API.Device.DishAviationTestResponseH\x00R\x10dishAviationTest\x12S\n" +
-	"\x0fdish_inhibit_rf\x18\xea\x0f \x01(\v2(.SpaceX.API.Device.DishInhibitRfResponseH\x00R\rdishInhibitRf\x12[\n" +
+	"\x0fdish_inhibit_rf\x18\xea\x0f \x01(\v2(.SpaceX.API.Device.DishInhibitRfResponseH\x00R\rdishInhibitRf\x12F\n" +
+	"\n" +
+	"ztlm_query\x18\xeb\x0f \x01(\v2$.SpaceX.API.Device.ZtlmQueryResponseH\x00R\tztlmQuery\x12s\n" +
+	"\x1bdish_start_test_mode_server\x18\xec\x0f \x01(\v22.SpaceX.API.Device.DishStartTestModeServerResponseH\x00R\x17dishStartTestModeServer\x12[\n" +
 	"\x11wifi_authenticate\x18\xbd\x17 \x01(\v2+.SpaceX.API.Device.WifiAuthenticateResponseH\x00R\x10wifiAuthenticate\x12V\n" +
 	"\x10wifi_get_clients\x18\xba\x17 \x01(\v2).SpaceX.API.Device.WifiGetClientsResponseH\x00R\x0ewifiGetClients\x12V\n" +
 	"\x10wifi_get_history\x18\xbe\x17 \x01(\v2).SpaceX.API.Device.WifiGetHistoryResponseH\x00R\x0ewifiGetHistory\x12c\n" +
@@ -9575,95 +9645,99 @@ var file_spacex_api_device_device_proto_goTypes = []any{
 	(*ResetButtonRequest)(nil),                        // 119: SpaceX.API.Device.ResetButtonRequest
 	(*DishAviationTestRequest)(nil),                   // 120: SpaceX.API.Device.DishAviationTestRequest
 	(*DishInhibitRfRequest)(nil),                      // 121: SpaceX.API.Device.DishInhibitRfRequest
-	(*WifiGetClientsRequest)(nil),                     // 122: SpaceX.API.Device.WifiGetClientsRequest
-	(*WifiGetPingMetricsRequest)(nil),                 // 123: SpaceX.API.Device.WifiGetPingMetricsRequest
-	(*WifiSetConfigRequest)(nil),                      // 124: SpaceX.API.Device.WifiSetConfigRequest
-	(*WifiGetConfigRequest)(nil),                      // 125: SpaceX.API.Device.WifiGetConfigRequest
-	(*WifiSetupRequest)(nil),                          // 126: SpaceX.API.Device.WifiSetupRequest
-	(*WifiSetMeshDeviceTrustRequest)(nil),             // 127: SpaceX.API.Device.WifiSetMeshDeviceTrustRequest
-	(*WifiSetMeshConfigRequest)(nil),                  // 128: SpaceX.API.Device.WifiSetMeshConfigRequest
-	(*WifiGetClientHistoryRequest)(nil),               // 129: SpaceX.API.Device.WifiGetClientHistoryRequest
-	(*WifiSetClientGivenNameRequest)(nil),             // 130: SpaceX.API.Device.WifiSetClientGivenNameRequest
-	(*WifiSetAviationConformedRequest)(nil),           // 131: SpaceX.API.Device.WifiSetAviationConformedRequest
-	(*WifiSelfTestRequest)(nil),                       // 132: SpaceX.API.Device.WifiSelfTestRequest
-	(*WifiRunSelfTestRequest)(nil),                    // 133: SpaceX.API.Device.WifiRunSelfTestRequest
-	(*WifiCalibrationModeRequest)(nil),                // 134: SpaceX.API.Device.WifiCalibrationModeRequest
-	(*WifiGuestInfoRequest)(nil),                      // 135: SpaceX.API.Device.WifiGuestInfoRequest
-	(*WifiRfTestRequest)(nil),                         // 136: SpaceX.API.Device.WifiRfTestRequest
-	(*WifiGetFirewallRequest)(nil),                    // 137: SpaceX.API.Device.WifiGetFirewallRequest
-	(*WifiTogglePoeNegotiationRequest)(nil),           // 138: SpaceX.API.Device.WifiTogglePoeNegotiationRequest
-	(*WifiFactoryTestCommandRequest)(nil),             // 139: SpaceX.API.Device.WifiFactoryTestCommandRequest
-	(*WifiStartLocalTelemProxyRequest)(nil),           // 140: SpaceX.API.Device.WifiStartLocalTelemProxyRequest
-	(*WifiBackhaulStatsRequest)(nil),                  // 141: SpaceX.API.Device.WifiBackhaulStatsRequest
-	(*WifiToggleUmbilicalModeRequest)(nil),            // 142: SpaceX.API.Device.WifiToggleUmbilicalModeRequest
-	(*WifiRunDebugNetsysRequest)(nil),                 // 143: SpaceX.API.Device.WifiRunDebugNetsysRequest
-	(*WifiResetEthPhyRequest)(nil),                    // 144: SpaceX.API.Device.WifiResetEthPhyRequest
-	(*WifiFlushHardwareNatRequest)(nil),               // 145: SpaceX.API.Device.WifiFlushHardwareNatRequest
-	(*TransceiverIFLoopbackTestRequest)(nil),          // 146: SpaceX.API.Device.TransceiverIFLoopbackTestRequest
-	(*TransceiverGetStatusRequest)(nil),               // 147: SpaceX.API.Device.TransceiverGetStatusRequest
-	(*TransceiverGetTelemetryRequest)(nil),            // 148: SpaceX.API.Device.TransceiverGetTelemetryRequest
-	(*unlock.StartUnlockRequest)(nil),                 // 149: SpaceX.API.Device.Services.Unlock.StartUnlockRequest
-	(*unlock.FinishUnlockRequest)(nil),                // 150: SpaceX.API.Device.Services.Unlock.FinishUnlockRequest
-	(*status.Status)(nil),                             // 151: SpaceX.API.Status.Status
-	(*GetNextIdResponse)(nil),                         // 152: SpaceX.API.Device.GetNextIdResponse
-	(*InitiateRemoteSshResponse)(nil),                 // 153: SpaceX.API.Device.InitiateRemoteSshResponse
-	(*SelfTestResponse)(nil),                          // 154: SpaceX.API.Device.SelfTestResponse
-	(*SetTestModeResponse)(nil),                       // 155: SpaceX.API.Device.SetTestModeResponse
-	(*SoftwareUpdateResponse)(nil),                    // 156: SpaceX.API.Device.SoftwareUpdateResponse
-	(*DishAuthenticateResponse)(nil),                  // 157: SpaceX.API.Device.DishAuthenticateResponse
-	(*DishGetContextResponse)(nil),                    // 158: SpaceX.API.Device.DishGetContextResponse
-	(*DishGetHistoryResponse)(nil),                    // 159: SpaceX.API.Device.DishGetHistoryResponse
-	(*DishGetStatusResponse)(nil),                     // 160: SpaceX.API.Device.DishGetStatusResponse
-	(*DishGetObstructionMapResponse)(nil),             // 161: SpaceX.API.Device.DishGetObstructionMapResponse
-	(*DishStowResponse)(nil),                          // 162: SpaceX.API.Device.DishStowResponse
-	(*DishSetConfigResponse)(nil),                     // 163: SpaceX.API.Device.DishSetConfigResponse
-	(*DishGetConfigResponse)(nil),                     // 164: SpaceX.API.Device.DishGetConfigResponse
-	(*DishInhibitGpsResponse)(nil),                    // 165: SpaceX.API.Device.DishInhibitGpsResponse
-	(*DishClearObstructionMapResponse)(nil),           // 166: SpaceX.API.Device.DishClearObstructionMapResponse
-	(*DishActivateRssiScanResponse)(nil),              // 167: SpaceX.API.Device.DishActivateRssiScanResponse
-	(*DishGetRssiScanResultResponse)(nil),             // 168: SpaceX.API.Device.DishGetRssiScanResultResponse
-	(*DishFactoryResetResponse)(nil),                  // 169: SpaceX.API.Device.DishFactoryResetResponse
-	(*ResetButtonResponse)(nil),                       // 170: SpaceX.API.Device.ResetButtonResponse
-	(*DishAviationTestResponse)(nil),                  // 171: SpaceX.API.Device.DishAviationTestResponse
-	(*DishInhibitRfResponse)(nil),                     // 172: SpaceX.API.Device.DishInhibitRfResponse
-	(*WifiAuthenticateResponse)(nil),                  // 173: SpaceX.API.Device.WifiAuthenticateResponse
-	(*WifiGetClientsResponse)(nil),                    // 174: SpaceX.API.Device.WifiGetClientsResponse
-	(*WifiGetHistoryResponse)(nil),                    // 175: SpaceX.API.Device.WifiGetHistoryResponse
-	(*WifiGetPingMetricsResponse)(nil),                // 176: SpaceX.API.Device.WifiGetPingMetricsResponse
-	(*WifiGetStatusResponse)(nil),                     // 177: SpaceX.API.Device.WifiGetStatusResponse
-	(*WifiSetConfigResponse)(nil),                     // 178: SpaceX.API.Device.WifiSetConfigResponse
-	(*WifiGetConfigResponse)(nil),                     // 179: SpaceX.API.Device.WifiGetConfigResponse
-	(*WifiSetupResponse)(nil),                         // 180: SpaceX.API.Device.WifiSetupResponse
-	(*WifiGetPersistentStatsResponse)(nil),            // 181: SpaceX.API.Device.WifiGetPersistentStatsResponse
-	(*WifiSetMeshDeviceTrustResponse)(nil),            // 182: SpaceX.API.Device.WifiSetMeshDeviceTrustResponse
-	(*WifiSetMeshConfigResponse)(nil),                 // 183: SpaceX.API.Device.WifiSetMeshConfigResponse
-	(*WifiGetClientHistoryResponse)(nil),              // 184: SpaceX.API.Device.WifiGetClientHistoryResponse
-	(*WifiSelfTestResponse)(nil),                      // 185: SpaceX.API.Device.WifiSelfTestResponse
-	(*WifiGuestInfoResponse)(nil),                     // 186: SpaceX.API.Device.WifiGuestInfoResponse
-	(*WifiRfTestResponse)(nil),                        // 187: SpaceX.API.Device.WifiRfTestResponse
-	(*WifiGetFirewallResponse)(nil),                   // 188: SpaceX.API.Device.WifiGetFirewallResponse
-	(*WifiFactoryTestCommandResponse)(nil),            // 189: SpaceX.API.Device.WifiFactoryTestCommandResponse
-	(*WifiBackhaulStatsResponse)(nil),                 // 190: SpaceX.API.Device.WifiBackhaulStatsResponse
-	(*WifiUpdateResponse)(nil),                        // 191: SpaceX.API.Device.WifiUpdateResponse
-	(*WifiRunDebugNetsysResponse)(nil),                // 192: SpaceX.API.Device.WifiRunDebugNetsysResponse
-	(*WifiResetEthPhyResponse)(nil),                   // 193: SpaceX.API.Device.WifiResetEthPhyResponse
-	(*WifiFlushHardwareNatResponse)(nil),              // 194: SpaceX.API.Device.WifiFlushHardwareNatResponse
-	(*TransceiverIFLoopbackTestResponse)(nil),         // 195: SpaceX.API.Device.TransceiverIFLoopbackTestResponse
-	(*TransceiverGetStatusResponse)(nil),              // 196: SpaceX.API.Device.TransceiverGetStatusResponse
-	(*TransceiverGetTelemetryResponse)(nil),           // 197: SpaceX.API.Device.TransceiverGetTelemetryResponse
-	(*unlock.StartUnlockResponse)(nil),                // 198: SpaceX.API.Device.Services.Unlock.StartUnlockResponse
-	(*unlock.FinishUnlockResponse)(nil),               // 199: SpaceX.API.Device.Services.Unlock.FinishUnlockResponse
-	(*WifiNewClientConnectedEvent)(nil),               // 200: SpaceX.API.Device.WifiNewClientConnectedEvent
-	(*WifiAccountBondingEvent)(nil),                   // 201: SpaceX.API.Device.WifiAccountBondingEvent
-	(*WifiNewPeerEvent)(nil),                          // 202: SpaceX.API.Device.WifiNewPeerEvent
-	(*PingResult)(nil),                                // 203: SpaceX.API.Device.PingResult
-	(RouterRole)(0),                                   // 204: SpaceX.API.Device.RouterRole
-	(*DeviceInfo)(nil),                                // 205: SpaceX.API.Device.DeviceInfo
-	(*PublicKey)(nil),                                 // 206: SpaceX.API.Device.PublicKey
-	(*NetworkInterface)(nil),                          // 207: SpaceX.API.Device.NetworkInterface
-	(*RadioStats)(nil),                                // 208: SpaceX.API.Device.RadioStats
-	(*LLAPosition)(nil),                               // 209: SpaceX.API.Device.LLAPosition
-	(*Measurement)(nil),                               // 210: SpaceX.API.Device.Gnss.Measurement
+	(*ZtlmQueryRequest)(nil),                          // 122: SpaceX.API.Device.ZtlmQueryRequest
+	(*DishStartTestModeServerRequest)(nil),            // 123: SpaceX.API.Device.DishStartTestModeServerRequest
+	(*WifiGetClientsRequest)(nil),                     // 124: SpaceX.API.Device.WifiGetClientsRequest
+	(*WifiGetPingMetricsRequest)(nil),                 // 125: SpaceX.API.Device.WifiGetPingMetricsRequest
+	(*WifiSetConfigRequest)(nil),                      // 126: SpaceX.API.Device.WifiSetConfigRequest
+	(*WifiGetConfigRequest)(nil),                      // 127: SpaceX.API.Device.WifiGetConfigRequest
+	(*WifiSetupRequest)(nil),                          // 128: SpaceX.API.Device.WifiSetupRequest
+	(*WifiSetMeshDeviceTrustRequest)(nil),             // 129: SpaceX.API.Device.WifiSetMeshDeviceTrustRequest
+	(*WifiSetMeshConfigRequest)(nil),                  // 130: SpaceX.API.Device.WifiSetMeshConfigRequest
+	(*WifiGetClientHistoryRequest)(nil),               // 131: SpaceX.API.Device.WifiGetClientHistoryRequest
+	(*WifiSetClientGivenNameRequest)(nil),             // 132: SpaceX.API.Device.WifiSetClientGivenNameRequest
+	(*WifiSetAviationConformedRequest)(nil),           // 133: SpaceX.API.Device.WifiSetAviationConformedRequest
+	(*WifiSelfTestRequest)(nil),                       // 134: SpaceX.API.Device.WifiSelfTestRequest
+	(*WifiRunSelfTestRequest)(nil),                    // 135: SpaceX.API.Device.WifiRunSelfTestRequest
+	(*WifiCalibrationModeRequest)(nil),                // 136: SpaceX.API.Device.WifiCalibrationModeRequest
+	(*WifiGuestInfoRequest)(nil),                      // 137: SpaceX.API.Device.WifiGuestInfoRequest
+	(*WifiRfTestRequest)(nil),                         // 138: SpaceX.API.Device.WifiRfTestRequest
+	(*WifiGetFirewallRequest)(nil),                    // 139: SpaceX.API.Device.WifiGetFirewallRequest
+	(*WifiTogglePoeNegotiationRequest)(nil),           // 140: SpaceX.API.Device.WifiTogglePoeNegotiationRequest
+	(*WifiFactoryTestCommandRequest)(nil),             // 141: SpaceX.API.Device.WifiFactoryTestCommandRequest
+	(*WifiStartLocalTelemProxyRequest)(nil),           // 142: SpaceX.API.Device.WifiStartLocalTelemProxyRequest
+	(*WifiBackhaulStatsRequest)(nil),                  // 143: SpaceX.API.Device.WifiBackhaulStatsRequest
+	(*WifiToggleUmbilicalModeRequest)(nil),            // 144: SpaceX.API.Device.WifiToggleUmbilicalModeRequest
+	(*WifiRunDebugNetsysRequest)(nil),                 // 145: SpaceX.API.Device.WifiRunDebugNetsysRequest
+	(*WifiResetEthPhyRequest)(nil),                    // 146: SpaceX.API.Device.WifiResetEthPhyRequest
+	(*WifiFlushHardwareNatRequest)(nil),               // 147: SpaceX.API.Device.WifiFlushHardwareNatRequest
+	(*TransceiverIFLoopbackTestRequest)(nil),          // 148: SpaceX.API.Device.TransceiverIFLoopbackTestRequest
+	(*TransceiverGetStatusRequest)(nil),               // 149: SpaceX.API.Device.TransceiverGetStatusRequest
+	(*TransceiverGetTelemetryRequest)(nil),            // 150: SpaceX.API.Device.TransceiverGetTelemetryRequest
+	(*unlock.StartUnlockRequest)(nil),                 // 151: SpaceX.API.Device.Services.Unlock.StartUnlockRequest
+	(*unlock.FinishUnlockRequest)(nil),                // 152: SpaceX.API.Device.Services.Unlock.FinishUnlockRequest
+	(*status.Status)(nil),                             // 153: SpaceX.API.Status.Status
+	(*GetNextIdResponse)(nil),                         // 154: SpaceX.API.Device.GetNextIdResponse
+	(*InitiateRemoteSshResponse)(nil),                 // 155: SpaceX.API.Device.InitiateRemoteSshResponse
+	(*SelfTestResponse)(nil),                          // 156: SpaceX.API.Device.SelfTestResponse
+	(*SetTestModeResponse)(nil),                       // 157: SpaceX.API.Device.SetTestModeResponse
+	(*SoftwareUpdateResponse)(nil),                    // 158: SpaceX.API.Device.SoftwareUpdateResponse
+	(*DishAuthenticateResponse)(nil),                  // 159: SpaceX.API.Device.DishAuthenticateResponse
+	(*DishGetContextResponse)(nil),                    // 160: SpaceX.API.Device.DishGetContextResponse
+	(*DishGetHistoryResponse)(nil),                    // 161: SpaceX.API.Device.DishGetHistoryResponse
+	(*DishGetStatusResponse)(nil),                     // 162: SpaceX.API.Device.DishGetStatusResponse
+	(*DishGetObstructionMapResponse)(nil),             // 163: SpaceX.API.Device.DishGetObstructionMapResponse
+	(*DishStowResponse)(nil),                          // 164: SpaceX.API.Device.DishStowResponse
+	(*DishSetConfigResponse)(nil),                     // 165: SpaceX.API.Device.DishSetConfigResponse
+	(*DishGetConfigResponse)(nil),                     // 166: SpaceX.API.Device.DishGetConfigResponse
+	(*DishInhibitGpsResponse)(nil),                    // 167: SpaceX.API.Device.DishInhibitGpsResponse
+	(*DishClearObstructionMapResponse)(nil),           // 168: SpaceX.API.Device.DishClearObstructionMapResponse
+	(*DishActivateRssiScanResponse)(nil),              // 169: SpaceX.API.Device.DishActivateRssiScanResponse
+	(*DishGetRssiScanResultResponse)(nil),             // 170: SpaceX.API.Device.DishGetRssiScanResultResponse
+	(*DishFactoryResetResponse)(nil),                  // 171: SpaceX.API.Device.DishFactoryResetResponse
+	(*ResetButtonResponse)(nil),                       // 172: SpaceX.API.Device.ResetButtonResponse
+	(*DishAviationTestResponse)(nil),                  // 173: SpaceX.API.Device.DishAviationTestResponse
+	(*DishInhibitRfResponse)(nil),                     // 174: SpaceX.API.Device.DishInhibitRfResponse
+	(*ZtlmQueryResponse)(nil),                         // 175: SpaceX.API.Device.ZtlmQueryResponse
+	(*DishStartTestModeServerResponse)(nil),           // 176: SpaceX.API.Device.DishStartTestModeServerResponse
+	(*WifiAuthenticateResponse)(nil),                  // 177: SpaceX.API.Device.WifiAuthenticateResponse
+	(*WifiGetClientsResponse)(nil),                    // 178: SpaceX.API.Device.WifiGetClientsResponse
+	(*WifiGetHistoryResponse)(nil),                    // 179: SpaceX.API.Device.WifiGetHistoryResponse
+	(*WifiGetPingMetricsResponse)(nil),                // 180: SpaceX.API.Device.WifiGetPingMetricsResponse
+	(*WifiGetStatusResponse)(nil),                     // 181: SpaceX.API.Device.WifiGetStatusResponse
+	(*WifiSetConfigResponse)(nil),                     // 182: SpaceX.API.Device.WifiSetConfigResponse
+	(*WifiGetConfigResponse)(nil),                     // 183: SpaceX.API.Device.WifiGetConfigResponse
+	(*WifiSetupResponse)(nil),                         // 184: SpaceX.API.Device.WifiSetupResponse
+	(*WifiGetPersistentStatsResponse)(nil),            // 185: SpaceX.API.Device.WifiGetPersistentStatsResponse
+	(*WifiSetMeshDeviceTrustResponse)(nil),            // 186: SpaceX.API.Device.WifiSetMeshDeviceTrustResponse
+	(*WifiSetMeshConfigResponse)(nil),                 // 187: SpaceX.API.Device.WifiSetMeshConfigResponse
+	(*WifiGetClientHistoryResponse)(nil),              // 188: SpaceX.API.Device.WifiGetClientHistoryResponse
+	(*WifiSelfTestResponse)(nil),                      // 189: SpaceX.API.Device.WifiSelfTestResponse
+	(*WifiGuestInfoResponse)(nil),                     // 190: SpaceX.API.Device.WifiGuestInfoResponse
+	(*WifiRfTestResponse)(nil),                        // 191: SpaceX.API.Device.WifiRfTestResponse
+	(*WifiGetFirewallResponse)(nil),                   // 192: SpaceX.API.Device.WifiGetFirewallResponse
+	(*WifiFactoryTestCommandResponse)(nil),            // 193: SpaceX.API.Device.WifiFactoryTestCommandResponse
+	(*WifiBackhaulStatsResponse)(nil),                 // 194: SpaceX.API.Device.WifiBackhaulStatsResponse
+	(*WifiUpdateResponse)(nil),                        // 195: SpaceX.API.Device.WifiUpdateResponse
+	(*WifiRunDebugNetsysResponse)(nil),                // 196: SpaceX.API.Device.WifiRunDebugNetsysResponse
+	(*WifiResetEthPhyResponse)(nil),                   // 197: SpaceX.API.Device.WifiResetEthPhyResponse
+	(*WifiFlushHardwareNatResponse)(nil),              // 198: SpaceX.API.Device.WifiFlushHardwareNatResponse
+	(*TransceiverIFLoopbackTestResponse)(nil),         // 199: SpaceX.API.Device.TransceiverIFLoopbackTestResponse
+	(*TransceiverGetStatusResponse)(nil),              // 200: SpaceX.API.Device.TransceiverGetStatusResponse
+	(*TransceiverGetTelemetryResponse)(nil),           // 201: SpaceX.API.Device.TransceiverGetTelemetryResponse
+	(*unlock.StartUnlockResponse)(nil),                // 202: SpaceX.API.Device.Services.Unlock.StartUnlockResponse
+	(*unlock.FinishUnlockResponse)(nil),               // 203: SpaceX.API.Device.Services.Unlock.FinishUnlockResponse
+	(*WifiNewClientConnectedEvent)(nil),               // 204: SpaceX.API.Device.WifiNewClientConnectedEvent
+	(*WifiAccountBondingEvent)(nil),                   // 205: SpaceX.API.Device.WifiAccountBondingEvent
+	(*WifiNewPeerEvent)(nil),                          // 206: SpaceX.API.Device.WifiNewPeerEvent
+	(*PingResult)(nil),                                // 207: SpaceX.API.Device.PingResult
+	(RouterRole)(0),                                   // 208: SpaceX.API.Device.RouterRole
+	(*DeviceInfo)(nil),                                // 209: SpaceX.API.Device.DeviceInfo
+	(*PublicKey)(nil),                                 // 210: SpaceX.API.Device.PublicKey
+	(*NetworkInterface)(nil),                          // 211: SpaceX.API.Device.NetworkInterface
+	(*RadioStats)(nil),                                // 212: SpaceX.API.Device.RadioStats
+	(*LLAPosition)(nil),                               // 213: SpaceX.API.Device.LLAPosition
+	(*Measurement)(nil),                               // 214: SpaceX.API.Device.Gnss.Measurement
 }
 var file_spacex_api_device_device_proto_depIdxs = []int32{
 	13,  // 0: SpaceX.API.Device.ToDevice.request:type_name -> SpaceX.API.Device.Request
@@ -9730,172 +9804,176 @@ var file_spacex_api_device_device_proto_depIdxs = []int32{
 	107, // 61: SpaceX.API.Device.Request.set_per_vehicle_config:type_name -> SpaceX.API.Device.SoftwareUpdateRequest
 	120, // 62: SpaceX.API.Device.Request.dish_aviation_test:type_name -> SpaceX.API.Device.DishAviationTestRequest
 	121, // 63: SpaceX.API.Device.Request.dish_inhibit_rf:type_name -> SpaceX.API.Device.DishInhibitRfRequest
-	122, // 64: SpaceX.API.Device.Request.wifi_get_clients:type_name -> SpaceX.API.Device.WifiGetClientsRequest
-	123, // 65: SpaceX.API.Device.Request.wifi_get_ping_metrics:type_name -> SpaceX.API.Device.WifiGetPingMetricsRequest
-	124, // 66: SpaceX.API.Device.Request.wifi_set_config:type_name -> SpaceX.API.Device.WifiSetConfigRequest
-	125, // 67: SpaceX.API.Device.Request.wifi_get_config:type_name -> SpaceX.API.Device.WifiGetConfigRequest
-	126, // 68: SpaceX.API.Device.Request.wifi_setup:type_name -> SpaceX.API.Device.WifiSetupRequest
-	127, // 69: SpaceX.API.Device.Request.wifi_set_mesh_device_trust:type_name -> SpaceX.API.Device.WifiSetMeshDeviceTrustRequest
-	128, // 70: SpaceX.API.Device.Request.wifi_set_mesh_config:type_name -> SpaceX.API.Device.WifiSetMeshConfigRequest
-	129, // 71: SpaceX.API.Device.Request.wifi_get_client_history:type_name -> SpaceX.API.Device.WifiGetClientHistoryRequest
-	130, // 72: SpaceX.API.Device.Request.wifi_set_client_given_name:type_name -> SpaceX.API.Device.WifiSetClientGivenNameRequest
-	131, // 73: SpaceX.API.Device.Request.wifi_set_aviation_conformed:type_name -> SpaceX.API.Device.WifiSetAviationConformedRequest
-	132, // 74: SpaceX.API.Device.Request.wifi_self_test:type_name -> SpaceX.API.Device.WifiSelfTestRequest
-	133, // 75: SpaceX.API.Device.Request.wifi_run_self_test:type_name -> SpaceX.API.Device.WifiRunSelfTestRequest
-	134, // 76: SpaceX.API.Device.Request.wifi_calibration_mode:type_name -> SpaceX.API.Device.WifiCalibrationModeRequest
-	135, // 77: SpaceX.API.Device.Request.wifi_guest_info:type_name -> SpaceX.API.Device.WifiGuestInfoRequest
-	136, // 78: SpaceX.API.Device.Request.wifi_rf_test:type_name -> SpaceX.API.Device.WifiRfTestRequest
-	137, // 79: SpaceX.API.Device.Request.wifi_get_firewall:type_name -> SpaceX.API.Device.WifiGetFirewallRequest
-	138, // 80: SpaceX.API.Device.Request.wifi_toggle_poe_negotiation:type_name -> SpaceX.API.Device.WifiTogglePoeNegotiationRequest
-	139, // 81: SpaceX.API.Device.Request.wifi_factory_test_command:type_name -> SpaceX.API.Device.WifiFactoryTestCommandRequest
-	140, // 82: SpaceX.API.Device.Request.wifi_start_local_telem_proxy:type_name -> SpaceX.API.Device.WifiStartLocalTelemProxyRequest
-	141, // 83: SpaceX.API.Device.Request.wifi_backhaul_stats:type_name -> SpaceX.API.Device.WifiBackhaulStatsRequest
-	142, // 84: SpaceX.API.Device.Request.wifi_toggle_umbilical_mode:type_name -> SpaceX.API.Device.WifiToggleUmbilicalModeRequest
-	17,  // 85: SpaceX.API.Device.Request.wifi_client_sandbox:type_name -> SpaceX.API.Device.WifiClientSandboxRequest
-	143, // 86: SpaceX.API.Device.Request.wifi_run_debug_netsys:type_name -> SpaceX.API.Device.WifiRunDebugNetsysRequest
-	144, // 87: SpaceX.API.Device.Request.wifi_reset_eth_phy:type_name -> SpaceX.API.Device.WifiResetEthPhyRequest
-	145, // 88: SpaceX.API.Device.Request.wifi_flush_hardware_nat:type_name -> SpaceX.API.Device.WifiFlushHardwareNatRequest
-	19,  // 89: SpaceX.API.Device.Request.wifi_write_calibration:type_name -> SpaceX.API.Device.WifiWriteCalibrationRequest
-	146, // 90: SpaceX.API.Device.Request.transceiver_if_loopback_test:type_name -> SpaceX.API.Device.TransceiverIFLoopbackTestRequest
-	147, // 91: SpaceX.API.Device.Request.transceiver_get_status:type_name -> SpaceX.API.Device.TransceiverGetStatusRequest
-	148, // 92: SpaceX.API.Device.Request.transceiver_get_telemetry:type_name -> SpaceX.API.Device.TransceiverGetTelemetryRequest
-	149, // 93: SpaceX.API.Device.Request.start_unlock:type_name -> SpaceX.API.Device.Services.Unlock.StartUnlockRequest
-	150, // 94: SpaceX.API.Device.Request.finish_unlock:type_name -> SpaceX.API.Device.Services.Unlock.FinishUnlockRequest
-	82,  // 95: SpaceX.API.Device.Request.get_diagnostics:type_name -> SpaceX.API.Device.GetDiagnosticsRequest
-	89,  // 96: SpaceX.API.Device.Request.get_gnss_measurement:type_name -> SpaceX.API.Device.GetGnssMeasurementRequest
-	151, // 97: SpaceX.API.Device.Response.status:type_name -> SpaceX.API.Status.Status
-	152, // 98: SpaceX.API.Device.Response.get_next_id:type_name -> SpaceX.API.Device.GetNextIdResponse
-	22,  // 99: SpaceX.API.Device.Response.enable_debug_telem:type_name -> SpaceX.API.Device.EnableDebugTelemResponse
-	24,  // 100: SpaceX.API.Device.Response.factory_reset:type_name -> SpaceX.API.Device.FactoryResetResponse
-	48,  // 101: SpaceX.API.Device.Response.get_device_info:type_name -> SpaceX.API.Device.GetDeviceInfoResponse
-	31,  // 102: SpaceX.API.Device.Response.get_log:type_name -> SpaceX.API.Device.GetLogResponse
-	58,  // 103: SpaceX.API.Device.Response.get_network_interfaces:type_name -> SpaceX.API.Device.GetNetworkInterfacesResponse
-	33,  // 104: SpaceX.API.Device.Response.get_ping:type_name -> SpaceX.API.Device.GetPingResponse
-	35,  // 105: SpaceX.API.Device.Response.ping_host:type_name -> SpaceX.API.Device.PingHostResponse
-	38,  // 106: SpaceX.API.Device.Response.reboot:type_name -> SpaceX.API.Device.RebootResponse
-	42,  // 107: SpaceX.API.Device.Response.speed_test:type_name -> SpaceX.API.Device.SpeedTestResponse
-	52,  // 108: SpaceX.API.Device.Response.set_sku:type_name -> SpaceX.API.Device.SetSkuResponse
-	50,  // 109: SpaceX.API.Device.Response.set_trusted_keys:type_name -> SpaceX.API.Device.SetTrustedKeysResponse
-	54,  // 110: SpaceX.API.Device.Response.update:type_name -> SpaceX.API.Device.UpdateResponse
-	64,  // 111: SpaceX.API.Device.Response.get_location:type_name -> SpaceX.API.Device.GetLocationResponse
-	62,  // 112: SpaceX.API.Device.Response.get_heap_dump:type_name -> SpaceX.API.Device.GetHeapDumpResponse
-	56,  // 113: SpaceX.API.Device.Response.restart_control:type_name -> SpaceX.API.Device.RestartControlResponse
-	28,  // 114: SpaceX.API.Device.Response.fuse:type_name -> SpaceX.API.Device.FuseResponse
-	46,  // 115: SpaceX.API.Device.Response.get_connections:type_name -> SpaceX.API.Device.GetConnectionsResponse
-	73,  // 116: SpaceX.API.Device.Response.start_speedtest:type_name -> SpaceX.API.Device.StartSpeedtestResponse
-	76,  // 117: SpaceX.API.Device.Response.get_speedtest_status:type_name -> SpaceX.API.Device.GetSpeedtestStatusResponse
-	78,  // 118: SpaceX.API.Device.Response.report_client_speedtest:type_name -> SpaceX.API.Device.ReportClientSpeedtestResponse
-	153, // 119: SpaceX.API.Device.Response.initiate_remote_ssh:type_name -> SpaceX.API.Device.InitiateRemoteSshResponse
-	154, // 120: SpaceX.API.Device.Response.self_test:type_name -> SpaceX.API.Device.SelfTestResponse
-	155, // 121: SpaceX.API.Device.Response.set_test_mode:type_name -> SpaceX.API.Device.SetTestModeResponse
-	156, // 122: SpaceX.API.Device.Response.software_update:type_name -> SpaceX.API.Device.SoftwareUpdateResponse
-	60,  // 123: SpaceX.API.Device.Response.get_radio_stats:type_name -> SpaceX.API.Device.GetRadioStatsResponse
-	26,  // 124: SpaceX.API.Device.Response.time:type_name -> SpaceX.API.Device.GetTimeResponse
-	44,  // 125: SpaceX.API.Device.Response.run_iperf_server:type_name -> SpaceX.API.Device.RunIperfServerResponse
-	88,  // 126: SpaceX.API.Device.Response.get_goroutine_stack_traces:type_name -> SpaceX.API.Device.GetGoroutineStackTracesResponse
-	157, // 127: SpaceX.API.Device.Response.dish_authenticate:type_name -> SpaceX.API.Device.DishAuthenticateResponse
-	158, // 128: SpaceX.API.Device.Response.dish_get_context:type_name -> SpaceX.API.Device.DishGetContextResponse
-	159, // 129: SpaceX.API.Device.Response.dish_get_history:type_name -> SpaceX.API.Device.DishGetHistoryResponse
-	160, // 130: SpaceX.API.Device.Response.dish_get_status:type_name -> SpaceX.API.Device.DishGetStatusResponse
-	161, // 131: SpaceX.API.Device.Response.dish_get_obstruction_map:type_name -> SpaceX.API.Device.DishGetObstructionMapResponse
-	162, // 132: SpaceX.API.Device.Response.dish_stow:type_name -> SpaceX.API.Device.DishStowResponse
-	66,  // 133: SpaceX.API.Device.Response.dish_set_emc:type_name -> SpaceX.API.Device.DishSetEmcResponse
-	70,  // 134: SpaceX.API.Device.Response.dish_get_emc:type_name -> SpaceX.API.Device.DishGetEmcResponse
-	163, // 135: SpaceX.API.Device.Response.dish_set_config:type_name -> SpaceX.API.Device.DishSetConfigResponse
-	164, // 136: SpaceX.API.Device.Response.dish_get_config:type_name -> SpaceX.API.Device.DishGetConfigResponse
-	165, // 137: SpaceX.API.Device.Response.dish_inhibit_gps:type_name -> SpaceX.API.Device.DishInhibitGpsResponse
-	166, // 138: SpaceX.API.Device.Response.dish_clear_obstruction_map:type_name -> SpaceX.API.Device.DishClearObstructionMapResponse
-	68,  // 139: SpaceX.API.Device.Response.dish_set_max_power_test_mode:type_name -> SpaceX.API.Device.DishSetMaxPowerTestModeResponse
-	167, // 140: SpaceX.API.Device.Response.dish_activate_rssi_scan:type_name -> SpaceX.API.Device.DishActivateRssiScanResponse
-	168, // 141: SpaceX.API.Device.Response.dish_get_rssi_scan_result:type_name -> SpaceX.API.Device.DishGetRssiScanResultResponse
-	169, // 142: SpaceX.API.Device.Response.dish_factory_reset:type_name -> SpaceX.API.Device.DishFactoryResetResponse
-	170, // 143: SpaceX.API.Device.Response.reset_button:type_name -> SpaceX.API.Device.ResetButtonResponse
-	79,  // 144: SpaceX.API.Device.Response.set_per_vehicle_config:type_name -> SpaceX.API.Device.SetPerVehicleConfigResponse
-	171, // 145: SpaceX.API.Device.Response.dish_aviation_test:type_name -> SpaceX.API.Device.DishAviationTestResponse
-	172, // 146: SpaceX.API.Device.Response.dish_inhibit_rf:type_name -> SpaceX.API.Device.DishInhibitRfResponse
-	173, // 147: SpaceX.API.Device.Response.wifi_authenticate:type_name -> SpaceX.API.Device.WifiAuthenticateResponse
-	174, // 148: SpaceX.API.Device.Response.wifi_get_clients:type_name -> SpaceX.API.Device.WifiGetClientsResponse
-	175, // 149: SpaceX.API.Device.Response.wifi_get_history:type_name -> SpaceX.API.Device.WifiGetHistoryResponse
-	176, // 150: SpaceX.API.Device.Response.wifi_get_ping_metrics:type_name -> SpaceX.API.Device.WifiGetPingMetricsResponse
-	177, // 151: SpaceX.API.Device.Response.wifi_get_status:type_name -> SpaceX.API.Device.WifiGetStatusResponse
-	178, // 152: SpaceX.API.Device.Response.wifi_set_config:type_name -> SpaceX.API.Device.WifiSetConfigResponse
-	179, // 153: SpaceX.API.Device.Response.wifi_get_config:type_name -> SpaceX.API.Device.WifiGetConfigResponse
-	180, // 154: SpaceX.API.Device.Response.wifi_setup:type_name -> SpaceX.API.Device.WifiSetupResponse
-	181, // 155: SpaceX.API.Device.Response.wifi_get_persistent_stats:type_name -> SpaceX.API.Device.WifiGetPersistentStatsResponse
-	182, // 156: SpaceX.API.Device.Response.wifi_set_mesh_device_trust:type_name -> SpaceX.API.Device.WifiSetMeshDeviceTrustResponse
-	183, // 157: SpaceX.API.Device.Response.wifi_set_mesh_config:type_name -> SpaceX.API.Device.WifiSetMeshConfigResponse
-	184, // 158: SpaceX.API.Device.Response.wifi_get_client_history:type_name -> SpaceX.API.Device.WifiGetClientHistoryResponse
-	185, // 159: SpaceX.API.Device.Response.wifi_self_test:type_name -> SpaceX.API.Device.WifiSelfTestResponse
-	186, // 160: SpaceX.API.Device.Response.wifi_guest_info:type_name -> SpaceX.API.Device.WifiGuestInfoResponse
-	187, // 161: SpaceX.API.Device.Response.wifi_rf_test:type_name -> SpaceX.API.Device.WifiRfTestResponse
-	188, // 162: SpaceX.API.Device.Response.wifi_get_firewall:type_name -> SpaceX.API.Device.WifiGetFirewallResponse
-	189, // 163: SpaceX.API.Device.Response.wifi_factory_test_command:type_name -> SpaceX.API.Device.WifiFactoryTestCommandResponse
-	190, // 164: SpaceX.API.Device.Response.wifi_backhaul_stats:type_name -> SpaceX.API.Device.WifiBackhaulStatsResponse
-	18,  // 165: SpaceX.API.Device.Response.wifi_client_sandbox:type_name -> SpaceX.API.Device.WifiClientSandboxResponse
-	191, // 166: SpaceX.API.Device.Response.wifi_update:type_name -> SpaceX.API.Device.WifiUpdateResponse
-	192, // 167: SpaceX.API.Device.Response.wifi_run_debug_netsys:type_name -> SpaceX.API.Device.WifiRunDebugNetsysResponse
-	193, // 168: SpaceX.API.Device.Response.wifi_reset_eth_phy:type_name -> SpaceX.API.Device.WifiResetEthPhyResponse
-	194, // 169: SpaceX.API.Device.Response.wifi_flush_hardware_nat:type_name -> SpaceX.API.Device.WifiFlushHardwareNatResponse
-	195, // 170: SpaceX.API.Device.Response.transceiver_if_loopback_test:type_name -> SpaceX.API.Device.TransceiverIFLoopbackTestResponse
-	196, // 171: SpaceX.API.Device.Response.transceiver_get_status:type_name -> SpaceX.API.Device.TransceiverGetStatusResponse
-	197, // 172: SpaceX.API.Device.Response.transceiver_get_telemetry:type_name -> SpaceX.API.Device.TransceiverGetTelemetryResponse
-	198, // 173: SpaceX.API.Device.Response.start_unlock:type_name -> SpaceX.API.Device.Services.Unlock.StartUnlockResponse
-	199, // 174: SpaceX.API.Device.Response.finish_unlock:type_name -> SpaceX.API.Device.Services.Unlock.FinishUnlockResponse
-	83,  // 175: SpaceX.API.Device.Response.wifi_get_diagnostics:type_name -> SpaceX.API.Device.WifiGetDiagnosticsResponse
-	84,  // 176: SpaceX.API.Device.Response.dish_get_diagnostics:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse
-	90,  // 177: SpaceX.API.Device.Response.get_gnss_measurement:type_name -> SpaceX.API.Device.GetGnssMeasurementResponse
-	200, // 178: SpaceX.API.Device.Event.wifi_new_client_connected:type_name -> SpaceX.API.Device.WifiNewClientConnectedEvent
-	201, // 179: SpaceX.API.Device.Event.wifi_account_bonding:type_name -> SpaceX.API.Device.WifiAccountBondingEvent
-	202, // 180: SpaceX.API.Device.Event.wifi_new_peer:type_name -> SpaceX.API.Device.WifiNewPeerEvent
-	16,  // 181: SpaceX.API.Device.Event.wifi_cloud_status:type_name -> SpaceX.API.Device.WifiCloudStatusEvent
-	17,  // 182: SpaceX.API.Device.Event.wifi_client_sandbox:type_name -> SpaceX.API.Device.WifiClientSandboxRequest
-	20,  // 183: SpaceX.API.Device.WifiClientSandboxRequest.client_sandbox_status:type_name -> SpaceX.API.Device.WifiClientSandboxStatus
-	0,   // 184: SpaceX.API.Device.WifiClientSandboxRequest.alerts:type_name -> SpaceX.API.Device.WifiClientSandboxAlert
-	91,  // 185: SpaceX.API.Device.GetLogResponse.current:type_name -> SpaceX.API.Device.GetLogResponse.Logs
-	91,  // 186: SpaceX.API.Device.GetLogResponse.saved:type_name -> SpaceX.API.Device.GetLogResponse.Logs
-	92,  // 187: SpaceX.API.Device.GetPingResponse.results:type_name -> SpaceX.API.Device.GetPingResponse.ResultsEntry
-	203, // 188: SpaceX.API.Device.PingHostResponse.result:type_name -> SpaceX.API.Device.PingResult
-	204, // 189: SpaceX.API.Device.GetStatusRequest.router_role:type_name -> SpaceX.API.Device.RouterRole
-	3,   // 190: SpaceX.API.Device.SpeedTestStats.target:type_name -> SpaceX.API.Device.SpeedTestStats.Target
-	4,   // 191: SpaceX.API.Device.ClientPlatform.platform:type_name -> SpaceX.API.Device.ClientPlatform.Platform
-	39,  // 192: SpaceX.API.Device.SpeedTestRequest.client_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
-	40,  // 193: SpaceX.API.Device.SpeedTestRequest.client_platform:type_name -> SpaceX.API.Device.ClientPlatform
-	39,  // 194: SpaceX.API.Device.SpeedTestResponse.router_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
-	93,  // 195: SpaceX.API.Device.GetConnectionsResponse.services:type_name -> SpaceX.API.Device.GetConnectionsResponse.ServicesEntry
-	205, // 196: SpaceX.API.Device.GetDeviceInfoResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
-	206, // 197: SpaceX.API.Device.SetTrustedKeysRequest.keys:type_name -> SpaceX.API.Device.PublicKey
-	207, // 198: SpaceX.API.Device.GetNetworkInterfacesResponse.network_interfaces:type_name -> SpaceX.API.Device.NetworkInterface
-	208, // 199: SpaceX.API.Device.GetRadioStatsResponse.radio_stats:type_name -> SpaceX.API.Device.RadioStats
-	1,   // 200: SpaceX.API.Device.GetLocationRequest.source:type_name -> SpaceX.API.Device.PositionSource
-	209, // 201: SpaceX.API.Device.GetLocationResponse.lla:type_name -> SpaceX.API.Device.LLAPosition
-	1,   // 202: SpaceX.API.Device.GetLocationResponse.source:type_name -> SpaceX.API.Device.PositionSource
-	95,  // 203: SpaceX.API.Device.SpeedtestStatus.up:type_name -> SpaceX.API.Device.SpeedtestStatus.Direction
-	95,  // 204: SpaceX.API.Device.SpeedtestStatus.down:type_name -> SpaceX.API.Device.SpeedtestStatus.Direction
-	74,  // 205: SpaceX.API.Device.GetSpeedtestStatusResponse.status:type_name -> SpaceX.API.Device.SpeedtestStatus
-	39,  // 206: SpaceX.API.Device.ReportClientSpeedtestRequest.client_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
-	39,  // 207: SpaceX.API.Device.ReportClientSpeedtestRequest.wifi_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
-	40,  // 208: SpaceX.API.Device.ReportClientSpeedtestRequest.client_platform:type_name -> SpaceX.API.Device.ClientPlatform
-	96,  // 209: SpaceX.API.Device.WifiGetDiagnosticsResponse.networks:type_name -> SpaceX.API.Device.WifiGetDiagnosticsResponse.Network
-	5,   // 210: SpaceX.API.Device.DishGetDiagnosticsResponse.hardware_self_test:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.TestResult
-	6,   // 211: SpaceX.API.Device.DishGetDiagnosticsResponse.hardware_self_test_codes:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.TestResultCode
-	97,  // 212: SpaceX.API.Device.DishGetDiagnosticsResponse.alerts:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.Alerts
-	7,   // 213: SpaceX.API.Device.DishGetDiagnosticsResponse.disablement_code:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.DisablementCode
-	98,  // 214: SpaceX.API.Device.DishGetDiagnosticsResponse.location:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.Location
-	99,  // 215: SpaceX.API.Device.DishGetDiagnosticsResponse.alignment_stats:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.AlignmentStats
-	8,   // 216: SpaceX.API.Device.UdpConnectivityTestRequest.probe_data:type_name -> SpaceX.API.Device.UdpConnectivityTestRequest.UDPProbeDataType
-	210, // 217: SpaceX.API.Device.GetGnssMeasurementResponse.measurements:type_name -> SpaceX.API.Device.Gnss.Measurement
-	203, // 218: SpaceX.API.Device.GetPingResponse.ResultsEntry.value:type_name -> SpaceX.API.Device.PingResult
-	94,  // 219: SpaceX.API.Device.GetConnectionsResponse.ServicesEntry.value:type_name -> SpaceX.API.Device.GetConnectionsResponse.ServiceConnection
-	2,   // 220: SpaceX.API.Device.SpeedtestStatus.Direction.err:type_name -> SpaceX.API.Device.SpeedtestError
-	9,   // 221: SpaceX.API.Device.Device.Stream:input_type -> SpaceX.API.Device.ToDevice
-	13,  // 222: SpaceX.API.Device.Device.Handle:input_type -> SpaceX.API.Device.Request
-	10,  // 223: SpaceX.API.Device.Device.Stream:output_type -> SpaceX.API.Device.FromDevice
-	14,  // 224: SpaceX.API.Device.Device.Handle:output_type -> SpaceX.API.Device.Response
-	223, // [223:225] is the sub-list for method output_type
-	221, // [221:223] is the sub-list for method input_type
-	221, // [221:221] is the sub-list for extension type_name
-	221, // [221:221] is the sub-list for extension extendee
-	0,   // [0:221] is the sub-list for field type_name
+	122, // 64: SpaceX.API.Device.Request.ztlm_query:type_name -> SpaceX.API.Device.ZtlmQueryRequest
+	123, // 65: SpaceX.API.Device.Request.dish_start_test_mode_server:type_name -> SpaceX.API.Device.DishStartTestModeServerRequest
+	124, // 66: SpaceX.API.Device.Request.wifi_get_clients:type_name -> SpaceX.API.Device.WifiGetClientsRequest
+	125, // 67: SpaceX.API.Device.Request.wifi_get_ping_metrics:type_name -> SpaceX.API.Device.WifiGetPingMetricsRequest
+	126, // 68: SpaceX.API.Device.Request.wifi_set_config:type_name -> SpaceX.API.Device.WifiSetConfigRequest
+	127, // 69: SpaceX.API.Device.Request.wifi_get_config:type_name -> SpaceX.API.Device.WifiGetConfigRequest
+	128, // 70: SpaceX.API.Device.Request.wifi_setup:type_name -> SpaceX.API.Device.WifiSetupRequest
+	129, // 71: SpaceX.API.Device.Request.wifi_set_mesh_device_trust:type_name -> SpaceX.API.Device.WifiSetMeshDeviceTrustRequest
+	130, // 72: SpaceX.API.Device.Request.wifi_set_mesh_config:type_name -> SpaceX.API.Device.WifiSetMeshConfigRequest
+	131, // 73: SpaceX.API.Device.Request.wifi_get_client_history:type_name -> SpaceX.API.Device.WifiGetClientHistoryRequest
+	132, // 74: SpaceX.API.Device.Request.wifi_set_client_given_name:type_name -> SpaceX.API.Device.WifiSetClientGivenNameRequest
+	133, // 75: SpaceX.API.Device.Request.wifi_set_aviation_conformed:type_name -> SpaceX.API.Device.WifiSetAviationConformedRequest
+	134, // 76: SpaceX.API.Device.Request.wifi_self_test:type_name -> SpaceX.API.Device.WifiSelfTestRequest
+	135, // 77: SpaceX.API.Device.Request.wifi_run_self_test:type_name -> SpaceX.API.Device.WifiRunSelfTestRequest
+	136, // 78: SpaceX.API.Device.Request.wifi_calibration_mode:type_name -> SpaceX.API.Device.WifiCalibrationModeRequest
+	137, // 79: SpaceX.API.Device.Request.wifi_guest_info:type_name -> SpaceX.API.Device.WifiGuestInfoRequest
+	138, // 80: SpaceX.API.Device.Request.wifi_rf_test:type_name -> SpaceX.API.Device.WifiRfTestRequest
+	139, // 81: SpaceX.API.Device.Request.wifi_get_firewall:type_name -> SpaceX.API.Device.WifiGetFirewallRequest
+	140, // 82: SpaceX.API.Device.Request.wifi_toggle_poe_negotiation:type_name -> SpaceX.API.Device.WifiTogglePoeNegotiationRequest
+	141, // 83: SpaceX.API.Device.Request.wifi_factory_test_command:type_name -> SpaceX.API.Device.WifiFactoryTestCommandRequest
+	142, // 84: SpaceX.API.Device.Request.wifi_start_local_telem_proxy:type_name -> SpaceX.API.Device.WifiStartLocalTelemProxyRequest
+	143, // 85: SpaceX.API.Device.Request.wifi_backhaul_stats:type_name -> SpaceX.API.Device.WifiBackhaulStatsRequest
+	144, // 86: SpaceX.API.Device.Request.wifi_toggle_umbilical_mode:type_name -> SpaceX.API.Device.WifiToggleUmbilicalModeRequest
+	17,  // 87: SpaceX.API.Device.Request.wifi_client_sandbox:type_name -> SpaceX.API.Device.WifiClientSandboxRequest
+	145, // 88: SpaceX.API.Device.Request.wifi_run_debug_netsys:type_name -> SpaceX.API.Device.WifiRunDebugNetsysRequest
+	146, // 89: SpaceX.API.Device.Request.wifi_reset_eth_phy:type_name -> SpaceX.API.Device.WifiResetEthPhyRequest
+	147, // 90: SpaceX.API.Device.Request.wifi_flush_hardware_nat:type_name -> SpaceX.API.Device.WifiFlushHardwareNatRequest
+	19,  // 91: SpaceX.API.Device.Request.wifi_write_calibration:type_name -> SpaceX.API.Device.WifiWriteCalibrationRequest
+	148, // 92: SpaceX.API.Device.Request.transceiver_if_loopback_test:type_name -> SpaceX.API.Device.TransceiverIFLoopbackTestRequest
+	149, // 93: SpaceX.API.Device.Request.transceiver_get_status:type_name -> SpaceX.API.Device.TransceiverGetStatusRequest
+	150, // 94: SpaceX.API.Device.Request.transceiver_get_telemetry:type_name -> SpaceX.API.Device.TransceiverGetTelemetryRequest
+	151, // 95: SpaceX.API.Device.Request.start_unlock:type_name -> SpaceX.API.Device.Services.Unlock.StartUnlockRequest
+	152, // 96: SpaceX.API.Device.Request.finish_unlock:type_name -> SpaceX.API.Device.Services.Unlock.FinishUnlockRequest
+	82,  // 97: SpaceX.API.Device.Request.get_diagnostics:type_name -> SpaceX.API.Device.GetDiagnosticsRequest
+	89,  // 98: SpaceX.API.Device.Request.get_gnss_measurement:type_name -> SpaceX.API.Device.GetGnssMeasurementRequest
+	153, // 99: SpaceX.API.Device.Response.status:type_name -> SpaceX.API.Status.Status
+	154, // 100: SpaceX.API.Device.Response.get_next_id:type_name -> SpaceX.API.Device.GetNextIdResponse
+	22,  // 101: SpaceX.API.Device.Response.enable_debug_telem:type_name -> SpaceX.API.Device.EnableDebugTelemResponse
+	24,  // 102: SpaceX.API.Device.Response.factory_reset:type_name -> SpaceX.API.Device.FactoryResetResponse
+	48,  // 103: SpaceX.API.Device.Response.get_device_info:type_name -> SpaceX.API.Device.GetDeviceInfoResponse
+	31,  // 104: SpaceX.API.Device.Response.get_log:type_name -> SpaceX.API.Device.GetLogResponse
+	58,  // 105: SpaceX.API.Device.Response.get_network_interfaces:type_name -> SpaceX.API.Device.GetNetworkInterfacesResponse
+	33,  // 106: SpaceX.API.Device.Response.get_ping:type_name -> SpaceX.API.Device.GetPingResponse
+	35,  // 107: SpaceX.API.Device.Response.ping_host:type_name -> SpaceX.API.Device.PingHostResponse
+	38,  // 108: SpaceX.API.Device.Response.reboot:type_name -> SpaceX.API.Device.RebootResponse
+	42,  // 109: SpaceX.API.Device.Response.speed_test:type_name -> SpaceX.API.Device.SpeedTestResponse
+	52,  // 110: SpaceX.API.Device.Response.set_sku:type_name -> SpaceX.API.Device.SetSkuResponse
+	50,  // 111: SpaceX.API.Device.Response.set_trusted_keys:type_name -> SpaceX.API.Device.SetTrustedKeysResponse
+	54,  // 112: SpaceX.API.Device.Response.update:type_name -> SpaceX.API.Device.UpdateResponse
+	64,  // 113: SpaceX.API.Device.Response.get_location:type_name -> SpaceX.API.Device.GetLocationResponse
+	62,  // 114: SpaceX.API.Device.Response.get_heap_dump:type_name -> SpaceX.API.Device.GetHeapDumpResponse
+	56,  // 115: SpaceX.API.Device.Response.restart_control:type_name -> SpaceX.API.Device.RestartControlResponse
+	28,  // 116: SpaceX.API.Device.Response.fuse:type_name -> SpaceX.API.Device.FuseResponse
+	46,  // 117: SpaceX.API.Device.Response.get_connections:type_name -> SpaceX.API.Device.GetConnectionsResponse
+	73,  // 118: SpaceX.API.Device.Response.start_speedtest:type_name -> SpaceX.API.Device.StartSpeedtestResponse
+	76,  // 119: SpaceX.API.Device.Response.get_speedtest_status:type_name -> SpaceX.API.Device.GetSpeedtestStatusResponse
+	78,  // 120: SpaceX.API.Device.Response.report_client_speedtest:type_name -> SpaceX.API.Device.ReportClientSpeedtestResponse
+	155, // 121: SpaceX.API.Device.Response.initiate_remote_ssh:type_name -> SpaceX.API.Device.InitiateRemoteSshResponse
+	156, // 122: SpaceX.API.Device.Response.self_test:type_name -> SpaceX.API.Device.SelfTestResponse
+	157, // 123: SpaceX.API.Device.Response.set_test_mode:type_name -> SpaceX.API.Device.SetTestModeResponse
+	158, // 124: SpaceX.API.Device.Response.software_update:type_name -> SpaceX.API.Device.SoftwareUpdateResponse
+	60,  // 125: SpaceX.API.Device.Response.get_radio_stats:type_name -> SpaceX.API.Device.GetRadioStatsResponse
+	26,  // 126: SpaceX.API.Device.Response.time:type_name -> SpaceX.API.Device.GetTimeResponse
+	44,  // 127: SpaceX.API.Device.Response.run_iperf_server:type_name -> SpaceX.API.Device.RunIperfServerResponse
+	88,  // 128: SpaceX.API.Device.Response.get_goroutine_stack_traces:type_name -> SpaceX.API.Device.GetGoroutineStackTracesResponse
+	159, // 129: SpaceX.API.Device.Response.dish_authenticate:type_name -> SpaceX.API.Device.DishAuthenticateResponse
+	160, // 130: SpaceX.API.Device.Response.dish_get_context:type_name -> SpaceX.API.Device.DishGetContextResponse
+	161, // 131: SpaceX.API.Device.Response.dish_get_history:type_name -> SpaceX.API.Device.DishGetHistoryResponse
+	162, // 132: SpaceX.API.Device.Response.dish_get_status:type_name -> SpaceX.API.Device.DishGetStatusResponse
+	163, // 133: SpaceX.API.Device.Response.dish_get_obstruction_map:type_name -> SpaceX.API.Device.DishGetObstructionMapResponse
+	164, // 134: SpaceX.API.Device.Response.dish_stow:type_name -> SpaceX.API.Device.DishStowResponse
+	66,  // 135: SpaceX.API.Device.Response.dish_set_emc:type_name -> SpaceX.API.Device.DishSetEmcResponse
+	70,  // 136: SpaceX.API.Device.Response.dish_get_emc:type_name -> SpaceX.API.Device.DishGetEmcResponse
+	165, // 137: SpaceX.API.Device.Response.dish_set_config:type_name -> SpaceX.API.Device.DishSetConfigResponse
+	166, // 138: SpaceX.API.Device.Response.dish_get_config:type_name -> SpaceX.API.Device.DishGetConfigResponse
+	167, // 139: SpaceX.API.Device.Response.dish_inhibit_gps:type_name -> SpaceX.API.Device.DishInhibitGpsResponse
+	168, // 140: SpaceX.API.Device.Response.dish_clear_obstruction_map:type_name -> SpaceX.API.Device.DishClearObstructionMapResponse
+	68,  // 141: SpaceX.API.Device.Response.dish_set_max_power_test_mode:type_name -> SpaceX.API.Device.DishSetMaxPowerTestModeResponse
+	169, // 142: SpaceX.API.Device.Response.dish_activate_rssi_scan:type_name -> SpaceX.API.Device.DishActivateRssiScanResponse
+	170, // 143: SpaceX.API.Device.Response.dish_get_rssi_scan_result:type_name -> SpaceX.API.Device.DishGetRssiScanResultResponse
+	171, // 144: SpaceX.API.Device.Response.dish_factory_reset:type_name -> SpaceX.API.Device.DishFactoryResetResponse
+	172, // 145: SpaceX.API.Device.Response.reset_button:type_name -> SpaceX.API.Device.ResetButtonResponse
+	79,  // 146: SpaceX.API.Device.Response.set_per_vehicle_config:type_name -> SpaceX.API.Device.SetPerVehicleConfigResponse
+	173, // 147: SpaceX.API.Device.Response.dish_aviation_test:type_name -> SpaceX.API.Device.DishAviationTestResponse
+	174, // 148: SpaceX.API.Device.Response.dish_inhibit_rf:type_name -> SpaceX.API.Device.DishInhibitRfResponse
+	175, // 149: SpaceX.API.Device.Response.ztlm_query:type_name -> SpaceX.API.Device.ZtlmQueryResponse
+	176, // 150: SpaceX.API.Device.Response.dish_start_test_mode_server:type_name -> SpaceX.API.Device.DishStartTestModeServerResponse
+	177, // 151: SpaceX.API.Device.Response.wifi_authenticate:type_name -> SpaceX.API.Device.WifiAuthenticateResponse
+	178, // 152: SpaceX.API.Device.Response.wifi_get_clients:type_name -> SpaceX.API.Device.WifiGetClientsResponse
+	179, // 153: SpaceX.API.Device.Response.wifi_get_history:type_name -> SpaceX.API.Device.WifiGetHistoryResponse
+	180, // 154: SpaceX.API.Device.Response.wifi_get_ping_metrics:type_name -> SpaceX.API.Device.WifiGetPingMetricsResponse
+	181, // 155: SpaceX.API.Device.Response.wifi_get_status:type_name -> SpaceX.API.Device.WifiGetStatusResponse
+	182, // 156: SpaceX.API.Device.Response.wifi_set_config:type_name -> SpaceX.API.Device.WifiSetConfigResponse
+	183, // 157: SpaceX.API.Device.Response.wifi_get_config:type_name -> SpaceX.API.Device.WifiGetConfigResponse
+	184, // 158: SpaceX.API.Device.Response.wifi_setup:type_name -> SpaceX.API.Device.WifiSetupResponse
+	185, // 159: SpaceX.API.Device.Response.wifi_get_persistent_stats:type_name -> SpaceX.API.Device.WifiGetPersistentStatsResponse
+	186, // 160: SpaceX.API.Device.Response.wifi_set_mesh_device_trust:type_name -> SpaceX.API.Device.WifiSetMeshDeviceTrustResponse
+	187, // 161: SpaceX.API.Device.Response.wifi_set_mesh_config:type_name -> SpaceX.API.Device.WifiSetMeshConfigResponse
+	188, // 162: SpaceX.API.Device.Response.wifi_get_client_history:type_name -> SpaceX.API.Device.WifiGetClientHistoryResponse
+	189, // 163: SpaceX.API.Device.Response.wifi_self_test:type_name -> SpaceX.API.Device.WifiSelfTestResponse
+	190, // 164: SpaceX.API.Device.Response.wifi_guest_info:type_name -> SpaceX.API.Device.WifiGuestInfoResponse
+	191, // 165: SpaceX.API.Device.Response.wifi_rf_test:type_name -> SpaceX.API.Device.WifiRfTestResponse
+	192, // 166: SpaceX.API.Device.Response.wifi_get_firewall:type_name -> SpaceX.API.Device.WifiGetFirewallResponse
+	193, // 167: SpaceX.API.Device.Response.wifi_factory_test_command:type_name -> SpaceX.API.Device.WifiFactoryTestCommandResponse
+	194, // 168: SpaceX.API.Device.Response.wifi_backhaul_stats:type_name -> SpaceX.API.Device.WifiBackhaulStatsResponse
+	18,  // 169: SpaceX.API.Device.Response.wifi_client_sandbox:type_name -> SpaceX.API.Device.WifiClientSandboxResponse
+	195, // 170: SpaceX.API.Device.Response.wifi_update:type_name -> SpaceX.API.Device.WifiUpdateResponse
+	196, // 171: SpaceX.API.Device.Response.wifi_run_debug_netsys:type_name -> SpaceX.API.Device.WifiRunDebugNetsysResponse
+	197, // 172: SpaceX.API.Device.Response.wifi_reset_eth_phy:type_name -> SpaceX.API.Device.WifiResetEthPhyResponse
+	198, // 173: SpaceX.API.Device.Response.wifi_flush_hardware_nat:type_name -> SpaceX.API.Device.WifiFlushHardwareNatResponse
+	199, // 174: SpaceX.API.Device.Response.transceiver_if_loopback_test:type_name -> SpaceX.API.Device.TransceiverIFLoopbackTestResponse
+	200, // 175: SpaceX.API.Device.Response.transceiver_get_status:type_name -> SpaceX.API.Device.TransceiverGetStatusResponse
+	201, // 176: SpaceX.API.Device.Response.transceiver_get_telemetry:type_name -> SpaceX.API.Device.TransceiverGetTelemetryResponse
+	202, // 177: SpaceX.API.Device.Response.start_unlock:type_name -> SpaceX.API.Device.Services.Unlock.StartUnlockResponse
+	203, // 178: SpaceX.API.Device.Response.finish_unlock:type_name -> SpaceX.API.Device.Services.Unlock.FinishUnlockResponse
+	83,  // 179: SpaceX.API.Device.Response.wifi_get_diagnostics:type_name -> SpaceX.API.Device.WifiGetDiagnosticsResponse
+	84,  // 180: SpaceX.API.Device.Response.dish_get_diagnostics:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse
+	90,  // 181: SpaceX.API.Device.Response.get_gnss_measurement:type_name -> SpaceX.API.Device.GetGnssMeasurementResponse
+	204, // 182: SpaceX.API.Device.Event.wifi_new_client_connected:type_name -> SpaceX.API.Device.WifiNewClientConnectedEvent
+	205, // 183: SpaceX.API.Device.Event.wifi_account_bonding:type_name -> SpaceX.API.Device.WifiAccountBondingEvent
+	206, // 184: SpaceX.API.Device.Event.wifi_new_peer:type_name -> SpaceX.API.Device.WifiNewPeerEvent
+	16,  // 185: SpaceX.API.Device.Event.wifi_cloud_status:type_name -> SpaceX.API.Device.WifiCloudStatusEvent
+	17,  // 186: SpaceX.API.Device.Event.wifi_client_sandbox:type_name -> SpaceX.API.Device.WifiClientSandboxRequest
+	20,  // 187: SpaceX.API.Device.WifiClientSandboxRequest.client_sandbox_status:type_name -> SpaceX.API.Device.WifiClientSandboxStatus
+	0,   // 188: SpaceX.API.Device.WifiClientSandboxRequest.alerts:type_name -> SpaceX.API.Device.WifiClientSandboxAlert
+	91,  // 189: SpaceX.API.Device.GetLogResponse.current:type_name -> SpaceX.API.Device.GetLogResponse.Logs
+	91,  // 190: SpaceX.API.Device.GetLogResponse.saved:type_name -> SpaceX.API.Device.GetLogResponse.Logs
+	92,  // 191: SpaceX.API.Device.GetPingResponse.results:type_name -> SpaceX.API.Device.GetPingResponse.ResultsEntry
+	207, // 192: SpaceX.API.Device.PingHostResponse.result:type_name -> SpaceX.API.Device.PingResult
+	208, // 193: SpaceX.API.Device.GetStatusRequest.router_role:type_name -> SpaceX.API.Device.RouterRole
+	3,   // 194: SpaceX.API.Device.SpeedTestStats.target:type_name -> SpaceX.API.Device.SpeedTestStats.Target
+	4,   // 195: SpaceX.API.Device.ClientPlatform.platform:type_name -> SpaceX.API.Device.ClientPlatform.Platform
+	39,  // 196: SpaceX.API.Device.SpeedTestRequest.client_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
+	40,  // 197: SpaceX.API.Device.SpeedTestRequest.client_platform:type_name -> SpaceX.API.Device.ClientPlatform
+	39,  // 198: SpaceX.API.Device.SpeedTestResponse.router_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
+	93,  // 199: SpaceX.API.Device.GetConnectionsResponse.services:type_name -> SpaceX.API.Device.GetConnectionsResponse.ServicesEntry
+	209, // 200: SpaceX.API.Device.GetDeviceInfoResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
+	210, // 201: SpaceX.API.Device.SetTrustedKeysRequest.keys:type_name -> SpaceX.API.Device.PublicKey
+	211, // 202: SpaceX.API.Device.GetNetworkInterfacesResponse.network_interfaces:type_name -> SpaceX.API.Device.NetworkInterface
+	212, // 203: SpaceX.API.Device.GetRadioStatsResponse.radio_stats:type_name -> SpaceX.API.Device.RadioStats
+	1,   // 204: SpaceX.API.Device.GetLocationRequest.source:type_name -> SpaceX.API.Device.PositionSource
+	213, // 205: SpaceX.API.Device.GetLocationResponse.lla:type_name -> SpaceX.API.Device.LLAPosition
+	1,   // 206: SpaceX.API.Device.GetLocationResponse.source:type_name -> SpaceX.API.Device.PositionSource
+	95,  // 207: SpaceX.API.Device.SpeedtestStatus.up:type_name -> SpaceX.API.Device.SpeedtestStatus.Direction
+	95,  // 208: SpaceX.API.Device.SpeedtestStatus.down:type_name -> SpaceX.API.Device.SpeedtestStatus.Direction
+	74,  // 209: SpaceX.API.Device.GetSpeedtestStatusResponse.status:type_name -> SpaceX.API.Device.SpeedtestStatus
+	39,  // 210: SpaceX.API.Device.ReportClientSpeedtestRequest.client_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
+	39,  // 211: SpaceX.API.Device.ReportClientSpeedtestRequest.wifi_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
+	40,  // 212: SpaceX.API.Device.ReportClientSpeedtestRequest.client_platform:type_name -> SpaceX.API.Device.ClientPlatform
+	96,  // 213: SpaceX.API.Device.WifiGetDiagnosticsResponse.networks:type_name -> SpaceX.API.Device.WifiGetDiagnosticsResponse.Network
+	5,   // 214: SpaceX.API.Device.DishGetDiagnosticsResponse.hardware_self_test:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.TestResult
+	6,   // 215: SpaceX.API.Device.DishGetDiagnosticsResponse.hardware_self_test_codes:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.TestResultCode
+	97,  // 216: SpaceX.API.Device.DishGetDiagnosticsResponse.alerts:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.Alerts
+	7,   // 217: SpaceX.API.Device.DishGetDiagnosticsResponse.disablement_code:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.DisablementCode
+	98,  // 218: SpaceX.API.Device.DishGetDiagnosticsResponse.location:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.Location
+	99,  // 219: SpaceX.API.Device.DishGetDiagnosticsResponse.alignment_stats:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.AlignmentStats
+	8,   // 220: SpaceX.API.Device.UdpConnectivityTestRequest.probe_data:type_name -> SpaceX.API.Device.UdpConnectivityTestRequest.UDPProbeDataType
+	214, // 221: SpaceX.API.Device.GetGnssMeasurementResponse.measurements:type_name -> SpaceX.API.Device.Gnss.Measurement
+	207, // 222: SpaceX.API.Device.GetPingResponse.ResultsEntry.value:type_name -> SpaceX.API.Device.PingResult
+	94,  // 223: SpaceX.API.Device.GetConnectionsResponse.ServicesEntry.value:type_name -> SpaceX.API.Device.GetConnectionsResponse.ServiceConnection
+	2,   // 224: SpaceX.API.Device.SpeedtestStatus.Direction.err:type_name -> SpaceX.API.Device.SpeedtestError
+	9,   // 225: SpaceX.API.Device.Device.Stream:input_type -> SpaceX.API.Device.ToDevice
+	13,  // 226: SpaceX.API.Device.Device.Handle:input_type -> SpaceX.API.Device.Request
+	10,  // 227: SpaceX.API.Device.Device.Stream:output_type -> SpaceX.API.Device.FromDevice
+	14,  // 228: SpaceX.API.Device.Device.Handle:output_type -> SpaceX.API.Device.Response
+	227, // [227:229] is the sub-list for method output_type
+	225, // [225:227] is the sub-list for method input_type
+	225, // [225:225] is the sub-list for extension type_name
+	225, // [225:225] is the sub-list for extension extendee
+	0,   // [0:225] is the sub-list for field type_name
 }
 
 func init() { file_spacex_api_device_device_proto_init() }
@@ -9979,6 +10057,8 @@ func file_spacex_api_device_device_proto_init() {
 		(*Request_SetPerVehicleConfig)(nil),
 		(*Request_DishAviationTest)(nil),
 		(*Request_DishInhibitRf)(nil),
+		(*Request_ZtlmQuery)(nil),
+		(*Request_DishStartTestModeServer)(nil),
 		(*Request_WifiGetClients)(nil),
 		(*Request_WifiGetPingMetrics)(nil),
 		(*Request_WifiSetConfig)(nil),
@@ -10063,6 +10143,8 @@ func file_spacex_api_device_device_proto_init() {
 		(*Response_SetPerVehicleConfig)(nil),
 		(*Response_DishAviationTest)(nil),
 		(*Response_DishInhibitRf)(nil),
+		(*Response_ZtlmQuery)(nil),
+		(*Response_DishStartTestModeServer)(nil),
 		(*Response_WifiAuthenticate)(nil),
 		(*Response_WifiGetClients)(nil),
 		(*Response_WifiGetHistory)(nil),

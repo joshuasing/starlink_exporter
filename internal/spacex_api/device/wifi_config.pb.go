@@ -461,6 +461,55 @@ func (WifiConfig_VHTBandwidth) EnumDescriptor() ([]byte, []int) {
 	return file_spacex_api_device_wifi_config_proto_rawDescGZIP(), []int{4, 4}
 }
 
+type WifiConfig_Network_GeofenceAction int32
+
+const (
+	WifiConfig_Network_NONE                             WifiConfig_Network_GeofenceAction = 0
+	WifiConfig_Network_DISABLE_RADIOS_AND_BLOCK_TRAFFIC WifiConfig_Network_GeofenceAction = 1
+	WifiConfig_Network_BLOCK_TRAFFIC                    WifiConfig_Network_GeofenceAction = 2
+)
+
+// Enum value maps for WifiConfig_Network_GeofenceAction.
+var (
+	WifiConfig_Network_GeofenceAction_name = map[int32]string{
+		0: "NONE",
+		1: "DISABLE_RADIOS_AND_BLOCK_TRAFFIC",
+		2: "BLOCK_TRAFFIC",
+	}
+	WifiConfig_Network_GeofenceAction_value = map[string]int32{
+		"NONE":                             0,
+		"DISABLE_RADIOS_AND_BLOCK_TRAFFIC": 1,
+		"BLOCK_TRAFFIC":                    2,
+	}
+)
+
+func (x WifiConfig_Network_GeofenceAction) Enum() *WifiConfig_Network_GeofenceAction {
+	p := new(WifiConfig_Network_GeofenceAction)
+	*p = x
+	return p
+}
+
+func (x WifiConfig_Network_GeofenceAction) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (WifiConfig_Network_GeofenceAction) Descriptor() protoreflect.EnumDescriptor {
+	return file_spacex_api_device_wifi_config_proto_enumTypes[8].Descriptor()
+}
+
+func (WifiConfig_Network_GeofenceAction) Type() protoreflect.EnumType {
+	return &file_spacex_api_device_wifi_config_proto_enumTypes[8]
+}
+
+func (x WifiConfig_Network_GeofenceAction) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use WifiConfig_Network_GeofenceAction.Descriptor instead.
+func (WifiConfig_Network_GeofenceAction) EnumDescriptor() ([]byte, []int) {
+	return file_spacex_api_device_wifi_config_proto_rawDescGZIP(), []int{4, 6, 0}
+}
+
 type MeshConfig struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	DisplayName       string                 `protobuf:"bytes,1,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
@@ -3013,6 +3062,7 @@ type WifiConfig_Network struct {
 	Dhcpv4Start            uint32                        `protobuf:"varint,1012,opt,name=dhcpv4_start,json=dhcpv4Start,proto3" json:"dhcpv4_start,omitempty"`
 	Dhcpv4End              uint32                        `protobuf:"varint,1025,opt,name=dhcpv4_end,json=dhcpv4End,proto3" json:"dhcpv4_end,omitempty"`
 	DhcpDisabled           bool                          `protobuf:"varint,1015,opt,name=dhcp_disabled,json=dhcpDisabled,proto3" json:"dhcp_disabled,omitempty"`
+	DnsDisabled            bool                          `protobuf:"varint,1034,opt,name=dns_disabled,json=dnsDisabled,proto3" json:"dns_disabled,omitempty"`
 	Dhcpv4LeaseDurationS   uint32                        `protobuf:"varint,1016,opt,name=dhcpv4_lease_duration_s,json=dhcpv4LeaseDurationS,proto3" json:"dhcpv4_lease_duration_s,omitempty"`
 	Domain                 string                        `protobuf:"bytes,1011,opt,name=domain,proto3" json:"domain,omitempty"`
 	BasicServiceSets       []*WifiConfig_BasicServiceSet `protobuf:"bytes,1007,rep,name=basic_service_sets,json=basicServiceSets,proto3" json:"basic_service_sets,omitempty"`
@@ -3030,12 +3080,15 @@ type WifiConfig_Network struct {
 	DnsStaticEntries       []*WifiConfig_DnsStaticEntry  `protobuf:"bytes,1027,rep,name=dns_static_entries,json=dnsStaticEntries,proto3" json:"dns_static_entries,omitempty"`
 	DnsForwardRules        []*WifiConfig_DnsForwardRule  `protobuf:"bytes,1028,rep,name=dns_forward_rules,json=dnsForwardRules,proto3" json:"dns_forward_rules,omitempty"`
 	// Deprecated: Marked as deprecated in spacex_api/device/wifi_config.proto.
-	DisableWhenOfflineOld bool                      `protobuf:"varint,1029,opt,name=disable_when_offline_old,json=disableWhenOfflineOld,proto3" json:"disable_when_offline_old,omitempty"`
-	StaticRoutes          []*WifiConfig_StaticRoute `protobuf:"bytes,1030,rep,name=static_routes,json=staticRoutes,proto3" json:"static_routes,omitempty"`
-	DisableWhenOffline    bool                      `protobuf:"varint,1031,opt,name=disable_when_offline,json=disableWhenOffline,proto3" json:"disable_when_offline,omitempty"`
+	DisableWhenOfflineOld bool                              `protobuf:"varint,1029,opt,name=disable_when_offline_old,json=disableWhenOfflineOld,proto3" json:"disable_when_offline_old,omitempty"`
+	StaticRoutes          []*WifiConfig_StaticRoute         `protobuf:"bytes,1030,rep,name=static_routes,json=staticRoutes,proto3" json:"static_routes,omitempty"`
+	DisableWhenOffline    bool                              `protobuf:"varint,1031,opt,name=disable_when_offline,json=disableWhenOffline,proto3" json:"disable_when_offline,omitempty"`
+	GeofenceAction        WifiConfig_Network_GeofenceAction `protobuf:"varint,1038,opt,name=geofence_action,json=geofenceAction,proto3,enum=SpaceX.API.Device.WifiConfig_Network_GeofenceAction" json:"geofence_action,omitempty"`
 	// Deprecated: Marked as deprecated in spacex_api/device/wifi_config.proto.
 	OnboardRadiusTlsConfigOld *TlsConfig `protobuf:"bytes,1032,opt,name=onboard_radius_tls_config_old,json=onboardRadiusTlsConfigOld,proto3" json:"onboard_radius_tls_config_old,omitempty"`
 	OnboardRadiusTlsConfig    *TlsConfig `protobuf:"bytes,1033,opt,name=onboard_radius_tls_config,json=onboardRadiusTlsConfig,proto3" json:"onboard_radius_tls_config,omitempty"`
+	GetLeaseDhcp              bool       `protobuf:"varint,1035,opt,name=get_lease_dhcp,json=getLeaseDhcp,proto3" json:"get_lease_dhcp,omitempty"`
+	DefaultRouteDisabled      bool       `protobuf:"varint,1036,opt,name=default_route_disabled,json=defaultRouteDisabled,proto3" json:"default_route_disabled,omitempty"`
 	unknownFields             protoimpl.UnknownFields
 	sizeCache                 protoimpl.SizeCache
 }
@@ -3094,6 +3147,13 @@ func (x *WifiConfig_Network) GetDhcpv4End() uint32 {
 func (x *WifiConfig_Network) GetDhcpDisabled() bool {
 	if x != nil {
 		return x.DhcpDisabled
+	}
+	return false
+}
+
+func (x *WifiConfig_Network) GetDnsDisabled() bool {
+	if x != nil {
+		return x.DnsDisabled
 	}
 	return false
 }
@@ -3232,6 +3292,13 @@ func (x *WifiConfig_Network) GetDisableWhenOffline() bool {
 	return false
 }
 
+func (x *WifiConfig_Network) GetGeofenceAction() WifiConfig_Network_GeofenceAction {
+	if x != nil {
+		return x.GeofenceAction
+	}
+	return WifiConfig_Network_NONE
+}
+
 // Deprecated: Marked as deprecated in spacex_api/device/wifi_config.proto.
 func (x *WifiConfig_Network) GetOnboardRadiusTlsConfigOld() *TlsConfig {
 	if x != nil {
@@ -3247,6 +3314,20 @@ func (x *WifiConfig_Network) GetOnboardRadiusTlsConfig() *TlsConfig {
 	return nil
 }
 
+func (x *WifiConfig_Network) GetGetLeaseDhcp() bool {
+	if x != nil {
+		return x.GetLeaseDhcp
+	}
+	return false
+}
+
+func (x *WifiConfig_Network) GetDefaultRouteDisabled() bool {
+	if x != nil {
+		return x.DefaultRouteDisabled
+	}
+	return false
+}
+
 type WifiConfig_UnbridgedEthPort struct {
 	state        protoimpl.MessageState                     `protogen:"open.v1"`
 	LanPortIndex uint32                                     `protobuf:"varint,1,opt,name=lan_port_index,json=lanPortIndex,proto3" json:"lan_port_index,omitempty"`
@@ -3257,9 +3338,10 @@ type WifiConfig_UnbridgedEthPort struct {
 	//
 	//	*WifiConfig_UnbridgedEthPort_WanNone
 	//	*WifiConfig_UnbridgedEthPort_WanStarlinkRouterPair
-	Wan           isWifiConfig_UnbridgedEthPort_Wan `protobuf_oneof:"wan"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Wan                         isWifiConfig_UnbridgedEthPort_Wan `protobuf_oneof:"wan"`
+	BridgedNetworkGroupOverride uint32                            `protobuf:"varint,7,opt,name=bridged_network_group_override,json=bridgedNetworkGroupOverride,proto3" json:"bridged_network_group_override,omitempty"`
+	unknownFields               protoimpl.UnknownFields
+	sizeCache                   protoimpl.SizeCache
 }
 
 func (x *WifiConfig_UnbridgedEthPort) Reset() {
@@ -3343,6 +3425,13 @@ func (x *WifiConfig_UnbridgedEthPort) GetWanStarlinkRouterPair() *WanStarlinkRou
 		}
 	}
 	return nil
+}
+
+func (x *WifiConfig_UnbridgedEthPort) GetBridgedNetworkGroupOverride() uint32 {
+	if x != nil {
+		return x.BridgedNetworkGroupOverride
+	}
+	return 0
 }
 
 type isWifiConfig_UnbridgedEthPort_Wan interface {
@@ -3497,7 +3586,7 @@ const file_spacex_api_device_wifi_config_proto_rawDesc = "" +
 	"\x1caccess_control_allow_origins\x18\x05 \x03(\tR\x19accessControlAllowOriginsJ\x04\be\x10fR\x10pages_bundle_url\"^\n" +
 	"\rCaptivePortal\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\x12;\n" +
-	"\x1adisplay_in_captive_browser\x18\x02 \x01(\bR\x17displayInCaptiveBrowser\"\x9b[\n" +
+	"\x1adisplay_in_captive_browser\x18\x02 \x01(\bR\x17displayInCaptiveBrowser\"\x97^\n" +
 	"\n" +
 	"WifiConfig\x12!\n" +
 	"\fcountry_code\x18\x03 \x01(\tR\vcountryCode\x12-\n" +
@@ -3668,13 +3757,14 @@ const file_spacex_api_device_wifi_config_proto_rawDesc = "" +
 	"\x10server_addresses\x18\xe9\a \x03(\tR\x0fserverAddresses\x1a?\n" +
 	"\vStaticRoute\x12\x16\n" +
 	"\x06subnet\x18\x01 \x01(\tR\x06subnet\x12\x18\n" +
-	"\agateway\x18\x02 \x01(\tR\agateway\x1a\xa7\v\n" +
+	"\agateway\x18\x02 \x01(\tR\agateway\x1a\xde\r\n" +
 	"\aNetwork\x12\x13\n" +
 	"\x04ipv4\x18\xeb\a \x01(\tR\x04ipv4\x12\"\n" +
 	"\fdhcpv4_start\x18\xf4\a \x01(\rR\vdhcpv4Start\x12\x1e\n" +
 	"\n" +
 	"dhcpv4_end\x18\x81\b \x01(\rR\tdhcpv4End\x12$\n" +
-	"\rdhcp_disabled\x18\xf7\a \x01(\bR\fdhcpDisabled\x126\n" +
+	"\rdhcp_disabled\x18\xf7\a \x01(\bR\fdhcpDisabled\x12\"\n" +
+	"\fdns_disabled\x18\x8a\b \x01(\bR\vdnsDisabled\x126\n" +
 	"\x17dhcpv4_lease_duration_s\x18\xf8\a \x01(\rR\x14dhcpv4LeaseDurationS\x12\x17\n" +
 	"\x06domain\x18\xf3\a \x01(\tR\x06domain\x12\\\n" +
 	"\x12basic_service_sets\x18\xef\a \x03(\v2-.SpaceX.API.Device.WifiConfig.BasicServiceSetR\x10basicServiceSets\x12*\n" +
@@ -3694,16 +3784,24 @@ const file_spacex_api_device_wifi_config_proto_rawDesc = "" +
 	"\x11dns_forward_rules\x18\x84\b \x03(\v2,.SpaceX.API.Device.WifiConfig.DnsForwardRuleR\x0fdnsForwardRules\x12<\n" +
 	"\x18disable_when_offline_old\x18\x85\b \x01(\bB\x02\x18\x01R\x15disableWhenOfflineOld\x12O\n" +
 	"\rstatic_routes\x18\x86\b \x03(\v2).SpaceX.API.Device.WifiConfig.StaticRouteR\fstaticRoutes\x121\n" +
-	"\x14disable_when_offline\x18\x87\b \x01(\bR\x12disableWhenOffline\x12c\n" +
+	"\x14disable_when_offline\x18\x87\b \x01(\bR\x12disableWhenOffline\x12^\n" +
+	"\x0fgeofence_action\x18\x8e\b \x01(\x0e24.SpaceX.API.Device.WifiConfig.Network.GeofenceActionR\x0egeofenceAction\x12c\n" +
 	"\x1donboard_radius_tls_config_old\x18\x88\b \x01(\v2\x1c.SpaceX.API.Device.TlsConfigB\x02\x18\x01R\x19onboardRadiusTlsConfigOld\x12X\n" +
-	"\x19onboard_radius_tls_config\x18\x89\b \x01(\v2\x1c.SpaceX.API.Device.TlsConfigR\x16onboardRadiusTlsConfigJ\x06\b\xe8\a\x10\xe9\aJ\x06\b\xe9\a\x10\xea\aJ\x06\b\xea\a\x10\xeb\aJ\x06\b\xec\a\x10\xed\aJ\x06\b\xed\a\x10\xee\aJ\x06\b\xee\a\x10\xef\aJ\x06\b\xfa\a\x10\xfb\aJ\x06\b\xfb\a\x10\xfc\aR\x1dclient_authorization_requiredR%unauthorized_client_domain_allow_list\x1a\xb6\x03\n" +
+	"\x19onboard_radius_tls_config\x18\x89\b \x01(\v2\x1c.SpaceX.API.Device.TlsConfigR\x16onboardRadiusTlsConfig\x12%\n" +
+	"\x0eget_lease_dhcp\x18\x8b\b \x01(\bR\fgetLeaseDhcp\x125\n" +
+	"\x16default_route_disabled\x18\x8c\b \x01(\bR\x14defaultRouteDisabled\"S\n" +
+	"\x0eGeofenceAction\x12\b\n" +
+	"\x04NONE\x10\x00\x12$\n" +
+	" DISABLE_RADIOS_AND_BLOCK_TRAFFIC\x10\x01\x12\x11\n" +
+	"\rBLOCK_TRAFFIC\x10\x02J\x06\b\xe8\a\x10\xe9\aJ\x06\b\xe9\a\x10\xea\aJ\x06\b\xea\a\x10\xeb\aJ\x06\b\xec\a\x10\xed\aJ\x06\b\xed\a\x10\xee\aJ\x06\b\xee\a\x10\xef\aJ\x06\b\xfa\a\x10\xfb\aJ\x06\b\xfb\a\x10\xfc\aR\x1dclient_authorization_requiredR%unauthorized_client_domain_allow_list\x1a\xfb\x03\n" +
 	"\x10UnbridgedEthPort\x12$\n" +
 	"\x0elan_port_index\x18\x01 \x01(\rR\flanPortIndex\x12\x0e\n" +
 	"\x02ip\x18\x02 \x01(\tR\x02ip\x12\x18\n" +
 	"\agateway\x18\x03 \x01(\tR\agateway\x12_\n" +
 	"\rstatic_routes\x18\x04 \x03(\v2:.SpaceX.API.Device.WifiConfig.UnbridgedEthPort.StaticRouteR\fstaticRoutes\x127\n" +
 	"\bwan_none\x18\x05 \x01(\v2\x1a.SpaceX.API.Device.WanNoneH\x00R\awanNone\x12c\n" +
-	"\x18wan_starlink_router_pair\x18\x06 \x01(\v2(.SpaceX.API.Device.WanStarlinkRouterPairH\x00R\x15wanStarlinkRouterPair\x1aL\n" +
+	"\x18wan_starlink_router_pair\x18\x06 \x01(\v2(.SpaceX.API.Device.WanStarlinkRouterPairH\x00R\x15wanStarlinkRouterPair\x12C\n" +
+	"\x1ebridged_network_group_override\x18\a \x01(\rR\x1bbridgedNetworkGroupOverride\x1aL\n" +
 	"\vStaticRoute\x12\x16\n" +
 	"\x06subnet\x18\x01 \x01(\tR\x06subnet\x12%\n" +
 	"\x0enetwork_groups\x18\x02 \x01(\rR\rnetworkGroupsB\x05\n" +
@@ -3837,7 +3935,7 @@ func file_spacex_api_device_wifi_config_proto_rawDescGZIP() []byte {
 	return file_spacex_api_device_wifi_config_proto_rawDescData
 }
 
-var file_spacex_api_device_wifi_config_proto_enumTypes = make([]protoimpl.EnumInfo, 8)
+var file_spacex_api_device_wifi_config_proto_enumTypes = make([]protoimpl.EnumInfo, 9)
 var file_spacex_api_device_wifi_config_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
 var file_spacex_api_device_wifi_config_proto_goTypes = []any{
 	(MeshAuth)(0),                                   // 0: SpaceX.API.Device.MeshAuth
@@ -3848,51 +3946,52 @@ var file_spacex_api_device_wifi_config_proto_goTypes = []any{
 	(WifiConfig_WirelessMode)(0),                    // 5: SpaceX.API.Device.WifiConfig.WirelessMode
 	(WifiConfig_HTBandwidth)(0),                     // 6: SpaceX.API.Device.WifiConfig.HTBandwidth
 	(WifiConfig_VHTBandwidth)(0),                    // 7: SpaceX.API.Device.WifiConfig.VHTBandwidth
-	(*MeshConfig)(nil),                              // 8: SpaceX.API.Device.MeshConfig
-	(*TlsConfig)(nil),                               // 9: SpaceX.API.Device.TlsConfig
-	(*HttpServer)(nil),                              // 10: SpaceX.API.Device.HttpServer
-	(*CaptivePortal)(nil),                           // 11: SpaceX.API.Device.CaptivePortal
-	(*WifiConfig)(nil),                              // 12: SpaceX.API.Device.WifiConfig
-	(*WanNone)(nil),                                 // 13: SpaceX.API.Device.WanNone
-	(*WanStarlinkRouterPair)(nil),                   // 14: SpaceX.API.Device.WanStarlinkRouterPair
-	(*WeeklyBlockSchedule)(nil),                     // 15: SpaceX.API.Device.WeeklyBlockSchedule
-	(*ClientConfig)(nil),                            // 16: SpaceX.API.Device.ClientConfig
-	(*ClientName)(nil),                              // 17: SpaceX.API.Device.ClientName
-	(*AuthOpen)(nil),                                // 18: SpaceX.API.Device.AuthOpen
-	(*AuthWpa2)(nil),                                // 19: SpaceX.API.Device.AuthWpa2
-	(*AuthWpa3)(nil),                                // 20: SpaceX.API.Device.AuthWpa3
-	(*AuthWpa2Wpa3)(nil),                            // 21: SpaceX.API.Device.AuthWpa2Wpa3
-	(*AuthOpenEncrypted)(nil),                       // 22: SpaceX.API.Device.AuthOpenEncrypted
-	(*AuthRadius)(nil),                              // 23: SpaceX.API.Device.AuthRadius
-	(*AuthOnboardRadius)(nil),                       // 24: SpaceX.API.Device.AuthOnboardRadius
-	(*NoTrafficControl)(nil),                        // 25: SpaceX.API.Device.NoTrafficControl
-	(*AckSuppression)(nil),                          // 26: SpaceX.API.Device.AckSuppression
-	(*CakeRateLimit)(nil),                           // 27: SpaceX.API.Device.CakeRateLimit
-	nil,                                             // 28: SpaceX.API.Device.WifiConfig.MeshConfigsEntry
-	nil,                                             // 29: SpaceX.API.Device.WifiConfig.MeshConfigsUpdatesEntry
-	(*WifiConfig_BasicServiceSet)(nil),              // 30: SpaceX.API.Device.WifiConfig.BasicServiceSet
-	(*WifiConfig_DnsStaticEntry)(nil),               // 31: SpaceX.API.Device.WifiConfig.DnsStaticEntry
-	(*WifiConfig_DnsForwardRule)(nil),               // 32: SpaceX.API.Device.WifiConfig.DnsForwardRule
-	(*WifiConfig_StaticRoute)(nil),                  // 33: SpaceX.API.Device.WifiConfig.StaticRoute
-	(*WifiConfig_Network)(nil),                      // 34: SpaceX.API.Device.WifiConfig.Network
-	(*WifiConfig_UnbridgedEthPort)(nil),             // 35: SpaceX.API.Device.WifiConfig.UnbridgedEthPort
-	(*WifiConfig_UnbridgedEthPort_StaticRoute)(nil), // 36: SpaceX.API.Device.WifiConfig.UnbridgedEthPort.StaticRoute
-	(*WeeklyBlockSchedule_BlockRange)(nil),          // 37: SpaceX.API.Device.WeeklyBlockSchedule.BlockRange
-	(*PublicKey)(nil),                               // 38: SpaceX.API.Device.PublicKey
-	(*BootInfo)(nil),                                // 39: SpaceX.API.Device.BootInfo
-	(IfaceType)(0),                                  // 40: SpaceX.API.Device.IfaceType
-	(TxPowerLevel)(0),                               // 41: SpaceX.API.Device.TxPowerLevel
-	(Protocol)(0),                                   // 42: SpaceX.API.Device.Protocol
+	(WifiConfig_Network_GeofenceAction)(0),          // 8: SpaceX.API.Device.WifiConfig.Network.GeofenceAction
+	(*MeshConfig)(nil),                              // 9: SpaceX.API.Device.MeshConfig
+	(*TlsConfig)(nil),                               // 10: SpaceX.API.Device.TlsConfig
+	(*HttpServer)(nil),                              // 11: SpaceX.API.Device.HttpServer
+	(*CaptivePortal)(nil),                           // 12: SpaceX.API.Device.CaptivePortal
+	(*WifiConfig)(nil),                              // 13: SpaceX.API.Device.WifiConfig
+	(*WanNone)(nil),                                 // 14: SpaceX.API.Device.WanNone
+	(*WanStarlinkRouterPair)(nil),                   // 15: SpaceX.API.Device.WanStarlinkRouterPair
+	(*WeeklyBlockSchedule)(nil),                     // 16: SpaceX.API.Device.WeeklyBlockSchedule
+	(*ClientConfig)(nil),                            // 17: SpaceX.API.Device.ClientConfig
+	(*ClientName)(nil),                              // 18: SpaceX.API.Device.ClientName
+	(*AuthOpen)(nil),                                // 19: SpaceX.API.Device.AuthOpen
+	(*AuthWpa2)(nil),                                // 20: SpaceX.API.Device.AuthWpa2
+	(*AuthWpa3)(nil),                                // 21: SpaceX.API.Device.AuthWpa3
+	(*AuthWpa2Wpa3)(nil),                            // 22: SpaceX.API.Device.AuthWpa2Wpa3
+	(*AuthOpenEncrypted)(nil),                       // 23: SpaceX.API.Device.AuthOpenEncrypted
+	(*AuthRadius)(nil),                              // 24: SpaceX.API.Device.AuthRadius
+	(*AuthOnboardRadius)(nil),                       // 25: SpaceX.API.Device.AuthOnboardRadius
+	(*NoTrafficControl)(nil),                        // 26: SpaceX.API.Device.NoTrafficControl
+	(*AckSuppression)(nil),                          // 27: SpaceX.API.Device.AckSuppression
+	(*CakeRateLimit)(nil),                           // 28: SpaceX.API.Device.CakeRateLimit
+	nil,                                             // 29: SpaceX.API.Device.WifiConfig.MeshConfigsEntry
+	nil,                                             // 30: SpaceX.API.Device.WifiConfig.MeshConfigsUpdatesEntry
+	(*WifiConfig_BasicServiceSet)(nil),              // 31: SpaceX.API.Device.WifiConfig.BasicServiceSet
+	(*WifiConfig_DnsStaticEntry)(nil),               // 32: SpaceX.API.Device.WifiConfig.DnsStaticEntry
+	(*WifiConfig_DnsForwardRule)(nil),               // 33: SpaceX.API.Device.WifiConfig.DnsForwardRule
+	(*WifiConfig_StaticRoute)(nil),                  // 34: SpaceX.API.Device.WifiConfig.StaticRoute
+	(*WifiConfig_Network)(nil),                      // 35: SpaceX.API.Device.WifiConfig.Network
+	(*WifiConfig_UnbridgedEthPort)(nil),             // 36: SpaceX.API.Device.WifiConfig.UnbridgedEthPort
+	(*WifiConfig_UnbridgedEthPort_StaticRoute)(nil), // 37: SpaceX.API.Device.WifiConfig.UnbridgedEthPort.StaticRoute
+	(*WeeklyBlockSchedule_BlockRange)(nil),          // 38: SpaceX.API.Device.WeeklyBlockSchedule.BlockRange
+	(*PublicKey)(nil),                               // 39: SpaceX.API.Device.PublicKey
+	(*BootInfo)(nil),                                // 40: SpaceX.API.Device.BootInfo
+	(IfaceType)(0),                                  // 41: SpaceX.API.Device.IfaceType
+	(TxPowerLevel)(0),                               // 42: SpaceX.API.Device.TxPowerLevel
+	(Protocol)(0),                                   // 43: SpaceX.API.Device.Protocol
 }
 var file_spacex_api_device_wifi_config_proto_depIdxs = []int32{
 	0,  // 0: SpaceX.API.Device.MeshConfig.auth:type_name -> SpaceX.API.Device.MeshAuth
-	9,  // 1: SpaceX.API.Device.HttpServer.tls:type_name -> SpaceX.API.Device.TlsConfig
-	28, // 2: SpaceX.API.Device.WifiConfig.mesh_configs:type_name -> SpaceX.API.Device.WifiConfig.MeshConfigsEntry
-	29, // 3: SpaceX.API.Device.WifiConfig.mesh_configs_updates:type_name -> SpaceX.API.Device.WifiConfig.MeshConfigsUpdatesEntry
-	38, // 4: SpaceX.API.Device.WifiConfig.dynamic_keys:type_name -> SpaceX.API.Device.PublicKey
-	39, // 5: SpaceX.API.Device.WifiConfig.boot:type_name -> SpaceX.API.Device.BootInfo
-	10, // 6: SpaceX.API.Device.WifiConfig.http_server:type_name -> SpaceX.API.Device.HttpServer
-	34, // 7: SpaceX.API.Device.WifiConfig.networks:type_name -> SpaceX.API.Device.WifiConfig.Network
+	10, // 1: SpaceX.API.Device.HttpServer.tls:type_name -> SpaceX.API.Device.TlsConfig
+	29, // 2: SpaceX.API.Device.WifiConfig.mesh_configs:type_name -> SpaceX.API.Device.WifiConfig.MeshConfigsEntry
+	30, // 3: SpaceX.API.Device.WifiConfig.mesh_configs_updates:type_name -> SpaceX.API.Device.WifiConfig.MeshConfigsUpdatesEntry
+	39, // 4: SpaceX.API.Device.WifiConfig.dynamic_keys:type_name -> SpaceX.API.Device.PublicKey
+	40, // 5: SpaceX.API.Device.WifiConfig.boot:type_name -> SpaceX.API.Device.BootInfo
+	11, // 6: SpaceX.API.Device.WifiConfig.http_server:type_name -> SpaceX.API.Device.HttpServer
+	35, // 7: SpaceX.API.Device.WifiConfig.networks:type_name -> SpaceX.API.Device.WifiConfig.Network
 	5,  // 8: SpaceX.API.Device.WifiConfig.wireless_mode_2ghz:type_name -> SpaceX.API.Device.WifiConfig.WirelessMode
 	5,  // 9: SpaceX.API.Device.WifiConfig.wireless_mode_5ghz:type_name -> SpaceX.API.Device.WifiConfig.WirelessMode
 	5,  // 10: SpaceX.API.Device.WifiConfig.wireless_mode_5ghz_high:type_name -> SpaceX.API.Device.WifiConfig.WirelessMode
@@ -3901,46 +4000,47 @@ var file_spacex_api_device_wifi_config_proto_depIdxs = []int32{
 	6,  // 13: SpaceX.API.Device.WifiConfig.ht_bandwidth_5ghz_high:type_name -> SpaceX.API.Device.WifiConfig.HTBandwidth
 	7,  // 14: SpaceX.API.Device.WifiConfig.vht_bandwidth:type_name -> SpaceX.API.Device.WifiConfig.VHTBandwidth
 	7,  // 15: SpaceX.API.Device.WifiConfig.vht_bandwidth_5ghz_high:type_name -> SpaceX.API.Device.WifiConfig.VHTBandwidth
-	17, // 16: SpaceX.API.Device.WifiConfig.client_names:type_name -> SpaceX.API.Device.ClientName
-	40, // 17: SpaceX.API.Device.WifiConfig.golden_iface_type:type_name -> SpaceX.API.Device.IfaceType
-	41, // 18: SpaceX.API.Device.WifiConfig.tx_power_level_2ghz:type_name -> SpaceX.API.Device.TxPowerLevel
-	41, // 19: SpaceX.API.Device.WifiConfig.tx_power_level_5ghz:type_name -> SpaceX.API.Device.TxPowerLevel
-	41, // 20: SpaceX.API.Device.WifiConfig.tx_power_level_5ghz_high:type_name -> SpaceX.API.Device.TxPowerLevel
-	16, // 21: SpaceX.API.Device.WifiConfig.client_configs:type_name -> SpaceX.API.Device.ClientConfig
-	25, // 22: SpaceX.API.Device.WifiConfig.wan_no_traffic_control:type_name -> SpaceX.API.Device.NoTrafficControl
-	26, // 23: SpaceX.API.Device.WifiConfig.wan_ack_suppression:type_name -> SpaceX.API.Device.AckSuppression
-	27, // 24: SpaceX.API.Device.WifiConfig.wan_cake_rate_limit:type_name -> SpaceX.API.Device.CakeRateLimit
-	35, // 25: SpaceX.API.Device.WifiConfig.unbridged_eth_ports:type_name -> SpaceX.API.Device.WifiConfig.UnbridgedEthPort
-	37, // 26: SpaceX.API.Device.WeeklyBlockSchedule.block_ranges:type_name -> SpaceX.API.Device.WeeklyBlockSchedule.BlockRange
-	15, // 27: SpaceX.API.Device.ClientConfig.weekly_block_schedules:type_name -> SpaceX.API.Device.WeeklyBlockSchedule
-	42, // 28: SpaceX.API.Device.AuthRadius.transport:type_name -> SpaceX.API.Device.Protocol
+	18, // 16: SpaceX.API.Device.WifiConfig.client_names:type_name -> SpaceX.API.Device.ClientName
+	41, // 17: SpaceX.API.Device.WifiConfig.golden_iface_type:type_name -> SpaceX.API.Device.IfaceType
+	42, // 18: SpaceX.API.Device.WifiConfig.tx_power_level_2ghz:type_name -> SpaceX.API.Device.TxPowerLevel
+	42, // 19: SpaceX.API.Device.WifiConfig.tx_power_level_5ghz:type_name -> SpaceX.API.Device.TxPowerLevel
+	42, // 20: SpaceX.API.Device.WifiConfig.tx_power_level_5ghz_high:type_name -> SpaceX.API.Device.TxPowerLevel
+	17, // 21: SpaceX.API.Device.WifiConfig.client_configs:type_name -> SpaceX.API.Device.ClientConfig
+	26, // 22: SpaceX.API.Device.WifiConfig.wan_no_traffic_control:type_name -> SpaceX.API.Device.NoTrafficControl
+	27, // 23: SpaceX.API.Device.WifiConfig.wan_ack_suppression:type_name -> SpaceX.API.Device.AckSuppression
+	28, // 24: SpaceX.API.Device.WifiConfig.wan_cake_rate_limit:type_name -> SpaceX.API.Device.CakeRateLimit
+	36, // 25: SpaceX.API.Device.WifiConfig.unbridged_eth_ports:type_name -> SpaceX.API.Device.WifiConfig.UnbridgedEthPort
+	38, // 26: SpaceX.API.Device.WeeklyBlockSchedule.block_ranges:type_name -> SpaceX.API.Device.WeeklyBlockSchedule.BlockRange
+	16, // 27: SpaceX.API.Device.ClientConfig.weekly_block_schedules:type_name -> SpaceX.API.Device.WeeklyBlockSchedule
+	43, // 28: SpaceX.API.Device.AuthRadius.transport:type_name -> SpaceX.API.Device.Protocol
 	2,  // 29: SpaceX.API.Device.CakeRateLimit.priority_queue_parameter:type_name -> SpaceX.API.Device.CakePriorityQueueParameter
 	1,  // 30: SpaceX.API.Device.CakeRateLimit.ack_filter:type_name -> SpaceX.API.Device.CakeAckFilter
-	8,  // 31: SpaceX.API.Device.WifiConfig.MeshConfigsEntry.value:type_name -> SpaceX.API.Device.MeshConfig
-	8,  // 32: SpaceX.API.Device.WifiConfig.MeshConfigsUpdatesEntry.value:type_name -> SpaceX.API.Device.MeshConfig
-	18, // 33: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_open:type_name -> SpaceX.API.Device.AuthOpen
-	19, // 34: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_wpa2:type_name -> SpaceX.API.Device.AuthWpa2
-	20, // 35: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_wpa3:type_name -> SpaceX.API.Device.AuthWpa3
-	21, // 36: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_wpa2_wpa3:type_name -> SpaceX.API.Device.AuthWpa2Wpa3
-	23, // 37: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_radius:type_name -> SpaceX.API.Device.AuthRadius
-	22, // 38: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_open_encrypted:type_name -> SpaceX.API.Device.AuthOpenEncrypted
-	24, // 39: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_onboard_radius:type_name -> SpaceX.API.Device.AuthOnboardRadius
+	9,  // 31: SpaceX.API.Device.WifiConfig.MeshConfigsEntry.value:type_name -> SpaceX.API.Device.MeshConfig
+	9,  // 32: SpaceX.API.Device.WifiConfig.MeshConfigsUpdatesEntry.value:type_name -> SpaceX.API.Device.MeshConfig
+	19, // 33: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_open:type_name -> SpaceX.API.Device.AuthOpen
+	20, // 34: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_wpa2:type_name -> SpaceX.API.Device.AuthWpa2
+	21, // 35: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_wpa3:type_name -> SpaceX.API.Device.AuthWpa3
+	22, // 36: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_wpa2_wpa3:type_name -> SpaceX.API.Device.AuthWpa2Wpa3
+	24, // 37: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_radius:type_name -> SpaceX.API.Device.AuthRadius
+	23, // 38: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_open_encrypted:type_name -> SpaceX.API.Device.AuthOpenEncrypted
+	25, // 39: SpaceX.API.Device.WifiConfig.BasicServiceSet.auth_onboard_radius:type_name -> SpaceX.API.Device.AuthOnboardRadius
 	4,  // 40: SpaceX.API.Device.WifiConfig.BasicServiceSet.band:type_name -> SpaceX.API.Device.WifiConfig.Band
-	30, // 41: SpaceX.API.Device.WifiConfig.Network.basic_service_sets:type_name -> SpaceX.API.Device.WifiConfig.BasicServiceSet
-	11, // 42: SpaceX.API.Device.WifiConfig.Network.captive_portal:type_name -> SpaceX.API.Device.CaptivePortal
-	31, // 43: SpaceX.API.Device.WifiConfig.Network.dns_static_entries:type_name -> SpaceX.API.Device.WifiConfig.DnsStaticEntry
-	32, // 44: SpaceX.API.Device.WifiConfig.Network.dns_forward_rules:type_name -> SpaceX.API.Device.WifiConfig.DnsForwardRule
-	33, // 45: SpaceX.API.Device.WifiConfig.Network.static_routes:type_name -> SpaceX.API.Device.WifiConfig.StaticRoute
-	9,  // 46: SpaceX.API.Device.WifiConfig.Network.onboard_radius_tls_config_old:type_name -> SpaceX.API.Device.TlsConfig
-	9,  // 47: SpaceX.API.Device.WifiConfig.Network.onboard_radius_tls_config:type_name -> SpaceX.API.Device.TlsConfig
-	36, // 48: SpaceX.API.Device.WifiConfig.UnbridgedEthPort.static_routes:type_name -> SpaceX.API.Device.WifiConfig.UnbridgedEthPort.StaticRoute
-	13, // 49: SpaceX.API.Device.WifiConfig.UnbridgedEthPort.wan_none:type_name -> SpaceX.API.Device.WanNone
-	14, // 50: SpaceX.API.Device.WifiConfig.UnbridgedEthPort.wan_starlink_router_pair:type_name -> SpaceX.API.Device.WanStarlinkRouterPair
-	51, // [51:51] is the sub-list for method output_type
-	51, // [51:51] is the sub-list for method input_type
-	51, // [51:51] is the sub-list for extension type_name
-	51, // [51:51] is the sub-list for extension extendee
-	0,  // [0:51] is the sub-list for field type_name
+	31, // 41: SpaceX.API.Device.WifiConfig.Network.basic_service_sets:type_name -> SpaceX.API.Device.WifiConfig.BasicServiceSet
+	12, // 42: SpaceX.API.Device.WifiConfig.Network.captive_portal:type_name -> SpaceX.API.Device.CaptivePortal
+	32, // 43: SpaceX.API.Device.WifiConfig.Network.dns_static_entries:type_name -> SpaceX.API.Device.WifiConfig.DnsStaticEntry
+	33, // 44: SpaceX.API.Device.WifiConfig.Network.dns_forward_rules:type_name -> SpaceX.API.Device.WifiConfig.DnsForwardRule
+	34, // 45: SpaceX.API.Device.WifiConfig.Network.static_routes:type_name -> SpaceX.API.Device.WifiConfig.StaticRoute
+	8,  // 46: SpaceX.API.Device.WifiConfig.Network.geofence_action:type_name -> SpaceX.API.Device.WifiConfig.Network.GeofenceAction
+	10, // 47: SpaceX.API.Device.WifiConfig.Network.onboard_radius_tls_config_old:type_name -> SpaceX.API.Device.TlsConfig
+	10, // 48: SpaceX.API.Device.WifiConfig.Network.onboard_radius_tls_config:type_name -> SpaceX.API.Device.TlsConfig
+	37, // 49: SpaceX.API.Device.WifiConfig.UnbridgedEthPort.static_routes:type_name -> SpaceX.API.Device.WifiConfig.UnbridgedEthPort.StaticRoute
+	14, // 50: SpaceX.API.Device.WifiConfig.UnbridgedEthPort.wan_none:type_name -> SpaceX.API.Device.WanNone
+	15, // 51: SpaceX.API.Device.WifiConfig.UnbridgedEthPort.wan_starlink_router_pair:type_name -> SpaceX.API.Device.WanStarlinkRouterPair
+	52, // [52:52] is the sub-list for method output_type
+	52, // [52:52] is the sub-list for method input_type
+	52, // [52:52] is the sub-list for extension type_name
+	52, // [52:52] is the sub-list for extension extendee
+	0,  // [0:52] is the sub-list for field type_name
 }
 
 func init() { file_spacex_api_device_wifi_config_proto_init() }
@@ -3974,7 +4074,7 @@ func file_spacex_api_device_wifi_config_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_spacex_api_device_wifi_config_proto_rawDesc), len(file_spacex_api_device_wifi_config_proto_rawDesc)),
-			NumEnums:      8,
+			NumEnums:      9,
 			NumMessages:   30,
 			NumExtensions: 0,
 			NumServices:   0,
