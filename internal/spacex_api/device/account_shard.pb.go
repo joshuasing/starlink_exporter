@@ -24,9 +24,10 @@ const (
 type AccountShard int32
 
 const (
-	AccountShard_ACCOUNT_SHARD_UNKNOWN AccountShard = 0
-	AccountShard_ACCOUNT_SHARD_DEFAULT AccountShard = 1
-	AccountShard_ACCOUNT_SHARD_INDIA   AccountShard = 2
+	AccountShard_ACCOUNT_SHARD_UNKNOWN    AccountShard = 0
+	AccountShard_ACCOUNT_SHARD_DEFAULT    AccountShard = 1
+	AccountShard_ACCOUNT_SHARD_INDIA      AccountShard = 2
+	AccountShard_ACCOUNT_SHARD_STARSHIELD AccountShard = 3
 )
 
 // Enum value maps for AccountShard.
@@ -35,11 +36,13 @@ var (
 		0: "ACCOUNT_SHARD_UNKNOWN",
 		1: "ACCOUNT_SHARD_DEFAULT",
 		2: "ACCOUNT_SHARD_INDIA",
+		3: "ACCOUNT_SHARD_STARSHIELD",
 	}
 	AccountShard_value = map[string]int32{
-		"ACCOUNT_SHARD_UNKNOWN": 0,
-		"ACCOUNT_SHARD_DEFAULT": 1,
-		"ACCOUNT_SHARD_INDIA":   2,
+		"ACCOUNT_SHARD_UNKNOWN":    0,
+		"ACCOUNT_SHARD_DEFAULT":    1,
+		"ACCOUNT_SHARD_INDIA":      2,
+		"ACCOUNT_SHARD_STARSHIELD": 3,
 	}
 )
 
@@ -74,11 +77,12 @@ var File_spacex_api_device_account_shard_proto protoreflect.FileDescriptor
 
 const file_spacex_api_device_account_shard_proto_rawDesc = "" +
 	"\n" +
-	"%spacex_api/device/account_shard.proto\x12\x11SpaceX.API.Device*]\n" +
+	"%spacex_api/device/account_shard.proto\x12\x11SpaceX.API.Device*{\n" +
 	"\fAccountShard\x12\x19\n" +
 	"\x15ACCOUNT_SHARD_UNKNOWN\x10\x00\x12\x19\n" +
 	"\x15ACCOUNT_SHARD_DEFAULT\x10\x01\x12\x17\n" +
-	"\x13ACCOUNT_SHARD_INDIA\x10\x02B%Z#spacex.com/api/device/account_shardb\x06proto3"
+	"\x13ACCOUNT_SHARD_INDIA\x10\x02\x12\x1c\n" +
+	"\x18ACCOUNT_SHARD_STARSHIELD\x10\x03B%Z#spacex.com/api/device/account_shardb\x06proto3"
 
 var (
 	file_spacex_api_device_account_shard_proto_rawDescOnce sync.Once
