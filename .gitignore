@@ -1,6 +1,7 @@
 ## Project
 /bin/
 /dist/
+coverage.out
 
 ## Common editors
 # Vim

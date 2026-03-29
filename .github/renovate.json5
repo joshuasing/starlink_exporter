@@ -56,6 +56,12 @@
       matchUpdateTypes: ['pin', 'pinDigest'],
       commitMessageAction: 'pin',
     },
+    {
+      description: "Enable auto-merge on pull requests",
+      matchPackageNames: ["*"],
+      automerge: true,
+      automergeType: "pr",
+    },
   ],
   osvVulnerabilityAlerts: true,
   vulnerabilityAlerts: {
@@ -64,4 +70,15 @@
       'type: security',
     ],
   },
+  customManagers: [
+    {
+      customType: 'regex',
+      managerFilePatterns: [
+        '/(^|/)Makefile$/',
+      ],
+      matchStrings: [
+        '# renovate: datasource=(?<datasource>[a-zA-Z0-9-._]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+[A-Za-z0-9_]+?_VERSION\\s*=\\s*["\']?(?<currentValue>.+?)["\']?\\s',
+      ],
+    },
+  ],
 }
