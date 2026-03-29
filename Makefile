@@ -18,6 +18,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# renovate: datasource=github-releases depName=golangci/golangci-lint versioning=semver
+GOLANGCI_LINT_VERSION="v2.11.4"
+# renovate: datasource=github-releases depName=joshuasing/golicenser versioning=semver
+GOLICENSER_VERSION="v0.3.1"
+
 .PHONY: all
 all: lint build
 
@@ -60,8 +65,8 @@ lint:
 
 .PHONY: lint-deps
 lint-deps:
-	go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.5
-	go install github.com/joshuasing/golicenser/cmd/golicenser@v0.3
+	go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@$(GOLANGCI_LINT_VERSION)
+	go install github.com/joshuasing/golicenser/cmd/golicenser@$(GOLICENSER_VERSION)
 
 .PHONY: build
 build:
