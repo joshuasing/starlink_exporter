@@ -307,6 +307,7 @@ var Descs = []*Desc{
 	dishUp,
 	dishInfo,
 	dishUptimeSeconds,
+	dishMobilityClass,
 	dishSnrAboveNoiseFloor,
 	dishSnrPersistentlyLow,
 	dishUplinkThroughputBps,
@@ -316,6 +317,7 @@ var Descs = []*Desc{
 	dishPopPingDropRatio,
 	dishPopPingLatencySeconds,
 	dishPopPingLatencyHistogram,
+	dishSoftwareUpdateState,
 	dishSoftwareUpdateRebootReady,
 	dishGPSValid,
 	dishGPSSatellites,
@@ -354,7 +356,7 @@ type Desc struct {
 }
 
 // FQName builds the fully-qualified metric name from the name parts.
-func (d Desc) FQName() string {
+func (d *Desc) FQName() string {
 	if d.fqName == "" {
 		d.fqName = prometheus.BuildFQName(d.Namespace, d.Subsystem, d.Name)
 	}
@@ -362,7 +364,7 @@ func (d Desc) FQName() string {
 }
 
 // Desc builds and returns a *prometheus.Desc.
-func (d Desc) Desc() *prometheus.Desc {
+func (d *Desc) Desc() *prometheus.Desc {
 	if d.desc == nil {
 		d.desc = prometheus.NewDesc(d.FQName(), d.Help, d.Labels, d.ConstLabels)
 	}

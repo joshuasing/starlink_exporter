@@ -104,7 +104,7 @@ func run() int {
 		},
 	})
 	if err != nil {
-		slog.Error("Failed to create landing page", slog.String("err", err.Error()))
+		slog.Error("Failed to create landing page", slog.Any("err", err))
 		return 1
 	}
 	http.Handle("/", landingPage)
