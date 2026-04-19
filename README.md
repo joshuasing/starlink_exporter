@@ -3,6 +3,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/joshuasing/starlink_exporter.svg)](https://pkg.go.dev/github.com/joshuasing/starlink_exporter)
 [![Go Report Card](https://goreportcard.com/badge/github.com/joshuasing/starlink_exporter)](https://goreportcard.com/report/github.com/joshuasing/starlink_exporter)
 [![Go Build Status](https://github.com/joshuasing/starlink_exporter/actions/workflows/go.yml/badge.svg)](https://github.com/joshuasing/starlink_exporter/actions/workflows/go.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/joshuasing/starlink_exporter/badge)](https://scorecard.dev/viewer/?uri=github.com/joshuasing/starlink_exporter)
 [![Starlink Dishy Software Version](https://img.shields.io/badge/Starlink_Dishy_Version-2026.04.07.mr77639.1_(API_v42)-blue)](internal/spacex_api/README.md)
 [![MIT License](https://img.shields.io/badge/license-MIT-2155cc)](LICENSE)
 
