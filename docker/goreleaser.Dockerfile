@@ -20,23 +20,6 @@
 
 FROM cgr.dev/chainguard/static@sha256:d6d54da1c5bf5d9cecb231786adca86934607763067c8d7d9d22057abe6d5dbc
 
-# Build metadata
-ARG VERSION
-ARG VCS_REF
-ARG BUILD_DATE
-LABEL maintainer="Joshua Sing <joshua@joshuasing.dev>"
-LABEL org.opencontainers.image.created=$BUILD_DATE \
-      org.opencontainers.image.authors="Joshua Sing <joshua@joshuasing.dev>" \
-      org.opencontainers.image.url="https://github.com/joshuasing/starlink_exporter" \
-      org.opencontainers.image.source="https://github.com/joshuasing/starlink_exporter" \
-      org.opencontainers.image.version=$VERSION \
-      org.opencontainers.image.revision=$VCS_REF \
-      org.opencontainers.image.licenses="MIT" \
-      org.opencontainers.image.vendor="Joshua Sing <joshua@joshuasing.dev>" \
-      org.opencontainers.image.title="Starlink Prometheus Exporter" \
-      org.opencontainers.image.description="A simple Starlink exporter for Prometheus"
-
-# Copy binary
 ARG TARGETPLATFORM
 COPY $TARGETPLATFORM/starlink_exporter /usr/local/bin/starlink_exporter
 

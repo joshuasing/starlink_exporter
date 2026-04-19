@@ -14,6 +14,9 @@ before:
 gomod:
   # Proxy the module from proxy.golang.org, making the builds verifiable.
   proxy: true
+  env:
+    - "GONOSUMCHECK="
+    - "GONOSUMDB="
 
 builds:
   - id: "starlink_exporter"
@@ -27,6 +30,7 @@ builds:
       -X github.com/prometheus/common/version.Branch={{ .Branch }}
       -X github.com/prometheus/common/version.BuildDate={{ .CommitDate }}
     flags: [ "-trimpath" ]
+    mod_timestamp: "{{ .CommitTimestamp }}"
     goos:
       - "linux"
       - "windows"
@@ -42,16 +46,19 @@ builds:
         goarch: "arm"
 
 archives:
-  - formats: ["tar.gz"]
+  - formats: ["tar.gz", "tar.zst"]
     wrap_in_directory: true
     name_template: >-
       starlink_exporter_v{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}
     format_overrides:
       - goos: "windows"
         formats: ["zip"]
+    builds_info:
+      mtime: "{{ .CommitDate }}"
     files:
       - "README*"
       - "LICENSE*"
+      - "CHANGELOG*"
 
 # Create sources archive.
 source:
@@ -84,7 +91,7 @@ signs:
     output: true
 
 # Create Docker images:
-#  - starlink_exporter: linux/amd64, linux/arm64, linux/arm/v7
+#  - starlink_exporter: linux/amd64, linux/arm64
 dockers_v2:
   - id: "starlink_exporter"
     dockerfile: "docker/goreleaser.Dockerfile"
@@ -99,10 +106,20 @@ dockers_v2:
     platforms:
       - "linux/amd64"
       - "linux/arm64"
-    build_args:
-      VERSION: "{{ .Version }}"
-      VCS_REF: "{{ .FullCommit }}"
-      BUILD_DATE: "{{ .CommitDate }}"
+    labels:
+      "maintainer": "Joshua Sing <joshua@joshuasing.dev>"
+      "org.opencontainers.image.created": "{{ .Date }}"
+      "org.opencontainers.image.authors": "Joshua Sing <joshua@joshuasing.dev>"
+      "org.opencontainers.image.url": "https://github.com/joshuasing/starlink_exporter"
+      "org.opencontainers.image.documentation": "https://github.com/joshuasing/starlink_exporter#readme"
+      "org.opencontainers.image.source": "https://github.com/joshuasing/starlink_exporter"
+      "org.opencontainers.image.version": "{{ .Version }}"
+      "org.opencontainers.image.revision": "{{ .FullCommit }}"
+      "org.opencontainers.image.licenses": "MIT"
+      "org.opencontainers.image.vendor": "Joshua Sing <joshua@joshuasing.dev>"
+      "org.opencontainers.image.title": "Starlink Prometheus Exporter"
+      "org.opencontainers.image.description": "Prometheus exporter for Starlink"
+      "org.opencontainers.image.base.name": "cgr.dev/chainguard/static"
 
 # Sign Docker images and manifests.
 docker_signs:
@@ -128,7 +145,65 @@ release:
     owner: "joshuasing"
     name: "starlink_exporter"
   draft: true
+  replace_existing_draft: true
   prerelease: auto
+  header: |
+    {{- if .Prerelease }}
+    > [!WARNING]
+    > This is a pre-release version ({{ .Prerelease }}) and may be unstable. Use in production is not recommended.
+    {{- end }}
+  footer: |
+    ---
+
+    - **Images:**
+      - `ghcr.io/joshuasing/starlink_exporter:{{ .Version }}`
+      - `docker.io/joshuasing/starlink_exporter:{{ .Version }}`
+    - **Build from source:**
+      - `go install github.com/joshuasing/starlink_exporter@v{{ .Version }}
+
+    All release artifacts are signed with [cosign](https://github.com/sigstore/cosign) and include SBOMs.
+
+    <details>
+    <summary>Image digests</summary>
+
+    ```
+    {{ readFile (printf "dist/starlink_exporter_v%s_image_digests.txt" .Version) -}}
+    ```
+    </details>
+
+    <details>
+    <summary>Verify release artifacts</summary>
+
+    First, download the checksums file and sigstore bundle, for example:
+    ```shell
+    curl --proto '=https' --tlsv1.3 -sSfLO https://github.com/joshuasing/starlink_exporter/releases/download/{{ .Tag }}/starlink_exporter_v{{ .Version }}_checksums.txt
+    curl --proto '=https' --tlsv1.3 -sSfLO https://github.com/joshuasing/starlink_exporter/releases/download/{{ .Tag }}/starlink_exporter_v{{ .Version }}_checksums.txt.sigstore.json
+    ```
+
+    Then, verify the checksums file using [`cosign`](https://github.com/sigstore/cosign):
+    ```shell
+    cosign verify-blob starlink_exporter_v{{ .Version }}_checksums.txt \
+      --bundle starlink_exporter_v{{ .Version }}_checksums.txt.sigstore.json \
+      --certificate-identity "https://github.com/joshuasing/starlink_exporter/.github/workflows/release.yml@refs/tags/{{ .Tag }}" \
+      --certificate-oidc-issuer "https://token.actions.githubusercontent.com"
+    ```
+
+    If the output is `Verified OK`, you can safely verify the checksums of other artifacts, for example:
+    ```shell
+    shasum -a 256 --ignore-missing -c starlink_exporter_v{{ .Version }}_checksums.txt
+    ```
+
+    <details>
+    <summary>Verify OCI images</summary>
+
+    ```shell
+    cosign verify ghcr.io/joshuasing/starlink_exporter:{{ .Version }} \
+      --certificate-identity "https://github.com/joshuasing/starlink_exporter/.github/workflows/release.yml@refs/tags/{{ .Tag }}" \
+      --certificate-oidc-issuer "https://token.actions.githubusercontent.com"
+    ```
+    </details>
+
+    **Full Changelog**: https://github.com/joshuasing/starlink_exporter/compare/{{ .PreviousTag }}...{{ .Tag }}
 
 # Close milestones for the released tag.
 milestones:
