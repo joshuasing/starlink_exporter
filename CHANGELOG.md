@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Support Starlink Dishy firmware `2026.03.15.mr76025.5` ([#185])
+- Support Starlink Dishy firmware `2026.04.07.mr77639.1` ([#201])
 
 ### Fixed
 
@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Added `tar.zst` release archives alongside `tar.gz` ([#202])
+- Improved build reproducibility with deterministic binary timestamps ([#202])
 - Updated to Go 1.26.1 ([#176], [#175])
 - Updated dependencies ([#168], [#177], [#182])
 
@@ -34,12 +36,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated dependencies ([#136], [#138], [#139])
 
-### Contributors
-
-Thank you to everyone who contributed to this release!
-
-- [@joshuasing](https://github.com/joshuasing)
-
 ## [v0.7.3] - 2026-01-04
 
 ### Added
@@ -52,13 +48,7 @@ Thank you to everyone who contributed to this release!
 - Updated Go to 1.25.5 ([#123], [#124])
 - Updated dependencies ([#112], [#119], [#121], [#125], [#127], [#131])
 
-### Contributors
-
-Thank you to everyone who contributed to this release!
-
-- [@joshuasing](https://github.com/joshuasing)
-
-## [v0.7.1] -- 2025-10-27
+## [v0.7.1] - 2025-10-27
 
 ### Added
 
@@ -73,12 +63,6 @@ Thank you to everyone who contributed to this release!
 ### Removed
 
 - Removed support for `linux/arm/v7` in Docker images ([#105])
-
-### Contributors
-
-Thank you to everyone who contributed to this release!
-
-- [@joshuasing](https://github.com/joshuasing)
 
 -----
 
@@ -116,6 +100,7 @@ https://github.com/joshuasing/starlink_exporter/releases_
 [#176]: https://github.com/joshuasing/starlink_exporter/pull/176
 [#177]: https://github.com/joshuasing/starlink_exporter/pull/177
 [#182]: https://github.com/joshuasing/starlink_exporter/pull/182
-[#185]: https://github.com/joshuasing/starlink_exporter/pull/185
 [#186]: https://github.com/joshuasing/starlink_exporter/pull/186
 [#187]: https://github.com/joshuasing/starlink_exporter/pull/187
+[#201]: https://github.com/joshuasing/starlink_exporter/pull/201
+[#202]: https://github.com/joshuasing/starlink_exporter/pull/202
