@@ -5047,15 +5047,18 @@ type SpeedTestStats struct {
 	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	LatencyMs float32 `protobuf:"fixed32,3,opt,name=latency_ms,json=latencyMs,proto3" json:"latency_ms,omitempty"`
 	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
-	StartTime         uint64                `protobuf:"varint,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	UploadStartTime   int64                 `protobuf:"varint,5,opt,name=upload_start_time,json=uploadStartTime,proto3" json:"upload_start_time,omitempty"`
-	DownloadStartTime int64                 `protobuf:"varint,6,opt,name=download_start_time,json=downloadStartTime,proto3" json:"download_start_time,omitempty"`
-	UploadMbps        float32               `protobuf:"fixed32,1,opt,name=upload_mbps,json=uploadMbps,proto3" json:"upload_mbps,omitempty"`
-	DownloadMbps      float32               `protobuf:"fixed32,2,opt,name=download_mbps,json=downloadMbps,proto3" json:"download_mbps,omitempty"`
-	Target            SpeedTestStats_Target `protobuf:"varint,7,opt,name=target,proto3,enum=SpaceX.API.Device.SpeedTestStats_Target" json:"target,omitempty"`
-	TcpStreams        uint32                `protobuf:"varint,8,opt,name=tcp_streams,json=tcpStreams,proto3" json:"tcp_streams,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
+	StartTime              uint64                `protobuf:"varint,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	UploadStartTime        int64                 `protobuf:"varint,5,opt,name=upload_start_time,json=uploadStartTime,proto3" json:"upload_start_time,omitempty"`
+	DownloadStartTime      int64                 `protobuf:"varint,6,opt,name=download_start_time,json=downloadStartTime,proto3" json:"download_start_time,omitempty"`
+	UploadMbps             float32               `protobuf:"fixed32,1,opt,name=upload_mbps,json=uploadMbps,proto3" json:"upload_mbps,omitempty"`
+	DownloadMbps           float32               `protobuf:"fixed32,2,opt,name=download_mbps,json=downloadMbps,proto3" json:"download_mbps,omitempty"`
+	Target                 SpeedTestStats_Target `protobuf:"varint,7,opt,name=target,proto3,enum=SpaceX.API.Device.SpeedTestStats_Target" json:"target,omitempty"`
+	TcpStreams             uint32                `protobuf:"varint,8,opt,name=tcp_streams,json=tcpStreams,proto3" json:"tcp_streams,omitempty"`
+	UploadBytesProcessed   uint64                `protobuf:"varint,9,opt,name=upload_bytes_processed,json=uploadBytesProcessed,proto3" json:"upload_bytes_processed,omitempty"`
+	DownloadBytesProcessed uint64                `protobuf:"varint,10,opt,name=download_bytes_processed,json=downloadBytesProcessed,proto3" json:"download_bytes_processed,omitempty"`
+	DurationS              uint64                `protobuf:"varint,11,opt,name=duration_s,json=durationS,proto3" json:"duration_s,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
 }
 
 func (x *SpeedTestStats) Reset() {
@@ -5142,6 +5145,27 @@ func (x *SpeedTestStats) GetTarget() SpeedTestStats_Target {
 func (x *SpeedTestStats) GetTcpStreams() uint32 {
 	if x != nil {
 		return x.TcpStreams
+	}
+	return 0
+}
+
+func (x *SpeedTestStats) GetUploadBytesProcessed() uint64 {
+	if x != nil {
+		return x.UploadBytesProcessed
+	}
+	return 0
+}
+
+func (x *SpeedTestStats) GetDownloadBytesProcessed() uint64 {
+	if x != nil {
+		return x.DownloadBytesProcessed
+	}
+	return 0
+}
+
+func (x *SpeedTestStats) GetDurationS() uint64 {
+	if x != nil {
+		return x.DurationS
 	}
 	return 0
 }
@@ -7272,6 +7296,8 @@ func (*GetPersistentStatsRequest) Descriptor() ([]byte, []int) {
 
 type StartSpeedtestRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	DurationS     int32                  `protobuf:"varint,1,opt,name=duration_s,json=durationS,proto3" json:"duration_s,omitempty"`
+	SendTelemetry bool                   `protobuf:"varint,2,opt,name=send_telemetry,json=sendTelemetry,proto3" json:"send_telemetry,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -7304,6 +7330,20 @@ func (x *StartSpeedtestRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use StartSpeedtestRequest.ProtoReflect.Descriptor instead.
 func (*StartSpeedtestRequest) Descriptor() ([]byte, []int) {
 	return file_spacex_api_device_device_proto_rawDescGZIP(), []int{63}
+}
+
+func (x *StartSpeedtestRequest) GetDurationS() int32 {
+	if x != nil {
+		return x.DurationS
+	}
+	return 0
+}
+
+func (x *StartSpeedtestRequest) GetSendTelemetry() bool {
+	if x != nil {
+		return x.SendTelemetry
+	}
+	return false
 }
 
 type StartSpeedtestResponse struct {
@@ -9101,7 +9141,7 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\vrouter_role\x18\x01 \x01(\x0e2\x1d.SpaceX.API.Device.RouterRoleR\n" +
 	"routerRole\"\x0f\n" +
 	"\rRebootRequest\"\x10\n" +
-	"\x0eRebootResponse\"\x8f\x03\n" +
+	"\x0eRebootResponse\"\x9e\x04\n" +
 	"\x0eSpeedTestStats\x12!\n" +
 	"\n" +
 	"latency_ms\x18\x03 \x01(\x02B\x02\x18\x01R\tlatencyMs\x12!\n" +
@@ -9114,7 +9154,12 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\rdownload_mbps\x18\x02 \x01(\x02R\fdownloadMbps\x12@\n" +
 	"\x06target\x18\a \x01(\x0e2(.SpaceX.API.Device.SpeedTestStats.TargetR\x06target\x12\x1f\n" +
 	"\vtcp_streams\x18\b \x01(\rR\n" +
-	"tcpStreams\"2\n" +
+	"tcpStreams\x124\n" +
+	"\x16upload_bytes_processed\x18\t \x01(\x04R\x14uploadBytesProcessed\x128\n" +
+	"\x18download_bytes_processed\x18\n" +
+	" \x01(\x04R\x16downloadBytesProcessed\x12\x1d\n" +
+	"\n" +
+	"duration_s\x18\v \x01(\x04R\tdurationS\"2\n" +
 	"\x06Target\x12\v\n" +
 	"\aUNKNOWN\x10\x00\x12\v\n" +
 	"\aFASTCOM\x10\x01\x12\x0e\n" +
@@ -9301,8 +9346,11 @@ const file_spacex_api_device_device_proto_rawDesc = "" +
 	"\x1deirp_legal_limit_dbw_override\x18F \x01(\x01R\x19eirpLegalLimitDbwOverride\x12,\n" +
 	"\x12eirp_adjustment_db\x18G \x01(\x01R\x10eirpAdjustmentDb\x12,\n" +
 	"\x12eirp_predicted_dbw\x18H \x01(\x01R\x10eirpPredictedDbwJ\x04\b\x1a\x10\x1eJ\x04\b(\x10)J\x04\b;\x10<J\x04\b<\x10=J\x04\b=\x10>R\x10baseline_heatingR\x12additional_heatingR\rtotal_heatingR\x14target_total_heatingR\x13eirp_scale_overrideR\x18amplitude_taper_overrideR\x17amplitude_taper_enabledR\x15amplitude_taper_scale\"\x1b\n" +
-	"\x19GetPersistentStatsRequest\"\x17\n" +
-	"\x15StartSpeedtestRequest\"\x18\n" +
+	"\x19GetPersistentStatsRequest\"]\n" +
+	"\x15StartSpeedtestRequest\x12\x1d\n" +
+	"\n" +
+	"duration_s\x18\x01 \x01(\x05R\tdurationS\x12%\n" +
+	"\x0esend_telemetry\x18\x02 \x01(\bR\rsendTelemetry\"\x18\n" +
 	"\x16StartSpeedtestResponse\"\xaa\x02\n" +
 	"\x0fSpeedtestStatus\x12\x18\n" +
 	"\arunning\x18\x01 \x01(\bR\arunning\x12\x0e\n" +
