@@ -26,12 +26,14 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 )
 
+const testMetric = "test_metric"
+
 func TestDescFQName(t *testing.T) {
 	t.Parallel()
 	d := &Desc{
-		Namespace: "starlink",
-		Subsystem: "dish",
-		Name:      "test_metric",
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      testMetric,
 	}
 	want := "starlink_dish_test_metric"
 	if got := d.FQName(); got != want {
@@ -42,9 +44,9 @@ func TestDescFQName(t *testing.T) {
 func TestDescFQNameCaching(t *testing.T) {
 	t.Parallel()
 	d := &Desc{
-		Namespace: "starlink",
-		Subsystem: "dish",
-		Name:      "test_metric",
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      testMetric,
 	}
 	first := d.FQName()
 	second := d.FQName()
@@ -59,8 +61,8 @@ func TestDescFQNameCaching(t *testing.T) {
 func TestDescDesc(t *testing.T) {
 	t.Parallel()
 	d := &Desc{
-		Namespace: "starlink",
-		Subsystem: "dish",
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
 		Name:      "test_metric",
 		Help:      "A test metric",
 	}
@@ -79,8 +81,8 @@ func TestDescDesc(t *testing.T) {
 func TestDescWithLabels(t *testing.T) {
 	t.Parallel()
 	d := &Desc{
-		Namespace: "starlink",
-		Subsystem: "dish",
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
 		Name:      "info",
 		Help:      "info metric",
 		Labels:    []string{"device_id", "version"},
