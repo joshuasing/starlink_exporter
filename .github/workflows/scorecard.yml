@@ -10,14 +10,21 @@ on:
   schedule:
     - cron: "30 2 * * 1"
 
+concurrency:
+  group: "scorecard-${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   analysis:
     name: "Scorecard Analysis"
     runs-on: "ubuntu-latest"
     permissions:
       contents: read
-      security-events: write
-      id-token: write
+      security-events: write # Required to upload SARIF output.
+      id-token: write # Required for auth when publishing OpenSSF scorecard.
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
