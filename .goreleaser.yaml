@@ -159,7 +159,7 @@ release:
       - `ghcr.io/joshuasing/starlink_exporter:{{ .Version }}`
       - `docker.io/joshuasing/starlink_exporter:{{ .Version }}`
     - **Build from source:**
-      - `go install github.com/joshuasing/starlink_exporter@v{{ .Version }}
+      - `go install github.com/joshuasing/starlink_exporter@v{{ .Version }}`
 
     All release artifacts are signed with [cosign](https://github.com/sigstore/cosign) and include SBOMs.
 
@@ -167,7 +167,7 @@ release:
     <summary>Image digests</summary>
 
     ```
-    {{ readFile (printf "dist/starlink_exporter_v%s_image_digests.txt" .Version) -}}
+    {{ readFile (printf "dist/starlink_exporter_v%s_image_digests.txt" .Version) }}
     ```
     </details>
 
@@ -192,6 +192,7 @@ release:
     ```shell
     shasum -a 256 --ignore-missing -c starlink_exporter_v{{ .Version }}_checksums.txt
     ```
+    </details>
 
     <details>
     <summary>Verify OCI images</summary>
