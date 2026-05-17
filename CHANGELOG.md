@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.9.1] - 2026-05-18
+
+### Added
+
+- Support Starlink Dishy firmware `2026.05.07.cr79787` ([#220])
+
+### Changed
+
+- Updated Go to 1.26.3 (security) ([#212], [#215])
+- Updated `golang.org/x/net` to v0.53.0 (security) ([#214])
+- Updated `google.golang.org/grpc` to v1.81.1 ([#218])
+- Updated Docker runtime base image to `cgr.dev/chainguard/static@77d8b89` ([#210])
+- Hardened release and CI workflows based on `zizmor` findings ([#219])
+
 ## [v0.9.0] - 2026-04-19
 
 ### Added
@@ -71,7 +85,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 _Looking for the changelog for an older version? Older releases can be found at:
 https://github.com/joshuasing/starlink_exporter/releases_
 
-[Unreleased]: https://github.com/joshuasing/starlink_exporter/compare/v0.9.0...HEAD
+[Unreleased]: https://github.com/joshuasing/starlink_exporter/compare/v0.9.1...HEAD
+[v0.9.1]: https://github.com/joshuasing/starlink_exporter/compare/v0.9.0...v0.9.1
 [v0.9.0]: https://github.com/joshuasing/starlink_exporter/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://github.com/joshuasing/starlink_exporter/compare/v0.7.4...v0.8.0
 [v0.7.4]: https://github.com/joshuasing/starlink_exporter/compare/v0.7.3...v0.7.4
@@ -108,3 +123,10 @@ https://github.com/joshuasing/starlink_exporter/releases_
 [#200]: https://github.com/joshuasing/starlink_exporter/pull/200
 [#201]: https://github.com/joshuasing/starlink_exporter/pull/201
 [#202]: https://github.com/joshuasing/starlink_exporter/pull/202
+[#210]: https://github.com/joshuasing/starlink_exporter/pull/210
+[#212]: https://github.com/joshuasing/starlink_exporter/pull/212
+[#214]: https://github.com/joshuasing/starlink_exporter/pull/214
+[#215]: https://github.com/joshuasing/starlink_exporter/pull/215
+[#218]: https://github.com/joshuasing/starlink_exporter/pull/218
+[#219]: https://github.com/joshuasing/starlink_exporter/pull/219
+[#220]: https://github.com/joshuasing/starlink_exporter/pull/220
