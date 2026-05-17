@@ -11,6 +11,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+concurrency:
+  group: "go-${{ github.workflow }}-${{ github.event.number || github.ref }}"
+  cancel-in-progress: "${{ github.event_name == 'pull_request' }}"
+
 env:
   # renovate: datasource=github-releases depName=golangci/golangci-lint versioning=semver
   GOLANGCI_LINT_VERSION: "v2.11.4"
