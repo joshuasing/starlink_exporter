@@ -25,6 +25,7 @@ jobs:
     runs-on: "ubuntu-latest"
     environment:
       name: "release"
+      deployment: false
     permissions:
       contents: write # Required to create GitHub releases.
       id-token: write # Required for Sigstore cosign authentication.
