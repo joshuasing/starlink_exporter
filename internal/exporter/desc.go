@@ -28,6 +28,7 @@ import (
 const (
 	namespace         = "starlink"
 	dishSubsystem     = "dish"
+	wifiSubsystem     = "wifi"
 	exporterSubsystem = "exporter"
 )
 
@@ -859,6 +860,386 @@ var (
 		Name:      "vertical_speed_mps",
 		Help:      "Vertical speed of the Starlink dish in meters per second",
 	}
+
+	// WiFi router
+
+	// Informational
+	wifiUp = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "up",
+		Help:      "Whether scraping metrics from the Starlink WiFi router was successful",
+	}
+	wifiInfo = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "info",
+		Help:      "Starlink WiFi router software information",
+		Labels: []string{
+			"device_id",
+			"hardware_version",
+			"board_rev",
+			"software_version",
+			"manufactured_version",
+			"generation_number",
+			"country_code",
+			"utc_offset",
+			"boot_count",
+		},
+	}
+	wifiUptimeSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "uptime_seconds",
+		Help:      "Starlink WiFi router uptime in seconds",
+	}
+	wifiHopsFromController = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "hops_from_controller",
+		Help:      "Number of mesh hops between this router and the controller",
+	}
+	wifiNoWanLink = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "no_wan_link",
+		Help:      "Whether the Starlink WiFi router has no WAN link",
+	}
+	wifiIsAviation = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "is_aviation",
+		Help:      "Whether the Starlink WiFi router is in aviation mode",
+	}
+	wifiIsAviationConformed = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "is_aviation_conformed",
+		Help:      "Whether the Starlink WiFi router is aviation conformed",
+	}
+	wifiUsingIndividualizedCalibration = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "using_individualized_calibration",
+		Help:      "Whether the Starlink WiFi router is using individualized calibration",
+	}
+	wifiCalibrationPartitionsState = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "calibration_partitions_state",
+		Help:      "Starlink WiFi router calibration partitions state",
+	}
+	wifiDishDisablementCode = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "dish_disablement_code",
+		Help:      "Disablement code reported by the dish as seen by the WiFi router",
+	}
+	wifiSecsSinceLastPublicIpv4Change = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "seconds_since_last_public_ipv4_change",
+		Help:      "Seconds since the public IPv4 address last changed",
+	}
+	wifiClientsCount = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "clients_count",
+		Help:      "Number of clients currently connected to the Starlink WiFi router",
+	}
+	wifiDhcpServersCount = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "dhcp_servers_count",
+		Help:      "Number of DHCP servers reported by the Starlink WiFi router",
+	}
+
+	// Ping
+	wifiPingDropRatio = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "ping_drop_ratio",
+		Help:      "Router WAN ping drop ratio",
+	}
+	wifiPingDropRatio5m = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "ping_drop_ratio_5m",
+		Help:      "Router WAN ping drop ratio over the last 5 minutes",
+	}
+	wifiPingLatencySeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "ping_latency_seconds",
+		Help:      "Router WAN ping latency in seconds",
+	}
+	wifiDishPingDropRatio = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "dish_ping_drop_ratio",
+		Help:      "Router-to-dish ping drop ratio",
+	}
+	wifiDishPingDropRatio5m = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "dish_ping_drop_ratio_5m",
+		Help:      "Router-to-dish ping drop ratio over the last 5 minutes",
+	}
+	wifiDishPingLatencySeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "dish_ping_latency_seconds",
+		Help:      "Router-to-dish ping latency in seconds",
+	}
+	wifiPopPingDropRatio = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "pop_ping_drop_ratio",
+		Help:      "Router-to-PoP ping drop ratio",
+	}
+	wifiPopPingDropRatio5m = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "pop_ping_drop_ratio_5m",
+		Help:      "Router-to-PoP ping drop ratio over the last 5 minutes",
+	}
+	wifiPopPingLatencySeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "pop_ping_latency_seconds",
+		Help:      "Router-to-PoP ping latency in seconds",
+	}
+	wifiPopIpv6PingDropRatio = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "pop_ipv6_ping_drop_ratio",
+		Help:      "Router-to-PoP IPv6 ping drop ratio",
+	}
+	wifiPopIpv6PingDropRatio5m = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "pop_ipv6_ping_drop_ratio_5m",
+		Help:      "Router-to-PoP IPv6 ping drop ratio over the last 5 minutes",
+	}
+	wifiPopIpv6PingLatencySeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "pop_ipv6_ping_latency_seconds",
+		Help:      "Router-to-PoP IPv6 ping latency in seconds",
+	}
+
+	// Alerts
+	wifiAlertThermalThrottle = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_thermal_throttle",
+		Help:      "Whether the Starlink WiFi router is thermally throttled",
+	}
+	wifiAlertInstallPending = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_install_pending",
+		Help:      "Whether a Starlink WiFi router software update is pending installation",
+	}
+	wifiAlertFreshlyFused = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_freshly_fused",
+		Help:      "Whether the Starlink WiFi router was recently fused",
+	}
+	wifiAlertLanEthSlowLink10 = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_lan_eth_slow_link_10",
+		Help:      "Whether a Starlink WiFi router LAN ethernet link is negotiated at 10 Mbps",
+	}
+	wifiAlertLanEthSlowLink100 = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_lan_eth_slow_link_100",
+		Help:      "Whether a Starlink WiFi router LAN ethernet link is negotiated at 100 Mbps",
+	}
+	wifiAlertHighCablePingDropRate = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_high_cable_ping_drop_rate",
+		Help:      "Whether the Starlink WiFi router is reporting a high cable ping drop rate",
+	}
+	wifiAlertWanEthPoorConnection = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_wan_eth_poor_connection",
+		Help:      "Whether the Starlink WiFi router WAN ethernet connection is poor",
+	}
+	wifiAlertMeshTopologyChangingOften = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_mesh_topology_changing_often",
+		Help:      "Whether the Starlink WiFi mesh topology is changing often",
+	}
+	wifiAlertMeshUnreliableBackhaul = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_mesh_unreliable_backhaul",
+		Help:      "Whether the Starlink WiFi mesh backhaul is unreliable",
+	}
+	wifiAlertRadiusMissingProcess = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_radius_missing_process",
+		Help:      "Whether the Starlink WiFi router RADIUS process is missing",
+	}
+	wifiAlertEthSwitchError = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_eth_switch_error",
+		Help:      "Whether the Starlink WiFi router ethernet switch has reported an error",
+	}
+	wifiAlertPoeOnDishUnreachable = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_poe_on_dish_unreachable",
+		Help:      "Whether the dish is unreachable while PoE is on",
+	}
+	wifiAlertPoeFuseBlown = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_poe_fuse_blown",
+		Help:      "Whether the Starlink WiFi router PoE fuse is blown",
+	}
+	wifiAlertPoeRouterOvercurrent = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_poe_router_overcurrent",
+		Help:      "Whether the Starlink WiFi router PoE has detected an overcurrent",
+	}
+	wifiAlertPoeOffCurrentNominal = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_poe_off_current_nominal",
+		Help:      "Whether the Starlink WiFi router is drawing nominal current while PoE is off",
+	}
+	wifiAlertPoeVinOvervoltage = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_poe_vin_overvoltage",
+		Help:      "Whether the Starlink WiFi router PoE input voltage is over the threshold",
+	}
+	wifiAlertPoeVinUndervoltage = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_poe_vin_undervoltage",
+		Help:      "Whether the Starlink WiFi router PoE input voltage is under the threshold",
+	}
+	wifiAlertSandboxDisabled = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_sandbox_disabled",
+		Help:      "Whether the Starlink WiFi router client sandbox is disabled",
+	}
+	wifiAlertOnlyOverflightBlocked = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_only_overflight_blocked",
+		Help:      "Whether only overflight is blocked on the Starlink WiFi router",
+	}
+	wifiAlertOfflineNetworksDisabled = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_offline_networks_disabled",
+		Help:      "Whether offline networks are disabled on the Starlink WiFi router",
+	}
+	wifiAlertWiredMeshNotUsingWanIface = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "alert_wired_mesh_not_using_wan_iface",
+		Help:      "Whether wired mesh is not using the WAN interface",
+	}
+
+	// Software update
+	wifiSoftwareUpdateState = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "software_update_state",
+		Help:      "Starlink WiFi router software update state",
+	}
+	wifiSoftwareUpdateDownloadProgress = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "software_update_download_progress",
+		Help:      "Progress of the in-flight Starlink WiFi router software update download (0-1)",
+	}
+	wifiSoftwareUpdateSecondsSinceGetTargetVersions = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "software_update_seconds_since_get_target_versions",
+		Help:      "Seconds since the WiFi router last fetched its target software versions",
+	}
+	wifiSoftwareUpdateInfo = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "software_update_info",
+		Help:      "Starlink WiFi router software update version information",
+		Labels:    []string{"running_version", "version_in_progress"},
+	}
+
+	// PoE
+	wifiPoeState = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "poe_state",
+		Help:      "Starlink WiFi router PoE state",
+	}
+	wifiPoePowerWatts = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "poe_power_watts",
+		Help:      "Starlink WiFi router PoE power draw in watts",
+	}
+	wifiPoeFaultsFastOvercurrent = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "poe_faults_fast_overcurrent",
+		Help:      "Number of fast overcurrent PoE faults reported by the WiFi router",
+	}
+	wifiPoeFaultsSlowOvercurrent = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "poe_faults_slow_overcurrent",
+		Help:      "Number of slow overcurrent PoE faults reported by the WiFi router",
+	}
+	wifiPoeFaultsOvervoltage = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "poe_faults_overvoltage",
+		Help:      "Number of overvoltage PoE faults reported by the WiFi router",
+	}
+	wifiPoeFaultsUndervoltage = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "poe_faults_undervoltage",
+		Help:      "Number of undervoltage PoE faults reported by the WiFi router",
+	}
+	wifiPoeVsnsVinVolts = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "poe_vsns_vin_volts",
+		Help:      "Starlink WiFi router PoE input voltage in volts",
+	}
+
+	// Setup requirement
+	wifiSetupRequirementState = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "setup_requirement_state",
+		Help:      "Starlink WiFi router setup requirement state",
+	}
+	wifiSetupRequirementPauseCountdownSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: wifiSubsystem,
+		Name:      "setup_requirement_pause_countdown_seconds",
+		Help:      "Seconds remaining before the WiFi router setup requirement pause expires",
+	}
 )
 
 // Descs contains all Prometheus metrics descriptors for the exporter.
@@ -990,6 +1371,65 @@ var Descs = []*Desc{
 	dishLocationUncertaintyMeters,
 	dishHorizontalSpeedMps,
 	dishVerticalSpeedMps,
+	wifiUp,
+	wifiInfo,
+	wifiUptimeSeconds,
+	wifiHopsFromController,
+	wifiNoWanLink,
+	wifiIsAviation,
+	wifiIsAviationConformed,
+	wifiUsingIndividualizedCalibration,
+	wifiCalibrationPartitionsState,
+	wifiDishDisablementCode,
+	wifiSecsSinceLastPublicIpv4Change,
+	wifiClientsCount,
+	wifiDhcpServersCount,
+	wifiPingDropRatio,
+	wifiPingDropRatio5m,
+	wifiPingLatencySeconds,
+	wifiDishPingDropRatio,
+	wifiDishPingDropRatio5m,
+	wifiDishPingLatencySeconds,
+	wifiPopPingDropRatio,
+	wifiPopPingDropRatio5m,
+	wifiPopPingLatencySeconds,
+	wifiPopIpv6PingDropRatio,
+	wifiPopIpv6PingDropRatio5m,
+	wifiPopIpv6PingLatencySeconds,
+	wifiAlertThermalThrottle,
+	wifiAlertInstallPending,
+	wifiAlertFreshlyFused,
+	wifiAlertLanEthSlowLink10,
+	wifiAlertLanEthSlowLink100,
+	wifiAlertHighCablePingDropRate,
+	wifiAlertWanEthPoorConnection,
+	wifiAlertMeshTopologyChangingOften,
+	wifiAlertMeshUnreliableBackhaul,
+	wifiAlertRadiusMissingProcess,
+	wifiAlertEthSwitchError,
+	wifiAlertPoeOnDishUnreachable,
+	wifiAlertPoeFuseBlown,
+	wifiAlertPoeRouterOvercurrent,
+	wifiAlertPoeOffCurrentNominal,
+	wifiAlertPoeVinOvervoltage,
+	wifiAlertPoeVinUndervoltage,
+	wifiAlertSandboxDisabled,
+	wifiAlertOnlyOverflightBlocked,
+	wifiAlertOfflineNetworksDisabled,
+	wifiAlertWiredMeshNotUsingWanIface,
+	wifiSoftwareUpdateState,
+	wifiSoftwareUpdateDownloadProgress,
+	wifiSoftwareUpdateSecondsSinceGetTargetVersions,
+	wifiSoftwareUpdateInfo,
+	wifiPoeState,
+	wifiPoePowerWatts,
+	wifiPoeFaultsFastOvercurrent,
+	wifiPoeFaultsSlowOvercurrent,
+	wifiPoeFaultsOvervoltage,
+	wifiPoeFaultsUndervoltage,
+	wifiPoeVsnsVinVolts,
+	wifiSetupRequirementState,
+	wifiSetupRequirementPauseCountdownSeconds,
 }
 
 // Desc is a utility wrapper for prometheus.Desc.

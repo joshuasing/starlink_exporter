@@ -73,6 +73,8 @@ starlink_exporter --help
 #         Dish address (default "192.168.100.1:9200")
 #   -listen string
 #         Listen address (default ":9451")
+#   -router string
+#         WiFi router address (set empty to disable WiFi metrics) (default "192.168.1.1:9000")
 ```
 
 **Example**
