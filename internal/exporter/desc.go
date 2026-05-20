@@ -298,6 +298,567 @@ var (
 		Name:      "alert_signal_lower_than_predicted",
 		Help:      "Whether the Starlink dish signal is lower than predicted",
 	}
+	dishAlertMotorsStuck = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_motors_stuck",
+		Help:      "Whether the Starlink dish motors are stuck",
+	}
+	dishAlertThermalThrottle = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_thermal_throttle",
+		Help:      "Whether the Starlink dish is thermally throttled",
+	}
+	dishAlertThermalShutdown = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_thermal_shutdown",
+		Help:      "Whether the Starlink dish has thermally shut down",
+	}
+	dishAlertMastNotNearVertical = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_mast_not_near_vertical",
+		Help:      "Whether the Starlink dish mast is not near vertical",
+	}
+	dishAlertSlowEthernetSpeeds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_slow_ethernet_speeds",
+		Help:      "Whether the Starlink dish ethernet link is negotiated below gigabit",
+	}
+	dishAlertSlowEthernetSpeeds100 = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_slow_ethernet_speeds_100",
+		Help:      "Whether the Starlink dish ethernet link is negotiated at 100 Mbps or lower",
+	}
+	dishAlertRoaming = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_roaming",
+		Help:      "Whether the Starlink dish is roaming",
+	}
+	dishAlertPowerSupplyThermalThrottle = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_power_supply_thermal_throttle",
+		Help:      "Whether the Starlink dish power supply is thermally throttled",
+	}
+	dishAlertDbfTelemStale = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_dbf_telem_stale",
+		Help:      "Whether the Starlink dish DBF telemetry is stale",
+	}
+	dishAlertLowMotorCurrent = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_low_motor_current",
+		Help:      "Whether the Starlink dish has low motor current",
+	}
+	dishAlertObstructionMapReset = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_obstruction_map_reset",
+		Help:      "Whether the Starlink dish obstruction map was reset",
+	}
+	dishAlertDishWaterDetected = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_dish_water_detected",
+		Help:      "Whether water has been detected inside the Starlink dish",
+	}
+	dishAlertRouterWaterDetected = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_router_water_detected",
+		Help:      "Whether water has been detected inside the Starlink router",
+	}
+	dishAlertUpsuRouterPortSlow = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_upsu_router_port_slow",
+		Help:      "Whether the Starlink dish UPSU router port is negotiated below the expected speed",
+	}
+	dishAlertNoEthernetLink = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_no_ethernet_link",
+		Help:      "Whether the Starlink dish has no ethernet link",
+	}
+
+	// Status (top-level scalars)
+	dishSecondsToFirstNonemptySlot = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "seconds_to_first_nonempty_slot",
+		Help:      "Seconds until the next non-empty network schedule slot",
+	}
+	dishStowRequested = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "stow_requested",
+		Help:      "Whether a stow has been requested for the Starlink dish",
+	}
+	dishEthSpeedMbps = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "eth_speed_mbps",
+		Help:      "Negotiated speed of the Starlink dish ethernet link in Mbps",
+	}
+	dishClassOfService = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "class_of_service",
+		Help:      "Starlink dish class of service",
+	}
+	dishRebootReason = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "reboot_reason",
+		Help:      "Reason for the most recent Starlink dish reboot",
+	}
+	dishDisablementCode = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "disablement_code",
+		Help:      "Reason the Starlink dish is disabled, if any",
+	}
+	dishDlBandwidthRestrictedReason = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "dl_bandwidth_restricted_reason",
+		Help:      "Reason downlink bandwidth is currently restricted, if any",
+	}
+	dishUlBandwidthRestrictedReason = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "ul_bandwidth_restricted_reason",
+		Help:      "Reason uplink bandwidth is currently restricted, if any",
+	}
+	dishIsCellDisabled = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "is_cell_disabled",
+		Help:      "Whether the Starlink dish cell is disabled",
+	}
+	dishSecondsUntilSwupdateRebootPossible = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "seconds_until_swupdate_reboot_possible",
+		Help:      "Seconds until the Starlink dish can reboot to apply a software update",
+	}
+	dishHighPowerTestMode = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "high_power_test_mode",
+		Help:      "Whether the Starlink dish is in high-power test mode",
+	}
+	dishIsMovingFastPersisted = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "is_moving_fast_persisted",
+		Help:      "Whether the Starlink dish has persistently detected fast movement",
+	}
+	dishMacFlag = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "mac_flag",
+		Help:      "Starlink dish MAC flag",
+	}
+	dishNatFlag = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "nat_flag",
+		Help:      "Starlink dish NAT flag",
+	}
+	dishAccountShard = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "account_shard",
+		Help:      "Starlink dish account shard",
+	}
+	dishConnectedRoutersCount = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "connected_routers_count",
+		Help:      "Number of routers currently connected to the Starlink dish",
+	}
+	dishHasActuators = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "has_actuators",
+		Help:      "Whether the Starlink dish has actuators",
+	}
+	dishNed2DishQuaternionW = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "ned2dish_quaternion_w",
+		Help:      "W component of the NED-to-dish orientation quaternion",
+	}
+	dishNed2DishQuaternionX = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "ned2dish_quaternion_x",
+		Help:      "X component of the NED-to-dish orientation quaternion",
+	}
+	dishNed2DishQuaternionY = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "ned2dish_quaternion_y",
+		Help:      "Y component of the NED-to-dish orientation quaternion",
+	}
+	dishNed2DishQuaternionZ = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "ned2dish_quaternion_z",
+		Help:      "Z component of the NED-to-dish orientation quaternion",
+	}
+
+	// Current outage
+	dishOutageInfo = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "outage_info",
+		Help:      "Information about the current Starlink dish outage, if any",
+		Labels:    []string{"cause", "did_switch"},
+	}
+	dishOutageStartTimestampSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "outage_start_timestamp_seconds",
+		Help:      "Unix timestamp at which the current outage started",
+	}
+	dishOutageDurationSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "outage_duration_seconds",
+		Help:      "Duration of the current outage in seconds",
+	}
+
+	// GPS
+	dishGPSNoSatsAfterTtff = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "gps_no_sats_after_ttff",
+		Help:      "Whether the Starlink dish has no GPS satellites after time-to-first-fix",
+	}
+	dishGPSInhibit = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "gps_inhibit",
+		Help:      "Whether GPS is currently inhibited on the Starlink dish",
+	}
+
+	// Obstruction (additional)
+	dishObstructionValidSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "obstruction_valid_seconds",
+		Help:      "Seconds the Starlink dish obstruction map has been collecting data",
+	}
+	dishObstructionPatchesValid = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "obstruction_patches_valid",
+		Help:      "Number of valid patches in the Starlink dish obstruction map",
+	}
+	dishAvgProlongedObstructionDurationSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "avg_prolonged_obstruction_duration_seconds",
+		Help:      "Average duration of a prolonged obstruction in seconds",
+	}
+	dishAvgProlongedObstructionIntervalSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "avg_prolonged_obstruction_interval_seconds",
+		Help:      "Average interval between prolonged obstructions in seconds",
+	}
+	dishAvgProlongedObstructionValid = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "avg_prolonged_obstruction_valid",
+		Help:      "Whether the average prolonged obstruction metrics are currently valid",
+	}
+
+	// Ready states
+	dishReadyStateCady = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "ready_state_cady",
+		Help:      "Whether the cady subsystem is ready",
+	}
+	dishReadyStateScp = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "ready_state_scp",
+		Help:      "Whether the SCP subsystem is ready",
+	}
+	dishReadyStateL1L2 = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "ready_state_l1l2",
+		Help:      "Whether the L1/L2 subsystem is ready",
+	}
+	dishReadyStateXphy = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "ready_state_xphy",
+		Help:      "Whether the XPHY subsystem is ready",
+	}
+	dishReadyStateAap = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "ready_state_aap",
+		Help:      "Whether the AAP subsystem is ready",
+	}
+	dishReadyStateRf = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "ready_state_rf",
+		Help:      "Whether the RF subsystem is ready",
+	}
+
+	// Software update (additional from SoftwareUpdateStats)
+	dishSoftwareUpdateProgress = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "software_update_progress",
+		Help:      "Progress of the in-flight Starlink dish software update (0-1)",
+	}
+	dishSoftwareUpdateRequiresReboot = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "software_update_requires_reboot",
+		Help:      "Whether the pending Starlink dish software update requires a reboot",
+	}
+	dishSoftwareUpdateRebootScheduledUtcSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "software_update_reboot_scheduled_utc_seconds",
+		Help:      "Unix timestamp at which the Starlink dish is scheduled to reboot to apply a software update",
+	}
+
+	// Alignment (additional)
+	dishActuatorState = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "actuator_state",
+		Help:      "Current state of the Starlink dish actuators",
+	}
+	dishAttitudeEstimationState = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "attitude_estimation_state",
+		Help:      "Current state of the Starlink dish attitude estimator",
+	}
+	dishAttitudeUncertaintyDeg = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "attitude_uncertainty_deg",
+		Help:      "Starlink dish attitude uncertainty in degrees",
+	}
+
+	// Initialization durations
+	dishInitAttitudeSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "initialization_attitude_seconds",
+		Help:      "Seconds spent on attitude initialization during dish boot",
+	}
+	dishInitBurstDetectedSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "initialization_burst_detected_seconds",
+		Help:      "Seconds until first burst was detected during dish boot",
+	}
+	dishInitEkfConvergedSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "initialization_ekf_converged_seconds",
+		Help:      "Seconds until the EKF converged during dish boot",
+	}
+	dishInitFirstCplaneSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "initialization_first_cplane_seconds",
+		Help:      "Seconds until first cplane message during dish boot",
+	}
+	dishInitFirstPopPingSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "initialization_first_pop_ping_seconds",
+		Help:      "Seconds until first PoP ping during dish boot",
+	}
+	dishInitGpsValidSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "initialization_gps_valid_seconds",
+		Help:      "Seconds until GPS became valid during dish boot",
+	}
+	dishInitInitialNetworkEntrySeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "initialization_initial_network_entry_seconds",
+		Help:      "Seconds until initial network entry during dish boot",
+	}
+	dishInitNetworkScheduleSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "initialization_network_schedule_seconds",
+		Help:      "Seconds until first network schedule was received during dish boot",
+	}
+	dishInitRfReadySeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "initialization_rf_ready_seconds",
+		Help:      "Seconds until the RF subsystem was ready during dish boot",
+	}
+	dishInitStableConnectionSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "initialization_stable_connection_seconds",
+		Help:      "Seconds until a stable connection was established during dish boot",
+	}
+
+	// PLC (Mini battery / Power-Line Communication)
+	dishPlcReceiving = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "plc_receiving",
+		Help:      "Whether the dish is receiving Power-Line Communication data",
+	}
+	dishPlcAverageTimeToEmptySeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "plc_average_time_to_empty_seconds",
+		Help:      "Average time until the battery is empty in seconds",
+	}
+	dishPlcAverageTimeToFullSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "plc_average_time_to_full_seconds",
+		Help:      "Average time until the battery is full in seconds",
+	}
+	dishPlcBatteryHealth = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "plc_battery_health",
+		Help:      "Battery health as reported by PLC",
+	}
+	dishPlcPermanentFailure = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "plc_permanent_failure",
+		Help:      "Whether the PLC battery has reported a permanent failure",
+	}
+	dishPlcSafetyModeActive = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "plc_safety_mode_active",
+		Help:      "Whether the PLC battery is in safety mode",
+	}
+	dishPlcStateOfChargePercent = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "plc_state_of_charge_percent",
+		Help:      "PLC battery state of charge in percent",
+	}
+	dishPlcThermalThrottleLevel = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "plc_thermal_throttle_level",
+		Help:      "PLC thermal throttle level",
+	}
+	dishPlcRevision = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "plc_revision",
+		Help:      "PLC protocol revision",
+	}
+
+	// UPSU (Universal Power Supply Unit, Gen 3)
+	dishUpsuDishPowerWatts = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "upsu_dish_power_watts",
+		Help:      "Dish power draw as reported by the UPSU in watts",
+	}
+	dishUpsuRouterPowerWatts = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "upsu_router_power_watts",
+		Help:      "Router power draw as reported by the UPSU in watts",
+	}
+	dishUpsuUptimeSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "upsu_uptime_seconds",
+		Help:      "UPSU uptime in seconds",
+	}
+	dishUpsuBoardRev = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "upsu_board_rev",
+		Help:      "UPSU board revision",
+	}
+
+	// APS (Auxiliary Power Supply)
+	dishApsDishPowerWatts = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "aps_dish_power_watts",
+		Help:      "Dish power draw as reported by the APS in watts",
+	}
+	dishApsUptimeSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "aps_uptime_seconds",
+		Help:      "APS uptime in seconds",
+	}
+	dishApsBoardRev = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "aps_board_rev",
+		Help:      "APS board revision",
+	}
+
+	// History (additional)
+	dishPopPingDropRatioHistogram = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "pop_ping_drop_ratio_histogram",
+		Help:      "Histogram of Starlink dish PoP ping drop ratio over the last 15 minutes",
+	}
+	dishHistoryOutagesCount = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "history_outages_count",
+		Help:      "Number of outages retained in the Starlink dish history buffer",
+	}
+
+	// Location (additional)
+	dishLocationUncertaintyMeters = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "location_uncertainty_meters",
+		Help:      "1-sigma uncertainty of the reported location in meters",
+	}
+	dishHorizontalSpeedMps = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "horizontal_speed_mps",
+		Help:      "Horizontal speed of the Starlink dish in meters per second",
+	}
+	dishVerticalSpeedMps = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "vertical_speed_mps",
+		Help:      "Vertical speed of the Starlink dish in meters per second",
+	}
 )
 
 // Descs contains all Prometheus metrics descriptors for the exporter.
@@ -340,6 +901,95 @@ var Descs = []*Desc{
 	dishAlertIsHeating,
 	dishAlertIsPowerSaveIdle,
 	dishAlertSignalLowerThanPredicted,
+	dishAlertMotorsStuck,
+	dishAlertThermalThrottle,
+	dishAlertThermalShutdown,
+	dishAlertMastNotNearVertical,
+	dishAlertSlowEthernetSpeeds,
+	dishAlertSlowEthernetSpeeds100,
+	dishAlertRoaming,
+	dishAlertPowerSupplyThermalThrottle,
+	dishAlertDbfTelemStale,
+	dishAlertLowMotorCurrent,
+	dishAlertObstructionMapReset,
+	dishAlertDishWaterDetected,
+	dishAlertRouterWaterDetected,
+	dishAlertUpsuRouterPortSlow,
+	dishAlertNoEthernetLink,
+	dishSecondsToFirstNonemptySlot,
+	dishStowRequested,
+	dishEthSpeedMbps,
+	dishClassOfService,
+	dishRebootReason,
+	dishDisablementCode,
+	dishDlBandwidthRestrictedReason,
+	dishUlBandwidthRestrictedReason,
+	dishIsCellDisabled,
+	dishSecondsUntilSwupdateRebootPossible,
+	dishHighPowerTestMode,
+	dishIsMovingFastPersisted,
+	dishMacFlag,
+	dishNatFlag,
+	dishAccountShard,
+	dishConnectedRoutersCount,
+	dishHasActuators,
+	dishNed2DishQuaternionW,
+	dishNed2DishQuaternionX,
+	dishNed2DishQuaternionY,
+	dishNed2DishQuaternionZ,
+	dishOutageInfo,
+	dishOutageStartTimestampSeconds,
+	dishOutageDurationSeconds,
+	dishGPSNoSatsAfterTtff,
+	dishGPSInhibit,
+	dishObstructionValidSeconds,
+	dishObstructionPatchesValid,
+	dishAvgProlongedObstructionDurationSeconds,
+	dishAvgProlongedObstructionIntervalSeconds,
+	dishAvgProlongedObstructionValid,
+	dishReadyStateCady,
+	dishReadyStateScp,
+	dishReadyStateL1L2,
+	dishReadyStateXphy,
+	dishReadyStateAap,
+	dishReadyStateRf,
+	dishSoftwareUpdateProgress,
+	dishSoftwareUpdateRequiresReboot,
+	dishSoftwareUpdateRebootScheduledUtcSeconds,
+	dishActuatorState,
+	dishAttitudeEstimationState,
+	dishAttitudeUncertaintyDeg,
+	dishInitAttitudeSeconds,
+	dishInitBurstDetectedSeconds,
+	dishInitEkfConvergedSeconds,
+	dishInitFirstCplaneSeconds,
+	dishInitFirstPopPingSeconds,
+	dishInitGpsValidSeconds,
+	dishInitInitialNetworkEntrySeconds,
+	dishInitNetworkScheduleSeconds,
+	dishInitRfReadySeconds,
+	dishInitStableConnectionSeconds,
+	dishPlcReceiving,
+	dishPlcAverageTimeToEmptySeconds,
+	dishPlcAverageTimeToFullSeconds,
+	dishPlcBatteryHealth,
+	dishPlcPermanentFailure,
+	dishPlcSafetyModeActive,
+	dishPlcStateOfChargePercent,
+	dishPlcThermalThrottleLevel,
+	dishPlcRevision,
+	dishUpsuDishPowerWatts,
+	dishUpsuRouterPowerWatts,
+	dishUpsuUptimeSeconds,
+	dishUpsuBoardRev,
+	dishApsDishPowerWatts,
+	dishApsUptimeSeconds,
+	dishApsBoardRev,
+	dishPopPingDropRatioHistogram,
+	dishHistoryOutagesCount,
+	dishLocationUncertaintyMeters,
+	dishHorizontalSpeedMps,
+	dishVerticalSpeedMps,
 }
 
 // Desc is a utility wrapper for prometheus.Desc.
