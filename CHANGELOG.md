@@ -7,9 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.9.2] - 2026-06-08
+
 ### Added
 
 - Support Starlink Dishy firmware `2026.05.30.cr80794` ([#241])
+
+### Changed
+
+- Updated Go to 1.26.4 (security) ([#236], [#237])
+- Updated `golang.org/x/net` to v0.55.0 (security) ([#225])
+- Updated `golang.org/x/crypto` to v0.52.0 (security) ([#224])
+- Updated `github.com/prometheus/common` to v0.68.1 ([#235], [#240])
 
 ## [v0.9.1] - 2026-05-18
 
@@ -89,7 +98,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 _Looking for the changelog for an older version? Older releases can be found at:
 https://github.com/joshuasing/starlink_exporter/releases_
 
-[Unreleased]: https://github.com/joshuasing/starlink_exporter/compare/v0.9.1...HEAD
+[Unreleased]: https://github.com/joshuasing/starlink_exporter/compare/v0.9.2...HEAD
+[v0.9.2]: https://github.com/joshuasing/starlink_exporter/compare/v0.9.1...v0.9.2
 [v0.9.1]: https://github.com/joshuasing/starlink_exporter/compare/v0.9.0...v0.9.1
 [v0.9.0]: https://github.com/joshuasing/starlink_exporter/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://github.com/joshuasing/starlink_exporter/compare/v0.7.4...v0.8.0
@@ -134,4 +144,10 @@ https://github.com/joshuasing/starlink_exporter/releases_
 [#218]: https://github.com/joshuasing/starlink_exporter/pull/218
 [#219]: https://github.com/joshuasing/starlink_exporter/pull/219
 [#220]: https://github.com/joshuasing/starlink_exporter/pull/220
+[#224]: https://github.com/joshuasing/starlink_exporter/pull/224
+[#225]: https://github.com/joshuasing/starlink_exporter/pull/225
+[#235]: https://github.com/joshuasing/starlink_exporter/pull/235
+[#236]: https://github.com/joshuasing/starlink_exporter/pull/236
+[#237]: https://github.com/joshuasing/starlink_exporter/pull/237
+[#240]: https://github.com/joshuasing/starlink_exporter/pull/240
 [#241]: https://github.com/joshuasing/starlink_exporter/pull/241
