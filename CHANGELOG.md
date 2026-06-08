@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Support Starlink Dishy firmware `2026.05.30.cr80794` ([#241])
+
 ## [v0.9.1] - 2026-05-18
 
 ### Added
@@ -130,3 +134,4 @@ https://github.com/joshuasing/starlink_exporter/releases_
 [#218]: https://github.com/joshuasing/starlink_exporter/pull/218
 [#219]: https://github.com/joshuasing/starlink_exporter/pull/219
 [#220]: https://github.com/joshuasing/starlink_exporter/pull/220
+[#241]: https://github.com/joshuasing/starlink_exporter/pull/241

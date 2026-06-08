@@ -109,6 +109,55 @@ func (BootReason) EnumDescriptor() ([]byte, []int) {
 	return file_spacex_api_device_common_proto_rawDescGZIP(), []int{0}
 }
 
+type WirelessBand int32
+
+const (
+	WirelessBand_RF_UNKNOWN WirelessBand = 0
+	WirelessBand_RF_2GHZ    WirelessBand = 1
+	WirelessBand_RF_5GHZ    WirelessBand = 2
+)
+
+// Enum value maps for WirelessBand.
+var (
+	WirelessBand_name = map[int32]string{
+		0: "RF_UNKNOWN",
+		1: "RF_2GHZ",
+		2: "RF_5GHZ",
+	}
+	WirelessBand_value = map[string]int32{
+		"RF_UNKNOWN": 0,
+		"RF_2GHZ":    1,
+		"RF_5GHZ":    2,
+	}
+)
+
+func (x WirelessBand) Enum() *WirelessBand {
+	p := new(WirelessBand)
+	*p = x
+	return p
+}
+
+func (x WirelessBand) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (WirelessBand) Descriptor() protoreflect.EnumDescriptor {
+	return file_spacex_api_device_common_proto_enumTypes[1].Descriptor()
+}
+
+func (WirelessBand) Type() protoreflect.EnumType {
+	return &file_spacex_api_device_common_proto_enumTypes[1]
+}
+
+func (x WirelessBand) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use WirelessBand.Descriptor instead.
+func (WirelessBand) EnumDescriptor() ([]byte, []int) {
+	return file_spacex_api_device_common_proto_rawDescGZIP(), []int{1}
+}
+
 type EventSeverity int32
 
 const (
@@ -145,11 +194,11 @@ func (x EventSeverity) String() string {
 }
 
 func (EventSeverity) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_common_proto_enumTypes[1].Descriptor()
+	return file_spacex_api_device_common_proto_enumTypes[2].Descriptor()
 }
 
 func (EventSeverity) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_common_proto_enumTypes[1]
+	return &file_spacex_api_device_common_proto_enumTypes[2]
 }
 
 func (x EventSeverity) Number() protoreflect.EnumNumber {
@@ -158,7 +207,7 @@ func (x EventSeverity) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use EventSeverity.Descriptor instead.
 func (EventSeverity) EnumDescriptor() ([]byte, []int) {
-	return file_spacex_api_device_common_proto_rawDescGZIP(), []int{1}
+	return file_spacex_api_device_common_proto_rawDescGZIP(), []int{2}
 }
 
 type EventReason int32
@@ -182,6 +231,7 @@ const (
 	EventReason_EVENT_REASON_UT_ALERT_ETH_NO_LINK                 EventReason = 23
 	EventReason_EVENT_REASON_UT_ALERT_ETH_SLOW_LINK               EventReason = 24
 	EventReason_EVENT_REASON_UT_ALERT_ETH_SLOW_LINK_100           EventReason = 25
+	EventReason_EVENT_REASON_UT_ALERT_USER_REPORTED_ISSUE         EventReason = 52
 	EventReason_EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS            EventReason = 12
 	EventReason_EVENT_REASON_ROUTER_FACTORY_RESET                 EventReason = 13
 	EventReason_EVENT_REASON_ROUTER_REBOOT                        EventReason = 14
@@ -242,6 +292,7 @@ var (
 		23: "EVENT_REASON_UT_ALERT_ETH_NO_LINK",
 		24: "EVENT_REASON_UT_ALERT_ETH_SLOW_LINK",
 		25: "EVENT_REASON_UT_ALERT_ETH_SLOW_LINK_100",
+		52: "EVENT_REASON_UT_ALERT_USER_REPORTED_ISSUE",
 		12: "EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS",
 		13: "EVENT_REASON_ROUTER_FACTORY_RESET",
 		14: "EVENT_REASON_ROUTER_REBOOT",
@@ -296,6 +347,7 @@ var (
 		"EVENT_REASON_UT_ALERT_ETH_NO_LINK":                 23,
 		"EVENT_REASON_UT_ALERT_ETH_SLOW_LINK":               24,
 		"EVENT_REASON_UT_ALERT_ETH_SLOW_LINK_100":           25,
+		"EVENT_REASON_UT_ALERT_USER_REPORTED_ISSUE":         52,
 		"EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS":            12,
 		"EVENT_REASON_ROUTER_FACTORY_RESET":                 13,
 		"EVENT_REASON_ROUTER_REBOOT":                        14,
@@ -344,11 +396,11 @@ func (x EventReason) String() string {
 }
 
 func (EventReason) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_common_proto_enumTypes[2].Descriptor()
+	return file_spacex_api_device_common_proto_enumTypes[3].Descriptor()
 }
 
 func (EventReason) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_common_proto_enumTypes[2]
+	return &file_spacex_api_device_common_proto_enumTypes[3]
 }
 
 func (x EventReason) Number() protoreflect.EnumNumber {
@@ -357,7 +409,7 @@ func (x EventReason) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use EventReason.Descriptor instead.
 func (EventReason) EnumDescriptor() ([]byte, []int) {
-	return file_spacex_api_device_common_proto_rawDescGZIP(), []int{2}
+	return file_spacex_api_device_common_proto_rawDescGZIP(), []int{3}
 }
 
 type MeshConnectionChange int32
@@ -392,11 +444,11 @@ func (x MeshConnectionChange) String() string {
 }
 
 func (MeshConnectionChange) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_common_proto_enumTypes[3].Descriptor()
+	return file_spacex_api_device_common_proto_enumTypes[4].Descriptor()
 }
 
 func (MeshConnectionChange) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_common_proto_enumTypes[3]
+	return &file_spacex_api_device_common_proto_enumTypes[4]
 }
 
 func (x MeshConnectionChange) Number() protoreflect.EnumNumber {
@@ -405,7 +457,7 @@ func (x MeshConnectionChange) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use MeshConnectionChange.Descriptor instead.
 func (MeshConnectionChange) EnumDescriptor() ([]byte, []int) {
-	return file_spacex_api_device_common_proto_rawDescGZIP(), []int{3}
+	return file_spacex_api_device_common_proto_rawDescGZIP(), []int{4}
 }
 
 type HardwareIndex int32
@@ -465,11 +517,11 @@ func (x HardwareIndex) String() string {
 }
 
 func (HardwareIndex) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_common_proto_enumTypes[4].Descriptor()
+	return file_spacex_api_device_common_proto_enumTypes[5].Descriptor()
 }
 
 func (HardwareIndex) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_common_proto_enumTypes[4]
+	return &file_spacex_api_device_common_proto_enumTypes[5]
 }
 
 func (x HardwareIndex) Number() protoreflect.EnumNumber {
@@ -478,7 +530,7 @@ func (x HardwareIndex) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use HardwareIndex.Descriptor instead.
 func (HardwareIndex) EnumDescriptor() ([]byte, []int) {
-	return file_spacex_api_device_common_proto_rawDescGZIP(), []int{4}
+	return file_spacex_api_device_common_proto_rawDescGZIP(), []int{5}
 }
 
 type EthernetNetworkInterface_Duplex int32
@@ -514,11 +566,11 @@ func (x EthernetNetworkInterface_Duplex) String() string {
 }
 
 func (EthernetNetworkInterface_Duplex) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_common_proto_enumTypes[5].Descriptor()
+	return file_spacex_api_device_common_proto_enumTypes[6].Descriptor()
 }
 
 func (EthernetNetworkInterface_Duplex) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_common_proto_enumTypes[5]
+	return &file_spacex_api_device_common_proto_enumTypes[6]
 }
 
 func (x EthernetNetworkInterface_Duplex) Number() protoreflect.EnumNumber {
@@ -1508,6 +1560,7 @@ type WifiNetworkInterface struct {
 	LinkQuality         float64                                   `protobuf:"fixed64,4,opt,name=link_quality,json=linkQuality,proto3" json:"link_quality,omitempty"`
 	SignalLevel         float64                                   `protobuf:"fixed64,5,opt,name=signal_level,json=signalLevel,proto3" json:"signal_level,omitempty"`
 	NoiseLevel          float64                                   `protobuf:"fixed64,6,opt,name=noise_level,json=noiseLevel,proto3" json:"noise_level,omitempty"`
+	Links               []*WifiNetworkInterface_WirelessLink      `protobuf:"bytes,10,rep,name=links,proto3" json:"links,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
 }
@@ -1582,6 +1635,13 @@ func (x *WifiNetworkInterface) GetNoiseLevel() float64 {
 		return x.NoiseLevel
 	}
 	return 0
+}
+
+func (x *WifiNetworkInterface) GetLinks() []*WifiNetworkInterface_WirelessLink {
+	if x != nil {
+		return x.Links
+	}
+	return nil
 }
 
 type BridgeNetworkInterface struct {
@@ -2856,6 +2916,66 @@ func (x *WifiNetworkInterface_InvalidPacketCounts) GetInvalidMisc() uint32 {
 	return 0
 }
 
+type WifiNetworkInterface_WirelessLink struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Band          WirelessBand           `protobuf:"varint,1,opt,name=band,proto3,enum=SpaceX.API.Device.WirelessBand" json:"band,omitempty"`
+	Channel       uint32                 `protobuf:"varint,2,opt,name=channel,proto3" json:"channel,omitempty"`
+	Bandwidth     uint32                 `protobuf:"varint,3,opt,name=bandwidth,proto3" json:"bandwidth,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WifiNetworkInterface_WirelessLink) Reset() {
+	*x = WifiNetworkInterface_WirelessLink{}
+	mi := &file_spacex_api_device_common_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WifiNetworkInterface_WirelessLink) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WifiNetworkInterface_WirelessLink) ProtoMessage() {}
+
+func (x *WifiNetworkInterface_WirelessLink) ProtoReflect() protoreflect.Message {
+	mi := &file_spacex_api_device_common_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WifiNetworkInterface_WirelessLink.ProtoReflect.Descriptor instead.
+func (*WifiNetworkInterface_WirelessLink) Descriptor() ([]byte, []int) {
+	return file_spacex_api_device_common_proto_rawDescGZIP(), []int{13, 1}
+}
+
+func (x *WifiNetworkInterface_WirelessLink) GetBand() WirelessBand {
+	if x != nil {
+		return x.Band
+	}
+	return WirelessBand_RF_UNKNOWN
+}
+
+func (x *WifiNetworkInterface_WirelessLink) GetChannel() uint32 {
+	if x != nil {
+		return x.Channel
+	}
+	return 0
+}
+
+func (x *WifiNetworkInterface_WirelessLink) GetBandwidth() uint32 {
+	if x != nil {
+		return x.Bandwidth
+	}
+	return 0
+}
+
 var File_spacex_api_device_common_proto protoreflect.FileDescriptor
 
 const file_spacex_api_device_common_proto_rawDesc = "" +
@@ -2961,7 +3081,7 @@ const file_spacex_api_device_common_proto_rawDesc = "" +
 	"\x06Duplex\x12\v\n" +
 	"\aUNKNOWN\x10\x00\x12\b\n" +
 	"\x04HALF\x10\x01\x12\b\n" +
-	"\x04FULL\x10\x02\"\xc9\x04\n" +
+	"\x04FULL\x10\x02\"\x92\x06\n" +
 	"\x14WifiNetworkInterface\x12o\n" +
 	"\x15invalid_packet_counts\x18\x02 \x01(\v2;.SpaceX.API.Device.WifiNetworkInterface.InvalidPacketCountsR\x13invalidPacketCounts\x12\x18\n" +
 	"\achannel\x18\x03 \x01(\rR\achannel\x12%\n" +
@@ -2969,13 +3089,19 @@ const file_spacex_api_device_common_proto_rawDesc = "" +
 	"\flink_quality\x18\x04 \x01(\x01R\vlinkQuality\x12!\n" +
 	"\fsignal_level\x18\x05 \x01(\x01R\vsignalLevel\x12\x1f\n" +
 	"\vnoise_level\x18\x06 \x01(\x01R\n" +
-	"noiseLevel\x1a\xe4\x01\n" +
+	"noiseLevel\x12J\n" +
+	"\x05links\x18\n" +
+	" \x03(\v24.SpaceX.API.Device.WifiNetworkInterface.WirelessLinkR\x05links\x1a\xe4\x01\n" +
 	"\x13InvalidPacketCounts\x12&\n" +
 	"\x0frx_invalid_nwid\x18\x01 \x01(\rR\rrxInvalidNwid\x12(\n" +
 	"\x10rx_invalid_crypt\x18\x02 \x01(\rR\x0erxInvalidCrypt\x12&\n" +
 	"\x0frx_invalid_frag\x18\x03 \x01(\rR\rrxInvalidFrag\x120\n" +
 	"\x14tx_excessive_retries\x18\x04 \x01(\rR\x12txExcessiveRetries\x12!\n" +
-	"\finvalid_misc\x18\x05 \x01(\rR\vinvalidMiscJ\x04\b\x01\x10\x02J\x04\b\a\x10\bJ\x04\b\t\x10\n" +
+	"\finvalid_misc\x18\x05 \x01(\rR\vinvalidMisc\x1a{\n" +
+	"\fWirelessLink\x123\n" +
+	"\x04band\x18\x01 \x01(\x0e2\x1f.SpaceX.API.Device.WirelessBandR\x04band\x12\x18\n" +
+	"\achannel\x18\x02 \x01(\rR\achannel\x12\x1c\n" +
+	"\tbandwidth\x18\x03 \x01(\rR\tbandwidthJ\x04\b\x01\x10\x02J\x04\b\a\x10\bJ\x04\b\t\x10\n" +
 	"R\x0ethermal_statusR\x0fantennae_status\";\n" +
 	"\x16BridgeNetworkInterface\x12!\n" +
 	"\fmember_names\x18\x01 \x03(\tR\vmemberNames\"C\n" +
@@ -3066,12 +3192,17 @@ const file_spacex_api_device_common_proto_rawDesc = "" +
 	"\x11HARDWARE_WATCHDOG\x10\x0f\x12\x1b\n" +
 	"\x17REPEATER_UNTRUSTED_FDIR\x10\x10\"\x04\b\n" +
 	"\x10\n" +
-	"*\x17AVIATION_5M_OUTAGE_FDIR*\x80\x01\n" +
+	"*\x17AVIATION_5M_OUTAGE_FDIR*8\n" +
+	"\fWirelessBand\x12\x0e\n" +
+	"\n" +
+	"RF_UNKNOWN\x10\x00\x12\v\n" +
+	"\aRF_2GHZ\x10\x01\x12\v\n" +
+	"\aRF_5GHZ\x10\x02*\x80\x01\n" +
 	"\rEventSeverity\x12\x1a\n" +
 	"\x16EVENT_SEVERITY_UNKNOWN\x10\x00\x12\x1a\n" +
 	"\x16EVENT_SEVERITY_WARNING\x10\x01\x12\x1a\n" +
 	"\x16EVENT_SEVERITY_CAUTION\x10\x02\x12\x1b\n" +
-	"\x17EVENT_SEVERITY_ADVISORY\x10\x03*\xce\x11\n" +
+	"\x17EVENT_SEVERITY_ADVISORY\x10\x03*\xfd\x11\n" +
 	"\vEventReason\x12\x18\n" +
 	"\x14EVENT_REASON_UNKNOWN\x10\x00\x12\x1f\n" +
 	"\x1bEVENT_REASON_OUTAGE_UNKNOWN\x10\x01\x12\x1f\n" +
@@ -3091,7 +3222,8 @@ const file_spacex_api_device_common_proto_rawDesc = "" +
 	"/EVENT_REASON_UT_ALERT_RAIN_SNR_PERSISTENTLY_LOW\x10\x16\x12%\n" +
 	"!EVENT_REASON_UT_ALERT_ETH_NO_LINK\x10\x17\x12'\n" +
 	"#EVENT_REASON_UT_ALERT_ETH_SLOW_LINK\x10\x18\x12+\n" +
-	"'EVENT_REASON_UT_ALERT_ETH_SLOW_LINK_100\x10\x19\x12*\n" +
+	"'EVENT_REASON_UT_ALERT_ETH_SLOW_LINK_100\x10\x19\x12-\n" +
+	")EVENT_REASON_UT_ALERT_USER_REPORTED_ISSUE\x104\x12*\n" +
 	"&EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS\x10\f\x12%\n" +
 	"!EVENT_REASON_ROUTER_FACTORY_RESET\x10\r\x12\x1e\n" +
 	"\x1aEVENT_REASON_ROUTER_REBOOT\x10\x0e\x12#\n" +
@@ -3154,85 +3286,89 @@ func file_spacex_api_device_common_proto_rawDescGZIP() []byte {
 	return file_spacex_api_device_common_proto_rawDescData
 }
 
-var file_spacex_api_device_common_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
-var file_spacex_api_device_common_proto_msgTypes = make([]protoimpl.MessageInfo, 37)
+var file_spacex_api_device_common_proto_enumTypes = make([]protoimpl.EnumInfo, 7)
+var file_spacex_api_device_common_proto_msgTypes = make([]protoimpl.MessageInfo, 38)
 var file_spacex_api_device_common_proto_goTypes = []any{
 	(BootReason)(0),                                   // 0: SpaceX.API.Device.BootReason
-	(EventSeverity)(0),                                // 1: SpaceX.API.Device.EventSeverity
-	(EventReason)(0),                                  // 2: SpaceX.API.Device.EventReason
-	(MeshConnectionChange)(0),                         // 3: SpaceX.API.Device.MeshConnectionChange
-	(HardwareIndex)(0),                                // 4: SpaceX.API.Device.HardwareIndex
-	(EthernetNetworkInterface_Duplex)(0),              // 5: SpaceX.API.Device.EthernetNetworkInterface.Duplex
-	(*DeviceInfo)(nil),                                // 6: SpaceX.API.Device.DeviceInfo
-	(*DeviceState)(nil),                               // 7: SpaceX.API.Device.DeviceState
-	(*SignedData)(nil),                                // 8: SpaceX.API.Device.SignedData
-	(*GetNextIdRequest)(nil),                          // 9: SpaceX.API.Device.GetNextIdRequest
-	(*GetNextIdResponse)(nil),                         // 10: SpaceX.API.Device.GetNextIdResponse
-	(*BootInfo)(nil),                                  // 11: SpaceX.API.Device.BootInfo
-	(*PingTarget)(nil),                                // 12: SpaceX.API.Device.PingTarget
-	(*PingResult)(nil),                                // 13: SpaceX.API.Device.PingResult
-	(*BondingChallenge)(nil),                          // 14: SpaceX.API.Device.BondingChallenge
-	(*AuthenticateRequest)(nil),                       // 15: SpaceX.API.Device.AuthenticateRequest
-	(*ChallengeResponse)(nil),                         // 16: SpaceX.API.Device.ChallengeResponse
-	(*NetworkInterface)(nil),                          // 17: SpaceX.API.Device.NetworkInterface
-	(*EthernetNetworkInterface)(nil),                  // 18: SpaceX.API.Device.EthernetNetworkInterface
-	(*WifiNetworkInterface)(nil),                      // 19: SpaceX.API.Device.WifiNetworkInterface
-	(*BridgeNetworkInterface)(nil),                    // 20: SpaceX.API.Device.BridgeNetworkInterface
-	(*LLAPosition)(nil),                               // 21: SpaceX.API.Device.LLAPosition
-	(*ECEFPosition)(nil),                              // 22: SpaceX.API.Device.ECEFPosition
-	(*Quaternion)(nil),                                // 23: SpaceX.API.Device.Quaternion
-	(*InitiateRemoteSshRequest)(nil),                  // 24: SpaceX.API.Device.InitiateRemoteSshRequest
-	(*InitiateRemoteSshResponse)(nil),                 // 25: SpaceX.API.Device.InitiateRemoteSshResponse
-	(*SoftwareUpdateRequest)(nil),                     // 26: SpaceX.API.Device.SoftwareUpdateRequest
-	(*SoftwareUpdateResponse)(nil),                    // 27: SpaceX.API.Device.SoftwareUpdateResponse
-	(*EventLog)(nil),                                  // 28: SpaceX.API.Device.EventLog
-	(*UXEvent)(nil),                                   // 29: SpaceX.API.Device.UXEvent
-	(*ClientReconnectingOftenMetadata)(nil),           // 30: SpaceX.API.Device.ClientReconnectingOftenMetadata
-	(*ClientExcessiveNetworkConnectionsMetadata)(nil), // 31: SpaceX.API.Device.ClientExcessiveNetworkConnectionsMetadata
-	(*ClientSwitchingBandMetadata)(nil),               // 32: SpaceX.API.Device.ClientSwitchingBandMetadata
-	(*ClientSwitchingUpstreamMacMetadata)(nil),        // 33: SpaceX.API.Device.ClientSwitchingUpstreamMacMetadata
-	(*MeshConnectionChangingMetadata)(nil),            // 34: SpaceX.API.Device.MeshConnectionChangingMetadata
-	(*MeshBackhaulLowPhyMetadata)(nil),                // 35: SpaceX.API.Device.MeshBackhaulLowPhyMetadata
-	(*HighOverlappingBssStats)(nil),                   // 36: SpaceX.API.Device.HighOverlappingBssStats
-	(*HighOverlappingBssMetadata)(nil),                // 37: SpaceX.API.Device.HighOverlappingBssMetadata
-	nil,                                               // 38: SpaceX.API.Device.BootInfo.CountByReasonEntry
-	nil,                                               // 39: SpaceX.API.Device.BootInfo.CountByReasonDeltaEntry
-	(*NetworkInterface_RxStats)(nil),                  // 40: SpaceX.API.Device.NetworkInterface.RxStats
-	(*NetworkInterface_TxStats)(nil),                  // 41: SpaceX.API.Device.NetworkInterface.TxStats
-	(*WifiNetworkInterface_InvalidPacketCounts)(nil),  // 42: SpaceX.API.Device.WifiNetworkInterface.InvalidPacketCounts
+	(WirelessBand)(0),                                 // 1: SpaceX.API.Device.WirelessBand
+	(EventSeverity)(0),                                // 2: SpaceX.API.Device.EventSeverity
+	(EventReason)(0),                                  // 3: SpaceX.API.Device.EventReason
+	(MeshConnectionChange)(0),                         // 4: SpaceX.API.Device.MeshConnectionChange
+	(HardwareIndex)(0),                                // 5: SpaceX.API.Device.HardwareIndex
+	(EthernetNetworkInterface_Duplex)(0),              // 6: SpaceX.API.Device.EthernetNetworkInterface.Duplex
+	(*DeviceInfo)(nil),                                // 7: SpaceX.API.Device.DeviceInfo
+	(*DeviceState)(nil),                               // 8: SpaceX.API.Device.DeviceState
+	(*SignedData)(nil),                                // 9: SpaceX.API.Device.SignedData
+	(*GetNextIdRequest)(nil),                          // 10: SpaceX.API.Device.GetNextIdRequest
+	(*GetNextIdResponse)(nil),                         // 11: SpaceX.API.Device.GetNextIdResponse
+	(*BootInfo)(nil),                                  // 12: SpaceX.API.Device.BootInfo
+	(*PingTarget)(nil),                                // 13: SpaceX.API.Device.PingTarget
+	(*PingResult)(nil),                                // 14: SpaceX.API.Device.PingResult
+	(*BondingChallenge)(nil),                          // 15: SpaceX.API.Device.BondingChallenge
+	(*AuthenticateRequest)(nil),                       // 16: SpaceX.API.Device.AuthenticateRequest
+	(*ChallengeResponse)(nil),                         // 17: SpaceX.API.Device.ChallengeResponse
+	(*NetworkInterface)(nil),                          // 18: SpaceX.API.Device.NetworkInterface
+	(*EthernetNetworkInterface)(nil),                  // 19: SpaceX.API.Device.EthernetNetworkInterface
+	(*WifiNetworkInterface)(nil),                      // 20: SpaceX.API.Device.WifiNetworkInterface
+	(*BridgeNetworkInterface)(nil),                    // 21: SpaceX.API.Device.BridgeNetworkInterface
+	(*LLAPosition)(nil),                               // 22: SpaceX.API.Device.LLAPosition
+	(*ECEFPosition)(nil),                              // 23: SpaceX.API.Device.ECEFPosition
+	(*Quaternion)(nil),                                // 24: SpaceX.API.Device.Quaternion
+	(*InitiateRemoteSshRequest)(nil),                  // 25: SpaceX.API.Device.InitiateRemoteSshRequest
+	(*InitiateRemoteSshResponse)(nil),                 // 26: SpaceX.API.Device.InitiateRemoteSshResponse
+	(*SoftwareUpdateRequest)(nil),                     // 27: SpaceX.API.Device.SoftwareUpdateRequest
+	(*SoftwareUpdateResponse)(nil),                    // 28: SpaceX.API.Device.SoftwareUpdateResponse
+	(*EventLog)(nil),                                  // 29: SpaceX.API.Device.EventLog
+	(*UXEvent)(nil),                                   // 30: SpaceX.API.Device.UXEvent
+	(*ClientReconnectingOftenMetadata)(nil),           // 31: SpaceX.API.Device.ClientReconnectingOftenMetadata
+	(*ClientExcessiveNetworkConnectionsMetadata)(nil), // 32: SpaceX.API.Device.ClientExcessiveNetworkConnectionsMetadata
+	(*ClientSwitchingBandMetadata)(nil),               // 33: SpaceX.API.Device.ClientSwitchingBandMetadata
+	(*ClientSwitchingUpstreamMacMetadata)(nil),        // 34: SpaceX.API.Device.ClientSwitchingUpstreamMacMetadata
+	(*MeshConnectionChangingMetadata)(nil),            // 35: SpaceX.API.Device.MeshConnectionChangingMetadata
+	(*MeshBackhaulLowPhyMetadata)(nil),                // 36: SpaceX.API.Device.MeshBackhaulLowPhyMetadata
+	(*HighOverlappingBssStats)(nil),                   // 37: SpaceX.API.Device.HighOverlappingBssStats
+	(*HighOverlappingBssMetadata)(nil),                // 38: SpaceX.API.Device.HighOverlappingBssMetadata
+	nil,                                               // 39: SpaceX.API.Device.BootInfo.CountByReasonEntry
+	nil,                                               // 40: SpaceX.API.Device.BootInfo.CountByReasonDeltaEntry
+	(*NetworkInterface_RxStats)(nil),                  // 41: SpaceX.API.Device.NetworkInterface.RxStats
+	(*NetworkInterface_TxStats)(nil),                  // 42: SpaceX.API.Device.NetworkInterface.TxStats
+	(*WifiNetworkInterface_InvalidPacketCounts)(nil),  // 43: SpaceX.API.Device.WifiNetworkInterface.InvalidPacketCounts
+	(*WifiNetworkInterface_WirelessLink)(nil),         // 44: SpaceX.API.Device.WifiNetworkInterface.WirelessLink
 }
 var file_spacex_api_device_common_proto_depIdxs = []int32{
-	4,  // 0: SpaceX.API.Device.DeviceInfo.hardware_index:type_name -> SpaceX.API.Device.HardwareIndex
-	11, // 1: SpaceX.API.Device.DeviceInfo.boot:type_name -> SpaceX.API.Device.BootInfo
-	38, // 2: SpaceX.API.Device.BootInfo.count_by_reason:type_name -> SpaceX.API.Device.BootInfo.CountByReasonEntry
-	39, // 3: SpaceX.API.Device.BootInfo.count_by_reason_delta:type_name -> SpaceX.API.Device.BootInfo.CountByReasonDeltaEntry
+	5,  // 0: SpaceX.API.Device.DeviceInfo.hardware_index:type_name -> SpaceX.API.Device.HardwareIndex
+	12, // 1: SpaceX.API.Device.DeviceInfo.boot:type_name -> SpaceX.API.Device.BootInfo
+	39, // 2: SpaceX.API.Device.BootInfo.count_by_reason:type_name -> SpaceX.API.Device.BootInfo.CountByReasonEntry
+	40, // 3: SpaceX.API.Device.BootInfo.count_by_reason_delta:type_name -> SpaceX.API.Device.BootInfo.CountByReasonDeltaEntry
 	0,  // 4: SpaceX.API.Device.BootInfo.last_reason:type_name -> SpaceX.API.Device.BootReason
-	12, // 5: SpaceX.API.Device.PingResult.target:type_name -> SpaceX.API.Device.PingTarget
-	8,  // 6: SpaceX.API.Device.AuthenticateRequest.challenge:type_name -> SpaceX.API.Device.SignedData
-	40, // 7: SpaceX.API.Device.NetworkInterface.rx_stats:type_name -> SpaceX.API.Device.NetworkInterface.RxStats
-	41, // 8: SpaceX.API.Device.NetworkInterface.tx_stats:type_name -> SpaceX.API.Device.NetworkInterface.TxStats
-	18, // 9: SpaceX.API.Device.NetworkInterface.ethernet:type_name -> SpaceX.API.Device.EthernetNetworkInterface
-	19, // 10: SpaceX.API.Device.NetworkInterface.wifi:type_name -> SpaceX.API.Device.WifiNetworkInterface
-	20, // 11: SpaceX.API.Device.NetworkInterface.bridge:type_name -> SpaceX.API.Device.BridgeNetworkInterface
-	5,  // 12: SpaceX.API.Device.EthernetNetworkInterface.duplex:type_name -> SpaceX.API.Device.EthernetNetworkInterface.Duplex
-	42, // 13: SpaceX.API.Device.WifiNetworkInterface.invalid_packet_counts:type_name -> SpaceX.API.Device.WifiNetworkInterface.InvalidPacketCounts
-	29, // 14: SpaceX.API.Device.EventLog.events:type_name -> SpaceX.API.Device.UXEvent
-	1,  // 15: SpaceX.API.Device.UXEvent.severity:type_name -> SpaceX.API.Device.EventSeverity
-	2,  // 16: SpaceX.API.Device.UXEvent.reason:type_name -> SpaceX.API.Device.EventReason
-	30, // 17: SpaceX.API.Device.UXEvent.client_reconnecting_often_metadata:type_name -> SpaceX.API.Device.ClientReconnectingOftenMetadata
-	32, // 18: SpaceX.API.Device.UXEvent.client_switching_band_metadata:type_name -> SpaceX.API.Device.ClientSwitchingBandMetadata
-	33, // 19: SpaceX.API.Device.UXEvent.client_switching_upstream_mac_metadata:type_name -> SpaceX.API.Device.ClientSwitchingUpstreamMacMetadata
-	34, // 20: SpaceX.API.Device.UXEvent.mesh_connection_changing_metadata:type_name -> SpaceX.API.Device.MeshConnectionChangingMetadata
-	35, // 21: SpaceX.API.Device.UXEvent.mesh_backhaul_low_phy_metadata:type_name -> SpaceX.API.Device.MeshBackhaulLowPhyMetadata
-	37, // 22: SpaceX.API.Device.UXEvent.high_overlapping_bss_metadata:type_name -> SpaceX.API.Device.HighOverlappingBssMetadata
-	31, // 23: SpaceX.API.Device.UXEvent.client_excessive_network_connections_metadata:type_name -> SpaceX.API.Device.ClientExcessiveNetworkConnectionsMetadata
-	3,  // 24: SpaceX.API.Device.MeshConnectionChangingMetadata.change:type_name -> SpaceX.API.Device.MeshConnectionChange
-	36, // 25: SpaceX.API.Device.HighOverlappingBssMetadata.high_overlapping_bss_stats:type_name -> SpaceX.API.Device.HighOverlappingBssStats
-	26, // [26:26] is the sub-list for method output_type
-	26, // [26:26] is the sub-list for method input_type
-	26, // [26:26] is the sub-list for extension type_name
-	26, // [26:26] is the sub-list for extension extendee
-	0,  // [0:26] is the sub-list for field type_name
+	13, // 5: SpaceX.API.Device.PingResult.target:type_name -> SpaceX.API.Device.PingTarget
+	9,  // 6: SpaceX.API.Device.AuthenticateRequest.challenge:type_name -> SpaceX.API.Device.SignedData
+	41, // 7: SpaceX.API.Device.NetworkInterface.rx_stats:type_name -> SpaceX.API.Device.NetworkInterface.RxStats
+	42, // 8: SpaceX.API.Device.NetworkInterface.tx_stats:type_name -> SpaceX.API.Device.NetworkInterface.TxStats
+	19, // 9: SpaceX.API.Device.NetworkInterface.ethernet:type_name -> SpaceX.API.Device.EthernetNetworkInterface
+	20, // 10: SpaceX.API.Device.NetworkInterface.wifi:type_name -> SpaceX.API.Device.WifiNetworkInterface
+	21, // 11: SpaceX.API.Device.NetworkInterface.bridge:type_name -> SpaceX.API.Device.BridgeNetworkInterface
+	6,  // 12: SpaceX.API.Device.EthernetNetworkInterface.duplex:type_name -> SpaceX.API.Device.EthernetNetworkInterface.Duplex
+	43, // 13: SpaceX.API.Device.WifiNetworkInterface.invalid_packet_counts:type_name -> SpaceX.API.Device.WifiNetworkInterface.InvalidPacketCounts
+	44, // 14: SpaceX.API.Device.WifiNetworkInterface.links:type_name -> SpaceX.API.Device.WifiNetworkInterface.WirelessLink
+	30, // 15: SpaceX.API.Device.EventLog.events:type_name -> SpaceX.API.Device.UXEvent
+	2,  // 16: SpaceX.API.Device.UXEvent.severity:type_name -> SpaceX.API.Device.EventSeverity
+	3,  // 17: SpaceX.API.Device.UXEvent.reason:type_name -> SpaceX.API.Device.EventReason
+	31, // 18: SpaceX.API.Device.UXEvent.client_reconnecting_often_metadata:type_name -> SpaceX.API.Device.ClientReconnectingOftenMetadata
+	33, // 19: SpaceX.API.Device.UXEvent.client_switching_band_metadata:type_name -> SpaceX.API.Device.ClientSwitchingBandMetadata
+	34, // 20: SpaceX.API.Device.UXEvent.client_switching_upstream_mac_metadata:type_name -> SpaceX.API.Device.ClientSwitchingUpstreamMacMetadata
+	35, // 21: SpaceX.API.Device.UXEvent.mesh_connection_changing_metadata:type_name -> SpaceX.API.Device.MeshConnectionChangingMetadata
+	36, // 22: SpaceX.API.Device.UXEvent.mesh_backhaul_low_phy_metadata:type_name -> SpaceX.API.Device.MeshBackhaulLowPhyMetadata
+	38, // 23: SpaceX.API.Device.UXEvent.high_overlapping_bss_metadata:type_name -> SpaceX.API.Device.HighOverlappingBssMetadata
+	32, // 24: SpaceX.API.Device.UXEvent.client_excessive_network_connections_metadata:type_name -> SpaceX.API.Device.ClientExcessiveNetworkConnectionsMetadata
+	4,  // 25: SpaceX.API.Device.MeshConnectionChangingMetadata.change:type_name -> SpaceX.API.Device.MeshConnectionChange
+	37, // 26: SpaceX.API.Device.HighOverlappingBssMetadata.high_overlapping_bss_stats:type_name -> SpaceX.API.Device.HighOverlappingBssStats
+	1,  // 27: SpaceX.API.Device.WifiNetworkInterface.WirelessLink.band:type_name -> SpaceX.API.Device.WirelessBand
+	28, // [28:28] is the sub-list for method output_type
+	28, // [28:28] is the sub-list for method input_type
+	28, // [28:28] is the sub-list for extension type_name
+	28, // [28:28] is the sub-list for extension extendee
+	0,  // [0:28] is the sub-list for field type_name
 }
 
 func init() { file_spacex_api_device_common_proto_init() }
@@ -3259,8 +3395,8 @@ func file_spacex_api_device_common_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_spacex_api_device_common_proto_rawDesc), len(file_spacex_api_device_common_proto_rawDesc)),
-			NumEnums:      6,
-			NumMessages:   37,
+			NumEnums:      7,
+			NumMessages:   38,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

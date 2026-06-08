@@ -567,6 +567,58 @@ func (RouterRole) EnumDescriptor() ([]byte, []int) {
 	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{8}
 }
 
+type PowerSource int32
+
+const (
+	PowerSource_POWER_SOURCE_UNKNOWN PowerSource = 0
+	PowerSource_USBC                 PowerSource = 1
+	PowerSource_BATTERY              PowerSource = 2
+	PowerSource_USBC_AND_BATTERY     PowerSource = 3
+)
+
+// Enum value maps for PowerSource.
+var (
+	PowerSource_name = map[int32]string{
+		0: "POWER_SOURCE_UNKNOWN",
+		1: "USBC",
+		2: "BATTERY",
+		3: "USBC_AND_BATTERY",
+	}
+	PowerSource_value = map[string]int32{
+		"POWER_SOURCE_UNKNOWN": 0,
+		"USBC":                 1,
+		"BATTERY":              2,
+		"USBC_AND_BATTERY":     3,
+	}
+)
+
+func (x PowerSource) Enum() *PowerSource {
+	p := new(PowerSource)
+	*p = x
+	return p
+}
+
+func (x PowerSource) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (PowerSource) Descriptor() protoreflect.EnumDescriptor {
+	return file_spacex_api_device_dish_proto_enumTypes[9].Descriptor()
+}
+
+func (PowerSource) Type() protoreflect.EnumType {
+	return &file_spacex_api_device_dish_proto_enumTypes[9]
+}
+
+func (x PowerSource) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use PowerSource.Descriptor instead.
+func (PowerSource) EnumDescriptor() ([]byte, []int) {
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{9}
+}
+
 type NatFlag int32
 
 const (
@@ -600,11 +652,11 @@ func (x NatFlag) String() string {
 }
 
 func (NatFlag) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_dish_proto_enumTypes[9].Descriptor()
+	return file_spacex_api_device_dish_proto_enumTypes[10].Descriptor()
 }
 
 func (NatFlag) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_dish_proto_enumTypes[9]
+	return &file_spacex_api_device_dish_proto_enumTypes[10]
 }
 
 func (x NatFlag) Number() protoreflect.EnumNumber {
@@ -613,7 +665,7 @@ func (x NatFlag) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use NatFlag.Descriptor instead.
 func (NatFlag) EnumDescriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{9}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{10}
 }
 
 type DishState int32
@@ -652,11 +704,11 @@ func (x DishState) String() string {
 }
 
 func (DishState) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_dish_proto_enumTypes[10].Descriptor()
+	return file_spacex_api_device_dish_proto_enumTypes[11].Descriptor()
 }
 
 func (DishState) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_dish_proto_enumTypes[10]
+	return &file_spacex_api_device_dish_proto_enumTypes[11]
 }
 
 func (x DishState) Number() protoreflect.EnumNumber {
@@ -665,7 +717,7 @@ func (x DishState) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use DishState.Descriptor instead.
 func (DishState) EnumDescriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{10}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{11}
 }
 
 type DishAviationTestRequest_EthSpeed int32
@@ -698,11 +750,11 @@ func (x DishAviationTestRequest_EthSpeed) String() string {
 }
 
 func (DishAviationTestRequest_EthSpeed) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_dish_proto_enumTypes[11].Descriptor()
+	return file_spacex_api_device_dish_proto_enumTypes[12].Descriptor()
 }
 
 func (DishAviationTestRequest_EthSpeed) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_dish_proto_enumTypes[11]
+	return &file_spacex_api_device_dish_proto_enumTypes[12]
 }
 
 func (x DishAviationTestRequest_EthSpeed) Number() protoreflect.EnumNumber {
@@ -780,11 +832,11 @@ func (x DishOutage_Cause) String() string {
 }
 
 func (DishOutage_Cause) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_dish_proto_enumTypes[12].Descriptor()
+	return file_spacex_api_device_dish_proto_enumTypes[13].Descriptor()
 }
 
 func (DishOutage_Cause) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_dish_proto_enumTypes[12]
+	return &file_spacex_api_device_dish_proto_enumTypes[13]
 }
 
 func (x DishOutage_Cause) Number() protoreflect.EnumNumber {
@@ -793,7 +845,7 @@ func (x DishOutage_Cause) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use DishOutage_Cause.Descriptor instead.
 func (DishOutage_Cause) EnumDescriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{8, 0}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{10, 0}
 }
 
 type SetTestModeRequest_RfMode int32
@@ -838,11 +890,11 @@ func (x SetTestModeRequest_RfMode) String() string {
 }
 
 func (SetTestModeRequest_RfMode) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_dish_proto_enumTypes[13].Descriptor()
+	return file_spacex_api_device_dish_proto_enumTypes[14].Descriptor()
 }
 
 func (SetTestModeRequest_RfMode) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_dish_proto_enumTypes[13]
+	return &file_spacex_api_device_dish_proto_enumTypes[14]
 }
 
 func (x SetTestModeRequest_RfMode) Number() protoreflect.EnumNumber {
@@ -851,7 +903,7 @@ func (x SetTestModeRequest_RfMode) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use SetTestModeRequest_RfMode.Descriptor instead.
 func (SetTestModeRequest_RfMode) EnumDescriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{26, 0}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{29, 0}
 }
 
 type PLCStats_ProtocolRevision int32
@@ -881,11 +933,11 @@ func (x PLCStats_ProtocolRevision) String() string {
 }
 
 func (PLCStats_ProtocolRevision) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_dish_proto_enumTypes[14].Descriptor()
+	return file_spacex_api_device_dish_proto_enumTypes[15].Descriptor()
 }
 
 func (PLCStats_ProtocolRevision) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_dish_proto_enumTypes[14]
+	return &file_spacex_api_device_dish_proto_enumTypes[15]
 }
 
 func (x PLCStats_ProtocolRevision) Number() protoreflect.EnumNumber {
@@ -894,7 +946,7 @@ func (x PLCStats_ProtocolRevision) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use PLCStats_ProtocolRevision.Descriptor instead.
 func (PLCStats_ProtocolRevision) EnumDescriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{49, 0}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{52, 0}
 }
 
 type PLCPortStats_PortStatus int32
@@ -933,11 +985,11 @@ func (x PLCPortStats_PortStatus) String() string {
 }
 
 func (PLCPortStats_PortStatus) Descriptor() protoreflect.EnumDescriptor {
-	return file_spacex_api_device_dish_proto_enumTypes[15].Descriptor()
+	return file_spacex_api_device_dish_proto_enumTypes[16].Descriptor()
 }
 
 func (PLCPortStats_PortStatus) Type() protoreflect.EnumType {
-	return &file_spacex_api_device_dish_proto_enumTypes[15]
+	return &file_spacex_api_device_dish_proto_enumTypes[16]
 }
 
 func (x PLCPortStats_PortStatus) Number() protoreflect.EnumNumber {
@@ -946,7 +998,7 @@ func (x PLCPortStats_PortStatus) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use PLCPortStats_PortStatus.Descriptor instead.
 func (PLCPortStats_PortStatus) EnumDescriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{50, 0}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{53, 0}
 }
 
 type DishStowRequest struct {
@@ -1237,6 +1289,78 @@ func (*ZtlmQueryResponse) Descriptor() ([]byte, []int) {
 	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{5}
 }
 
+type UserReportedIssueRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserReportedIssueRequest) Reset() {
+	*x = UserReportedIssueRequest{}
+	mi := &file_spacex_api_device_dish_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserReportedIssueRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserReportedIssueRequest) ProtoMessage() {}
+
+func (x *UserReportedIssueRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_spacex_api_device_dish_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserReportedIssueRequest.ProtoReflect.Descriptor instead.
+func (*UserReportedIssueRequest) Descriptor() ([]byte, []int) {
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{6}
+}
+
+type UserReportedIssueResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserReportedIssueResponse) Reset() {
+	*x = UserReportedIssueResponse{}
+	mi := &file_spacex_api_device_dish_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserReportedIssueResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserReportedIssueResponse) ProtoMessage() {}
+
+func (x *UserReportedIssueResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_spacex_api_device_dish_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserReportedIssueResponse.ProtoReflect.Descriptor instead.
+func (*UserReportedIssueResponse) Descriptor() ([]byte, []int) {
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{7}
+}
+
 type DishGetContextRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -1245,7 +1369,7 @@ type DishGetContextRequest struct {
 
 func (x *DishGetContextRequest) Reset() {
 	*x = DishGetContextRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[6]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1257,7 +1381,7 @@ func (x *DishGetContextRequest) String() string {
 func (*DishGetContextRequest) ProtoMessage() {}
 
 func (x *DishGetContextRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[6]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1270,7 +1394,7 @@ func (x *DishGetContextRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishGetContextRequest.ProtoReflect.Descriptor instead.
 func (*DishGetContextRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{6}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{8}
 }
 
 type DishGetContextResponse struct {
@@ -1306,7 +1430,7 @@ type DishGetContextResponse struct {
 
 func (x *DishGetContextResponse) Reset() {
 	*x = DishGetContextResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[7]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1318,7 +1442,7 @@ func (x *DishGetContextResponse) String() string {
 func (*DishGetContextResponse) ProtoMessage() {}
 
 func (x *DishGetContextResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[7]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1331,7 +1455,7 @@ func (x *DishGetContextResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishGetContextResponse.ProtoReflect.Descriptor instead.
 func (*DishGetContextResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{7}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DishGetContextResponse) GetDeviceInfo() *DeviceInfo {
@@ -1521,7 +1645,7 @@ type DishOutage struct {
 
 func (x *DishOutage) Reset() {
 	*x = DishOutage{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[8]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1533,7 +1657,7 @@ func (x *DishOutage) String() string {
 func (*DishOutage) ProtoMessage() {}
 
 func (x *DishOutage) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[8]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1546,7 +1670,7 @@ func (x *DishOutage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishOutage.ProtoReflect.Descriptor instead.
 func (*DishOutage) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{8}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *DishOutage) GetCause() DishOutage_Cause {
@@ -1593,7 +1717,7 @@ type DishGetHistoryResponse struct {
 
 func (x *DishGetHistoryResponse) Reset() {
 	*x = DishGetHistoryResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[9]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1605,7 +1729,7 @@ func (x *DishGetHistoryResponse) String() string {
 func (*DishGetHistoryResponse) ProtoMessage() {}
 
 func (x *DishGetHistoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[9]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1618,7 +1742,7 @@ func (x *DishGetHistoryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishGetHistoryResponse.ProtoReflect.Descriptor instead.
 func (*DishGetHistoryResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{9}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DishGetHistoryResponse) GetCurrent() uint64 {
@@ -1687,7 +1811,7 @@ type RouterInfo struct {
 
 func (x *RouterInfo) Reset() {
 	*x = RouterInfo{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[10]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1699,7 +1823,7 @@ func (x *RouterInfo) String() string {
 func (*RouterInfo) ProtoMessage() {}
 
 func (x *RouterInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[10]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1712,7 +1836,7 @@ func (x *RouterInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RouterInfo.ProtoReflect.Descriptor instead.
 func (*RouterInfo) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{10}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *RouterInfo) GetRole() RouterRole {
@@ -1776,13 +1900,15 @@ type DishGetStatusResponse struct {
 	AccountShard                       AccountShard                   `protobuf:"varint,1051,opt,name=account_shard,json=accountShard,proto3,enum=SpaceX.API.Device.AccountShard" json:"account_shard,omitempty"`
 	MacFlag                            bool                           `protobuf:"varint,1052,opt,name=mac_flag,json=macFlag,proto3" json:"mac_flag,omitempty"`
 	NatFlag                            NatFlag                        `protobuf:"varint,1053,opt,name=nat_flag,json=natFlag,proto3,enum=SpaceX.API.Device.NatFlag" json:"nat_flag,omitempty"`
+	BatteryStats                       *DishBatteryStats              `protobuf:"bytes,1054,opt,name=battery_stats,json=batteryStats,proto3" json:"battery_stats,omitempty"`
+	UserDebugModeEnabled               bool                           `protobuf:"varint,1055,opt,name=user_debug_mode_enabled,json=userDebugModeEnabled,proto3" json:"user_debug_mode_enabled,omitempty"`
 	unknownFields                      protoimpl.UnknownFields
 	sizeCache                          protoimpl.SizeCache
 }
 
 func (x *DishGetStatusResponse) Reset() {
 	*x = DishGetStatusResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[11]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1794,7 +1920,7 @@ func (x *DishGetStatusResponse) String() string {
 func (*DishGetStatusResponse) ProtoMessage() {}
 
 func (x *DishGetStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[11]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1807,7 +1933,7 @@ func (x *DishGetStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishGetStatusResponse.ProtoReflect.Descriptor instead.
 func (*DishGetStatusResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{11}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *DishGetStatusResponse) GetDeviceInfo() *DeviceInfo {
@@ -2125,6 +2251,20 @@ func (x *DishGetStatusResponse) GetNatFlag() NatFlag {
 	return NatFlag_NAT_UNKNOWN
 }
 
+func (x *DishGetStatusResponse) GetBatteryStats() *DishBatteryStats {
+	if x != nil {
+		return x.BatteryStats
+	}
+	return nil
+}
+
+func (x *DishGetStatusResponse) GetUserDebugModeEnabled() bool {
+	if x != nil {
+		return x.UserDebugModeEnabled
+	}
+	return false
+}
+
 type DishGetObstructionMapRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -2133,7 +2273,7 @@ type DishGetObstructionMapRequest struct {
 
 func (x *DishGetObstructionMapRequest) Reset() {
 	*x = DishGetObstructionMapRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[12]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2145,7 +2285,7 @@ func (x *DishGetObstructionMapRequest) String() string {
 func (*DishGetObstructionMapRequest) ProtoMessage() {}
 
 func (x *DishGetObstructionMapRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[12]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2158,7 +2298,7 @@ func (x *DishGetObstructionMapRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishGetObstructionMapRequest.ProtoReflect.Descriptor instead.
 func (*DishGetObstructionMapRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{12}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{14}
 }
 
 type DishGetObstructionMapResponse struct {
@@ -2176,7 +2316,7 @@ type DishGetObstructionMapResponse struct {
 
 func (x *DishGetObstructionMapResponse) Reset() {
 	*x = DishGetObstructionMapResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[13]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2188,7 +2328,7 @@ func (x *DishGetObstructionMapResponse) String() string {
 func (*DishGetObstructionMapResponse) ProtoMessage() {}
 
 func (x *DishGetObstructionMapResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[13]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2201,7 +2341,7 @@ func (x *DishGetObstructionMapResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishGetObstructionMapResponse.ProtoReflect.Descriptor instead.
 func (*DishGetObstructionMapResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{13}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *DishGetObstructionMapResponse) GetNumRows() uint32 {
@@ -2275,7 +2415,7 @@ type DishAlerts struct {
 
 func (x *DishAlerts) Reset() {
 	*x = DishAlerts{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[14]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2287,7 +2427,7 @@ func (x *DishAlerts) String() string {
 func (*DishAlerts) ProtoMessage() {}
 
 func (x *DishAlerts) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[14]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2300,7 +2440,7 @@ func (x *DishAlerts) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishAlerts.ProtoReflect.Descriptor instead.
 func (*DishAlerts) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{14}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *DishAlerts) GetMotorsStuck() bool {
@@ -2457,7 +2597,7 @@ type DishReadyStates struct {
 
 func (x *DishReadyStates) Reset() {
 	*x = DishReadyStates{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[15]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2469,7 +2609,7 @@ func (x *DishReadyStates) String() string {
 func (*DishReadyStates) ProtoMessage() {}
 
 func (x *DishReadyStates) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[15]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2482,7 +2622,7 @@ func (x *DishReadyStates) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishReadyStates.ProtoReflect.Descriptor instead.
 func (*DishReadyStates) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{15}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *DishReadyStates) GetCady() bool {
@@ -2528,18 +2668,19 @@ func (x *DishReadyStates) GetRf() bool {
 }
 
 type DishGpsStats struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	GpsValid        bool                   `protobuf:"varint,1,opt,name=gps_valid,json=gpsValid,proto3" json:"gps_valid,omitempty"`
-	GpsSats         uint32                 `protobuf:"varint,2,opt,name=gps_sats,json=gpsSats,proto3" json:"gps_sats,omitempty"`
-	NoSatsAfterTtff bool                   `protobuf:"varint,3,opt,name=no_sats_after_ttff,json=noSatsAfterTtff,proto3" json:"no_sats_after_ttff,omitempty"`
-	InhibitGps      bool                   `protobuf:"varint,4,opt,name=inhibit_gps,json=inhibitGps,proto3" json:"inhibit_gps,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state                     protoimpl.MessageState  `protogen:"open.v1"`
+	GpsValid                  bool                    `protobuf:"varint,1,opt,name=gps_valid,json=gpsValid,proto3" json:"gps_valid,omitempty"`
+	GpsSats                   uint32                  `protobuf:"varint,2,opt,name=gps_sats,json=gpsSats,proto3" json:"gps_sats,omitempty"`
+	NoSatsAfterTtff           bool                    `protobuf:"varint,3,opt,name=no_sats_after_ttff,json=noSatsAfterTtff,proto3" json:"no_sats_after_ttff,omitempty"`
+	InhibitGps                bool                    `protobuf:"varint,4,opt,name=inhibit_gps,json=inhibitGps,proto3" json:"inhibit_gps,omitempty"`
+	PntFilterConvergenceState AttitudeEstimationState `protobuf:"varint,5,opt,name=pnt_filter_convergence_state,json=pntFilterConvergenceState,proto3,enum=SpaceX.API.Device.AttitudeEstimationState" json:"pnt_filter_convergence_state,omitempty"`
+	unknownFields             protoimpl.UnknownFields
+	sizeCache                 protoimpl.SizeCache
 }
 
 func (x *DishGpsStats) Reset() {
 	*x = DishGpsStats{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[16]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2551,7 +2692,7 @@ func (x *DishGpsStats) String() string {
 func (*DishGpsStats) ProtoMessage() {}
 
 func (x *DishGpsStats) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[16]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2564,7 +2705,7 @@ func (x *DishGpsStats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishGpsStats.ProtoReflect.Descriptor instead.
 func (*DishGpsStats) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{16}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *DishGpsStats) GetGpsValid() bool {
@@ -2595,6 +2736,13 @@ func (x *DishGpsStats) GetInhibitGps() bool {
 	return false
 }
 
+func (x *DishGpsStats) GetPntFilterConvergenceState() AttitudeEstimationState {
+	if x != nil {
+		return x.PntFilterConvergenceState
+	}
+	return AttitudeEstimationState_FILTER_RESET
+}
+
 type SoftwareUpdateStats struct {
 	state                  protoimpl.MessageState `protogen:"open.v1"`
 	SoftwareUpdateState    SoftwareUpdateState    `protobuf:"varint,1,opt,name=software_update_state,json=softwareUpdateState,proto3,enum=SpaceX.API.Device.SoftwareUpdateState" json:"software_update_state,omitempty"`
@@ -2607,7 +2755,7 @@ type SoftwareUpdateStats struct {
 
 func (x *SoftwareUpdateStats) Reset() {
 	*x = SoftwareUpdateStats{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[17]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2619,7 +2767,7 @@ func (x *SoftwareUpdateStats) String() string {
 func (*SoftwareUpdateStats) ProtoMessage() {}
 
 func (x *SoftwareUpdateStats) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[17]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2632,7 +2780,7 @@ func (x *SoftwareUpdateStats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SoftwareUpdateStats.ProtoReflect.Descriptor instead.
 func (*SoftwareUpdateStats) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{17}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *SoftwareUpdateStats) GetSoftwareUpdateState() SoftwareUpdateState {
@@ -2680,7 +2828,7 @@ type AlignmentStats struct {
 
 func (x *AlignmentStats) Reset() {
 	*x = AlignmentStats{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[18]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2692,7 +2840,7 @@ func (x *AlignmentStats) String() string {
 func (*AlignmentStats) ProtoMessage() {}
 
 func (x *AlignmentStats) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[18]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2705,7 +2853,7 @@ func (x *AlignmentStats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AlignmentStats.ProtoReflect.Descriptor instead.
 func (*AlignmentStats) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{18}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *AlignmentStats) GetHasActuators() HasActuators {
@@ -2787,7 +2935,7 @@ type DishObstructionStats struct {
 
 func (x *DishObstructionStats) Reset() {
 	*x = DishObstructionStats{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[19]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2799,7 +2947,7 @@ func (x *DishObstructionStats) String() string {
 func (*DishObstructionStats) ProtoMessage() {}
 
 func (x *DishObstructionStats) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[19]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2812,7 +2960,7 @@ func (x *DishObstructionStats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishObstructionStats.ProtoReflect.Descriptor instead.
 func (*DishObstructionStats) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{19}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *DishObstructionStats) GetCurrentlyObstructed() bool {
@@ -2893,7 +3041,7 @@ type DishUpsuStats struct {
 
 func (x *DishUpsuStats) Reset() {
 	*x = DishUpsuStats{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[20]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2905,7 +3053,7 @@ func (x *DishUpsuStats) String() string {
 func (*DishUpsuStats) ProtoMessage() {}
 
 func (x *DishUpsuStats) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[20]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2918,7 +3066,7 @@ func (x *DishUpsuStats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishUpsuStats.ProtoReflect.Descriptor instead.
 func (*DishUpsuStats) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{20}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *DishUpsuStats) GetAppVersion() uint64 {
@@ -3035,7 +3183,7 @@ type DishApsStats struct {
 
 func (x *DishApsStats) Reset() {
 	*x = DishApsStats{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[21]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3047,7 +3195,7 @@ func (x *DishApsStats) String() string {
 func (*DishApsStats) ProtoMessage() {}
 
 func (x *DishApsStats) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[21]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3060,7 +3208,7 @@ func (x *DishApsStats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishApsStats.ProtoReflect.Descriptor instead.
 func (*DishApsStats) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{21}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *DishApsStats) GetAppVersion() uint64 {
@@ -3119,6 +3267,66 @@ func (x *DishApsStats) GetBoardRev() int32 {
 	return 0
 }
 
+type DishBatteryStats struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	StateOfCharge uint32                 `protobuf:"varint,1,opt,name=state_of_charge,json=stateOfCharge,proto3" json:"state_of_charge,omitempty"`
+	IsCharging    bool                   `protobuf:"varint,2,opt,name=is_charging,json=isCharging,proto3" json:"is_charging,omitempty"`
+	PowerSource   PowerSource            `protobuf:"varint,3,opt,name=power_source,json=powerSource,proto3,enum=SpaceX.API.Device.PowerSource" json:"power_source,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DishBatteryStats) Reset() {
+	*x = DishBatteryStats{}
+	mi := &file_spacex_api_device_dish_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DishBatteryStats) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DishBatteryStats) ProtoMessage() {}
+
+func (x *DishBatteryStats) ProtoReflect() protoreflect.Message {
+	mi := &file_spacex_api_device_dish_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DishBatteryStats.ProtoReflect.Descriptor instead.
+func (*DishBatteryStats) Descriptor() ([]byte, []int) {
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *DishBatteryStats) GetStateOfCharge() uint32 {
+	if x != nil {
+		return x.StateOfCharge
+	}
+	return 0
+}
+
+func (x *DishBatteryStats) GetIsCharging() bool {
+	if x != nil {
+		return x.IsCharging
+	}
+	return false
+}
+
+func (x *DishBatteryStats) GetPowerSource() PowerSource {
+	if x != nil {
+		return x.PowerSource
+	}
+	return PowerSource_POWER_SOURCE_UNKNOWN
+}
+
 type InitializationDurationSeconds struct {
 	state                  protoimpl.MessageState `protogen:"open.v1"`
 	AttitudeInitialization int32                  `protobuf:"varint,1,opt,name=attitude_initialization,json=attitudeInitialization,proto3" json:"attitude_initialization,omitempty"`
@@ -3137,7 +3345,7 @@ type InitializationDurationSeconds struct {
 
 func (x *InitializationDurationSeconds) Reset() {
 	*x = InitializationDurationSeconds{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[22]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3149,7 +3357,7 @@ func (x *InitializationDurationSeconds) String() string {
 func (*InitializationDurationSeconds) ProtoMessage() {}
 
 func (x *InitializationDurationSeconds) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[22]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3162,7 +3370,7 @@ func (x *InitializationDurationSeconds) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InitializationDurationSeconds.ProtoReflect.Descriptor instead.
 func (*InitializationDurationSeconds) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{22}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *InitializationDurationSeconds) GetAttitudeInitialization() int32 {
@@ -3244,7 +3452,7 @@ type DishAuthenticateResponse struct {
 
 func (x *DishAuthenticateResponse) Reset() {
 	*x = DishAuthenticateResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[23]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3256,7 +3464,7 @@ func (x *DishAuthenticateResponse) String() string {
 func (*DishAuthenticateResponse) ProtoMessage() {}
 
 func (x *DishAuthenticateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[23]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3269,7 +3477,7 @@ func (x *DishAuthenticateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishAuthenticateResponse.ProtoReflect.Descriptor instead.
 func (*DishAuthenticateResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{23}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *DishAuthenticateResponse) GetDish() *ChallengeResponse {
@@ -3288,7 +3496,7 @@ type SelfTestRequest struct {
 
 func (x *SelfTestRequest) Reset() {
 	*x = SelfTestRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[24]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3300,7 +3508,7 @@ func (x *SelfTestRequest) String() string {
 func (*SelfTestRequest) ProtoMessage() {}
 
 func (x *SelfTestRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[24]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3313,7 +3521,7 @@ func (x *SelfTestRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SelfTestRequest.ProtoReflect.Descriptor instead.
 func (*SelfTestRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{24}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *SelfTestRequest) GetDetailed() bool {
@@ -3333,7 +3541,7 @@ type SelfTestResponse struct {
 
 func (x *SelfTestResponse) Reset() {
 	*x = SelfTestResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[25]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3345,7 +3553,7 @@ func (x *SelfTestResponse) String() string {
 func (*SelfTestResponse) ProtoMessage() {}
 
 func (x *SelfTestResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[25]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3358,7 +3566,7 @@ func (x *SelfTestResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SelfTestResponse.ProtoReflect.Descriptor instead.
 func (*SelfTestResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{25}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *SelfTestResponse) GetPassed() bool {
@@ -3386,7 +3594,7 @@ type SetTestModeRequest struct {
 
 func (x *SetTestModeRequest) Reset() {
 	*x = SetTestModeRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[26]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3398,7 +3606,7 @@ func (x *SetTestModeRequest) String() string {
 func (*SetTestModeRequest) ProtoMessage() {}
 
 func (x *SetTestModeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[26]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3411,7 +3619,7 @@ func (x *SetTestModeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetTestModeRequest.ProtoReflect.Descriptor instead.
 func (*SetTestModeRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{26}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *SetTestModeRequest) GetRfMode() SetTestModeRequest_RfMode {
@@ -3443,7 +3651,7 @@ type SetTestModeResponse struct {
 
 func (x *SetTestModeResponse) Reset() {
 	*x = SetTestModeResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[27]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3455,7 +3663,7 @@ func (x *SetTestModeResponse) String() string {
 func (*SetTestModeResponse) ProtoMessage() {}
 
 func (x *SetTestModeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[27]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3468,7 +3676,7 @@ func (x *SetTestModeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetTestModeResponse.ProtoReflect.Descriptor instead.
 func (*SetTestModeResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{27}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{30}
 }
 
 type DishSetConfigRequest struct {
@@ -3480,7 +3688,7 @@ type DishSetConfigRequest struct {
 
 func (x *DishSetConfigRequest) Reset() {
 	*x = DishSetConfigRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[28]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3492,7 +3700,7 @@ func (x *DishSetConfigRequest) String() string {
 func (*DishSetConfigRequest) ProtoMessage() {}
 
 func (x *DishSetConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[28]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3505,7 +3713,7 @@ func (x *DishSetConfigRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishSetConfigRequest.ProtoReflect.Descriptor instead.
 func (*DishSetConfigRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{28}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *DishSetConfigRequest) GetDishConfig() *DishConfig {
@@ -3525,7 +3733,7 @@ type DishSetConfigResponse struct {
 
 func (x *DishSetConfigResponse) Reset() {
 	*x = DishSetConfigResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[29]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3537,7 +3745,7 @@ func (x *DishSetConfigResponse) String() string {
 func (*DishSetConfigResponse) ProtoMessage() {}
 
 func (x *DishSetConfigResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[29]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3550,7 +3758,7 @@ func (x *DishSetConfigResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishSetConfigResponse.ProtoReflect.Descriptor instead.
 func (*DishSetConfigResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{29}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *DishSetConfigResponse) GetUpdatedDishConfig() *DishConfig {
@@ -3575,7 +3783,7 @@ type DishGetConfigRequest struct {
 
 func (x *DishGetConfigRequest) Reset() {
 	*x = DishGetConfigRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[30]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3587,7 +3795,7 @@ func (x *DishGetConfigRequest) String() string {
 func (*DishGetConfigRequest) ProtoMessage() {}
 
 func (x *DishGetConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[30]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3600,7 +3808,7 @@ func (x *DishGetConfigRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishGetConfigRequest.ProtoReflect.Descriptor instead.
 func (*DishGetConfigRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{30}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{33}
 }
 
 type DishGetConfigResponse struct {
@@ -3612,7 +3820,7 @@ type DishGetConfigResponse struct {
 
 func (x *DishGetConfigResponse) Reset() {
 	*x = DishGetConfigResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[31]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3624,7 +3832,7 @@ func (x *DishGetConfigResponse) String() string {
 func (*DishGetConfigResponse) ProtoMessage() {}
 
 func (x *DishGetConfigResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[31]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3637,7 +3845,7 @@ func (x *DishGetConfigResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishGetConfigResponse.ProtoReflect.Descriptor instead.
 func (*DishGetConfigResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{31}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *DishGetConfigResponse) GetDishConfig() *DishConfig {
@@ -3656,7 +3864,7 @@ type DishInhibitRfRequest struct {
 
 func (x *DishInhibitRfRequest) Reset() {
 	*x = DishInhibitRfRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[32]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3668,7 +3876,7 @@ func (x *DishInhibitRfRequest) String() string {
 func (*DishInhibitRfRequest) ProtoMessage() {}
 
 func (x *DishInhibitRfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[32]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3681,7 +3889,7 @@ func (x *DishInhibitRfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishInhibitRfRequest.ProtoReflect.Descriptor instead.
 func (*DishInhibitRfRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{32}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *DishInhibitRfRequest) GetInhibitRf() bool {
@@ -3700,7 +3908,7 @@ type DishInhibitRfResponse struct {
 
 func (x *DishInhibitRfResponse) Reset() {
 	*x = DishInhibitRfResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[33]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3712,7 +3920,7 @@ func (x *DishInhibitRfResponse) String() string {
 func (*DishInhibitRfResponse) ProtoMessage() {}
 
 func (x *DishInhibitRfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[33]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3725,7 +3933,7 @@ func (x *DishInhibitRfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishInhibitRfResponse.ProtoReflect.Descriptor instead.
 func (*DishInhibitRfResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{33}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *DishInhibitRfResponse) GetInhibitRf() bool {
@@ -3744,7 +3952,7 @@ type DishInhibitGpsRequest struct {
 
 func (x *DishInhibitGpsRequest) Reset() {
 	*x = DishInhibitGpsRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[34]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3756,7 +3964,7 @@ func (x *DishInhibitGpsRequest) String() string {
 func (*DishInhibitGpsRequest) ProtoMessage() {}
 
 func (x *DishInhibitGpsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[34]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3769,7 +3977,7 @@ func (x *DishInhibitGpsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishInhibitGpsRequest.ProtoReflect.Descriptor instead.
 func (*DishInhibitGpsRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{34}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *DishInhibitGpsRequest) GetInhibitGps() bool {
@@ -3788,7 +3996,7 @@ type DishInhibitGpsResponse struct {
 
 func (x *DishInhibitGpsResponse) Reset() {
 	*x = DishInhibitGpsResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[35]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3800,7 +4008,7 @@ func (x *DishInhibitGpsResponse) String() string {
 func (*DishInhibitGpsResponse) ProtoMessage() {}
 
 func (x *DishInhibitGpsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[35]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3813,7 +4021,7 @@ func (x *DishInhibitGpsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishInhibitGpsResponse.ProtoReflect.Descriptor instead.
 func (*DishInhibitGpsResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{35}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *DishInhibitGpsResponse) GetInhibitGps() bool {
@@ -3832,7 +4040,7 @@ type DishGetDataRequest struct {
 
 func (x *DishGetDataRequest) Reset() {
 	*x = DishGetDataRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[36]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3844,7 +4052,7 @@ func (x *DishGetDataRequest) String() string {
 func (*DishGetDataRequest) ProtoMessage() {}
 
 func (x *DishGetDataRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[36]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3857,7 +4065,7 @@ func (x *DishGetDataRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishGetDataRequest.ProtoReflect.Descriptor instead.
 func (*DishGetDataRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{36}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *DishGetDataRequest) GetId() uint32 {
@@ -3875,7 +4083,7 @@ type DishClearObstructionMapRequest struct {
 
 func (x *DishClearObstructionMapRequest) Reset() {
 	*x = DishClearObstructionMapRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[37]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3887,7 +4095,7 @@ func (x *DishClearObstructionMapRequest) String() string {
 func (*DishClearObstructionMapRequest) ProtoMessage() {}
 
 func (x *DishClearObstructionMapRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[37]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3900,7 +4108,7 @@ func (x *DishClearObstructionMapRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishClearObstructionMapRequest.ProtoReflect.Descriptor instead.
 func (*DishClearObstructionMapRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{37}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{40}
 }
 
 type DishClearObstructionMapResponse struct {
@@ -3911,7 +4119,7 @@ type DishClearObstructionMapResponse struct {
 
 func (x *DishClearObstructionMapResponse) Reset() {
 	*x = DishClearObstructionMapResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[38]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3923,7 +4131,7 @@ func (x *DishClearObstructionMapResponse) String() string {
 func (*DishClearObstructionMapResponse) ProtoMessage() {}
 
 func (x *DishClearObstructionMapResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[38]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3936,7 +4144,7 @@ func (x *DishClearObstructionMapResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishClearObstructionMapResponse.ProtoReflect.Descriptor instead.
 func (*DishClearObstructionMapResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{38}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{41}
 }
 
 type DishActivateRssiScanRequest struct {
@@ -3948,7 +4156,7 @@ type DishActivateRssiScanRequest struct {
 
 func (x *DishActivateRssiScanRequest) Reset() {
 	*x = DishActivateRssiScanRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[39]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3960,7 +4168,7 @@ func (x *DishActivateRssiScanRequest) String() string {
 func (*DishActivateRssiScanRequest) ProtoMessage() {}
 
 func (x *DishActivateRssiScanRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[39]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3973,7 +4181,7 @@ func (x *DishActivateRssiScanRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishActivateRssiScanRequest.ProtoReflect.Descriptor instead.
 func (*DishActivateRssiScanRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{39}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *DishActivateRssiScanRequest) GetScanQuery() *DishActivateRssiScan {
@@ -3992,7 +4200,7 @@ type DishActivateRssiScanResponse struct {
 
 func (x *DishActivateRssiScanResponse) Reset() {
 	*x = DishActivateRssiScanResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[40]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4004,7 +4212,7 @@ func (x *DishActivateRssiScanResponse) String() string {
 func (*DishActivateRssiScanResponse) ProtoMessage() {}
 
 func (x *DishActivateRssiScanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[40]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4017,7 +4225,7 @@ func (x *DishActivateRssiScanResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishActivateRssiScanResponse.ProtoReflect.Descriptor instead.
 func (*DishActivateRssiScanResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{40}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *DishActivateRssiScanResponse) GetSuccess() bool {
@@ -4035,7 +4243,7 @@ type DishGetRssiScanResultRequest struct {
 
 func (x *DishGetRssiScanResultRequest) Reset() {
 	*x = DishGetRssiScanResultRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[41]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4047,7 +4255,7 @@ func (x *DishGetRssiScanResultRequest) String() string {
 func (*DishGetRssiScanResultRequest) ProtoMessage() {}
 
 func (x *DishGetRssiScanResultRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[41]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4060,7 +4268,7 @@ func (x *DishGetRssiScanResultRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishGetRssiScanResultRequest.ProtoReflect.Descriptor instead.
 func (*DishGetRssiScanResultRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{41}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{44}
 }
 
 type DishGetRssiScanResultResponse struct {
@@ -4072,7 +4280,7 @@ type DishGetRssiScanResultResponse struct {
 
 func (x *DishGetRssiScanResultResponse) Reset() {
 	*x = DishGetRssiScanResultResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[42]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4084,7 +4292,7 @@ func (x *DishGetRssiScanResultResponse) String() string {
 func (*DishGetRssiScanResultResponse) ProtoMessage() {}
 
 func (x *DishGetRssiScanResultResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[42]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4097,7 +4305,7 @@ func (x *DishGetRssiScanResultResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishGetRssiScanResultResponse.ProtoReflect.Descriptor instead.
 func (*DishGetRssiScanResultResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{42}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *DishGetRssiScanResultResponse) GetResult() *DishGetRssiScanResult {
@@ -4116,7 +4324,7 @@ type DishFactoryResetRequest struct {
 
 func (x *DishFactoryResetRequest) Reset() {
 	*x = DishFactoryResetRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[43]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4128,7 +4336,7 @@ func (x *DishFactoryResetRequest) String() string {
 func (*DishFactoryResetRequest) ProtoMessage() {}
 
 func (x *DishFactoryResetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[43]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4141,7 +4349,7 @@ func (x *DishFactoryResetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishFactoryResetRequest.ProtoReflect.Descriptor instead.
 func (*DishFactoryResetRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{43}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *DishFactoryResetRequest) GetAppReset() bool {
@@ -4159,7 +4367,7 @@ type DishFactoryResetResponse struct {
 
 func (x *DishFactoryResetResponse) Reset() {
 	*x = DishFactoryResetResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[44]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4171,7 +4379,7 @@ func (x *DishFactoryResetResponse) String() string {
 func (*DishFactoryResetResponse) ProtoMessage() {}
 
 func (x *DishFactoryResetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[44]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4184,7 +4392,7 @@ func (x *DishFactoryResetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishFactoryResetResponse.ProtoReflect.Descriptor instead.
 func (*DishFactoryResetResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{44}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{47}
 }
 
 type ResetButtonRequest struct {
@@ -4196,7 +4404,7 @@ type ResetButtonRequest struct {
 
 func (x *ResetButtonRequest) Reset() {
 	*x = ResetButtonRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[45]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4208,7 +4416,7 @@ func (x *ResetButtonRequest) String() string {
 func (*ResetButtonRequest) ProtoMessage() {}
 
 func (x *ResetButtonRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[45]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4221,7 +4429,7 @@ func (x *ResetButtonRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetButtonRequest.ProtoReflect.Descriptor instead.
 func (*ResetButtonRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{45}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *ResetButtonRequest) GetPressed() bool {
@@ -4239,7 +4447,7 @@ type ResetButtonResponse struct {
 
 func (x *ResetButtonResponse) Reset() {
 	*x = ResetButtonResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[46]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4251,7 +4459,7 @@ func (x *ResetButtonResponse) String() string {
 func (*ResetButtonResponse) ProtoMessage() {}
 
 func (x *ResetButtonResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[46]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4264,7 +4472,7 @@ func (x *ResetButtonResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetButtonResponse.ProtoReflect.Descriptor instead.
 func (*ResetButtonResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{46}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{49}
 }
 
 type DishStartTestModeServerRequest struct {
@@ -4276,7 +4484,7 @@ type DishStartTestModeServerRequest struct {
 
 func (x *DishStartTestModeServerRequest) Reset() {
 	*x = DishStartTestModeServerRequest{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[47]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4288,7 +4496,7 @@ func (x *DishStartTestModeServerRequest) String() string {
 func (*DishStartTestModeServerRequest) ProtoMessage() {}
 
 func (x *DishStartTestModeServerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[47]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4301,7 +4509,7 @@ func (x *DishStartTestModeServerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishStartTestModeServerRequest.ProtoReflect.Descriptor instead.
 func (*DishStartTestModeServerRequest) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{47}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *DishStartTestModeServerRequest) GetSetEnabled() bool {
@@ -4319,7 +4527,7 @@ type DishStartTestModeServerResponse struct {
 
 func (x *DishStartTestModeServerResponse) Reset() {
 	*x = DishStartTestModeServerResponse{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[48]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4331,7 +4539,7 @@ func (x *DishStartTestModeServerResponse) String() string {
 func (*DishStartTestModeServerResponse) ProtoMessage() {}
 
 func (x *DishStartTestModeServerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[48]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4344,7 +4552,7 @@ func (x *DishStartTestModeServerResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DishStartTestModeServerResponse.ProtoReflect.Descriptor instead.
 func (*DishStartTestModeServerResponse) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{48}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{51}
 }
 
 type PLCStats struct {
@@ -4368,7 +4576,7 @@ type PLCStats struct {
 
 func (x *PLCStats) Reset() {
 	*x = PLCStats{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[49]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4380,7 +4588,7 @@ func (x *PLCStats) String() string {
 func (*PLCStats) ProtoMessage() {}
 
 func (x *PLCStats) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[49]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4393,7 +4601,7 @@ func (x *PLCStats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PLCStats.ProtoReflect.Descriptor instead.
 func (*PLCStats) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{49}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *PLCStats) GetReceivingPlc() bool {
@@ -4497,7 +4705,7 @@ type PLCPortStats struct {
 
 func (x *PLCPortStats) Reset() {
 	*x = PLCPortStats{}
-	mi := &file_spacex_api_device_dish_proto_msgTypes[50]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4509,7 +4717,7 @@ func (x *PLCPortStats) String() string {
 func (*PLCPortStats) ProtoMessage() {}
 
 func (x *PLCPortStats) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_dish_proto_msgTypes[50]
+	mi := &file_spacex_api_device_dish_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4522,7 +4730,7 @@ func (x *PLCPortStats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PLCPortStats.ProtoReflect.Descriptor instead.
 func (*PLCPortStats) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{50}
+	return file_spacex_api_device_dish_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *PLCPortStats) GetPower() uint32 {
@@ -4561,7 +4769,9 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\x10ZtlmQueryRequest\x12D\n" +
 	"\x10query_start_time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x0equeryStartTime\x12@\n" +
 	"\x0equery_end_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\fqueryEndTime\"\x13\n" +
-	"\x11ZtlmQueryResponse\"\x17\n" +
+	"\x11ZtlmQueryResponse\"\x1a\n" +
+	"\x18UserReportedIssueRequest\"\x1b\n" +
+	"\x19UserReportedIssueResponse\"\x17\n" +
 	"\x15DishGetContextRequest\"\xd9\n" +
 	"\n" +
 	"\x16DishGetContextResponse\x12>\n" +
@@ -4633,7 +4843,7 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\n" +
 	"RouterInfo\x121\n" +
 	"\x04role\x18\x01 \x01(\x0e2\x1d.SpaceX.API.Device.RouterRoleR\x04role\x12\x1b\n" +
-	"\tlast_seen\x18\x02 \x01(\x03R\blastSeen\"\xb0\x19\n" +
+	"\tlast_seen\x18\x02 \x01(\x03R\blastSeen\"\xb3\x1a\n" +
 	"\x15DishGetStatusResponse\x12>\n" +
 	"\vdevice_info\x18\x01 \x01(\v2\x1d.SpaceX.API.Device.DeviceInfoR\n" +
 	"deviceInfo\x12A\n" +
@@ -4681,7 +4891,9 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\x12downstream_routers\x18\x9a\b \x03(\v2?.SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntryR\x11downstreamRouters\x12E\n" +
 	"\raccount_shard\x18\x9b\b \x01(\x0e2\x1f.SpaceX.API.Device.AccountShardR\faccountShard\x12\x1a\n" +
 	"\bmac_flag\x18\x9c\b \x01(\bR\amacFlag\x126\n" +
-	"\bnat_flag\x18\x9d\b \x01(\x0e2\x1a.SpaceX.API.Device.NatFlagR\anatFlag\x1ac\n" +
+	"\bnat_flag\x18\x9d\b \x01(\x0e2\x1a.SpaceX.API.Device.NatFlagR\anatFlag\x12I\n" +
+	"\rbattery_stats\x18\x9e\b \x01(\v2#.SpaceX.API.Device.DishBatteryStatsR\fbatteryStats\x126\n" +
+	"\x17user_debug_mode_enabled\x18\x9f\b \x01(\bR\x14userDebugModeEnabled\x1ac\n" +
 	"\x16DownstreamRoutersEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x123\n" +
 	"\x05value\x18\x02 \x01(\v2\x1d.SpaceX.API.Device.RouterInfoR\x05value:\x028\x01J\x06\b\xe9\a\x10\xea\aJ\x06\b\xee\a\x10\xef\aJ\x06\b\xf5\a\x10\xf6\aJ\x06\b\x96\b\x10\x97\bJ\x06\b\x97\b\x10\x98\bR\x13phy_rx_beam_snr_avgR\bt_center\"\x1e\n" +
@@ -4723,13 +4935,14 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\x04l1l2\x18\x03 \x01(\bR\x04l1l2\x12\x12\n" +
 	"\x04xphy\x18\x04 \x01(\bR\x04xphy\x12\x10\n" +
 	"\x03aap\x18\x05 \x01(\bR\x03aap\x12\x0e\n" +
-	"\x02rf\x18\x06 \x01(\bR\x02rf\"\x94\x01\n" +
+	"\x02rf\x18\x06 \x01(\bR\x02rf\"\x81\x02\n" +
 	"\fDishGpsStats\x12\x1b\n" +
 	"\tgps_valid\x18\x01 \x01(\bR\bgpsValid\x12\x19\n" +
 	"\bgps_sats\x18\x02 \x01(\rR\agpsSats\x12+\n" +
 	"\x12no_sats_after_ttff\x18\x03 \x01(\bR\x0fnoSatsAfterTtff\x12\x1f\n" +
 	"\vinhibit_gps\x18\x04 \x01(\bR\n" +
-	"inhibitGps\"\x9c\x02\n" +
+	"inhibitGps\x12k\n" +
+	"\x1cpnt_filter_convergence_state\x18\x05 \x01(\x0e2*.SpaceX.API.Device.AttitudeEstimationStateR\x19pntFilterConvergenceState\"\x9c\x02\n" +
 	"\x13SoftwareUpdateStats\x12Z\n" +
 	"\x15software_update_state\x18\x01 \x01(\x0e2&.SpaceX.API.Device.SoftwareUpdateStateR\x13softwareUpdateState\x128\n" +
 	"\x18software_update_progress\x18\x02 \x01(\x02R\x16softwareUpdateProgress\x124\n" +
@@ -4785,7 +4998,12 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"dish_power\x18\x06 \x01(\x02R\tdishPower\x127\n" +
 	"\x18force_dev_signed_allowed\x18\a \x01(\bR\x15forceDevSignedAllowed\x12*\n" +
 	"\x11debug_port_locked\x18\b \x01(\bR\x0fdebugPortLocked\x12\x1b\n" +
-	"\tboard_rev\x18\t \x01(\x05R\bboardRev\"\xb1\x03\n" +
+	"\tboard_rev\x18\t \x01(\x05R\bboardRev\"\x9e\x01\n" +
+	"\x10DishBatteryStats\x12&\n" +
+	"\x0fstate_of_charge\x18\x01 \x01(\rR\rstateOfCharge\x12\x1f\n" +
+	"\vis_charging\x18\x02 \x01(\bR\n" +
+	"isCharging\x12A\n" +
+	"\fpower_source\x18\x03 \x01(\x0e2\x1e.SpaceX.API.Device.PowerSourceR\vpowerSource\"\xb1\x03\n" +
 	"\x1dInitializationDurationSeconds\x127\n" +
 	"\x17attitude_initialization\x18\x01 \x01(\x05R\x16attitudeInitialization\x12%\n" +
 	"\x0eburst_detected\x18\x02 \x01(\x05R\rburstDetected\x12#\n" +
@@ -4966,7 +5184,12 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\n" +
 	"CONTROLLER\x10\x01\x12\f\n" +
 	"\bREPEATER\x10\x02\x12\f\n" +
-	"\bBYPASSED\x10\x03*=\n" +
+	"\bBYPASSED\x10\x03*T\n" +
+	"\vPowerSource\x12\x18\n" +
+	"\x14POWER_SOURCE_UNKNOWN\x10\x00\x12\b\n" +
+	"\x04USBC\x10\x01\x12\v\n" +
+	"\aBATTERY\x10\x02\x12\x14\n" +
+	"\x10USBC_AND_BATTERY\x10\x03*=\n" +
 	"\aNatFlag\x12\x0f\n" +
 	"\vNAT_UNKNOWN\x10\x00\x12\x10\n" +
 	"\fNAT_DISABLED\x10\x01\x12\x0f\n" +
@@ -4989,8 +5212,8 @@ func file_spacex_api_device_dish_proto_rawDescGZIP() []byte {
 	return file_spacex_api_device_dish_proto_rawDescData
 }
 
-var file_spacex_api_device_dish_proto_enumTypes = make([]protoimpl.EnumInfo, 16)
-var file_spacex_api_device_dish_proto_msgTypes = make([]protoimpl.MessageInfo, 52)
+var file_spacex_api_device_dish_proto_enumTypes = make([]protoimpl.EnumInfo, 17)
+var file_spacex_api_device_dish_proto_msgTypes = make([]protoimpl.MessageInfo, 55)
 var file_spacex_api_device_dish_proto_goTypes = []any{
 	(UserMobilityClass)(0),                  // 0: SpaceX.API.Device.UserMobilityClass
 	(ObstructionMapReferenceFrame)(0),       // 1: SpaceX.API.Device.ObstructionMapReferenceFrame
@@ -5001,138 +5224,145 @@ var file_spacex_api_device_dish_proto_goTypes = []any{
 	(AttitudeEstimationState)(0),            // 6: SpaceX.API.Device.AttitudeEstimationState
 	(RebootReason)(0),                       // 7: SpaceX.API.Device.RebootReason
 	(RouterRole)(0),                         // 8: SpaceX.API.Device.RouterRole
-	(NatFlag)(0),                            // 9: SpaceX.API.Device.NatFlag
-	(DishState)(0),                          // 10: SpaceX.API.Device.DishState
-	(DishAviationTestRequest_EthSpeed)(0),   // 11: SpaceX.API.Device.DishAviationTestRequest.EthSpeed
-	(DishOutage_Cause)(0),                   // 12: SpaceX.API.Device.DishOutage.Cause
-	(SetTestModeRequest_RfMode)(0),          // 13: SpaceX.API.Device.SetTestModeRequest.RfMode
-	(PLCStats_ProtocolRevision)(0),          // 14: SpaceX.API.Device.PLCStats.ProtocolRevision
-	(PLCPortStats_PortStatus)(0),            // 15: SpaceX.API.Device.PLCPortStats.PortStatus
-	(*DishStowRequest)(nil),                 // 16: SpaceX.API.Device.DishStowRequest
-	(*DishStowResponse)(nil),                // 17: SpaceX.API.Device.DishStowResponse
-	(*DishAviationTestRequest)(nil),         // 18: SpaceX.API.Device.DishAviationTestRequest
-	(*DishAviationTestResponse)(nil),        // 19: SpaceX.API.Device.DishAviationTestResponse
-	(*ZtlmQueryRequest)(nil),                // 20: SpaceX.API.Device.ZtlmQueryRequest
-	(*ZtlmQueryResponse)(nil),               // 21: SpaceX.API.Device.ZtlmQueryResponse
-	(*DishGetContextRequest)(nil),           // 22: SpaceX.API.Device.DishGetContextRequest
-	(*DishGetContextResponse)(nil),          // 23: SpaceX.API.Device.DishGetContextResponse
-	(*DishOutage)(nil),                      // 24: SpaceX.API.Device.DishOutage
-	(*DishGetHistoryResponse)(nil),          // 25: SpaceX.API.Device.DishGetHistoryResponse
-	(*RouterInfo)(nil),                      // 26: SpaceX.API.Device.RouterInfo
-	(*DishGetStatusResponse)(nil),           // 27: SpaceX.API.Device.DishGetStatusResponse
-	(*DishGetObstructionMapRequest)(nil),    // 28: SpaceX.API.Device.DishGetObstructionMapRequest
-	(*DishGetObstructionMapResponse)(nil),   // 29: SpaceX.API.Device.DishGetObstructionMapResponse
-	(*DishAlerts)(nil),                      // 30: SpaceX.API.Device.DishAlerts
-	(*DishReadyStates)(nil),                 // 31: SpaceX.API.Device.DishReadyStates
-	(*DishGpsStats)(nil),                    // 32: SpaceX.API.Device.DishGpsStats
-	(*SoftwareUpdateStats)(nil),             // 33: SpaceX.API.Device.SoftwareUpdateStats
-	(*AlignmentStats)(nil),                  // 34: SpaceX.API.Device.AlignmentStats
-	(*DishObstructionStats)(nil),            // 35: SpaceX.API.Device.DishObstructionStats
-	(*DishUpsuStats)(nil),                   // 36: SpaceX.API.Device.DishUpsuStats
-	(*DishApsStats)(nil),                    // 37: SpaceX.API.Device.DishApsStats
-	(*InitializationDurationSeconds)(nil),   // 38: SpaceX.API.Device.InitializationDurationSeconds
-	(*DishAuthenticateResponse)(nil),        // 39: SpaceX.API.Device.DishAuthenticateResponse
-	(*SelfTestRequest)(nil),                 // 40: SpaceX.API.Device.SelfTestRequest
-	(*SelfTestResponse)(nil),                // 41: SpaceX.API.Device.SelfTestResponse
-	(*SetTestModeRequest)(nil),              // 42: SpaceX.API.Device.SetTestModeRequest
-	(*SetTestModeResponse)(nil),             // 43: SpaceX.API.Device.SetTestModeResponse
-	(*DishSetConfigRequest)(nil),            // 44: SpaceX.API.Device.DishSetConfigRequest
-	(*DishSetConfigResponse)(nil),           // 45: SpaceX.API.Device.DishSetConfigResponse
-	(*DishGetConfigRequest)(nil),            // 46: SpaceX.API.Device.DishGetConfigRequest
-	(*DishGetConfigResponse)(nil),           // 47: SpaceX.API.Device.DishGetConfigResponse
-	(*DishInhibitRfRequest)(nil),            // 48: SpaceX.API.Device.DishInhibitRfRequest
-	(*DishInhibitRfResponse)(nil),           // 49: SpaceX.API.Device.DishInhibitRfResponse
-	(*DishInhibitGpsRequest)(nil),           // 50: SpaceX.API.Device.DishInhibitGpsRequest
-	(*DishInhibitGpsResponse)(nil),          // 51: SpaceX.API.Device.DishInhibitGpsResponse
-	(*DishGetDataRequest)(nil),              // 52: SpaceX.API.Device.DishGetDataRequest
-	(*DishClearObstructionMapRequest)(nil),  // 53: SpaceX.API.Device.DishClearObstructionMapRequest
-	(*DishClearObstructionMapResponse)(nil), // 54: SpaceX.API.Device.DishClearObstructionMapResponse
-	(*DishActivateRssiScanRequest)(nil),     // 55: SpaceX.API.Device.DishActivateRssiScanRequest
-	(*DishActivateRssiScanResponse)(nil),    // 56: SpaceX.API.Device.DishActivateRssiScanResponse
-	(*DishGetRssiScanResultRequest)(nil),    // 57: SpaceX.API.Device.DishGetRssiScanResultRequest
-	(*DishGetRssiScanResultResponse)(nil),   // 58: SpaceX.API.Device.DishGetRssiScanResultResponse
-	(*DishFactoryResetRequest)(nil),         // 59: SpaceX.API.Device.DishFactoryResetRequest
-	(*DishFactoryResetResponse)(nil),        // 60: SpaceX.API.Device.DishFactoryResetResponse
-	(*ResetButtonRequest)(nil),              // 61: SpaceX.API.Device.ResetButtonRequest
-	(*ResetButtonResponse)(nil),             // 62: SpaceX.API.Device.ResetButtonResponse
-	(*DishStartTestModeServerRequest)(nil),  // 63: SpaceX.API.Device.DishStartTestModeServerRequest
-	(*DishStartTestModeServerResponse)(nil), // 64: SpaceX.API.Device.DishStartTestModeServerResponse
-	(*PLCStats)(nil),                        // 65: SpaceX.API.Device.PLCStats
-	(*PLCPortStats)(nil),                    // 66: SpaceX.API.Device.PLCPortStats
-	nil,                                     // 67: SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntry
-	(*timestamppb.Timestamp)(nil),           // 68: google.protobuf.Timestamp
-	(*DeviceInfo)(nil),                      // 69: SpaceX.API.Device.DeviceInfo
-	(*DeviceState)(nil),                     // 70: SpaceX.API.Device.DeviceState
-	(network.UtDisablementCode)(0),          // 71: SpaceX.API.Satellites.Network.UtDisablementCode
-	(*EventLog)(nil),                        // 72: SpaceX.API.Device.EventLog
-	(integrations.RateLimitReason)(0),       // 73: SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
-	(*DishConfig)(nil),                      // 74: SpaceX.API.Device.DishConfig
-	(*Quaternion)(nil),                      // 75: SpaceX.API.Device.Quaternion
-	(AccountShard)(0),                       // 76: SpaceX.API.Device.AccountShard
-	(*ChallengeResponse)(nil),               // 77: SpaceX.API.Device.ChallengeResponse
-	(*DishActivateRssiScan)(nil),            // 78: SpaceX.API.Device.DishActivateRssiScan
-	(*DishGetRssiScanResult)(nil),           // 79: SpaceX.API.Device.DishGetRssiScanResult
+	(PowerSource)(0),                        // 9: SpaceX.API.Device.PowerSource
+	(NatFlag)(0),                            // 10: SpaceX.API.Device.NatFlag
+	(DishState)(0),                          // 11: SpaceX.API.Device.DishState
+	(DishAviationTestRequest_EthSpeed)(0),   // 12: SpaceX.API.Device.DishAviationTestRequest.EthSpeed
+	(DishOutage_Cause)(0),                   // 13: SpaceX.API.Device.DishOutage.Cause
+	(SetTestModeRequest_RfMode)(0),          // 14: SpaceX.API.Device.SetTestModeRequest.RfMode
+	(PLCStats_ProtocolRevision)(0),          // 15: SpaceX.API.Device.PLCStats.ProtocolRevision
+	(PLCPortStats_PortStatus)(0),            // 16: SpaceX.API.Device.PLCPortStats.PortStatus
+	(*DishStowRequest)(nil),                 // 17: SpaceX.API.Device.DishStowRequest
+	(*DishStowResponse)(nil),                // 18: SpaceX.API.Device.DishStowResponse
+	(*DishAviationTestRequest)(nil),         // 19: SpaceX.API.Device.DishAviationTestRequest
+	(*DishAviationTestResponse)(nil),        // 20: SpaceX.API.Device.DishAviationTestResponse
+	(*ZtlmQueryRequest)(nil),                // 21: SpaceX.API.Device.ZtlmQueryRequest
+	(*ZtlmQueryResponse)(nil),               // 22: SpaceX.API.Device.ZtlmQueryResponse
+	(*UserReportedIssueRequest)(nil),        // 23: SpaceX.API.Device.UserReportedIssueRequest
+	(*UserReportedIssueResponse)(nil),       // 24: SpaceX.API.Device.UserReportedIssueResponse
+	(*DishGetContextRequest)(nil),           // 25: SpaceX.API.Device.DishGetContextRequest
+	(*DishGetContextResponse)(nil),          // 26: SpaceX.API.Device.DishGetContextResponse
+	(*DishOutage)(nil),                      // 27: SpaceX.API.Device.DishOutage
+	(*DishGetHistoryResponse)(nil),          // 28: SpaceX.API.Device.DishGetHistoryResponse
+	(*RouterInfo)(nil),                      // 29: SpaceX.API.Device.RouterInfo
+	(*DishGetStatusResponse)(nil),           // 30: SpaceX.API.Device.DishGetStatusResponse
+	(*DishGetObstructionMapRequest)(nil),    // 31: SpaceX.API.Device.DishGetObstructionMapRequest
+	(*DishGetObstructionMapResponse)(nil),   // 32: SpaceX.API.Device.DishGetObstructionMapResponse
+	(*DishAlerts)(nil),                      // 33: SpaceX.API.Device.DishAlerts
+	(*DishReadyStates)(nil),                 // 34: SpaceX.API.Device.DishReadyStates
+	(*DishGpsStats)(nil),                    // 35: SpaceX.API.Device.DishGpsStats
+	(*SoftwareUpdateStats)(nil),             // 36: SpaceX.API.Device.SoftwareUpdateStats
+	(*AlignmentStats)(nil),                  // 37: SpaceX.API.Device.AlignmentStats
+	(*DishObstructionStats)(nil),            // 38: SpaceX.API.Device.DishObstructionStats
+	(*DishUpsuStats)(nil),                   // 39: SpaceX.API.Device.DishUpsuStats
+	(*DishApsStats)(nil),                    // 40: SpaceX.API.Device.DishApsStats
+	(*DishBatteryStats)(nil),                // 41: SpaceX.API.Device.DishBatteryStats
+	(*InitializationDurationSeconds)(nil),   // 42: SpaceX.API.Device.InitializationDurationSeconds
+	(*DishAuthenticateResponse)(nil),        // 43: SpaceX.API.Device.DishAuthenticateResponse
+	(*SelfTestRequest)(nil),                 // 44: SpaceX.API.Device.SelfTestRequest
+	(*SelfTestResponse)(nil),                // 45: SpaceX.API.Device.SelfTestResponse
+	(*SetTestModeRequest)(nil),              // 46: SpaceX.API.Device.SetTestModeRequest
+	(*SetTestModeResponse)(nil),             // 47: SpaceX.API.Device.SetTestModeResponse
+	(*DishSetConfigRequest)(nil),            // 48: SpaceX.API.Device.DishSetConfigRequest
+	(*DishSetConfigResponse)(nil),           // 49: SpaceX.API.Device.DishSetConfigResponse
+	(*DishGetConfigRequest)(nil),            // 50: SpaceX.API.Device.DishGetConfigRequest
+	(*DishGetConfigResponse)(nil),           // 51: SpaceX.API.Device.DishGetConfigResponse
+	(*DishInhibitRfRequest)(nil),            // 52: SpaceX.API.Device.DishInhibitRfRequest
+	(*DishInhibitRfResponse)(nil),           // 53: SpaceX.API.Device.DishInhibitRfResponse
+	(*DishInhibitGpsRequest)(nil),           // 54: SpaceX.API.Device.DishInhibitGpsRequest
+	(*DishInhibitGpsResponse)(nil),          // 55: SpaceX.API.Device.DishInhibitGpsResponse
+	(*DishGetDataRequest)(nil),              // 56: SpaceX.API.Device.DishGetDataRequest
+	(*DishClearObstructionMapRequest)(nil),  // 57: SpaceX.API.Device.DishClearObstructionMapRequest
+	(*DishClearObstructionMapResponse)(nil), // 58: SpaceX.API.Device.DishClearObstructionMapResponse
+	(*DishActivateRssiScanRequest)(nil),     // 59: SpaceX.API.Device.DishActivateRssiScanRequest
+	(*DishActivateRssiScanResponse)(nil),    // 60: SpaceX.API.Device.DishActivateRssiScanResponse
+	(*DishGetRssiScanResultRequest)(nil),    // 61: SpaceX.API.Device.DishGetRssiScanResultRequest
+	(*DishGetRssiScanResultResponse)(nil),   // 62: SpaceX.API.Device.DishGetRssiScanResultResponse
+	(*DishFactoryResetRequest)(nil),         // 63: SpaceX.API.Device.DishFactoryResetRequest
+	(*DishFactoryResetResponse)(nil),        // 64: SpaceX.API.Device.DishFactoryResetResponse
+	(*ResetButtonRequest)(nil),              // 65: SpaceX.API.Device.ResetButtonRequest
+	(*ResetButtonResponse)(nil),             // 66: SpaceX.API.Device.ResetButtonResponse
+	(*DishStartTestModeServerRequest)(nil),  // 67: SpaceX.API.Device.DishStartTestModeServerRequest
+	(*DishStartTestModeServerResponse)(nil), // 68: SpaceX.API.Device.DishStartTestModeServerResponse
+	(*PLCStats)(nil),                        // 69: SpaceX.API.Device.PLCStats
+	(*PLCPortStats)(nil),                    // 70: SpaceX.API.Device.PLCPortStats
+	nil,                                     // 71: SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntry
+	(*timestamppb.Timestamp)(nil),           // 72: google.protobuf.Timestamp
+	(*DeviceInfo)(nil),                      // 73: SpaceX.API.Device.DeviceInfo
+	(*DeviceState)(nil),                     // 74: SpaceX.API.Device.DeviceState
+	(network.UtDisablementCode)(0),          // 75: SpaceX.API.Satellites.Network.UtDisablementCode
+	(*EventLog)(nil),                        // 76: SpaceX.API.Device.EventLog
+	(integrations.RateLimitReason)(0),       // 77: SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
+	(*DishConfig)(nil),                      // 78: SpaceX.API.Device.DishConfig
+	(*Quaternion)(nil),                      // 79: SpaceX.API.Device.Quaternion
+	(AccountShard)(0),                       // 80: SpaceX.API.Device.AccountShard
+	(*ChallengeResponse)(nil),               // 81: SpaceX.API.Device.ChallengeResponse
+	(*DishActivateRssiScan)(nil),            // 82: SpaceX.API.Device.DishActivateRssiScan
+	(*DishGetRssiScanResult)(nil),           // 83: SpaceX.API.Device.DishGetRssiScanResult
 }
 var file_spacex_api_device_dish_proto_depIdxs = []int32{
-	11, // 0: SpaceX.API.Device.DishAviationTestRequest.eth_speed:type_name -> SpaceX.API.Device.DishAviationTestRequest.EthSpeed
-	68, // 1: SpaceX.API.Device.ZtlmQueryRequest.query_start_time:type_name -> google.protobuf.Timestamp
-	68, // 2: SpaceX.API.Device.ZtlmQueryRequest.query_end_time:type_name -> google.protobuf.Timestamp
-	69, // 3: SpaceX.API.Device.DishGetContextResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
-	70, // 4: SpaceX.API.Device.DishGetContextResponse.device_state:type_name -> SpaceX.API.Device.DeviceState
-	71, // 5: SpaceX.API.Device.DishGetContextResponse.disablement_code:type_name -> SpaceX.API.Satellites.Network.UtDisablementCode
-	12, // 6: SpaceX.API.Device.DishOutage.cause:type_name -> SpaceX.API.Device.DishOutage.Cause
-	24, // 7: SpaceX.API.Device.DishGetHistoryResponse.outages:type_name -> SpaceX.API.Device.DishOutage
-	72, // 8: SpaceX.API.Device.DishGetHistoryResponse.event_log:type_name -> SpaceX.API.Device.EventLog
+	12, // 0: SpaceX.API.Device.DishAviationTestRequest.eth_speed:type_name -> SpaceX.API.Device.DishAviationTestRequest.EthSpeed
+	72, // 1: SpaceX.API.Device.ZtlmQueryRequest.query_start_time:type_name -> google.protobuf.Timestamp
+	72, // 2: SpaceX.API.Device.ZtlmQueryRequest.query_end_time:type_name -> google.protobuf.Timestamp
+	73, // 3: SpaceX.API.Device.DishGetContextResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
+	74, // 4: SpaceX.API.Device.DishGetContextResponse.device_state:type_name -> SpaceX.API.Device.DeviceState
+	75, // 5: SpaceX.API.Device.DishGetContextResponse.disablement_code:type_name -> SpaceX.API.Satellites.Network.UtDisablementCode
+	13, // 6: SpaceX.API.Device.DishOutage.cause:type_name -> SpaceX.API.Device.DishOutage.Cause
+	27, // 7: SpaceX.API.Device.DishGetHistoryResponse.outages:type_name -> SpaceX.API.Device.DishOutage
+	76, // 8: SpaceX.API.Device.DishGetHistoryResponse.event_log:type_name -> SpaceX.API.Device.EventLog
 	8,  // 9: SpaceX.API.Device.RouterInfo.role:type_name -> SpaceX.API.Device.RouterRole
-	69, // 10: SpaceX.API.Device.DishGetStatusResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
-	70, // 11: SpaceX.API.Device.DishGetStatusResponse.device_state:type_name -> SpaceX.API.Device.DeviceState
-	30, // 12: SpaceX.API.Device.DishGetStatusResponse.alerts:type_name -> SpaceX.API.Device.DishAlerts
-	24, // 13: SpaceX.API.Device.DishGetStatusResponse.outage:type_name -> SpaceX.API.Device.DishOutage
-	32, // 14: SpaceX.API.Device.DishGetStatusResponse.gps_stats:type_name -> SpaceX.API.Device.DishGpsStats
-	35, // 15: SpaceX.API.Device.DishGetStatusResponse.obstruction_stats:type_name -> SpaceX.API.Device.DishObstructionStats
+	73, // 10: SpaceX.API.Device.DishGetStatusResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
+	74, // 11: SpaceX.API.Device.DishGetStatusResponse.device_state:type_name -> SpaceX.API.Device.DeviceState
+	33, // 12: SpaceX.API.Device.DishGetStatusResponse.alerts:type_name -> SpaceX.API.Device.DishAlerts
+	27, // 13: SpaceX.API.Device.DishGetStatusResponse.outage:type_name -> SpaceX.API.Device.DishOutage
+	35, // 14: SpaceX.API.Device.DishGetStatusResponse.gps_stats:type_name -> SpaceX.API.Device.DishGpsStats
+	38, // 15: SpaceX.API.Device.DishGetStatusResponse.obstruction_stats:type_name -> SpaceX.API.Device.DishObstructionStats
 	0,  // 16: SpaceX.API.Device.DishGetStatusResponse.mobility_class:type_name -> SpaceX.API.Device.UserMobilityClass
-	31, // 17: SpaceX.API.Device.DishGetStatusResponse.ready_states:type_name -> SpaceX.API.Device.DishReadyStates
+	34, // 17: SpaceX.API.Device.DishGetStatusResponse.ready_states:type_name -> SpaceX.API.Device.DishReadyStates
 	3,  // 18: SpaceX.API.Device.DishGetStatusResponse.class_of_service:type_name -> SpaceX.API.Device.UserClassOfService
 	2,  // 19: SpaceX.API.Device.DishGetStatusResponse.software_update_state:type_name -> SpaceX.API.Device.SoftwareUpdateState
 	7,  // 20: SpaceX.API.Device.DishGetStatusResponse.reboot_reason:type_name -> SpaceX.API.Device.RebootReason
-	33, // 21: SpaceX.API.Device.DishGetStatusResponse.software_update_stats:type_name -> SpaceX.API.Device.SoftwareUpdateStats
-	34, // 22: SpaceX.API.Device.DishGetStatusResponse.alignment_stats:type_name -> SpaceX.API.Device.AlignmentStats
+	36, // 21: SpaceX.API.Device.DishGetStatusResponse.software_update_stats:type_name -> SpaceX.API.Device.SoftwareUpdateStats
+	37, // 22: SpaceX.API.Device.DishGetStatusResponse.alignment_stats:type_name -> SpaceX.API.Device.AlignmentStats
 	4,  // 23: SpaceX.API.Device.DishGetStatusResponse.has_actuators:type_name -> SpaceX.API.Device.HasActuators
-	71, // 24: SpaceX.API.Device.DishGetStatusResponse.disablement_code:type_name -> SpaceX.API.Satellites.Network.UtDisablementCode
-	73, // 25: SpaceX.API.Device.DishGetStatusResponse.dl_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
-	73, // 26: SpaceX.API.Device.DishGetStatusResponse.ul_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
-	74, // 27: SpaceX.API.Device.DishGetStatusResponse.config:type_name -> SpaceX.API.Device.DishConfig
-	38, // 28: SpaceX.API.Device.DishGetStatusResponse.initialization_duration_seconds:type_name -> SpaceX.API.Device.InitializationDurationSeconds
-	65, // 29: SpaceX.API.Device.DishGetStatusResponse.plc_stats:type_name -> SpaceX.API.Device.PLCStats
-	36, // 30: SpaceX.API.Device.DishGetStatusResponse.upsu_stats:type_name -> SpaceX.API.Device.DishUpsuStats
-	37, // 31: SpaceX.API.Device.DishGetStatusResponse.aps_stats:type_name -> SpaceX.API.Device.DishApsStats
-	75, // 32: SpaceX.API.Device.DishGetStatusResponse.ned2dish_quaternion:type_name -> SpaceX.API.Device.Quaternion
-	67, // 33: SpaceX.API.Device.DishGetStatusResponse.downstream_routers:type_name -> SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntry
-	76, // 34: SpaceX.API.Device.DishGetStatusResponse.account_shard:type_name -> SpaceX.API.Device.AccountShard
-	9,  // 35: SpaceX.API.Device.DishGetStatusResponse.nat_flag:type_name -> SpaceX.API.Device.NatFlag
-	1,  // 36: SpaceX.API.Device.DishGetObstructionMapResponse.map_reference_frame:type_name -> SpaceX.API.Device.ObstructionMapReferenceFrame
-	2,  // 37: SpaceX.API.Device.SoftwareUpdateStats.software_update_state:type_name -> SpaceX.API.Device.SoftwareUpdateState
-	4,  // 38: SpaceX.API.Device.AlignmentStats.has_actuators:type_name -> SpaceX.API.Device.HasActuators
-	5,  // 39: SpaceX.API.Device.AlignmentStats.actuator_state:type_name -> SpaceX.API.Device.ActuatorState
-	6,  // 40: SpaceX.API.Device.AlignmentStats.attitude_estimation_state:type_name -> SpaceX.API.Device.AttitudeEstimationState
-	77, // 41: SpaceX.API.Device.DishAuthenticateResponse.dish:type_name -> SpaceX.API.Device.ChallengeResponse
-	13, // 42: SpaceX.API.Device.SetTestModeRequest.rf_mode:type_name -> SpaceX.API.Device.SetTestModeRequest.RfMode
-	74, // 43: SpaceX.API.Device.DishSetConfigRequest.dish_config:type_name -> SpaceX.API.Device.DishConfig
-	74, // 44: SpaceX.API.Device.DishSetConfigResponse.updated_dish_config:type_name -> SpaceX.API.Device.DishConfig
-	74, // 45: SpaceX.API.Device.DishGetConfigResponse.dish_config:type_name -> SpaceX.API.Device.DishConfig
-	78, // 46: SpaceX.API.Device.DishActivateRssiScanRequest.scan_query:type_name -> SpaceX.API.Device.DishActivateRssiScan
-	79, // 47: SpaceX.API.Device.DishGetRssiScanResultResponse.result:type_name -> SpaceX.API.Device.DishGetRssiScanResult
-	66, // 48: SpaceX.API.Device.PLCStats.port_1_stats:type_name -> SpaceX.API.Device.PLCPortStats
-	66, // 49: SpaceX.API.Device.PLCStats.port_2_stats:type_name -> SpaceX.API.Device.PLCPortStats
-	66, // 50: SpaceX.API.Device.PLCStats.port_3_stats:type_name -> SpaceX.API.Device.PLCPortStats
-	14, // 51: SpaceX.API.Device.PLCStats.plc_revision:type_name -> SpaceX.API.Device.PLCStats.ProtocolRevision
-	15, // 52: SpaceX.API.Device.PLCPortStats.status:type_name -> SpaceX.API.Device.PLCPortStats.PortStatus
-	26, // 53: SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntry.value:type_name -> SpaceX.API.Device.RouterInfo
-	54, // [54:54] is the sub-list for method output_type
-	54, // [54:54] is the sub-list for method input_type
-	54, // [54:54] is the sub-list for extension type_name
-	54, // [54:54] is the sub-list for extension extendee
-	0,  // [0:54] is the sub-list for field type_name
+	75, // 24: SpaceX.API.Device.DishGetStatusResponse.disablement_code:type_name -> SpaceX.API.Satellites.Network.UtDisablementCode
+	77, // 25: SpaceX.API.Device.DishGetStatusResponse.dl_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
+	77, // 26: SpaceX.API.Device.DishGetStatusResponse.ul_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
+	78, // 27: SpaceX.API.Device.DishGetStatusResponse.config:type_name -> SpaceX.API.Device.DishConfig
+	42, // 28: SpaceX.API.Device.DishGetStatusResponse.initialization_duration_seconds:type_name -> SpaceX.API.Device.InitializationDurationSeconds
+	69, // 29: SpaceX.API.Device.DishGetStatusResponse.plc_stats:type_name -> SpaceX.API.Device.PLCStats
+	39, // 30: SpaceX.API.Device.DishGetStatusResponse.upsu_stats:type_name -> SpaceX.API.Device.DishUpsuStats
+	40, // 31: SpaceX.API.Device.DishGetStatusResponse.aps_stats:type_name -> SpaceX.API.Device.DishApsStats
+	79, // 32: SpaceX.API.Device.DishGetStatusResponse.ned2dish_quaternion:type_name -> SpaceX.API.Device.Quaternion
+	71, // 33: SpaceX.API.Device.DishGetStatusResponse.downstream_routers:type_name -> SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntry
+	80, // 34: SpaceX.API.Device.DishGetStatusResponse.account_shard:type_name -> SpaceX.API.Device.AccountShard
+	10, // 35: SpaceX.API.Device.DishGetStatusResponse.nat_flag:type_name -> SpaceX.API.Device.NatFlag
+	41, // 36: SpaceX.API.Device.DishGetStatusResponse.battery_stats:type_name -> SpaceX.API.Device.DishBatteryStats
+	1,  // 37: SpaceX.API.Device.DishGetObstructionMapResponse.map_reference_frame:type_name -> SpaceX.API.Device.ObstructionMapReferenceFrame
+	6,  // 38: SpaceX.API.Device.DishGpsStats.pnt_filter_convergence_state:type_name -> SpaceX.API.Device.AttitudeEstimationState
+	2,  // 39: SpaceX.API.Device.SoftwareUpdateStats.software_update_state:type_name -> SpaceX.API.Device.SoftwareUpdateState
+	4,  // 40: SpaceX.API.Device.AlignmentStats.has_actuators:type_name -> SpaceX.API.Device.HasActuators
+	5,  // 41: SpaceX.API.Device.AlignmentStats.actuator_state:type_name -> SpaceX.API.Device.ActuatorState
+	6,  // 42: SpaceX.API.Device.AlignmentStats.attitude_estimation_state:type_name -> SpaceX.API.Device.AttitudeEstimationState
+	9,  // 43: SpaceX.API.Device.DishBatteryStats.power_source:type_name -> SpaceX.API.Device.PowerSource
+	81, // 44: SpaceX.API.Device.DishAuthenticateResponse.dish:type_name -> SpaceX.API.Device.ChallengeResponse
+	14, // 45: SpaceX.API.Device.SetTestModeRequest.rf_mode:type_name -> SpaceX.API.Device.SetTestModeRequest.RfMode
+	78, // 46: SpaceX.API.Device.DishSetConfigRequest.dish_config:type_name -> SpaceX.API.Device.DishConfig
+	78, // 47: SpaceX.API.Device.DishSetConfigResponse.updated_dish_config:type_name -> SpaceX.API.Device.DishConfig
+	78, // 48: SpaceX.API.Device.DishGetConfigResponse.dish_config:type_name -> SpaceX.API.Device.DishConfig
+	82, // 49: SpaceX.API.Device.DishActivateRssiScanRequest.scan_query:type_name -> SpaceX.API.Device.DishActivateRssiScan
+	83, // 50: SpaceX.API.Device.DishGetRssiScanResultResponse.result:type_name -> SpaceX.API.Device.DishGetRssiScanResult
+	70, // 51: SpaceX.API.Device.PLCStats.port_1_stats:type_name -> SpaceX.API.Device.PLCPortStats
+	70, // 52: SpaceX.API.Device.PLCStats.port_2_stats:type_name -> SpaceX.API.Device.PLCPortStats
+	70, // 53: SpaceX.API.Device.PLCStats.port_3_stats:type_name -> SpaceX.API.Device.PLCPortStats
+	15, // 54: SpaceX.API.Device.PLCStats.plc_revision:type_name -> SpaceX.API.Device.PLCStats.ProtocolRevision
+	16, // 55: SpaceX.API.Device.PLCPortStats.status:type_name -> SpaceX.API.Device.PLCPortStats.PortStatus
+	29, // 56: SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntry.value:type_name -> SpaceX.API.Device.RouterInfo
+	57, // [57:57] is the sub-list for method output_type
+	57, // [57:57] is the sub-list for method input_type
+	57, // [57:57] is the sub-list for extension type_name
+	57, // [57:57] is the sub-list for extension extendee
+	0,  // [0:57] is the sub-list for field type_name
 }
 
 func init() { file_spacex_api_device_dish_proto_init() }
@@ -5149,8 +5379,8 @@ func file_spacex_api_device_dish_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_spacex_api_device_dish_proto_rawDesc), len(file_spacex_api_device_dish_proto_rawDesc)),
-			NumEnums:      16,
-			NumMessages:   52,
+			NumEnums:      17,
+			NumMessages:   55,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

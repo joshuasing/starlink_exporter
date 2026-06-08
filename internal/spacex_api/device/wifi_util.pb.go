@@ -625,6 +625,74 @@ func (CalibrationPartitionsState) EnumDescriptor() ([]byte, []int) {
 	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{9}
 }
 
+type NeighborReportBasicServiceSet struct {
+	state                     protoimpl.MessageState `protogen:"open.v1"`
+	Bssid                     string                 `protobuf:"bytes,1,opt,name=bssid,proto3" json:"bssid,omitempty"`
+	Ssid                      string                 `protobuf:"bytes,2,opt,name=ssid,proto3" json:"ssid,omitempty"`
+	IfaceName                 string                 `protobuf:"bytes,3,opt,name=iface_name,json=ifaceName,proto3" json:"iface_name,omitempty"`
+	SelfNeighborReportElement string                 `protobuf:"bytes,4,opt,name=self_neighbor_report_element,json=selfNeighborReportElement,proto3" json:"self_neighbor_report_element,omitempty"`
+	unknownFields             protoimpl.UnknownFields
+	sizeCache                 protoimpl.SizeCache
+}
+
+func (x *NeighborReportBasicServiceSet) Reset() {
+	*x = NeighborReportBasicServiceSet{}
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NeighborReportBasicServiceSet) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NeighborReportBasicServiceSet) ProtoMessage() {}
+
+func (x *NeighborReportBasicServiceSet) ProtoReflect() protoreflect.Message {
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NeighborReportBasicServiceSet.ProtoReflect.Descriptor instead.
+func (*NeighborReportBasicServiceSet) Descriptor() ([]byte, []int) {
+	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *NeighborReportBasicServiceSet) GetBssid() string {
+	if x != nil {
+		return x.Bssid
+	}
+	return ""
+}
+
+func (x *NeighborReportBasicServiceSet) GetSsid() string {
+	if x != nil {
+		return x.Ssid
+	}
+	return ""
+}
+
+func (x *NeighborReportBasicServiceSet) GetIfaceName() string {
+	if x != nil {
+		return x.IfaceName
+	}
+	return ""
+}
+
+func (x *NeighborReportBasicServiceSet) GetSelfNeighborReportElement() string {
+	if x != nil {
+		return x.SelfNeighborReportElement
+	}
+	return ""
+}
+
 type InflatedBasicServiceSet struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Bssid         string                 `protobuf:"bytes,1,opt,name=bssid,proto3" json:"bssid,omitempty"`
@@ -641,7 +709,7 @@ type InflatedBasicServiceSet struct {
 
 func (x *InflatedBasicServiceSet) Reset() {
 	*x = InflatedBasicServiceSet{}
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[0]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -653,7 +721,7 @@ func (x *InflatedBasicServiceSet) String() string {
 func (*InflatedBasicServiceSet) ProtoMessage() {}
 
 func (x *InflatedBasicServiceSet) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[0]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -666,7 +734,7 @@ func (x *InflatedBasicServiceSet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InflatedBasicServiceSet.ProtoReflect.Descriptor instead.
 func (*InflatedBasicServiceSet) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{0}
+	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *InflatedBasicServiceSet) GetBssid() string {
@@ -739,7 +807,7 @@ type DhcpLease struct {
 
 func (x *DhcpLease) Reset() {
 	*x = DhcpLease{}
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[1]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -751,7 +819,7 @@ func (x *DhcpLease) String() string {
 func (*DhcpLease) ProtoMessage() {}
 
 func (x *DhcpLease) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[1]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -764,7 +832,7 @@ func (x *DhcpLease) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DhcpLease.ProtoReflect.Descriptor instead.
 func (*DhcpLease) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{1}
+	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *DhcpLease) GetIpAddress() string {
@@ -821,7 +889,7 @@ type DhcpServer struct {
 
 func (x *DhcpServer) Reset() {
 	*x = DhcpServer{}
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[2]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -833,7 +901,7 @@ func (x *DhcpServer) String() string {
 func (*DhcpServer) ProtoMessage() {}
 
 func (x *DhcpServer) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[2]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -846,7 +914,7 @@ func (x *DhcpServer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DhcpServer.ProtoReflect.Descriptor instead.
 func (*DhcpServer) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{2}
+	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *DhcpServer) GetDomain() string {
@@ -886,7 +954,7 @@ type RadiusStatsMap struct {
 
 func (x *RadiusStatsMap) Reset() {
 	*x = RadiusStatsMap{}
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[3]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -898,7 +966,7 @@ func (x *RadiusStatsMap) String() string {
 func (*RadiusStatsMap) ProtoMessage() {}
 
 func (x *RadiusStatsMap) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[3]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -911,7 +979,7 @@ func (x *RadiusStatsMap) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RadiusStatsMap.ProtoReflect.Descriptor instead.
 func (*RadiusStatsMap) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{3}
+	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *RadiusStatsMap) GetRadiusStats() map[string]*RadiusStatsMap_RadiusStats {
@@ -936,7 +1004,7 @@ type PoeStats struct {
 
 func (x *PoeStats) Reset() {
 	*x = PoeStats{}
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[4]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -948,7 +1016,7 @@ func (x *PoeStats) String() string {
 func (*PoeStats) ProtoMessage() {}
 
 func (x *PoeStats) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[4]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -961,7 +1029,7 @@ func (x *PoeStats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PoeStats.ProtoReflect.Descriptor instead.
 func (*PoeStats) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{4}
+	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *PoeStats) GetPoeState() PoeState {
@@ -1026,7 +1094,7 @@ type WifiSoftwareUpdateStats struct {
 
 func (x *WifiSoftwareUpdateStats) Reset() {
 	*x = WifiSoftwareUpdateStats{}
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[5]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1038,7 +1106,7 @@ func (x *WifiSoftwareUpdateStats) String() string {
 func (*WifiSoftwareUpdateStats) ProtoMessage() {}
 
 func (x *WifiSoftwareUpdateStats) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[5]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1051,7 +1119,7 @@ func (x *WifiSoftwareUpdateStats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WifiSoftwareUpdateStats.ProtoReflect.Descriptor instead.
 func (*WifiSoftwareUpdateStats) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{5}
+	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *WifiSoftwareUpdateStats) GetState() WifiSoftwareUpdateState {
@@ -1099,7 +1167,7 @@ type WifiSetupRequirement struct {
 
 func (x *WifiSetupRequirement) Reset() {
 	*x = WifiSetupRequirement{}
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[6]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1111,7 +1179,7 @@ func (x *WifiSetupRequirement) String() string {
 func (*WifiSetupRequirement) ProtoMessage() {}
 
 func (x *WifiSetupRequirement) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[6]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1124,7 +1192,7 @@ func (x *WifiSetupRequirement) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WifiSetupRequirement.ProtoReflect.Descriptor instead.
 func (*WifiSetupRequirement) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{6}
+	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *WifiSetupRequirement) GetState() WifiSetupRequirementState {
@@ -1157,7 +1225,7 @@ type RadiusStatsMap_RadiusStats struct {
 
 func (x *RadiusStatsMap_RadiusStats) Reset() {
 	*x = RadiusStatsMap_RadiusStats{}
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[8]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1169,7 +1237,7 @@ func (x *RadiusStatsMap_RadiusStats) String() string {
 func (*RadiusStatsMap_RadiusStats) ProtoMessage() {}
 
 func (x *RadiusStatsMap_RadiusStats) ProtoReflect() protoreflect.Message {
-	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[8]
+	mi := &file_spacex_api_device_wifi_util_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1182,7 +1250,7 @@ func (x *RadiusStatsMap_RadiusStats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RadiusStatsMap_RadiusStats.ProtoReflect.Descriptor instead.
 func (*RadiusStatsMap_RadiusStats) Descriptor() ([]byte, []int) {
-	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{3, 1}
+	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{4, 1}
 }
 
 func (x *RadiusStatsMap_RadiusStats) GetIfaceName() string {
@@ -1245,7 +1313,13 @@ var File_spacex_api_device_wifi_util_proto protoreflect.FileDescriptor
 
 const file_spacex_api_device_wifi_util_proto_rawDesc = "" +
 	"\n" +
-	"!spacex_api/device/wifi_util.proto\x12\x11SpaceX.API.Device\"\x8a\x02\n" +
+	"!spacex_api/device/wifi_util.proto\x12\x11SpaceX.API.Device\"\xa9\x01\n" +
+	"\x1dNeighborReportBasicServiceSet\x12\x14\n" +
+	"\x05bssid\x18\x01 \x01(\tR\x05bssid\x12\x12\n" +
+	"\x04ssid\x18\x02 \x01(\tR\x04ssid\x12\x1d\n" +
+	"\n" +
+	"iface_name\x18\x03 \x01(\tR\tifaceName\x12?\n" +
+	"\x1cself_neighbor_report_element\x18\x04 \x01(\tR\x19selfNeighborReportElement\"\x8a\x02\n" +
 	"\x17InflatedBasicServiceSet\x12\x14\n" +
 	"\x05bssid\x18\x01 \x01(\tR\x05bssid\x12\x12\n" +
 	"\x04ssid\x18\x02 \x01(\tR\x04ssid\x12\x17\n" +
@@ -1404,36 +1478,37 @@ func file_spacex_api_device_wifi_util_proto_rawDescGZIP() []byte {
 }
 
 var file_spacex_api_device_wifi_util_proto_enumTypes = make([]protoimpl.EnumInfo, 10)
-var file_spacex_api_device_wifi_util_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_spacex_api_device_wifi_util_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_spacex_api_device_wifi_util_proto_goTypes = []any{
-	(IfaceType)(0),                     // 0: SpaceX.API.Device.IfaceType
-	(TxPowerLevel)(0),                  // 1: SpaceX.API.Device.TxPowerLevel
-	(PoeState)(0),                      // 2: SpaceX.API.Device.PoeState
-	(PoeFault)(0),                      // 3: SpaceX.API.Device.PoeFault
-	(WifiMode)(0),                      // 4: SpaceX.API.Device.WifiMode
-	(WifiSecurity)(0),                  // 5: SpaceX.API.Device.WifiSecurity
-	(Protocol)(0),                      // 6: SpaceX.API.Device.Protocol
-	(WifiSoftwareUpdateState)(0),       // 7: SpaceX.API.Device.WifiSoftwareUpdateState
-	(WifiSetupRequirementState)(0),     // 8: SpaceX.API.Device.WifiSetupRequirementState
-	(CalibrationPartitionsState)(0),    // 9: SpaceX.API.Device.CalibrationPartitionsState
-	(*InflatedBasicServiceSet)(nil),    // 10: SpaceX.API.Device.InflatedBasicServiceSet
-	(*DhcpLease)(nil),                  // 11: SpaceX.API.Device.DhcpLease
-	(*DhcpServer)(nil),                 // 12: SpaceX.API.Device.DhcpServer
-	(*RadiusStatsMap)(nil),             // 13: SpaceX.API.Device.RadiusStatsMap
-	(*PoeStats)(nil),                   // 14: SpaceX.API.Device.PoeStats
-	(*WifiSoftwareUpdateStats)(nil),    // 15: SpaceX.API.Device.WifiSoftwareUpdateStats
-	(*WifiSetupRequirement)(nil),       // 16: SpaceX.API.Device.WifiSetupRequirement
-	nil,                                // 17: SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry
-	(*RadiusStatsMap_RadiusStats)(nil), // 18: SpaceX.API.Device.RadiusStatsMap.RadiusStats
+	(IfaceType)(0),                        // 0: SpaceX.API.Device.IfaceType
+	(TxPowerLevel)(0),                     // 1: SpaceX.API.Device.TxPowerLevel
+	(PoeState)(0),                         // 2: SpaceX.API.Device.PoeState
+	(PoeFault)(0),                         // 3: SpaceX.API.Device.PoeFault
+	(WifiMode)(0),                         // 4: SpaceX.API.Device.WifiMode
+	(WifiSecurity)(0),                     // 5: SpaceX.API.Device.WifiSecurity
+	(Protocol)(0),                         // 6: SpaceX.API.Device.Protocol
+	(WifiSoftwareUpdateState)(0),          // 7: SpaceX.API.Device.WifiSoftwareUpdateState
+	(WifiSetupRequirementState)(0),        // 8: SpaceX.API.Device.WifiSetupRequirementState
+	(CalibrationPartitionsState)(0),       // 9: SpaceX.API.Device.CalibrationPartitionsState
+	(*NeighborReportBasicServiceSet)(nil), // 10: SpaceX.API.Device.NeighborReportBasicServiceSet
+	(*InflatedBasicServiceSet)(nil),       // 11: SpaceX.API.Device.InflatedBasicServiceSet
+	(*DhcpLease)(nil),                     // 12: SpaceX.API.Device.DhcpLease
+	(*DhcpServer)(nil),                    // 13: SpaceX.API.Device.DhcpServer
+	(*RadiusStatsMap)(nil),                // 14: SpaceX.API.Device.RadiusStatsMap
+	(*PoeStats)(nil),                      // 15: SpaceX.API.Device.PoeStats
+	(*WifiSoftwareUpdateStats)(nil),       // 16: SpaceX.API.Device.WifiSoftwareUpdateStats
+	(*WifiSetupRequirement)(nil),          // 17: SpaceX.API.Device.WifiSetupRequirement
+	nil,                                   // 18: SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry
+	(*RadiusStatsMap_RadiusStats)(nil),    // 19: SpaceX.API.Device.RadiusStatsMap.RadiusStats
 }
 var file_spacex_api_device_wifi_util_proto_depIdxs = []int32{
 	0,  // 0: SpaceX.API.Device.InflatedBasicServiceSet.iface_type:type_name -> SpaceX.API.Device.IfaceType
-	11, // 1: SpaceX.API.Device.DhcpServer.leases:type_name -> SpaceX.API.Device.DhcpLease
-	17, // 2: SpaceX.API.Device.RadiusStatsMap.radius_stats:type_name -> SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry
+	12, // 1: SpaceX.API.Device.DhcpServer.leases:type_name -> SpaceX.API.Device.DhcpLease
+	18, // 2: SpaceX.API.Device.RadiusStatsMap.radius_stats:type_name -> SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry
 	2,  // 3: SpaceX.API.Device.PoeStats.poe_state:type_name -> SpaceX.API.Device.PoeState
 	7,  // 4: SpaceX.API.Device.WifiSoftwareUpdateStats.state:type_name -> SpaceX.API.Device.WifiSoftwareUpdateState
 	8,  // 5: SpaceX.API.Device.WifiSetupRequirement.state:type_name -> SpaceX.API.Device.WifiSetupRequirementState
-	18, // 6: SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry.value:type_name -> SpaceX.API.Device.RadiusStatsMap.RadiusStats
+	19, // 6: SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry.value:type_name -> SpaceX.API.Device.RadiusStatsMap.RadiusStats
 	7,  // [7:7] is the sub-list for method output_type
 	7,  // [7:7] is the sub-list for method input_type
 	7,  // [7:7] is the sub-list for extension type_name
@@ -1452,7 +1527,7 @@ func file_spacex_api_device_wifi_util_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_spacex_api_device_wifi_util_proto_rawDesc), len(file_spacex_api_device_wifi_util_proto_rawDesc)),
 			NumEnums:      10,
-			NumMessages:   9,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
