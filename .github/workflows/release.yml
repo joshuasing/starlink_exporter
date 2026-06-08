@@ -15,6 +15,8 @@ concurrency:
 env:
   # renovate: datasource=github-releases depName=goreleaser/goreleaser versioning=semver
   GORELEASER_VERSION: "v2.16.0"
+  # renovate: datasource=github-releases depName=anchore/syft versioning=semver
+  SYFT_VERSION: "v1.45.0"
 
 permissions:
   contents: read
@@ -50,8 +52,7 @@ jobs:
       - name: "Install Syft"
         uses: anchore/sbom-action/download-syft@e22c389904149dbc22b58101806040fa8d37a610 # v0.24.0
         with:
-          # renovate: datasource=github-releases depName=anchore/syft versioning=semver
-          syft-version: "v1.42.4"
+          syft-version: "${{ env.SYFT_VERSION }}"
 
       - name: "Setup QEMU"
         uses: docker/setup-qemu-action@06116385d9baf250c9f4dcb4858b16962ea869c3 # v4.1.0
