@@ -6,7 +6,7 @@ toolchain go1.26.4
 
 require (
 	github.com/prometheus/client_golang v1.23.2
-	github.com/prometheus/common v0.68.1
+	github.com/prometheus/common v0.69.0
 	github.com/prometheus/exporter-toolkit v0.16.0
 	google.golang.org/grpc v1.81.1
 	google.golang.org/protobuf v1.36.11
