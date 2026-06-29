@@ -23,7 +23,6 @@ package exporter
 import (
 	"context"
 	"log/slog"
-	"sync"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
@@ -32,6 +31,12 @@ import (
 
 	"github.com/joshuasing/starlink_exporter/internal/spacex_api/device"
 )
+
+// callTimeout bounds a single dish scrape RPC. The gRPC-Web client retries
+// once internally on a transient failure, so the wall-clock worst case per
+// scraper is up to ~2x this. Kept well under a typical 15s scrape interval
+// even with all three scrapers serialized.
+const callTimeout = 4 * time.Second
 
 var (
 	dishPopPingLatencyHistOpts = prometheus.HistogramOpts{
@@ -73,30 +78,27 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) bool {
 
 type scraper func(ctx context.Context, ch chan<- prometheus.Metric) bool
 
-// runScrapers runs the scrapers in parallel and returns true if all succeed,
-// otherwise false is returned.
+// runScrapers runs the scrapers SEQUENTIALLY and returns true only if all
+// succeed.
+//
+// They are intentionally NOT run in parallel: the dish's embedded gRPC-Web
+// server handles concurrent HTTP/1.1 requests poorly and periodically stalls
+// every in-flight request at once (all scrapers timing out together on the
+// same cycle). The legacy raw-gRPC transport multiplexed calls over a single
+// HTTP/2 connection and didn't have this problem; gRPC-Web uses one request
+// per call, so we serialize. Each call is fast (<200ms on-LAN), so running
+// three back-to-back is well within a scrape interval. Each scraper gets its
+// own per-call timeout (see callTimeout).
 func runScrapers(ch chan<- prometheus.Metric, scrapers ...scraper) bool {
-	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
-	defer cancel()
-
-	var wg sync.WaitGroup
-	out := make(chan bool, len(scrapers))
-
+	ok := true
 	for _, s := range scrapers {
-		wg.Go(func() {
-			out <- s(ctx, ch)
-		})
-	}
-
-	wg.Wait()
-	close(out)
-
-	for s := range out {
-		if !s {
-			return false
+		ctx, cancel := context.WithTimeout(context.Background(), callTimeout)
+		if !s(ctx, ch) {
+			ok = false
 		}
+		cancel()
 	}
-	return true
+	return ok
 }
 
 // scrapeDishStatus scrapes metrics from the GetStatus response.
