@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Support Starlink Dishy software `2026.06.22.mr81471` ([#265])
+
+### Changed
+
+- Improved installation and usage documentation ([#266])
+- Updated Go to 1.26.5 (security) ([#253])
+- Updated `github.com/prometheus/common` to v0.69.0 ([#245])
+- Updated `github.com/prometheus/exporter-toolkit` to v0.17.1 ([#263])
+- Updated `google.golang.org/grpc` to v1.82.0 ([#264])
+- Updated Docker runtime base image to `cgr.dev/chainguard/static@60582b2` ([#254])
+
 ## [v0.9.2] - 2026-06-08
 
 ### Added
@@ -151,3 +164,10 @@ https://github.com/joshuasing/starlink_exporter/releases_
 [#237]: https://github.com/joshuasing/starlink_exporter/pull/237
 [#240]: https://github.com/joshuasing/starlink_exporter/pull/240
 [#241]: https://github.com/joshuasing/starlink_exporter/pull/241
+[#245]: https://github.com/joshuasing/starlink_exporter/pull/245
+[#253]: https://github.com/joshuasing/starlink_exporter/pull/253
+[#254]: https://github.com/joshuasing/starlink_exporter/pull/254
+[#263]: https://github.com/joshuasing/starlink_exporter/pull/263
+[#264]: https://github.com/joshuasing/starlink_exporter/pull/264
+[#265]: https://github.com/joshuasing/starlink_exporter/pull/265
+[#266]: https://github.com/joshuasing/starlink_exporter/pull/266
