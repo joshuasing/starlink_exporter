@@ -1,17 +1,43 @@
 # Starlink Prometheus Exporter
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/joshuasing/starlink_exporter.svg)](https://pkg.go.dev/github.com/joshuasing/starlink_exporter)
-[![Go Report Card](https://goreportcard.com/badge/github.com/joshuasing/starlink_exporter)](https://goreportcard.com/report/github.com/joshuasing/starlink_exporter)
 [![Go Build Status](https://github.com/joshuasing/starlink_exporter/actions/workflows/go.yml/badge.svg)](https://github.com/joshuasing/starlink_exporter/actions/workflows/go.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/joshuasing/starlink_exporter/badge)](https://scorecard.dev/viewer/?uri=github.com/joshuasing/starlink_exporter)
 [![Starlink Dishy Software Version](https://img.shields.io/badge/Starlink_Dishy_Version-2026.06.22.mr81471_(API_v42)-blue)](internal/spacex_api/README.md)
 [![MIT License](https://img.shields.io/badge/license-MIT-2155cc)](LICENSE)
 
-A simple Starlink exporter for Prometheus. *Not affiliated with Starlink or SpaceX.*
+A simple Prometheus exporter for monitoring your Starlink dish. *Not affiliated with Starlink or SpaceX.*
+
+- **Detailed metrics:** Monitor connection quality, upload and download speeds, latency, obstructions, power use, and
+  more.
+- **Local only:** Collect metrics directly from your dish's local gRPC API.
+- **Easy to use:** Run a prebuilt binary or container image with minimal setup.
+
+---
+
+## Quick start
+
+Make sure the machine running the exporter can reach your Starlink dish at `192.168.100.1:9200`, then start the
+container:
+
+```shell
+docker run --rm -p 127.0.0.1:9451:9451 ghcr.io/joshuasing/starlink_exporter:0.9.2
+```
+
+Open [localhost:9451](http://localhost:9451) or check the metrics directly:
+
+```shell
+curl http://localhost:9451/metrics
+```
+
+See [Installation](#installation) for other options and [Prometheus](#prometheus) for scrape configuration.
 
 ## Metrics
 
-The following metrics are exposed by this exporter:
+Metrics are exposed at `/metrics` in the Prometheus text format.
+
+<details>
+<summary>View all exported metrics</summary>
 
 | Metric name                                        | Description                                                                   |
 |----------------------------------------------------|-------------------------------------------------------------------------------|
@@ -52,17 +78,20 @@ The following metrics are exposed by this exporter:
 | `starlink_dish_alert_is_power_save_idle`           | Whether the Starlink dish is currently in power saving mode                   |
 | `starlink_dish_alert_signal_lower_than_predicted`  | Whether the Starlink dish signal is lower than predicted                      |
 
+</details>
+
 ## Installation
 
 ### Binaries
 
-Pre-built binaries for Linux, macOS, Windows and OpenBSD are available
+Prebuilt binaries for Linux, macOS, Windows, and OpenBSD are available
 from [GitHub Releases](https://github.com/joshuasing/starlink_exporter/releases).
 
 You can also use `go install` to build and install a binary from source:
+
 ```shell
-go install github.com/joshuasing/starlink_exporter@latest
-````
+go install github.com/joshuasing/starlink_exporter@v0.9.2
+```
 
 **Flags**
 
@@ -89,24 +118,20 @@ starlink_exporter
 Docker images are published to both [GitHub Container Registry (ghcr.io)](https://ghcr.io/joshuasing/starlink_exporter)
 and [Docker Hub](https://hub.docker.com/r/joshuasing/starlink_exporter).
 
-```shell
-docker run -p 9451:9451 ghcr.io/joshuasing/starlink_exporter:latest
-# Status: Downloaded newer image for ghcr.io/joshuasing/starlink_exporter:latest
-# 2024/11/05 12:03:48 INFO Starting Starlink exporter
-# 2024/11/05 12:03:48 INFO Connecting to Starlink Dishy address=192.168.100.1:9200
-# 2024/11/05 12:03:48 INFO HTTP server listening address=:9451
-```
+The quick start uses a fixed release and exposes the exporter only on the local machine. If Prometheus runs elsewhere,
+replace `127.0.0.1` with the required host interface. For fully reproducible deployments, pin the image digest published
+with each [GitHub release](https://github.com/joshuasing/starlink_exporter/releases).
 
 ### Prometheus
 
-To use the Starlink Prometheus Exporter, you need to configure Prometheus to scrape from the exporter:
+Configure Prometheus to scrape metrics from the exporter:
 
 ```yaml
 scrape_configs:
   - job_name: "starlink"
     scrape_interval: 3s # This can be whatever you would like.
     static_configs:
-      - targets: [ "localhost:9451" ]
+      - targets: ["localhost:9451"]
 ```
 
 *Change `scrape_interval` and the address to match your setup.*
@@ -118,23 +143,23 @@ metrics you would like included, please feel free to participate by creating an 
 
 ### Building
 
-Steps to build starlink_exporter.
+Follow these steps to build `starlink_exporter` from source.
 
 **Prerequisites**
 
-- Go v1.25 or newer (https://go.dev/dl/)
+- [Go 1.26](https://go.dev/dl/) or newer
 
 **Build**
 
 - Make: `make` (`make deps lint-deps` if you are missing dependencies)
 - Standalone: `go build ./cmd/starlink_exporter/`
 
-### Contact
+## Contact
 
-This project is maintained by Joshua Sing. You see a list of ways to contact me on my
-website: https://joshuasing.dev/#contact
+This project is maintained by Joshua Sing. Contact details are available on
+[joshuasing.dev](https://joshuasing.dev/#contact).
 
-#### Security vulnerabilities
+### Security vulnerabilities
 
 I take the security of my projects very seriously. As such, I strongly encourage responsible disclosure of security
 vulnerabilities.
@@ -143,16 +168,18 @@ If you have discovered a security vulnerability in starlink_exporter, please rep
 project [Security Policy](SECURITY.md#reporting-a-vulnerability). **Never use GitHub issues to report a security
 vulnerability.**
 
-### License
+## License
 
-starlink_exporter is distributed under the terms of the MIT License.<br/>
-For more information, please refer to the [LICENSE](LICENSE) file.
+`starlink_exporter` is distributed under the terms of the MIT License. See [LICENSE](LICENSE) for details.
 
-### Disclaimer
+## Disclaimer
 
-This project is an independent, open-source Prometheus exporter and is not officially associated with, endorsed by, or
-in any way affiliated with SpaceX, Starlink, or any of their subsidiaries or affiliates. This project's purpose is to
-provide a tool for easily monitoring your Starlink Dishy with Prometheus, and is not authorised or supported by SpaceX
-or Starlink in any way.
+This project is an independent, open-source Prometheus exporter and is not associated with, endorsed by, authorised by,
+or affiliated with SpaceX, Starlink, or any of their subsidiaries or affiliates.
 
-*SpaceX, Starlink, and any related logos or trademarks are the property of Space Exploration Technologies Corp.*
+The exporter communicates with the locally exposed gRPC API of a Starlink dish solely to collect monitoring metrics.
+The Starlink and SpaceX names and product identifiers are used only to identify the products with which this software
+interoperates; their use does not imply endorsement or affiliation.
+
+*Starlink and SpaceX are trademarks of Space Exploration Technologies Corp. All other trademarks belong to their
+respective owners.*
