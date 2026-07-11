@@ -1902,6 +1902,7 @@ type DishGetStatusResponse struct {
 	NatFlag                            NatFlag                        `protobuf:"varint,1053,opt,name=nat_flag,json=natFlag,proto3,enum=SpaceX.API.Device.NatFlag" json:"nat_flag,omitempty"`
 	BatteryStats                       *DishBatteryStats              `protobuf:"bytes,1054,opt,name=battery_stats,json=batteryStats,proto3" json:"battery_stats,omitempty"`
 	UserDebugModeEnabled               bool                           `protobuf:"varint,1055,opt,name=user_debug_mode_enabled,json=userDebugModeEnabled,proto3" json:"user_debug_mode_enabled,omitempty"`
+	TreatAsMetered                     bool                           `protobuf:"varint,1056,opt,name=treat_as_metered,json=treatAsMetered,proto3" json:"treat_as_metered,omitempty"`
 	unknownFields                      protoimpl.UnknownFields
 	sizeCache                          protoimpl.SizeCache
 }
@@ -2261,6 +2262,13 @@ func (x *DishGetStatusResponse) GetBatteryStats() *DishBatteryStats {
 func (x *DishGetStatusResponse) GetUserDebugModeEnabled() bool {
 	if x != nil {
 		return x.UserDebugModeEnabled
+	}
+	return false
+}
+
+func (x *DishGetStatusResponse) GetTreatAsMetered() bool {
+	if x != nil {
+		return x.TreatAsMetered
 	}
 	return false
 }
@@ -4478,6 +4486,7 @@ func (*ResetButtonResponse) Descriptor() ([]byte, []int) {
 type DishStartTestModeServerRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SetEnabled    bool                   `protobuf:"varint,1,opt,name=set_enabled,json=setEnabled,proto3" json:"set_enabled,omitempty"`
+	UseMtls       bool                   `protobuf:"varint,2,opt,name=use_mtls,json=useMtls,proto3" json:"use_mtls,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4515,6 +4524,13 @@ func (*DishStartTestModeServerRequest) Descriptor() ([]byte, []int) {
 func (x *DishStartTestModeServerRequest) GetSetEnabled() bool {
 	if x != nil {
 		return x.SetEnabled
+	}
+	return false
+}
+
+func (x *DishStartTestModeServerRequest) GetUseMtls() bool {
+	if x != nil {
+		return x.UseMtls
 	}
 	return false
 }
@@ -4843,7 +4859,7 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\n" +
 	"RouterInfo\x121\n" +
 	"\x04role\x18\x01 \x01(\x0e2\x1d.SpaceX.API.Device.RouterRoleR\x04role\x12\x1b\n" +
-	"\tlast_seen\x18\x02 \x01(\x03R\blastSeen\"\xb3\x1a\n" +
+	"\tlast_seen\x18\x02 \x01(\x03R\blastSeen\"\xde\x1a\n" +
 	"\x15DishGetStatusResponse\x12>\n" +
 	"\vdevice_info\x18\x01 \x01(\v2\x1d.SpaceX.API.Device.DeviceInfoR\n" +
 	"deviceInfo\x12A\n" +
@@ -4893,7 +4909,8 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\bmac_flag\x18\x9c\b \x01(\bR\amacFlag\x126\n" +
 	"\bnat_flag\x18\x9d\b \x01(\x0e2\x1a.SpaceX.API.Device.NatFlagR\anatFlag\x12I\n" +
 	"\rbattery_stats\x18\x9e\b \x01(\v2#.SpaceX.API.Device.DishBatteryStatsR\fbatteryStats\x126\n" +
-	"\x17user_debug_mode_enabled\x18\x9f\b \x01(\bR\x14userDebugModeEnabled\x1ac\n" +
+	"\x17user_debug_mode_enabled\x18\x9f\b \x01(\bR\x14userDebugModeEnabled\x12)\n" +
+	"\x10treat_as_metered\x18\xa0\b \x01(\bR\x0etreatAsMetered\x1ac\n" +
 	"\x16DownstreamRoutersEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x123\n" +
 	"\x05value\x18\x02 \x01(\v2\x1d.SpaceX.API.Device.RouterInfoR\x05value:\x028\x01J\x06\b\xe9\a\x10\xea\aJ\x06\b\xee\a\x10\xef\aJ\x06\b\xf5\a\x10\xf6\aJ\x06\b\x96\b\x10\x97\bJ\x06\b\x97\b\x10\x98\bR\x13phy_rx_beam_snr_avgR\bt_center\"\x1e\n" +
@@ -5074,10 +5091,11 @@ const file_spacex_api_device_dish_proto_rawDesc = "" +
 	"\x18DishFactoryResetResponse\".\n" +
 	"\x12ResetButtonRequest\x12\x18\n" +
 	"\apressed\x18\x01 \x01(\bR\apressed\"\x15\n" +
-	"\x13ResetButtonResponse\"A\n" +
+	"\x13ResetButtonResponse\"\\\n" +
 	"\x1eDishStartTestModeServerRequest\x12\x1f\n" +
 	"\vset_enabled\x18\x01 \x01(\bR\n" +
-	"setEnabled\"!\n" +
+	"setEnabled\x12\x19\n" +
+	"\buse_mtls\x18\x02 \x01(\bR\auseMtls\"!\n" +
 	"\x1fDishStartTestModeServerResponse\"\xde\x05\n" +
 	"\bPLCStats\x12#\n" +
 	"\rreceiving_plc\x18\x01 \x01(\bR\freceivingPlc\x121\n" +

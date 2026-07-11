@@ -626,11 +626,16 @@ func (CalibrationPartitionsState) EnumDescriptor() ([]byte, []int) {
 }
 
 type NeighborReportBasicServiceSet struct {
-	state                     protoimpl.MessageState `protogen:"open.v1"`
-	Bssid                     string                 `protobuf:"bytes,1,opt,name=bssid,proto3" json:"bssid,omitempty"`
-	Ssid                      string                 `protobuf:"bytes,2,opt,name=ssid,proto3" json:"ssid,omitempty"`
-	IfaceName                 string                 `protobuf:"bytes,3,opt,name=iface_name,json=ifaceName,proto3" json:"iface_name,omitempty"`
-	SelfNeighborReportElement string                 `protobuf:"bytes,4,opt,name=self_neighbor_report_element,json=selfNeighborReportElement,proto3" json:"self_neighbor_report_element,omitempty"`
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Bssid            string                 `protobuf:"bytes,1,opt,name=bssid,proto3" json:"bssid,omitempty"`
+	Ssid             string                 `protobuf:"bytes,2,opt,name=ssid,proto3" json:"ssid,omitempty"`
+	IfaceName        string                 `protobuf:"bytes,3,opt,name=iface_name,json=ifaceName,proto3" json:"iface_name,omitempty"`
+	BssidInformation uint32                 `protobuf:"varint,5,opt,name=bssid_information,json=bssidInformation,proto3" json:"bssid_information,omitempty"`
+	RegulatoryClass  uint32                 `protobuf:"varint,6,opt,name=regulatory_class,json=regulatoryClass,proto3" json:"regulatory_class,omitempty"`
+	ChannelNumber    uint32                 `protobuf:"varint,7,opt,name=channel_number,json=channelNumber,proto3" json:"channel_number,omitempty"`
+	PhyType          uint32                 `protobuf:"varint,8,opt,name=phy_type,json=phyType,proto3" json:"phy_type,omitempty"`
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi_util.proto.
+	SelfNeighborReportElement string `protobuf:"bytes,4,opt,name=self_neighbor_report_element,json=selfNeighborReportElement,proto3" json:"self_neighbor_report_element,omitempty"`
 	unknownFields             protoimpl.UnknownFields
 	sizeCache                 protoimpl.SizeCache
 }
@@ -686,6 +691,35 @@ func (x *NeighborReportBasicServiceSet) GetIfaceName() string {
 	return ""
 }
 
+func (x *NeighborReportBasicServiceSet) GetBssidInformation() uint32 {
+	if x != nil {
+		return x.BssidInformation
+	}
+	return 0
+}
+
+func (x *NeighborReportBasicServiceSet) GetRegulatoryClass() uint32 {
+	if x != nil {
+		return x.RegulatoryClass
+	}
+	return 0
+}
+
+func (x *NeighborReportBasicServiceSet) GetChannelNumber() uint32 {
+	if x != nil {
+		return x.ChannelNumber
+	}
+	return 0
+}
+
+func (x *NeighborReportBasicServiceSet) GetPhyType() uint32 {
+	if x != nil {
+		return x.PhyType
+	}
+	return 0
+}
+
+// Deprecated: Marked as deprecated in spacex_api/device/wifi_util.proto.
 func (x *NeighborReportBasicServiceSet) GetSelfNeighborReportElement() string {
 	if x != nil {
 		return x.SelfNeighborReportElement
@@ -1313,13 +1347,17 @@ var File_spacex_api_device_wifi_util_proto protoreflect.FileDescriptor
 
 const file_spacex_api_device_wifi_util_proto_rawDesc = "" +
 	"\n" +
-	"!spacex_api/device/wifi_util.proto\x12\x11SpaceX.API.Device\"\xa9\x01\n" +
+	"!spacex_api/device/wifi_util.proto\x12\x11SpaceX.API.Device\"\xc7\x02\n" +
 	"\x1dNeighborReportBasicServiceSet\x12\x14\n" +
 	"\x05bssid\x18\x01 \x01(\tR\x05bssid\x12\x12\n" +
 	"\x04ssid\x18\x02 \x01(\tR\x04ssid\x12\x1d\n" +
 	"\n" +
-	"iface_name\x18\x03 \x01(\tR\tifaceName\x12?\n" +
-	"\x1cself_neighbor_report_element\x18\x04 \x01(\tR\x19selfNeighborReportElement\"\x8a\x02\n" +
+	"iface_name\x18\x03 \x01(\tR\tifaceName\x12+\n" +
+	"\x11bssid_information\x18\x05 \x01(\rR\x10bssidInformation\x12)\n" +
+	"\x10regulatory_class\x18\x06 \x01(\rR\x0fregulatoryClass\x12%\n" +
+	"\x0echannel_number\x18\a \x01(\rR\rchannelNumber\x12\x19\n" +
+	"\bphy_type\x18\b \x01(\rR\aphyType\x12C\n" +
+	"\x1cself_neighbor_report_element\x18\x04 \x01(\tB\x02\x18\x01R\x19selfNeighborReportElement\"\x8a\x02\n" +
 	"\x17InflatedBasicServiceSet\x12\x14\n" +
 	"\x05bssid\x18\x01 \x01(\tR\x05bssid\x12\x12\n" +
 	"\x04ssid\x18\x02 \x01(\tR\x04ssid\x12\x17\n" +
