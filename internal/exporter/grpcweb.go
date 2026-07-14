@@ -20,13 +20,18 @@ import (
 	"encoding/binary"
 	"fmt"
 	"io"
+	"log/slog"
 	"net"
 	"net/http"
+	"strconv"
 	"strings"
+	"sync"
 	"sync/atomic"
 	"time"
 
+	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/connectivity"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 
 	"github.com/joshuasing/starlink_exporter/internal/spacex_api/device"
@@ -40,6 +45,24 @@ const (
 	grpcWebContentType = "application/grpc-web+proto"
 )
 
+// Default ride-through / cache tuning. The dish's gRPC-Web endpoint goes fully
+// unresponsive in ~8.5s windows (all RPCs, periodically). Handle retries with a
+// short per-attempt timeout until the caller's context budget (callTimeout in
+// scrape.go, ~12s) is spent, which clears nearly all wedges; the cache covers
+// the rest. cacheTTL is set above the wedge and a few scrape intervals, but low
+// enough that a genuinely dead dish goes stale (-> dish_up 0) reasonably fast.
+// These are struct fields (defaulted here) so tests can shrink the timing.
+const (
+	defaultCacheTTL          = 90 * time.Second
+	defaultPerAttemptTimeout = 1500 * time.Millisecond
+	defaultRetryGap          = 500 * time.Millisecond
+)
+
+type cachedResponse struct {
+	resp *device.Response
+	at   time.Time
+}
+
 // grpcWebClient speaks gRPC-Web over HTTP/1.1 to the dish. It implements the
 // subset of device.DeviceClient that the exporter actually uses (Handle); the
 // streaming Stream method is intentionally unimplemented.
@@ -47,16 +70,30 @@ type grpcWebClient struct {
 	baseURL string // e.g. http://192.168.100.1:9201
 	http    *http.Client
 
+	// ride-through / cache tuning (defaulted in newGRPCWebClient).
+	cacheTTL          time.Duration
+	perAttemptTimeout time.Duration
+	retryGap          time.Duration
+
 	// lastOK tracks whether the most recent call succeeded, surfaced via
 	// ConnState() for the /health endpoint (mirrors the old gRPC conn state).
 	lastOK atomic.Bool
+
+	// lastGood caches the most recent successful response per request type
+	// (keyed by the Request oneof type name), for the short-cache fallback.
+	mu       sync.Mutex
+	lastGood map[string]cachedResponse
 }
 
 // newGRPCWebClient builds a gRPC-Web client for the given dish address
 // (host:port, no scheme). Plain HTTP/1.1; the dish has no TLS on the LAN.
 func newGRPCWebClient(address string) *grpcWebClient {
 	return &grpcWebClient{
-		baseURL: "http://" + address,
+		baseURL:           "http://" + address,
+		lastGood:          make(map[string]cachedResponse),
+		cacheTTL:          defaultCacheTTL,
+		perAttemptTimeout: defaultPerAttemptTimeout,
+		retryGap:          defaultRetryGap,
 		http: &http.Client{
 			// Hard safety net above the per-call context (callTimeout in
 			// scrape.go). The context normally bounds each request; this just
@@ -94,27 +131,112 @@ func newGRPCWebClient(address string) *grpcWebClient {
 	}
 }
 
-// Handle performs a unary Device/Handle call over gRPC-Web, retrying once on a
-// transient transport failure.
+// Handle performs a unary Device/Handle call over gRPC-Web, riding through the
+// dish's periodic ~8.5s unresponsive windows.
 //
-// The dish occasionally drops or stalls a single request (it's a real radio
-// doing satellite handovers); the immediate follow-up almost always succeeds.
-// Only transport errors (timeouts, connection resets) are retried — a valid
-// gRPC error status is deterministic and returned as-is. The retry shares the
-// caller's ctx, so it cannot exceed the per-scrape deadline.
+// The dish's gRPC-Web endpoint goes fully unresponsive (every RPC) for ~8.5s at
+// a time, periodically. Within the caller's context budget we retry with a
+// short per-attempt timeout (perAttemptTimeout) every retryGap, which clears
+// nearly all wedges. If the whole budget is exhausted we fall back to the last
+// good response for this request type if it's still within cacheTTL — so a blip
+// produces stale-but-present metrics rather than a gap. Only when there's no
+// fresh-enough cache either do we surface the error (-> dish_up 0).
+//
+// A successful or non-retryable (valid gRPC status) response returns
+// immediately. The web UI hides these windows by polling many times/second;
+// this gives the once-per-scrape exporter the same resilience.
 func (c *grpcWebClient) Handle(ctx context.Context, in *device.Request) (*device.Response, error) {
-	out, err := c.doHandle(ctx, in)
-	if err != nil && isTransient(err) && ctx.Err() == nil {
-		out, err = c.doHandle(ctx, in)
+	key := requestKey(in)
+	var lastErr error
+
+	for {
+		attemptCtx, cancel := context.WithTimeout(ctx, c.perAttemptTimeout)
+		out, err := c.doHandle(attemptCtx, in)
+		cancel()
+
+		if err == nil {
+			c.store(key, out)
+			c.lastOK.Store(true)
+			return out, nil
+		}
+		lastErr = err
+
+		// A real gRPC error status is deterministic — don't retry or mask it.
+		if !isTransient(err) {
+			c.lastOK.Store(false)
+			return nil, err
+		}
+
+		// Out of budget? Stop retrying and try the cache.
+		if ctx.Err() != nil {
+			break
+		}
+		select {
+		case <-ctx.Done():
+		case <-time.After(c.retryGap):
+		}
+		if ctx.Err() != nil {
+			break
+		}
 	}
-	c.lastOK.Store(err == nil)
-	return out, err
+
+	// Ride-through exhausted: serve a fresh-enough cached response if we have one.
+	if cached, ok := c.cached(key); ok {
+		slog.Warn("dish unresponsive; serving cached response",
+			slog.String("request", key), slog.Any("err", lastErr))
+		c.lastOK.Store(false) // a cache hit still means the live fetch failed
+		return cached, nil
+	}
+
+	c.lastOK.Store(false)
+	return nil, lastErr
 }
 
-// isTransient reports whether an error is worth one immediate retry. Transport
-// failures (the "grpc-web request" wrapper from c.http.Do, which covers
-// timeouts, resets, refused connections) are transient; protocol-level errors
-// (bad HTTP status, non-zero grpc-status, unmarshal failures) are not.
+// requestKey identifies the Request oneof variant (e.g. "*device.Request_GetStatus")
+// so responses are cached per request type.
+func requestKey(in *device.Request) string {
+	if in == nil || in.Request == nil {
+		return "nil"
+	}
+	return fmt.Sprintf("%T", in.Request)
+}
+
+func (c *grpcWebClient) store(key string, resp *device.Response) {
+	c.mu.Lock()
+	c.lastGood[key] = cachedResponse{resp: resp, at: time.Now()}
+	c.mu.Unlock()
+}
+
+// cached returns the last good response for key if it's within cacheTTL.
+func (c *grpcWebClient) cached(key string) (*device.Response, bool) {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	e, ok := c.lastGood[key]
+	if !ok || time.Since(e.at) > c.cacheTTL {
+		return nil, false
+	}
+	return e.resp, true
+}
+
+// grpcStatusErr builds a proper google.golang.org/grpc/status error from the
+// gRPC-Web wire status code + message. Returning a real status error (rather
+// than a plain fmt.Errorf string) lets callers use status.FromError(err) —
+// e.g. scrapeLocation treats Unimplemented/PermissionDenied as "location
+// disabled" instead of a hard failure. With the old raw-gRPC transport these
+// were already status errors; this preserves that behaviour over gRPC-Web.
+func grpcStatusErr(codeStr, msg string) error {
+	n, err := strconv.Atoi(strings.TrimSpace(codeStr))
+	if err != nil {
+		return fmt.Errorf("grpc status %s: %s", codeStr, msg)
+	}
+	return status.Error(codes.Code(n), msg)
+}
+
+// isTransient reports whether an error is worth retrying. Everything wrapped
+// with the "grpc-web request:" prefix is transient: transport failures from
+// c.http.Do (timeouts, resets, refused connections) and HTTP 5xx/429 from the
+// dish's wedge windows. Deterministic protocol errors (other 4xx, non-zero
+// grpc-status, unmarshal failures) are not.
 func isTransient(err error) bool {
 	return strings.HasPrefix(err.Error(), "grpc-web request:")
 }
@@ -142,13 +264,20 @@ func (c *grpcWebClient) doHandle(ctx context.Context, in *device.Request) (*devi
 	defer func() { _, _ = io.Copy(io.Discard, resp.Body); _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
+		// 5xx / 429 are "temporarily unavailable" — exactly the dish's wedge
+		// windows (it returns errors, not just connection resets, while
+		// unresponsive). Tag them transient so Handle rides through / caches.
+		// Other 4xx are deterministic and not retried.
+		if resp.StatusCode >= 500 || resp.StatusCode == http.StatusTooManyRequests {
+			return nil, fmt.Errorf("grpc-web request: HTTP status %d", resp.StatusCode)
+		}
 		return nil, fmt.Errorf("grpc-web HTTP status %d", resp.StatusCode)
 	}
 
 	// gRPC status may arrive in headers (trailers-only response) or in a
 	// trailer frame appended to the body. Check the header form first.
 	if s := resp.Header.Get("Grpc-Status"); s != "" && s != "0" {
-		return nil, fmt.Errorf("grpc status %s: %s", s, resp.Header.Get("Grpc-Message"))
+		return nil, grpcStatusErr(s, resp.Header.Get("Grpc-Message"))
 	}
 
 	body, err := io.ReadAll(resp.Body)
@@ -162,7 +291,7 @@ func (c *grpcWebClient) doHandle(ctx context.Context, in *device.Request) (*devi
 		return nil, err
 	}
 	if code := trailer["grpc-status"]; code != "" && code != "0" {
-		return nil, fmt.Errorf("grpc status %s: %s", code, trailer["grpc-message"])
+		return nil, grpcStatusErr(code, trailer["grpc-message"])
 	}
 	if msg == nil {
 		return nil, fmt.Errorf("no message frame in gRPC-Web response")
