@@ -16,7 +16,7 @@ env:
   # renovate: datasource=github-releases depName=goreleaser/goreleaser versioning=semver
   GORELEASER_VERSION: "v2.17.0"
   # renovate: datasource=github-releases depName=anchore/syft versioning=semver
-  SYFT_VERSION: "v1.46.0"
+  SYFT_VERSION: "v1.48.0"
 
 permissions:
   contents: read
