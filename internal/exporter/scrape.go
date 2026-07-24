@@ -23,15 +23,24 @@ package exporter
 import (
 	"context"
 	"log/slog"
-	"sync"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 
 	"github.com/joshuasing/starlink_exporter/internal/spacex_api/device"
 )
+
+// callTimeout is the per-scraper budget the gRPC-Web client uses to ride
+// through the dish's periodic ~8.5s fully-unresponsive windows: it retries with
+// a short per-attempt timeout until this budget is spent, then falls back to a
+// cached last-good response (see grpcweb.go). Set above ~8.5s with margin.
+//
+// Scrapers run sequentially, but the wedge is whole-endpoint: once one scraper
+// rides through it, the others succeed immediately — so the realistic worst
+// case for a full scrape is ~one ride-through (~12s) plus two fast calls, which
+// fits a typical 15s+ scrape interval. Raise the vmagent scrape interval above
+// this if you ever shorten it.
+const callTimeout = 12 * time.Second
 
 var (
 	dishPopPingLatencyHistOpts = prometheus.HistogramOpts{
@@ -57,6 +66,12 @@ var (
 )
 
 // scrape scrapes metrics from the Starlink Dishy.
+//
+// dish_up reflects only whether the dish is answering — i.e. the core
+// status/history RPCs. Location (GPS) is OPTIONAL telemetry: many dishes'
+// firmware no longer serves get_location, and that must never make the dish
+// appear offline. So scrapeLocation runs best-effort and its result is NOT
+// part of the up calculation; it just emits location_* metrics when available.
 func (e *Exporter) scrape(ch chan<- prometheus.Metric) bool {
 	e.totalScrapes.Inc()
 	start := time.Now()
@@ -64,39 +79,42 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) bool {
 		e.scrapeDurationSeconds.Set(time.Since(start).Seconds())
 	}()
 
-	return runScrapers(ch,
+	up := runScrapers(ch,
 		e.scrapeDishStatus,
 		e.scrapeDishHistory,
-		e.scrapeLocation,
 	)
+
+	// Best-effort: collect location if the dish serves it. Never affects `up`.
+	ctx, cancel := context.WithTimeout(context.Background(), callTimeout)
+	defer cancel()
+	_ = e.scrapeLocation(ctx, ch)
+
+	return up
 }
 
 type scraper func(ctx context.Context, ch chan<- prometheus.Metric) bool
 
-// runScrapers runs the scrapers in parallel and returns true if all succeed,
-// otherwise false is returned.
+// runScrapers runs the scrapers SEQUENTIALLY and returns true only if all
+// succeed.
+//
+// They are intentionally NOT run in parallel: the dish's embedded gRPC-Web
+// server handles concurrent HTTP/1.1 requests poorly and periodically stalls
+// every in-flight request at once (all scrapers timing out together on the
+// same cycle). The legacy raw-gRPC transport multiplexed calls over a single
+// HTTP/2 connection and didn't have this problem; gRPC-Web uses one request
+// per call, so we serialize. Each call is fast (<200ms on-LAN), so running
+// three back-to-back is well within a scrape interval. Each scraper gets its
+// own per-call timeout (see callTimeout).
 func runScrapers(ch chan<- prometheus.Metric, scrapers ...scraper) bool {
-	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
-	defer cancel()
-
-	var wg sync.WaitGroup
-	out := make(chan bool, len(scrapers))
-
+	ok := true
 	for _, s := range scrapers {
-		wg.Go(func() {
-			out <- s(ctx, ch)
-		})
-	}
-
-	wg.Wait()
-	close(out)
-
-	for s := range out {
-		if !s {
-			return false
+		ctx, cancel := context.WithTimeout(context.Background(), callTimeout)
+		if !s(ctx, ch) {
+			ok = false
 		}
+		cancel()
 	}
-	return true
+	return ok
 }
 
 // scrapeDishStatus scrapes metrics from the GetStatus response.
@@ -293,13 +311,10 @@ func (e *Exporter) scrapeLocation(ctx context.Context, ch chan<- prometheus.Metr
 		Request: new(device.Request_GetLocation),
 	})
 	if err != nil {
-		if s, ok := status.FromError(err); ok {
-			if s.Code() == codes.PermissionDenied {
-				// Location service may be disabled, ignore.
-				return true
-			}
-		}
-		slog.Error("Failed to scrape location", slog.Any("err", err))
+		// Location is optional telemetry and does NOT affect dish_up (see
+		// scrape). Many dishes' firmware no longer serves get_location and
+		// return an error here every scrape — log at debug so it isn't noise.
+		slog.Debug("location unavailable (optional)", slog.Any("err", err))
 		return false
 	}
 	loc := res.GetGetLocation()

@@ -21,26 +21,22 @@
 package exporter
 
 import (
-	"fmt"
 	"log/slog"
 	"sync"
 
 	"github.com/prometheus/client_golang/prometheus"
-	"google.golang.org/grpc"
 	"google.golang.org/grpc/connectivity"
-	"google.golang.org/grpc/credentials/insecure"
-
-	"github.com/joshuasing/starlink_exporter/internal/spacex_api/device"
 )
 
-// DefaultDishAddress is the default address of the Starlink Dishy's gRPC server.
-const DefaultDishAddress = "192.168.100.1:9200"
+// DefaultDishAddress is the default address of the Starlink Dishy's gRPC-Web
+// server. Firmware 2026.06.x moved the Device API from the legacy raw-gRPC
+// port 9200 (now closed) to gRPC-Web over HTTP/1.1 on port 9201.
+const DefaultDishAddress = "192.168.100.1:9201"
 
 // Exporter is a Starlink Dishy metrics exporter.
 type Exporter struct {
 	mx     sync.Mutex
-	conn   *grpc.ClientConn    // Starlink Dishy gRPC connection
-	client device.DeviceClient // Starlink Dishy gRPC client
+	client *grpcWebClient // Starlink Dishy gRPC-Web client (HTTP/1.1)
 
 	up                    prometheus.Gauge   // starlink_dish_up
 	totalScrapes          prometheus.Counter // starlink_exporter_scrapes_total
@@ -50,17 +46,11 @@ type Exporter struct {
 var _ prometheus.Collector = (*Exporter)(nil)
 
 // NewExporter returns a new exporter that connects to the Starlink Dishy at
-// the given address.
+// the given address over gRPC-Web (HTTP/1.1).
 func NewExporter(address string) (*Exporter, error) {
-	slog.Info("Connecting to Starlink Dishy", slog.String("address", address))
-	conn, err := grpc.NewClient(address, grpc.WithTransportCredentials(insecure.NewCredentials()))
-	if err != nil {
-		return nil, fmt.Errorf("new grpc client: %w", err)
-	}
-
-	client := device.NewDeviceClient(conn)
+	slog.Info("Connecting to Starlink Dishy", slog.String("address", address), slog.String("transport", "grpc-web"))
+	client := newGRPCWebClient(address)
 	return &Exporter{
-		conn:   conn,
 		client: client,
 		up: prometheus.NewGauge(prometheus.GaugeOpts{
 			Name: dishUp.FQName(),
@@ -77,9 +67,11 @@ func NewExporter(address string) (*Exporter, error) {
 	}, nil
 }
 
-// ConnState returns the gRPC connection state.
+// ConnState returns a synthetic connection state derived from the last
+// gRPC-Web call. gRPC-Web is stateless (one HTTP/1.1 request per call), so
+// there is no persistent connection to query.
 func (e *Exporter) ConnState() connectivity.State {
-	return e.conn.GetState()
+	return e.client.ConnState()
 }
 
 // Describe provides all descriptors for metrics provided by the exporter.
@@ -102,9 +94,5 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 	ch <- e.scrapeDurationSeconds
 }
 
-// Close closes the gRPC connection.
-func (e *Exporter) Close() {
-	if err := e.conn.Close(); err != nil {
-		slog.Error("An error occurred while closing gRPC connection", slog.Any("err", err))
-	}
-}
+// Close is a no-op for the gRPC-Web transport (no persistent connection).
+func (e *Exporter) Close() {}
