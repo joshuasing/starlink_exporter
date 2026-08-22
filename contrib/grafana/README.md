@@ -12,3 +12,10 @@ fraction, and power draw over time.
 **Import**: Grafana → Dashboards → New → Import → upload `starlink.json`,
 then select your Prometheus data source. Assumes the default `starlink` job
 scrape interval of ~15s.
+
+## See also
+
+- [joel/starlink-monitoring-stack](https://github.com/joel/starlink-monitoring-stack) —
+  a ready-to-run Docker Compose stack (Prometheus + Grafana + this exporter +
+  speedtest + ping) that provisions this dashboard automatically, plus an
+  internet speed & latency dashboard.
