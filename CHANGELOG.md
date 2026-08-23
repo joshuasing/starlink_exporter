@@ -13,12 +13,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Improved release artifact reproducibility and metadata
 - Improved installation and usage documentation ([#266])
 - Updated Go to 1.27 (security) ([#253], [#294])
 - Updated `github.com/prometheus/common` to v0.69.0 ([#245])
 - Updated `github.com/prometheus/exporter-toolkit` to v0.17.1 ([#263])
 - Updated `google.golang.org/grpc` to v1.82.0 ([#264])
 - Updated Docker runtime base image to `cgr.dev/chainguard/static@60582b2` ([#254])
+
+### Removed
+
+- Removed `tar.zst` release archives
 
 ## [v0.9.2] - 2026-06-08
 

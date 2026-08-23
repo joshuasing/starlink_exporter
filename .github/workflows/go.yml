@@ -23,13 +23,14 @@ env:
   # renovate: datasource=go depName=golang.org/x/vuln/cmd/govulncheck
   GOVULNCHECK_VERSION: "v1.7.0"
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
   vulncheck:
     name: "Vulnerability Check"
     runs-on: "ubuntu-latest"
+    permissions:
+      contents: read
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -50,6 +51,8 @@ jobs:
   build:
     name: "Build and test (${{ matrix.os }})"
     runs-on: "${{ matrix.os }}"
+    permissions:
+      contents: read
     strategy:
       matrix:
         os: ["ubuntu-latest"]
@@ -78,6 +81,8 @@ jobs:
   lint:
     name: "Lint"
     runs-on: "ubuntu-latest"
+    permissions:
+      contents: read
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -133,3 +138,8 @@ jobs:
 #          fi
 #          echo "$LICENSE_HEADER" > license_header.txt
 #          golicenser -author="Joshua Sing <joshua@joshuasing.dev>" -year-mode=git-range ./...
+
+      - name: "Verify module files are tidy"
+        run: |
+          go mod tidy
+          git diff --exit-code -- go.mod go.sum
