@@ -21,7 +21,7 @@ env:
   # renovate: datasource=github-releases depName=joshuasing/golicenser versioning=semver
   GOLICENSER_VERSION: "v0.3.1"
   # renovate: datasource=go depName=golang.org/x/vuln/cmd/govulncheck
-  GOVULNCHECK_VERSION: "v1.1.4"
+  GOVULNCHECK_VERSION: "v1.7.0"
 
 permissions:
   contents: read
