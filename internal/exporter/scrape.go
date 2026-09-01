@@ -223,6 +223,11 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 	ch <- metric(dishHighPowerTestMode, prometheus.GaugeValue,
 		btof(dishStatus.GetHighPowerTestMode()))
 
+	// starlink_dish_outage_cause
+	outage := dishStatus.GetOutage()
+	ch <- metric(dishOutageCause, prometheus.GaugeValue,
+		outage.GetCause(), outage.GetCause().String())
+
 	// starlink_dish_alert_unexpected_location
 	ch <- metric(dishAlertUnexpectedLocation, prometheus.GaugeValue,
 		btof(alerts.GetUnexpectedLocation()))
@@ -242,6 +247,18 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 	// starlink_dish_alert_lower_than_predicted
 	ch <- metric(dishAlertSignalLowerThanPredicted, prometheus.GaugeValue,
 		btof(alerts.GetLowerSignalThanPredicted()))
+
+	// starlink_dish_alert_thermal_throttle
+	ch <- metric(dishAlertThermalThrottle, prometheus.GaugeValue,
+		btof(alerts.GetThermalThrottle()))
+
+	// starlink_dish_alert_thermal_shutdown
+	ch <- metric(dishAlertThermalShutdown, prometheus.GaugeValue,
+		btof(alerts.GetThermalShutdown()))
+
+	// starlink_dish_alert_power_supply_thermal_throttle
+	ch <- metric(dishAlertPowerSupplyThermalThrottle, prometheus.GaugeValue,
+		btof(alerts.GetPowerSupplyThermalThrottle()))
 
 	return true
 }

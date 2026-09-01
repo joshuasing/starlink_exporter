@@ -189,6 +189,15 @@ var (
 		Help:      "Whether Starlink dish max-power test mode is active",
 	}
 
+	// Outage
+	dishOutageCause = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "outage_cause",
+		Help:      "Current Starlink dish outage cause, as its enum value",
+		Labels:    []string{"cause"},
+	}
+
 	// Software update
 	dishSoftwareUpdateState = &Desc{
 		Namespace: namespace,
@@ -329,6 +338,24 @@ var (
 		Name:      "alert_signal_lower_than_predicted",
 		Help:      "Whether the Starlink dish signal is lower than predicted",
 	}
+	dishAlertThermalThrottle = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_thermal_throttle",
+		Help:      "Whether the Starlink dish is throttling back due to heat",
+	}
+	dishAlertThermalShutdown = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_thermal_shutdown",
+		Help:      "Whether the Starlink dish has shut down due to heat",
+	}
+	dishAlertPowerSupplyThermalThrottle = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_power_supply_thermal_throttle",
+		Help:      "Whether the Starlink dish power supply is throttling back due to heat",
+	}
 )
 
 // Descs contains all Prometheus metrics descriptors for the exporter.
@@ -367,6 +394,7 @@ var Descs = []*Desc{
 	dishUpsuUptimeSeconds,
 	dishThermalThrottleLevel,
 	dishHighPowerTestMode,
+	dishOutageCause,
 	dishLocationInfo,
 	dishLocationLatitude,
 	dishLocationLongitude,
@@ -376,6 +404,9 @@ var Descs = []*Desc{
 	dishAlertIsHeating,
 	dishAlertIsPowerSaveIdle,
 	dishAlertSignalLowerThanPredicted,
+	dishAlertThermalThrottle,
+	dishAlertThermalShutdown,
+	dishAlertPowerSupplyThermalThrottle,
 }
 
 // Desc is a utility wrapper for prometheus.Desc.
