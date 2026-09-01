@@ -157,6 +157,37 @@ var (
 		Name:      "power_input_watts",
 		Help:      "Current power input for the Starlink dish",
 	}
+	dishPowerWatts = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "power_watts",
+		Help:      "Real-time Starlink dish power draw in watts, by power supply",
+		Labels:    []string{"supply"},
+	}
+	dishRouterPowerWatts = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "router_power_watts",
+		Help:      "Real-time Starlink WiFi router power draw in watts",
+	}
+	dishUpsuUptimeSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "upsu_uptime_seconds",
+		Help:      "Starlink UPSU power supply uptime in seconds",
+	}
+	dishThermalThrottleLevel = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "thermal_throttle_level",
+		Help:      "Starlink dish thermal throttle level (0 is unthrottled)",
+	}
+	dishHighPowerTestMode = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "high_power_test_mode",
+		Help:      "Whether Starlink dish max-power test mode is active",
+	}
 
 	// Software update
 	dishSoftwareUpdateState = &Desc{
@@ -331,6 +362,11 @@ var Descs = []*Desc{
 	dishLast24HoursObstructedSeconds,
 	dishPowerInputHistogram,
 	dishPowerInput,
+	dishPowerWatts,
+	dishRouterPowerWatts,
+	dishUpsuUptimeSeconds,
+	dishThermalThrottleLevel,
+	dishHighPowerTestMode,
 	dishLocationInfo,
 	dishLocationLatitude,
 	dishLocationLongitude,

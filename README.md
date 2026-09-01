@@ -46,6 +46,7 @@ Metrics are exposed at `/metrics` in the Prometheus text format.
 | `starlink_dish_up`                                 | Whether scraping metrics from the Starlink dish was successful                |
 | `starlink_dish_info`                               | Starlink dish software information                                            |
 | `starlink_dish_uptime_seconds`                     | Starlink dish uptime in seconds                                               |
+| `starlink_dish_mobility_class`                     | Starlink dish mobility class                                                  |
 | `starlink_dish_snr_above_noise_floor`              | Whether Starlink dish signal-to-noise ratio is above noise floor              |
 | `starlink_dish_snr_persistently_low`               | Whether Starlink dish signal-to-noise ratio is persistently low               |
 | `starlink_dish_uplink_throughput_bps`              | Starlink dish uplink throughput in bits/sec                                   |
@@ -55,6 +56,7 @@ Metrics are exposed at `/metrics` in the Prometheus text format.
 | `starlink_dish_pop_ping_drop_ratio`                | Starlink PoP ping drop ratio                                                  |
 | `starlink_dish_pop_ping_latency_seconds`           | Starlink PoP ping latency in seconds                                          |
 | `starlink_dish_pop_ping_latency_seconds_histogram` | Histogram of Starlink dish PoP ping latency in seconds over last 15 minutes   |
+| `starlink_dish_software_update_state`              | Starlink dish update state                                                    |
 | `starlink_dish_software_update_reboot_ready`       | Whether the Starlink dish is ready to reboot to apply a software update       |
 | `starlink_dish_gps_valid`                          | Whether the Starlink dish GPS is valid                                        |
 | `starlink_dish_gps_satellites`                     | Number of GPS satellites visible to the Starlink dish                         |
@@ -68,6 +70,11 @@ Metrics are exposed at `/metrics` in the Prometheus text format.
 | `starlink_dish_last_24h_obstructed_seconds`        | Number of seconds the Starlink dish was obstructed in the past 24 hours       |
 | `starlink_dish_power_input_watts_histogram`        | Histogram of Starlink dish power input in watts over last 15 minutes          |
 | `starlink_dish_power_input_watts`                  | Current power input for the Starlink dish                                     |
+| `starlink_dish_power_watts`                        | Real-time Starlink dish power draw in watts, by power supply                  |
+| `starlink_dish_router_power_watts`                 | Real-time Starlink WiFi router power draw in watts                            |
+| `starlink_dish_upsu_uptime_seconds`                | Starlink UPSU power supply uptime in seconds                                  |
+| `starlink_dish_thermal_throttle_level`             | Starlink dish thermal throttle level (0 is unthrottled)                       |
+| `starlink_dish_high_power_test_mode`               | Whether Starlink dish max-power test mode is active                           |
 | `starlink_dish_location_info`                      | Dish location information                                                     |
 | `starlink_dish_location_latitude_deg`              | Location latitude in degrees                                                  |
 | `starlink_dish_location_longitude_deg`             | Location longitude in degrees                                                 |
