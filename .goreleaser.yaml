@@ -7,7 +7,6 @@ report_sizes: true
 
 before:
   hooks:
-    - "go mod tidy"
     - "go mod download"
     - "go mod verify"
 
@@ -46,7 +45,7 @@ builds:
         goarch: "arm"
 
 archives:
-  - formats: ["tar.gz", "tar.zst"]
+  - formats: ["tar.gz"]
     wrap_in_directory: true
     name_template: >-
       starlink_exporter_v{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}
@@ -54,11 +53,28 @@ archives:
       - goos: "windows"
         formats: ["zip"]
     builds_info:
+      owner: root
+      group: root
       mtime: "{{ .CommitDate }}"
     files:
-      - "README*"
-      - "LICENSE*"
-      - "CHANGELOG*"
+      - src: "README.md"
+        info:
+          owner: root
+          group: root
+          mode: 0644
+          mtime: "{{ .CommitDate }}"
+      - src: "LICENSE"
+        info:
+          owner: root
+          group: root
+          mode: 0644
+          mtime: "{{ .CommitDate }}"
+      - src: "CHANGELOG.md"
+        info:
+          owner: root
+          group: root
+          mode: 0644
+          mtime: "{{ .CommitDate }}"
 
 # Create sources archive.
 source:
@@ -106,20 +122,23 @@ dockers_v2:
     platforms:
       - "linux/amd64"
       - "linux/arm64"
+    build_args:
+      SOURCE_DATE_EPOCH: "{{ .CommitTimestamp }}"
     labels:
       "maintainer": "Joshua Sing <joshua@joshuasing.dev>"
-      "org.opencontainers.image.created": "{{ .Date }}"
+      "org.opencontainers.image.created": "{{ .CommitDate }}"
       "org.opencontainers.image.authors": "Joshua Sing <joshua@joshuasing.dev>"
       "org.opencontainers.image.url": "https://github.com/joshuasing/starlink_exporter"
       "org.opencontainers.image.documentation": "https://github.com/joshuasing/starlink_exporter#readme"
-      "org.opencontainers.image.source": "https://github.com/joshuasing/starlink_exporter"
+      "org.opencontainers.image.source": "{{ .GitURL }}"
       "org.opencontainers.image.version": "{{ .Version }}"
       "org.opencontainers.image.revision": "{{ .FullCommit }}"
       "org.opencontainers.image.licenses": "MIT"
       "org.opencontainers.image.vendor": "Joshua Sing <joshua@joshuasing.dev>"
       "org.opencontainers.image.title": "Starlink Prometheus Exporter"
       "org.opencontainers.image.description": "Prometheus exporter for Starlink"
-      "org.opencontainers.image.base.name": "cgr.dev/chainguard/static"
+      "org.opencontainers.image.base.name": "{{ .BaseImage }}"
+      "org.opencontainers.image.base.digest": "{{ .BaseImageDigest }}"
 
 # Sign Docker images and manifests.
 docker_signs:
@@ -144,7 +163,7 @@ release:
   github:
     owner: "joshuasing"
     name: "starlink_exporter"
-  draft: true
+  draft: true # Manually add changelog, then release.
   replace_existing_draft: true
   prerelease: auto
   header: |
@@ -155,11 +174,15 @@ release:
   footer: |
     ---
 
-    - **Images:**
-      - `ghcr.io/joshuasing/starlink_exporter:{{ .Version }}`
-      - `docker.io/joshuasing/starlink_exporter:{{ .Version }}`
-    - **Build from source:**
-      - `go install github.com/joshuasing/starlink_exporter@v{{ .Version }}`
+    Images:
+    ```
+    ghcr.io/joshuasing/starlink_exporter:{{ .Version }}
+    docker.io/joshuasing/starlink_exporter:{{ .Version }}
+    ```
+    Build from source:
+    ```shell
+    go install github.com/joshuasing/starlink_exporter@v{{ .Version }}
+    ```
 
     All release artifacts are signed with [cosign](https://github.com/sigstore/cosign) and include SBOMs.
 
