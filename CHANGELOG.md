@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Improved installation and usage documentation ([#266])
-- Updated Go to 1.26.5 (security) ([#253])
+- Updated Go to 1.27 (security) ([#253], [#294])
 - Updated `github.com/prometheus/common` to v0.69.0 ([#245])
 - Updated `github.com/prometheus/exporter-toolkit` to v0.17.1 ([#263])
 - Updated `google.golang.org/grpc` to v1.82.0 ([#264])
@@ -171,3 +171,4 @@ https://github.com/joshuasing/starlink_exporter/releases_
 [#264]: https://github.com/joshuasing/starlink_exporter/pull/264
 [#265]: https://github.com/joshuasing/starlink_exporter/pull/265
 [#266]: https://github.com/joshuasing/starlink_exporter/pull/266
+[#294]: https://github.com/joshuasing/starlink_exporter/pull/294

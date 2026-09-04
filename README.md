@@ -147,7 +147,7 @@ Follow these steps to build `starlink_exporter` from source.
 
 **Prerequisites**
 
-- [Go 1.26](https://go.dev/dl/) or newer
+- [Go 1.27](https://go.dev/dl/) or newer
 
 **Build**
 
