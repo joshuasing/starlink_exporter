@@ -39,12 +39,17 @@ func dishAddress(t *testing.T) string {
 	return addr
 }
 
+func routerAddress(t *testing.T) string {
+	t.Helper()
+	return os.Getenv("STARLINK_ROUTER_ADDR")
+}
+
 func newTestExporter(t *testing.T) *exporter.Exporter {
 	t.Helper()
 	if os.Getenv("STARLINK_INTEGRATION") == "" {
 		t.Skip("set STARLINK_INTEGRATION=1 to run integration tests")
 	}
-	ex, err := exporter.NewExporter(dishAddress(t))
+	ex, err := exporter.NewExporter(dishAddress(t), routerAddress(t))
 	if err != nil {
 		t.Fatalf("NewExporter: %v", err)
 	}
