@@ -39,44 +39,55 @@ Metrics are exposed at `/metrics` in the Prometheus text format.
 <details>
 <summary>View all exported metrics</summary>
 
-| Metric name                                        | Description                                                                   |
-|----------------------------------------------------|-------------------------------------------------------------------------------|
-| `starlink_exporter_scrapes_total`                  | Total number of Starlink dish scrapes                                         |
-| `starlink_exporter_scrape_duration_seconds`        | Time taken to scrape metrics from the Starlink dish                           |
-| `starlink_dish_up`                                 | Whether scraping metrics from the Starlink dish was successful                |
-| `starlink_dish_info`                               | Starlink dish software information                                            |
-| `starlink_dish_uptime_seconds`                     | Starlink dish uptime in seconds                                               |
-| `starlink_dish_snr_above_noise_floor`              | Whether Starlink dish signal-to-noise ratio is above noise floor              |
-| `starlink_dish_snr_persistently_low`               | Whether Starlink dish signal-to-noise ratio is persistently low               |
-| `starlink_dish_uplink_throughput_bps`              | Starlink dish uplink throughput in bits/sec                                   |
-| `starlink_dish_downlink_throughput_bps`            | Starlink dish downlink throughput in bit/sec                                  |
-| `starlink_dish_downlink_throughput_bps_histogram`  | Histogram of Starlink dish downlink throughput over last 15 minutes           |
-| `starlink_dish_uplink_throughput_bps_histogram`    | Histogram of Starlink dish uplink throughput in bits/sec over last 15 minutes |
-| `starlink_dish_pop_ping_drop_ratio`                | Starlink PoP ping drop ratio                                                  |
-| `starlink_dish_pop_ping_latency_seconds`           | Starlink PoP ping latency in seconds                                          |
-| `starlink_dish_pop_ping_latency_seconds_histogram` | Histogram of Starlink dish PoP ping latency in seconds over last 15 minutes   |
-| `starlink_dish_software_update_reboot_ready`       | Whether the Starlink dish is ready to reboot to apply a software update       |
-| `starlink_dish_gps_valid`                          | Whether the Starlink dish GPS is valid                                        |
-| `starlink_dish_gps_satellites`                     | Number of GPS satellites visible to the Starlink dish                         |
-| `starlink_dish_tilt_angle_deg`                     | Starlink dish tilt angle degrees                                              |
-| `starlink_dish_boresight_azimuth_deg`              | Starlink dish boresight azimuth degrees                                       |
-| `starlink_dish_boresight_elevation_deg`            | Starlink dish boresight elevation degrees                                     |
-| `starlink_dish_desired_boresight_azimuth_deg`      | Starlink dish desired boresight azimuth degrees                               |
-| `starlink_dish_desired_boresight_elevation_deg`    | Starlink dish desired boresight elevation degrees                             |
-| `starlink_dish_currently_obstructed`               | Whether the Starlink dish is currently obstructed                             |
-| `starlink_dish_fraction_obstruction_ratio`         | Fraction of Starlink dish that is obstructed                                  |
-| `starlink_dish_last_24h_obstructed_seconds`        | Number of seconds the Starlink dish was obstructed in the past 24 hours       |
-| `starlink_dish_power_input_watts_histogram`        | Histogram of Starlink dish power input in watts over last 15 minutes          |
-| `starlink_dish_power_input_watts`                  | Current power input for the Starlink dish                                     |
-| `starlink_dish_location_info`                      | Dish location information                                                     |
-| `starlink_dish_location_latitude_deg`              | Location latitude in degrees                                                  |
-| `starlink_dish_location_longitude_deg`             | Location longitude in degrees                                                 |
-| `starlink_dish_location_altitude_meters`           | Location altitude in meters above sea level                                   |
-| `starlink_dish_alert_unexpected_location`          | Whether the Starlink dish is in an unexpected location                        |
-| `starlink_dish_alert_install_pending`              | Whether a Starlink Dish software update is pending installation               |
-| `starlink_dish_alert_is_heating`                   | Whether the Starlink dish is heating (snow melting)                           |
-| `starlink_dish_alert_is_power_save_idle`           | Whether the Starlink dish is currently in power saving mode                   |
-| `starlink_dish_alert_signal_lower_than_predicted`  | Whether the Starlink dish signal is lower than predicted                      |
+| Metric name                                         | Description                                                                   |
+|-----------------------------------------------------|-------------------------------------------------------------------------------|
+| `starlink_exporter_scrapes_total`                   | Total number of Starlink dish scrapes                                         |
+| `starlink_exporter_scrape_duration_seconds`         | Time taken to scrape metrics from the Starlink dish                           |
+| `starlink_dish_up`                                  | Whether scraping metrics from the Starlink dish was successful                |
+| `starlink_dish_info`                                | Starlink dish software information                                            |
+| `starlink_dish_uptime_seconds`                      | Starlink dish uptime in seconds                                               |
+| `starlink_dish_mobility_class`                      | Starlink dish mobility class                                                  |
+| `starlink_dish_snr_above_noise_floor`               | Whether Starlink dish signal-to-noise ratio is above noise floor              |
+| `starlink_dish_snr_persistently_low`                | Whether Starlink dish signal-to-noise ratio is persistently low               |
+| `starlink_dish_uplink_throughput_bps`               | Starlink dish uplink throughput in bits/sec                                   |
+| `starlink_dish_downlink_throughput_bps`             | Starlink dish downlink throughput in bit/sec                                  |
+| `starlink_dish_downlink_throughput_bps_histogram`   | Histogram of Starlink dish downlink throughput over last 15 minutes           |
+| `starlink_dish_uplink_throughput_bps_histogram`     | Histogram of Starlink dish uplink throughput in bits/sec over last 15 minutes |
+| `starlink_dish_pop_ping_drop_ratio`                 | Starlink PoP ping drop ratio                                                  |
+| `starlink_dish_pop_ping_latency_seconds`            | Starlink PoP ping latency in seconds                                          |
+| `starlink_dish_pop_ping_latency_seconds_histogram`  | Histogram of Starlink dish PoP ping latency in seconds over last 15 minutes   |
+| `starlink_dish_software_update_state`               | Starlink dish update state                                                    |
+| `starlink_dish_software_update_reboot_ready`        | Whether the Starlink dish is ready to reboot to apply a software update       |
+| `starlink_dish_gps_valid`                           | Whether the Starlink dish GPS is valid                                        |
+| `starlink_dish_gps_satellites`                      | Number of GPS satellites visible to the Starlink dish                         |
+| `starlink_dish_tilt_angle_deg`                      | Starlink dish tilt angle degrees                                              |
+| `starlink_dish_boresight_azimuth_deg`               | Starlink dish boresight azimuth degrees                                       |
+| `starlink_dish_boresight_elevation_deg`             | Starlink dish boresight elevation degrees                                     |
+| `starlink_dish_desired_boresight_azimuth_deg`       | Starlink dish desired boresight azimuth degrees                               |
+| `starlink_dish_desired_boresight_elevation_deg`     | Starlink dish desired boresight elevation degrees                             |
+| `starlink_dish_currently_obstructed`                | Whether the Starlink dish is currently obstructed                             |
+| `starlink_dish_fraction_obstruction_ratio`          | Fraction of Starlink dish that is obstructed                                  |
+| `starlink_dish_last_24h_obstructed_seconds`         | Number of seconds the Starlink dish was obstructed in the past 24 hours       |
+| `starlink_dish_power_input_watts_histogram`         | Histogram of Starlink dish power input in watts over last 15 minutes          |
+| `starlink_dish_power_input_watts`                   | Current power input for the Starlink dish                                     |
+| `starlink_dish_power_watts`                         | Real-time Starlink dish power draw in watts, by power supply                  |
+| `starlink_dish_router_power_watts`                  | Real-time Starlink WiFi router power draw in watts                            |
+| `starlink_dish_upsu_uptime_seconds`                 | Starlink UPSU power supply uptime in seconds                                  |
+| `starlink_dish_thermal_throttle_level`              | Starlink dish thermal throttle level (0 is unthrottled)                       |
+| `starlink_dish_high_power_test_mode`                | Whether Starlink dish max-power test mode is active                           |
+| `starlink_dish_outage_cause`                        | Current Starlink dish outage cause, as its enum value                         |
+| `starlink_dish_location_info`                       | Dish location information                                                     |
+| `starlink_dish_location_latitude_deg`               | Location latitude in degrees                                                  |
+| `starlink_dish_location_longitude_deg`              | Location longitude in degrees                                                 |
+| `starlink_dish_location_altitude_meters`            | Location altitude in meters above sea level                                   |
+| `starlink_dish_alert_unexpected_location`           | Whether the Starlink dish is in an unexpected location                        |
+| `starlink_dish_alert_install_pending`               | Whether a Starlink Dish software update is pending installation               |
+| `starlink_dish_alert_is_heating`                    | Whether the Starlink dish is heating (snow melting)                           |
+| `starlink_dish_alert_is_power_save_idle`            | Whether the Starlink dish is currently in power saving mode                   |
+| `starlink_dish_alert_signal_lower_than_predicted`   | Whether the Starlink dish signal is lower than predicted                      |
+| `starlink_dish_alert_thermal_throttle`              | Whether the Starlink dish is throttling back due to heat                      |
+| `starlink_dish_alert_thermal_shutdown`              | Whether the Starlink dish has shut down due to heat                           |
+| `starlink_dish_alert_power_supply_thermal_throttle` | Whether the Starlink dish power supply is throttling back due to heat         |
 
 </details>
 

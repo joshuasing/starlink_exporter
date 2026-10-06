@@ -157,6 +157,46 @@ var (
 		Name:      "power_input_watts",
 		Help:      "Current power input for the Starlink dish",
 	}
+	dishPowerWatts = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "power_watts",
+		Help:      "Real-time Starlink dish power draw in watts, by power supply",
+		Labels:    []string{"supply"},
+	}
+	dishRouterPowerWatts = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "router_power_watts",
+		Help:      "Real-time Starlink WiFi router power draw in watts",
+	}
+	dishUpsuUptimeSeconds = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "upsu_uptime_seconds",
+		Help:      "Starlink UPSU power supply uptime in seconds",
+	}
+	dishThermalThrottleLevel = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "thermal_throttle_level",
+		Help:      "Starlink dish thermal throttle level (0 is unthrottled)",
+	}
+	dishHighPowerTestMode = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "high_power_test_mode",
+		Help:      "Whether Starlink dish max-power test mode is active",
+	}
+
+	// Outage
+	dishOutageCause = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "outage_cause",
+		Help:      "Current Starlink dish outage cause, as its enum value",
+		Labels:    []string{"cause"},
+	}
 
 	// Software update
 	dishSoftwareUpdateState = &Desc{
@@ -298,6 +338,24 @@ var (
 		Name:      "alert_signal_lower_than_predicted",
 		Help:      "Whether the Starlink dish signal is lower than predicted",
 	}
+	dishAlertThermalThrottle = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_thermal_throttle",
+		Help:      "Whether the Starlink dish is throttling back due to heat",
+	}
+	dishAlertThermalShutdown = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_thermal_shutdown",
+		Help:      "Whether the Starlink dish has shut down due to heat",
+	}
+	dishAlertPowerSupplyThermalThrottle = &Desc{
+		Namespace: namespace,
+		Subsystem: dishSubsystem,
+		Name:      "alert_power_supply_thermal_throttle",
+		Help:      "Whether the Starlink dish power supply is throttling back due to heat",
+	}
 )
 
 // Descs contains all Prometheus metrics descriptors for the exporter.
@@ -331,6 +389,12 @@ var Descs = []*Desc{
 	dishLast24HoursObstructedSeconds,
 	dishPowerInputHistogram,
 	dishPowerInput,
+	dishPowerWatts,
+	dishRouterPowerWatts,
+	dishUpsuUptimeSeconds,
+	dishThermalThrottleLevel,
+	dishHighPowerTestMode,
+	dishOutageCause,
 	dishLocationInfo,
 	dishLocationLatitude,
 	dishLocationLongitude,
@@ -340,6 +404,9 @@ var Descs = []*Desc{
 	dishAlertIsHeating,
 	dishAlertIsPowerSaveIdle,
 	dishAlertSignalLowerThanPredicted,
+	dishAlertThermalThrottle,
+	dishAlertThermalShutdown,
+	dishAlertPowerSupplyThermalThrottle,
 }
 
 // Desc is a utility wrapper for prometheus.Desc.

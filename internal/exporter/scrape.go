@@ -201,6 +201,33 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 	ch <- metric(dishLast24HoursObstructedSeconds, prometheus.GaugeValue,
 		obstructionStats.GetTimeObstructed())
 
+	// starlink_dish_power_watts
+	ch <- metric(dishPowerWatts, prometheus.GaugeValue,
+		dishStatus.GetUpsuStats().GetDishPower(), "upsu")
+	ch <- metric(dishPowerWatts, prometheus.GaugeValue,
+		dishStatus.GetApsStats().GetDishPower(), "aps")
+
+	// starlink_dish_router_power_watts
+	ch <- metric(dishRouterPowerWatts, prometheus.GaugeValue,
+		dishStatus.GetUpsuStats().GetRouterPower())
+
+	// starlink_dish_upsu_uptime_seconds
+	ch <- metric(dishUpsuUptimeSeconds, prometheus.GaugeValue,
+		dishStatus.GetUpsuStats().GetUptime())
+
+	// starlink_dish_thermal_throttle_level
+	ch <- metric(dishThermalThrottleLevel, prometheus.GaugeValue,
+		dishStatus.GetPlcStats().GetThermalThrottleLevel())
+
+	// starlink_dish_high_power_test_mode
+	ch <- metric(dishHighPowerTestMode, prometheus.GaugeValue,
+		btof(dishStatus.GetHighPowerTestMode()))
+
+	// starlink_dish_outage_cause
+	outage := dishStatus.GetOutage()
+	ch <- metric(dishOutageCause, prometheus.GaugeValue,
+		outage.GetCause(), outage.GetCause().String())
+
 	// starlink_dish_alert_unexpected_location
 	ch <- metric(dishAlertUnexpectedLocation, prometheus.GaugeValue,
 		btof(alerts.GetUnexpectedLocation()))
@@ -220,6 +247,18 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 	// starlink_dish_alert_lower_than_predicted
 	ch <- metric(dishAlertSignalLowerThanPredicted, prometheus.GaugeValue,
 		btof(alerts.GetLowerSignalThanPredicted()))
+
+	// starlink_dish_alert_thermal_throttle
+	ch <- metric(dishAlertThermalThrottle, prometheus.GaugeValue,
+		btof(alerts.GetThermalThrottle()))
+
+	// starlink_dish_alert_thermal_shutdown
+	ch <- metric(dishAlertThermalShutdown, prometheus.GaugeValue,
+		btof(alerts.GetThermalShutdown()))
+
+	// starlink_dish_alert_power_supply_thermal_throttle
+	ch <- metric(dishAlertPowerSupplyThermalThrottle, prometheus.GaugeValue,
+		btof(alerts.GetPowerSupplyThermalThrottle()))
 
 	return true
 }
