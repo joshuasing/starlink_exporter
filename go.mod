@@ -2,7 +2,7 @@ module github.com/joshuasing/starlink_exporter
 
 go 1.27
 
-toolchain go1.27.1
+toolchain go1.27.2
 
 require (
 	github.com/prometheus/client_golang v1.24.1
