@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 # renovate: datasource=github-releases depName=golangci/golangci-lint versioning=semver
-GOLANGCI_LINT_VERSION="v2.13.2"
+GOLANGCI_LINT_VERSION="v2.14.0"
 # renovate: datasource=github-releases depName=joshuasing/golicenser versioning=semver
 GOLICENSER_VERSION="v0.3.1"
 
