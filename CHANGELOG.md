@@ -7,19 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.10.0] - 2026-11-14
+
 ### Added
 
-- Support Starlink Dishy software `2026.06.22.mr81471` ([#265])
+- Support Starlink Dishy software `2026.10.21.mr89603.2` (API v44) ([#334])
+- Support filtering `/metrics` by metric name using `name[]` query parameters,
+  added upstream in `github.com/prometheus/client_golang` v1.24.0 ([#291])
 
 ### Changed
 
 - Improved release artifact reproducibility and metadata ([#295])
 - Improved installation and usage documentation ([#266])
-- Updated Go to 1.27 (security) ([#253], [#294])
-- Updated `github.com/prometheus/common` to v0.69.0 ([#245])
-- Updated `github.com/prometheus/exporter-toolkit` to v0.17.1 ([#263])
-- Updated `google.golang.org/grpc` to v1.82.0 ([#264])
-- Updated Docker runtime base image to `cgr.dev/chainguard/static@60582b2` ([#254])
+- Updated Go to 1.27.4 (security) ([#294], [#321], [#331])
+- Updated `golang.org/x/net` to v0.62.0 (security) ([#269], [#318])
+- Updated `golang.org/x/crypto` to v0.59.0 (security) ([#304], [#322])
+- Updated `golang.org/x/text` to v0.44.0 (security) ([#270])
+- Updated `google.golang.org/grpc` to v1.85.0 (security) ([#264], [#268], [#292], [#307], [#328])
+- Updated Docker runtime base image to `cgr.dev/chainguard/static@fc42af3` ([#254], [#275], [#329])
+- Updated dependencies ([#245], [#263], [#273], [#281], [#284], [#291], [#315], [#326], [#327], [#333])
 
 ### Removed
 
@@ -116,7 +122,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 _Looking for the changelog for an older version? Older releases can be found at:
 https://github.com/joshuasing/starlink_exporter/releases_
 
-[Unreleased]: https://github.com/joshuasing/starlink_exporter/compare/v0.9.2...HEAD
+[Unreleased]: https://github.com/joshuasing/starlink_exporter/compare/v0.10.0...HEAD
+[v0.10.0]: https://github.com/joshuasing/starlink_exporter/compare/v0.9.2...v0.10.0
 [v0.9.2]: https://github.com/joshuasing/starlink_exporter/compare/v0.9.1...v0.9.2
 [v0.9.1]: https://github.com/joshuasing/starlink_exporter/compare/v0.9.0...v0.9.1
 [v0.9.0]: https://github.com/joshuasing/starlink_exporter/compare/v0.8.0...v0.9.0
@@ -170,11 +177,31 @@ https://github.com/joshuasing/starlink_exporter/releases_
 [#240]: https://github.com/joshuasing/starlink_exporter/pull/240
 [#241]: https://github.com/joshuasing/starlink_exporter/pull/241
 [#245]: https://github.com/joshuasing/starlink_exporter/pull/245
-[#253]: https://github.com/joshuasing/starlink_exporter/pull/253
 [#254]: https://github.com/joshuasing/starlink_exporter/pull/254
 [#263]: https://github.com/joshuasing/starlink_exporter/pull/263
 [#264]: https://github.com/joshuasing/starlink_exporter/pull/264
-[#265]: https://github.com/joshuasing/starlink_exporter/pull/265
 [#266]: https://github.com/joshuasing/starlink_exporter/pull/266
+[#268]: https://github.com/joshuasing/starlink_exporter/pull/268
+[#269]: https://github.com/joshuasing/starlink_exporter/pull/269
+[#270]: https://github.com/joshuasing/starlink_exporter/pull/270
+[#273]: https://github.com/joshuasing/starlink_exporter/pull/273
+[#275]: https://github.com/joshuasing/starlink_exporter/pull/275
+[#281]: https://github.com/joshuasing/starlink_exporter/pull/281
+[#284]: https://github.com/joshuasing/starlink_exporter/pull/284
+[#291]: https://github.com/joshuasing/starlink_exporter/pull/291
+[#292]: https://github.com/joshuasing/starlink_exporter/pull/292
 [#294]: https://github.com/joshuasing/starlink_exporter/pull/294
 [#295]: https://github.com/joshuasing/starlink_exporter/pull/295
+[#304]: https://github.com/joshuasing/starlink_exporter/pull/304
+[#307]: https://github.com/joshuasing/starlink_exporter/pull/307
+[#315]: https://github.com/joshuasing/starlink_exporter/pull/315
+[#318]: https://github.com/joshuasing/starlink_exporter/pull/318
+[#321]: https://github.com/joshuasing/starlink_exporter/pull/321
+[#322]: https://github.com/joshuasing/starlink_exporter/pull/322
+[#326]: https://github.com/joshuasing/starlink_exporter/pull/326
+[#327]: https://github.com/joshuasing/starlink_exporter/pull/327
+[#328]: https://github.com/joshuasing/starlink_exporter/pull/328
+[#329]: https://github.com/joshuasing/starlink_exporter/pull/329
+[#331]: https://github.com/joshuasing/starlink_exporter/pull/331
+[#333]: https://github.com/joshuasing/starlink_exporter/pull/333
+[#334]: https://github.com/joshuasing/starlink_exporter/pull/334
