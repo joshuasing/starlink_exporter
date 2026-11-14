@@ -23,6 +23,7 @@ package exporter
 import (
 	"context"
 	"log/slog"
+	"strconv"
 	"sync"
 	"time"
 
@@ -53,6 +54,11 @@ var (
 		Name:    dishPowerInputHistogram.FQName(),
 		Help:    dishPowerInputHistogram.Help,
 		Buckets: []float64{20, 25, 30, 40, 50, 75, 100, 150, 200},
+	}
+	dishPopPingDropRatioHistOpts = prometheus.HistogramOpts{
+		Name:    dishPopPingDropRatioHistogram.FQName(),
+		Help:    dishPopPingDropRatioHistogram.Help,
+		Buckets: []float64{0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5, 0.75, 1},
 	}
 )
 
@@ -221,6 +227,202 @@ func (e *Exporter) scrapeDishStatus(ctx context.Context, ch chan<- prometheus.Me
 	ch <- metric(dishAlertSignalLowerThanPredicted, prometheus.GaugeValue,
 		btof(alerts.GetLowerSignalThanPredicted()))
 
+	// Additional alerts
+	ch <- metric(dishAlertMotorsStuck, prometheus.GaugeValue,
+		btof(alerts.GetMotorsStuck()))
+	ch <- metric(dishAlertThermalThrottle, prometheus.GaugeValue,
+		btof(alerts.GetThermalThrottle()))
+	ch <- metric(dishAlertThermalShutdown, prometheus.GaugeValue,
+		btof(alerts.GetThermalShutdown()))
+	ch <- metric(dishAlertMastNotNearVertical, prometheus.GaugeValue,
+		btof(alerts.GetMastNotNearVertical()))
+	ch <- metric(dishAlertSlowEthernetSpeeds, prometheus.GaugeValue,
+		btof(alerts.GetSlowEthernetSpeeds()))
+	ch <- metric(dishAlertSlowEthernetSpeeds100, prometheus.GaugeValue,
+		btof(alerts.GetSlowEthernetSpeeds_100()))
+	ch <- metric(dishAlertRoaming, prometheus.GaugeValue,
+		btof(alerts.GetRoaming()))
+	ch <- metric(dishAlertPowerSupplyThermalThrottle, prometheus.GaugeValue,
+		btof(alerts.GetPowerSupplyThermalThrottle()))
+	ch <- metric(dishAlertDbfTelemStale, prometheus.GaugeValue,
+		btof(alerts.GetDbfTelemStale()))
+	ch <- metric(dishAlertLowMotorCurrent, prometheus.GaugeValue,
+		btof(alerts.GetLowMotorCurrent()))
+	ch <- metric(dishAlertObstructionMapReset, prometheus.GaugeValue,
+		btof(alerts.GetObstructionMapReset()))
+	ch <- metric(dishAlertDishWaterDetected, prometheus.GaugeValue,
+		btof(alerts.GetDishWaterDetected()))
+	ch <- metric(dishAlertRouterWaterDetected, prometheus.GaugeValue,
+		btof(alerts.GetRouterWaterDetected()))
+	ch <- metric(dishAlertUpsuRouterPortSlow, prometheus.GaugeValue,
+		btof(alerts.GetUpsuRouterPortSlow()))
+	ch <- metric(dishAlertNoEthernetLink, prometheus.GaugeValue,
+		btof(alerts.GetNoEthernetLink()))
+
+	// Top-level status scalars
+	ch <- metric(dishSecondsToFirstNonemptySlot, prometheus.GaugeValue,
+		dishStatus.GetSecondsToFirstNonemptySlot())
+	ch <- metric(dishStowRequested, prometheus.GaugeValue,
+		btof(dishStatus.GetStowRequested()))
+	ch <- metric(dishEthSpeedMbps, prometheus.GaugeValue,
+		dishStatus.GetEthSpeedMbps())
+	ch <- metric(dishClassOfService, prometheus.GaugeValue,
+		dishStatus.GetClassOfService())
+	ch <- metric(dishRebootReason, prometheus.GaugeValue,
+		dishStatus.GetRebootReason())
+	ch <- metric(dishDisablementCode, prometheus.GaugeValue,
+		dishStatus.GetDisablementCode())
+	ch <- metric(dishDlBandwidthRestrictedReason, prometheus.GaugeValue,
+		dishStatus.GetDlBandwidthRestrictedReason())
+	ch <- metric(dishUlBandwidthRestrictedReason, prometheus.GaugeValue,
+		dishStatus.GetUlBandwidthRestrictedReason())
+	ch <- metric(dishIsCellDisabled, prometheus.GaugeValue,
+		btof(dishStatus.GetIsCellDisabled()))
+	ch <- metric(dishSecondsUntilSwupdateRebootPossible, prometheus.GaugeValue,
+		dishStatus.GetSecondsUntilSwupdateRebootPossible())
+	ch <- metric(dishHighPowerTestMode, prometheus.GaugeValue,
+		btof(dishStatus.GetHighPowerTestMode()))
+	ch <- metric(dishIsMovingFastPersisted, prometheus.GaugeValue,
+		btof(dishStatus.GetIsMovingFastPersisted()))
+	ch <- metric(dishMacFlag, prometheus.GaugeValue,
+		btof(dishStatus.GetMacFlag()))
+	ch <- metric(dishNatFlag, prometheus.GaugeValue,
+		dishStatus.GetNatFlag())
+	ch <- metric(dishAccountShard, prometheus.GaugeValue,
+		dishStatus.GetAccountShard())
+	ch <- metric(dishConnectedRoutersCount, prometheus.GaugeValue,
+		len(dishStatus.GetConnectedRouters()))
+	ch <- metric(dishHasActuators, prometheus.GaugeValue,
+		dishStatus.GetHasActuators())
+
+	// NED-to-dish orientation quaternion
+	quat := dishStatus.GetNed2DishQuaternion()
+	ch <- metric(dishNed2DishQuaternionW, prometheus.GaugeValue, quat.GetQScalar())
+	ch <- metric(dishNed2DishQuaternionX, prometheus.GaugeValue, quat.GetQX())
+	ch <- metric(dishNed2DishQuaternionY, prometheus.GaugeValue, quat.GetQY())
+	ch <- metric(dishNed2DishQuaternionZ, prometheus.GaugeValue, quat.GetQZ())
+
+	// Current outage
+	if outage := dishStatus.GetOutage(); outage != nil {
+		ch <- metric(dishOutageInfo, prometheus.GaugeValue, 1,
+			outage.GetCause().String(),
+			strconv.FormatBool(outage.GetDidSwitch()),
+		)
+		ch <- metric(dishOutageStartTimestampSeconds, prometheus.GaugeValue,
+			float64(outage.GetStartTimestampNs())/1e9)
+		ch <- metric(dishOutageDurationSeconds, prometheus.GaugeValue,
+			float64(outage.GetDurationNs())/1e9)
+	}
+
+	// GPS (additional)
+	ch <- metric(dishGPSNoSatsAfterTtff, prometheus.GaugeValue,
+		btof(dishStatus.GetGpsStats().GetNoSatsAfterTtff()))
+	ch <- metric(dishGPSInhibit, prometheus.GaugeValue,
+		btof(dishStatus.GetGpsStats().GetInhibitGps()))
+
+	// Obstruction (additional)
+	ch <- metric(dishObstructionValidSeconds, prometheus.GaugeValue,
+		obstructionStats.GetValidS())
+	ch <- metric(dishObstructionPatchesValid, prometheus.GaugeValue,
+		obstructionStats.GetPatchesValid())
+	ch <- metric(dishAvgProlongedObstructionDurationSeconds, prometheus.GaugeValue,
+		obstructionStats.GetAvgProlongedObstructionDurationS())
+	ch <- metric(dishAvgProlongedObstructionIntervalSeconds, prometheus.GaugeValue,
+		obstructionStats.GetAvgProlongedObstructionIntervalS())
+	ch <- metric(dishAvgProlongedObstructionValid, prometheus.GaugeValue,
+		btof(obstructionStats.GetAvgProlongedObstructionValid()))
+
+	// Ready states
+	ready := dishStatus.GetReadyStates()
+	ch <- metric(dishReadyStateCady, prometheus.GaugeValue, btof(ready.GetCady()))
+	ch <- metric(dishReadyStateScp, prometheus.GaugeValue, btof(ready.GetScp()))
+	ch <- metric(dishReadyStateL1L2, prometheus.GaugeValue, btof(ready.GetL1L2()))
+	ch <- metric(dishReadyStateXphy, prometheus.GaugeValue, btof(ready.GetXphy()))
+	ch <- metric(dishReadyStateAap, prometheus.GaugeValue, btof(ready.GetAap()))
+	ch <- metric(dishReadyStateRf, prometheus.GaugeValue, btof(ready.GetRf()))
+
+	// Software update stats
+	swStats := dishStatus.GetSoftwareUpdateStats()
+	ch <- metric(dishSoftwareUpdateProgress, prometheus.GaugeValue,
+		swStats.GetSoftwareUpdateProgress())
+	ch <- metric(dishSoftwareUpdateRequiresReboot, prometheus.GaugeValue,
+		btof(swStats.GetUpdateRequiresReboot()))
+	ch <- metric(dishSoftwareUpdateRebootScheduledUtcSeconds, prometheus.GaugeValue,
+		swStats.GetRebootScheduledUtcTime())
+
+	// Alignment (additional)
+	alignment := dishStatus.GetAlignmentStats()
+	ch <- metric(dishActuatorState, prometheus.GaugeValue,
+		alignment.GetActuatorState())
+	ch <- metric(dishAttitudeEstimationState, prometheus.GaugeValue,
+		alignment.GetAttitudeEstimationState())
+	ch <- metric(dishAttitudeUncertaintyDeg, prometheus.GaugeValue,
+		alignment.GetAttitudeUncertaintyDeg())
+
+	// Initialization durations
+	init := dishStatus.GetInitializationDurationSeconds()
+	ch <- metric(dishInitAttitudeSeconds, prometheus.GaugeValue,
+		init.GetAttitudeInitialization())
+	ch <- metric(dishInitBurstDetectedSeconds, prometheus.GaugeValue,
+		init.GetBurstDetected())
+	ch <- metric(dishInitEkfConvergedSeconds, prometheus.GaugeValue,
+		init.GetEkfConverged())
+	ch <- metric(dishInitFirstCplaneSeconds, prometheus.GaugeValue,
+		init.GetFirstCplane())
+	ch <- metric(dishInitFirstPopPingSeconds, prometheus.GaugeValue,
+		init.GetFirstPopPing())
+	ch <- metric(dishInitGpsValidSeconds, prometheus.GaugeValue,
+		init.GetGpsValid())
+	ch <- metric(dishInitInitialNetworkEntrySeconds, prometheus.GaugeValue,
+		init.GetInitialNetworkEntry())
+	ch <- metric(dishInitNetworkScheduleSeconds, prometheus.GaugeValue,
+		init.GetNetworkSchedule())
+	ch <- metric(dishInitRfReadySeconds, prometheus.GaugeValue,
+		init.GetRfReady())
+	ch <- metric(dishInitStableConnectionSeconds, prometheus.GaugeValue,
+		init.GetStableConnection())
+
+	// PLC (Mini battery)
+	plc := dishStatus.GetPlcStats()
+	ch <- metric(dishPlcReceiving, prometheus.GaugeValue,
+		btof(plc.GetReceivingPlc()))
+	ch <- metric(dishPlcAverageTimeToEmptySeconds, prometheus.GaugeValue,
+		plc.GetAverageTimeToEmpty())
+	ch <- metric(dishPlcAverageTimeToFullSeconds, prometheus.GaugeValue,
+		plc.GetAverageTimeToFull())
+	ch <- metric(dishPlcBatteryHealth, prometheus.GaugeValue,
+		plc.GetBatteryHealth())
+	ch <- metric(dishPlcPermanentFailure, prometheus.GaugeValue,
+		btof(plc.GetPermanentFailure()))
+	ch <- metric(dishPlcSafetyModeActive, prometheus.GaugeValue,
+		btof(plc.GetSafetyModeActive()))
+	ch <- metric(dishPlcStateOfChargePercent, prometheus.GaugeValue,
+		plc.GetStateOfCharge())
+	ch <- metric(dishPlcThermalThrottleLevel, prometheus.GaugeValue,
+		plc.GetThermalThrottleLevel())
+	ch <- metric(dishPlcRevision, prometheus.GaugeValue,
+		plc.GetPlcRevision())
+
+	// UPSU
+	upsu := dishStatus.GetUpsuStats()
+	ch <- metric(dishUpsuDishPowerWatts, prometheus.GaugeValue,
+		upsu.GetDishPower())
+	ch <- metric(dishUpsuRouterPowerWatts, prometheus.GaugeValue,
+		upsu.GetRouterPower())
+	ch <- metric(dishUpsuUptimeSeconds, prometheus.GaugeValue,
+		upsu.GetUptime())
+	ch <- metric(dishUpsuBoardRev, prometheus.GaugeValue,
+		upsu.GetBoardRev())
+
+	// APS
+	aps := dishStatus.GetApsStats()
+	ch <- metric(dishApsDishPowerWatts, prometheus.GaugeValue,
+		aps.GetDishPower())
+	ch <- metric(dishApsUptimeSeconds, prometheus.GaugeValue,
+		aps.GetUptime())
+	ch <- metric(dishApsBoardRev, prometheus.GaugeValue,
+		aps.GetBoardRev())
+
 	return true
 }
 
@@ -285,6 +487,18 @@ func (e *Exporter) scrapeDishHistory(ctx context.Context, ch chan<- prometheus.M
 			powerData[len(powerData)-1])
 	}
 
+	// starlink_dish_pop_ping_drop_ratio_histogram
+	dropData := parseRingBuffer(dishHistory.GetPopPingDropRate(), dishHistory.GetCurrent())
+	dropHist := prometheus.NewHistogram(dishPopPingDropRatioHistOpts)
+	for _, drop := range dropData {
+		dropHist.Observe(float64(drop))
+	}
+	ch <- dropHist
+
+	// starlink_dish_history_outages_count
+	ch <- metric(dishHistoryOutagesCount, prometheus.GaugeValue,
+		len(dishHistory.GetOutages()))
+
 	return true
 }
 
@@ -321,6 +535,135 @@ func (e *Exporter) scrapeLocation(ctx context.Context, ch chan<- prometheus.Metr
 
 	// starlink_dish_location_altitude_meters
 	ch <- metric(dishLocationAltitude, prometheus.GaugeValue, lla.GetAlt())
+
+	// starlink_dish_location_uncertainty_meters
+	ch <- metric(dishLocationUncertaintyMeters, prometheus.GaugeValue, loc.GetSigmaM())
+
+	// starlink_dish_horizontal_speed_mps
+	ch <- metric(dishHorizontalSpeedMps, prometheus.GaugeValue, loc.GetHorizontalSpeedMps())
+
+	// starlink_dish_vertical_speed_mps
+	ch <- metric(dishVerticalSpeedMps, prometheus.GaugeValue, loc.GetVerticalSpeedMps())
+
+	return true
+}
+
+// scrapeWifi scrapes metrics from the WiFi router's GetStatus response. It
+// runs independently of the dish scrape; failures are logged but do not
+// affect starlink_dish_up.
+func (e *Exporter) scrapeWifi(ch chan<- prometheus.Metric) bool {
+	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
+	defer cancel()
+
+	res, err := e.wifiClient.Handle(ctx, &device.Request{
+		Request: new(device.Request_GetStatus),
+	})
+	if err != nil {
+		slog.Error("Failed to scrape WiFi router status", slog.Any("err", err))
+		return false
+	}
+
+	wifiStatus := res.GetWifiGetStatus()
+	deviceInfo := wifiStatus.GetDeviceInfo()
+	deviceState := wifiStatus.GetDeviceState()
+	alerts := wifiStatus.GetAlerts()
+
+	// starlink_wifi_info
+	ch <- metric(wifiInfo, prometheus.GaugeValue, 1,
+		deviceInfo.GetId(),
+		deviceInfo.GetHardwareVersion(),
+		itos(deviceInfo.GetBoardRev()),
+		deviceInfo.GetSoftwareVersion(),
+		deviceInfo.GetManufacturedVersion(),
+		itos(deviceInfo.GetGenerationNumber()),
+		deviceInfo.GetCountryCode(),
+		itos(deviceInfo.GetUtcOffsetS()),
+		itos(deviceInfo.GetBootcount()),
+	)
+
+	ch <- metric(wifiUptimeSeconds, prometheus.GaugeValue, deviceState.GetUptimeS())
+	ch <- metric(wifiHopsFromController, prometheus.GaugeValue, wifiStatus.GetHopsFromController())
+	ch <- metric(wifiNoWanLink, prometheus.GaugeValue, btof(wifiStatus.GetNoWanLink()))
+	ch <- metric(wifiIsAviation, prometheus.GaugeValue, btof(wifiStatus.GetIsAviation()))
+	ch <- metric(wifiIsAviationConformed, prometheus.GaugeValue, btof(wifiStatus.GetIsAviationConformed()))
+	ch <- metric(wifiUsingIndividualizedCalibration, prometheus.GaugeValue,
+		btof(wifiStatus.GetUsingIndividualizedCalibration()))
+	ch <- metric(wifiCalibrationPartitionsState, prometheus.GaugeValue,
+		wifiStatus.GetCalibrationPartitionsState())
+	ch <- metric(wifiDishDisablementCode, prometheus.GaugeValue,
+		wifiStatus.GetDishDisablementCode())
+	ch <- metric(wifiSecsSinceLastPublicIpv4Change, prometheus.GaugeValue,
+		wifiStatus.GetSecsSinceLastPublicIpv4Change())
+	ch <- metric(wifiClientsCount, prometheus.GaugeValue, len(wifiStatus.GetClients()))
+	ch <- metric(wifiDhcpServersCount, prometheus.GaugeValue, len(wifiStatus.GetDhcpServers()))
+
+	// Ping (drop rates are already ratios; latencies are milliseconds → seconds).
+	ch <- metric(wifiPingDropRatio, prometheus.GaugeValue, wifiStatus.GetPingDropRate())
+	ch <- metric(wifiPingDropRatio5m, prometheus.GaugeValue, wifiStatus.GetPingDropRate_5M())
+	ch <- metric(wifiPingLatencySeconds, prometheus.GaugeValue, wifiStatus.GetPingLatencyMs()/1000)
+	ch <- metric(wifiDishPingDropRatio, prometheus.GaugeValue, wifiStatus.GetDishPingDropRate())
+	ch <- metric(wifiDishPingDropRatio5m, prometheus.GaugeValue, wifiStatus.GetDishPingDropRate_5M())
+	ch <- metric(wifiDishPingLatencySeconds, prometheus.GaugeValue, wifiStatus.GetDishPingLatencyMs()/1000)
+	ch <- metric(wifiPopPingDropRatio, prometheus.GaugeValue, wifiStatus.GetPopPingDropRate())
+	ch <- metric(wifiPopPingDropRatio5m, prometheus.GaugeValue, wifiStatus.GetPopPingDropRate_5M())
+	ch <- metric(wifiPopPingLatencySeconds, prometheus.GaugeValue, wifiStatus.GetPopPingLatencyMs()/1000)
+	ch <- metric(wifiPopIpv6PingDropRatio, prometheus.GaugeValue, wifiStatus.GetPopIpv6PingDropRate())
+	ch <- metric(wifiPopIpv6PingDropRatio5m, prometheus.GaugeValue, wifiStatus.GetPopIpv6PingDropRate_5M())
+	ch <- metric(wifiPopIpv6PingLatencySeconds, prometheus.GaugeValue, wifiStatus.GetPopIpv6PingLatencyMs()/1000)
+
+	// Alerts
+	ch <- metric(wifiAlertThermalThrottle, prometheus.GaugeValue, btof(alerts.GetThermalThrottle()))
+	ch <- metric(wifiAlertInstallPending, prometheus.GaugeValue, btof(alerts.GetInstallPending()))
+	ch <- metric(wifiAlertFreshlyFused, prometheus.GaugeValue, btof(alerts.GetFreshlyFused()))
+	ch <- metric(wifiAlertLanEthSlowLink10, prometheus.GaugeValue, btof(alerts.GetLanEthSlowLink_10()))
+	ch <- metric(wifiAlertLanEthSlowLink100, prometheus.GaugeValue, btof(alerts.GetLanEthSlowLink_100()))
+	ch <- metric(wifiAlertHighCablePingDropRate, prometheus.GaugeValue, btof(alerts.GetHighCablePingDropRate()))
+	ch <- metric(wifiAlertWanEthPoorConnection, prometheus.GaugeValue, btof(alerts.GetWanEthPoorConnection()))
+	ch <- metric(wifiAlertMeshTopologyChangingOften, prometheus.GaugeValue,
+		btof(alerts.GetMeshTopologyChangingOften()))
+	ch <- metric(wifiAlertMeshUnreliableBackhaul, prometheus.GaugeValue, btof(alerts.GetMeshUnreliableBackhaul()))
+	ch <- metric(wifiAlertRadiusMissingProcess, prometheus.GaugeValue, btof(alerts.GetRadiusMissingProcess()))
+	ch <- metric(wifiAlertEthSwitchError, prometheus.GaugeValue, btof(alerts.GetEthSwitchError()))
+	ch <- metric(wifiAlertPoeOnDishUnreachable, prometheus.GaugeValue, btof(alerts.GetPoeOnDishUnreachable()))
+	ch <- metric(wifiAlertPoeFuseBlown, prometheus.GaugeValue, btof(alerts.GetPoeFuseBlown()))
+	ch <- metric(wifiAlertPoeRouterOvercurrent, prometheus.GaugeValue, btof(alerts.GetPoeRouterOvercurrent()))
+	ch <- metric(wifiAlertPoeOffCurrentNominal, prometheus.GaugeValue, btof(alerts.GetPoeOffCurrentNominal()))
+	ch <- metric(wifiAlertPoeVinOvervoltage, prometheus.GaugeValue, btof(alerts.GetPoeVinOvervoltage()))
+	ch <- metric(wifiAlertPoeVinUndervoltage, prometheus.GaugeValue, btof(alerts.GetPoeVinUndervoltage()))
+	ch <- metric(wifiAlertSandboxDisabled, prometheus.GaugeValue, btof(alerts.GetSandboxDisabled()))
+	ch <- metric(wifiAlertOnlyOverflightBlocked, prometheus.GaugeValue, btof(alerts.GetOnlyOverflightBlocked()))
+	ch <- metric(wifiAlertOfflineNetworksDisabled, prometheus.GaugeValue,
+		btof(alerts.GetOfflineNetworksDisabled()))
+	ch <- metric(wifiAlertWiredMeshNotUsingWanIface, prometheus.GaugeValue,
+		btof(alerts.GetWiredMeshNotUsingWanIface()))
+
+	// Software update
+	swStats := wifiStatus.GetSoftwareUpdateStats()
+	ch <- metric(wifiSoftwareUpdateState, prometheus.GaugeValue, swStats.GetState())
+	ch <- metric(wifiSoftwareUpdateDownloadProgress, prometheus.GaugeValue,
+		swStats.GetSoftwareDownloadProgress())
+	ch <- metric(wifiSoftwareUpdateSecondsSinceGetTargetVersions, prometheus.GaugeValue,
+		swStats.GetSecondsSinceGetTargetVersions())
+	ch <- metric(wifiSoftwareUpdateInfo, prometheus.GaugeValue, 1,
+		swStats.GetRunningVersion(),
+		swStats.GetVersionInProgress(),
+	)
+
+	// PoE
+	poe := wifiStatus.GetPoeStats()
+	ch <- metric(wifiPoeState, prometheus.GaugeValue, poe.GetPoeState())
+	ch <- metric(wifiPoePowerWatts, prometheus.GaugeValue, poe.GetPoePower())
+	ch <- metric(wifiPoeFaultsFastOvercurrent, prometheus.GaugeValue, poe.GetPoeFaultsFastOvercurrent())
+	ch <- metric(wifiPoeFaultsSlowOvercurrent, prometheus.GaugeValue, poe.GetPoeFaultsSlowOvercurrent())
+	ch <- metric(wifiPoeFaultsOvervoltage, prometheus.GaugeValue, poe.GetPoeFaultsOvervoltage())
+	ch <- metric(wifiPoeFaultsUndervoltage, prometheus.GaugeValue, poe.GetPoeFaultsUndervoltage())
+	ch <- metric(wifiPoeVsnsVinVolts, prometheus.GaugeValue, poe.GetVsnsVin())
+
+	// Setup requirement
+	setup := wifiStatus.GetSetupRequirement()
+	ch <- metric(wifiSetupRequirementState, prometheus.GaugeValue, setup.GetState())
+	ch <- metric(wifiSetupRequirementPauseCountdownSeconds, prometheus.GaugeValue,
+		setup.GetPauseCountdownSeconds())
 
 	return true
 }
