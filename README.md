@@ -21,7 +21,7 @@ Make sure the machine running the exporter can reach your Starlink dish at `192.
 container:
 
 ```shell
-docker run --rm -p 127.0.0.1:9451:9451 ghcr.io/joshuasing/starlink_exporter:0.9.2
+docker run --rm -p 127.0.0.1:9451:9451 ghcr.io/joshuasing/starlink_exporter:0.10.0
 ```
 
 Open [localhost:9451](http://localhost:9451) or check the metrics directly:
@@ -90,7 +90,7 @@ from [GitHub Releases](https://github.com/joshuasing/starlink_exporter/releases)
 You can also use `go install` to build and install a binary from source:
 
 ```shell
-go install github.com/joshuasing/starlink_exporter@v0.9.2
+go install github.com/joshuasing/starlink_exporter@v0.10.0
 ```
 
 **Flags**
