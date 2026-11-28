@@ -49,6 +49,8 @@ const defaultListenAddress = ":9451"
 var (
 	listenAddress = flag.String("listen", defaultListenAddress, "Listen address")
 	dishAddress   = flag.String("dish", exporter.DefaultDishAddress, "Dish address")
+	routerAddress = flag.String("router", exporter.DefaultRouterAddress,
+		"WiFi router address (set empty to disable WiFi metrics)")
 )
 
 func main() {
@@ -63,7 +65,7 @@ func run() int {
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancel()
 
-	ex, err := exporter.NewExporter(*dishAddress)
+	ex, err := exporter.NewExporter(*dishAddress, *routerAddress)
 	if err != nil {
 		slog.Error("Failed to create exporter", slog.Any("err", err))
 		return 1
